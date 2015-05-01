@@ -1,0 +1,74 @@
+.fresnel_container {
+	display: table-cell;
+	padding-left: 10px;
+}
+
+.fresnel_resource {
+	border: 1px solid #E7E7E7;
+}
+
+.fresnel_resource_uri {
+	font-family: 'Hoefler Text', Hoeflertext, Georgia, 'Lucida Bright', Lucidabright, 'Bitstream Vera Serif', serif;
+	font-weight: bold;
+	font-size: 1.0em;
+	margin-top: 15px;
+	margin-bottom: 0px;
+	width: 100%;
+}
+
+.fresnel_property {
+	display: table-row;
+        width: 100%;
+}
+.fresnel_label {
+	display: table-cell;
+	width: 75px;
+	text-align: right;
+	padding-right: 10px;
+}
+.fresnel_value {
+	padding-right: 20px;
+	width: 100%;
+}
+
+.fresnel_value img {
+	max-width: 400px;
+}
+
+.fresnel_object_language {
+	padding-right: 5px;
+}
+
+.h1 {
+	font-family: 'Hoefler Text', Hoeflertext, Georgia, 'Lucida Bright', Lucidabright, 'Bitstream Vera Serif', serif;
+	font-weight: bold;
+	font-size: 1.4em;
+}
+.h1_container {
+	display: block;
+	width: 100%;
+	border-bottom: 1px solid black;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+.h2 {
+	font-family: 'Hoefler Text', Hoeflertext, Georgia, 'Lucida Bright', Lucidabright, 'Bitstream Vera Serif', serif;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+.h2_container {
+	display: block;
+	width: 100%; 
+	margin-top: 5px;
+}
+
+.nolabel {
+	display: block;
+	width: 100%;
+}
+
+.reified_triple {
+	border-top: 1px solid black; 
+	border-left: 1px solid black;
+}
