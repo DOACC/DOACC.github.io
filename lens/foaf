@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:ns1="http://www.w3.org/2004/09/fresnel#"
+   xmlns:ns2="http://purl.org/NET/ordf/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="_:VBw1PbQB">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://www.w3.org/2004/09/fresnel#allProperties"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://river.styx.org/ww/2010/11/fresnel/foaf">
+    <rdf:type rdf:resource="http://purl.org/net/opmv/ns#Artifact"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/03/trix/rdfg-1/Graph"/>
+    <ns2:lensList rdf:resource="_:qLYP97TH"/>
+    <rdfs:label xml:lang="en">FOAF Lens</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:labVj4oJ">
+    <rdf:rest rdf:resource="_:hguapaxT"/>
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/mbox"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:AVDvncWa">
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/nick"/>
+    <rdf:rest rdf:resource="_:KQawEKqf"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:yTSUCAci">
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/plan"/>
+    <rdf:rest rdf:resource="_:labVj4oJ"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://river.styx.org/ww/2010/11/fresnel/foaf#imageFormat">
+    <ns1:group rdf:resource="http://river.styx.org/ww/2010/11/fresnel/foaf#foafGroup"/>
+    <ns1:propertyStyle rdf:datatype="http://www.w3.org/2004/09/fresnel#styleClass">nolabel</ns1:propertyStyle>
+    <ns1:propertyFormatDomain rdf:resource="http://xmlns.com/foaf/0.1/depiction"/>
+    <ns1:value rdf:resource="http://www.w3.org/2004/09/fresnel#image"/>
+    <ns1:label rdf:resource="http://www.w3.org/2004/09/fresnel#none"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:M73ltBYZ">
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/interest"/>
+    <rdf:rest rdf:resource="_:wv54maKg"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://river.styx.org/ww/2010/11/fresnel/foaf#hiddenFormat">
+    <ns1:group rdf:resource="http://river.styx.org/ww/2010/11/fresnel/foaf#foafGroup"/>
+    <ns1:propertyFormatDomain rdf:resource="http://rdf.data-vocabulary.org/#url"/>
+    <ns1:propertyStyle rdf:datatype="http://www.w3.org/2004/09/fresnel#styleClass">hidden</ns1:propertyStyle>
+    <ns1:propertyFormatDomain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+    <ns1:propertyFormatDomain rdf:resource="http://rdf.data-vocabulary.org/#name"/>
+    <ns1:propertyFormatDomain rdf:resource="http://rdf.data-vocabulary.org/#nickname"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://river.styx.org/ww/2010/11/fresnel/foaf#nolabelFormat">
+    <ns1:label rdf:resource="http://www.w3.org/2004/09/fresnel#none"/>
+    <ns1:group rdf:resource="http://river.styx.org/ww/2010/11/fresnel/foaf#foafGroup"/>
+    <ns1:propertyStyle rdf:datatype="http://www.w3.org/2004/09/fresnel#styleClass">nolabel</ns1:propertyStyle>
+    <ns1:propertyFormatDomain rdf:resource="http://xmlns.com/foaf/0.1/name"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://river.styx.org/ww/2010/11/fresnel/foaf#labelFormat">
+    <ns1:label rdf:resource="http://www.w3.org/2004/09/fresnel#none"/>
+    <ns1:group rdf:resource="http://river.styx.org/ww/2010/11/fresnel/foaf#foafGroup"/>
+    <ns1:propertyFormatDomain rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <ns1:valueStyle rdf:datatype="http://www.w3.org/2004/09/fresnel#styleClass">h2</ns1:valueStyle>
+    <ns1:propertyStyle rdf:datatype="http://www.w3.org/2004/09/fresnel#styleClass">h2_container</ns1:propertyStyle>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:GQZqPJmW">
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/workplaceHomepage"/>
+    <rdf:rest rdf:resource="_:Tn6bmot0"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:v1op8nOz">
+    <rdf:rest rdf:resource="_:VV09HbKq"/>
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/account"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:TfbKKB6p">
+    <rdf:rest rdf:resource="_:fs540RYm"/>
+    <rdf:first rdf:resource="http://www.w3.org/2002/07/owl#sameAs"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:QIVhxouW">
+    <rdf:first rdf:resource="_:Kmrn7Tm7"/>
+    <rdf:rest rdf:resource="_:VBw1PbQB"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:hguapaxT">
+    <rdf:rest rdf:resource="_:KYmBE5dt"/>
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/phone"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:Kmrn7Tm7">
+    <ns1:sublens rdf:resource="http://river.styx.org/ww/2010/11/fresnel/foaf#Person"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/09/fresnel#PropertyDescription"/>
+    <ns1:property rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://river.styx.org/ww/2010/11/fresnel/foaf#Person">
+    <ns1:showProperties rdf:resource="_:qBjyyvZf"/>
+    <ns1:purpose rdf:resource="http://www.w3.org/2004/09/fresnel#defaultLens"/>
+    <ns1:classLensDomain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <ns1:hideProperties rdf:resource="_:F3J3nast"/>
+    <ns1:group rdf:resource="http://river.styx.org/ww/2010/11/fresnel/foaf#foafGroup"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:DIsSR8Dv">
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/pastProject"/>
+    <rdf:rest rdf:resource="_:sROVcw0i"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://river.styx.org/ww/2010/11/fresnel/foaf#linkFormat">
+    <ns1:group rdf:resource="http://river.styx.org/ww/2010/11/fresnel/foaf#foafGroup"/>
+    <ns1:propertyFormatDomain rdf:resource="http://xmlns.com/foaf/0.1/currentProject"/>
+    <ns1:propertyFormatDomain rdf:resource="http://xmlns.com/foaf/0.1/homepage"/>
+    <ns1:propertyFormatDomain rdf:resource="http://www.w3.org/2000/01/rdf-schema#seeAlso"/>
+    <ns1:value rdf:resource="http://www.w3.org/2004/09/fresnel#externalLink"/>
+    <ns1:propertyFormatDomain rdf:resource="http://xmlns.com/foaf/0.1/page"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:fs540RYm">
+    <rdf:rest rdf:resource="_:UfTF736R"/>
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/firstName"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:Tn6bmot0">
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/page"/>
+    <rdf:rest rdf:resource="_:M73ltBYZ"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:LfhkiFj7">
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/name"/>
+    <rdf:rest rdf:resource="_:TfbKKB6p"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:VV09HbKq">
+    <rdf:rest rdf:resource="_:QIVhxouW"/>
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/basedNear"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:UfTF736R">
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/lastName"/>
+    <rdf:rest rdf:resource="_:AVDvncWa"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:qLYP97TH">
+    <rdf:first rdf:resource="http://river.styx.org/ww/2010/11/fresnel/foaf#Person"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:KQawEKqf">
+    <rdf:rest rdf:resource="_:yTSUCAci"/>
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/status"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:KYmBE5dt">
+    <rdf:rest rdf:resource="_:GQZqPJmW"/>
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/homepage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:qBjyyvZf">
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/depiction"/>
+    <rdf:rest rdf:resource="_:LfhkiFj7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:wv54maKg">
+    <rdf:rest rdf:resource="_:DIsSR8Dv"/>
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/currentProject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:sROVcw0i">
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/openid"/>
+    <rdf:rest rdf:resource="_:v1op8nOz"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="_:F3J3nast">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/mbox_sha1sum"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://river.styx.org/ww/2010/11/fresnel/foaf#foafGroup">
+    <ns1:stylesheetLink rdf:resource="http://river.styx.org/ww/2010/11/fresnel/fresnel.css"/>
+  </rdf:Description>
+</rdf:RDF>

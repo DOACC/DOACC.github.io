@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:fresnel='http://www.w3.org/2004/09/fresnel#'
+  xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+  xmlns:rdfs='http://www.w3.org/2000/01/rdf-schema#'
+>
+  <fresnel:Format rdf:about="http://bibliographica.org/lens/owl#titleFormat">
+    <fresnel:group>
+      <fresnel:Group rdf:about="http://bibliographica.org/lens/owl#owlGroup"/>
+    </fresnel:group>
+    <fresnel:label>Title</fresnel:label>
+    <fresnel:propertyFormatDomain rdf:resource="http://purl.org/dc/terms/title"/>
+  </fresnel:Format>
+  <fresnel:Lens rdf:about="http://bibliographica.org/lens/owl#thingDefaultLens">
+    <fresnel:group rdf:resource="http://bibliographica.org/lens/owl#owlGroup"/>
+    <fresnel:showProperties rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://dbpedia.org/ontology/thumbnail"/>
+      <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
+      <rdf:Description rdf:about="http://purl.org/dc/terms/title"/>
+      <rdf:Description rdf:about="http://purl.org/dc/terms/description"/>
+      <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#comment"/>
+      <rdf:Description rdf:about="http://www.w3.org/2004/09/fresnel#allProperties"/>
+    </fresnel:showProperties>
+    <fresnel:classLensDomain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <fresnel:purpose rdf:resource="http://www.w3.org/2004/09/fresnel#defaultLens"/>
+  </fresnel:Lens>
+  <fresnel:Format rdf:about="http://bibliographica.org/lens/owl#descriptionFormat">
+    <fresnel:group rdf:resource="http://bibliographica.org/lens/owl#owlGroup"/>
+    <fresnel:label>Description</fresnel:label>
+    <fresnel:propertyFormatDomain rdf:resource="http://purl.org/dc/terms/description"/>
+  </fresnel:Format>
+  <fresnel:Format rdf:about="http://bibliographica.org/lens/owl#commentFormat">
+    <fresnel:group rdf:resource="http://bibliographica.org/lens/owl#owlGroup"/>
+    <fresnel:label>Comment</fresnel:label>
+    <fresnel:propertyFormatDomain rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+  </fresnel:Format>
+  <fresnel:Format rdf:about="http://bibliographica.org/lens/owl#labelFormat">
+    <fresnel:valueStyle rdf:datatype="http://www.w3.org/2004/09/fresnel#styleClass">h1</fresnel:valueStyle>
+    <fresnel:propertyFormatDomain rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <fresnel:label rdf:resource="http://www.w3.org/2004/09/fresnel#none"/>
+    <fresnel:propertyStyle rdf:datatype="http://www.w3.org/2004/09/fresnel#styleClass">h1_container</fresnel:propertyStyle>
+    <fresnel:group rdf:resource="http://bibliographica.org/lens/owl#owlGroup"/>
+  </fresnel:Format>
+  <fresnel:Format rdf:about="http://bibliographica.org/lens/owl#depictionFormat">
+    <fresnel:propertyFormatDomain rdf:resource="http://xmlns.com/foaf/0.1/depiction"/>
+    <fresnel:propertyFormatDomain rdf:resource="http://dbpedia.org/ontology/thumbnail"/>
+    <fresnel:label rdf:resource="http://www.w3.org/2004/09/fresnel#none"/>
+    <fresnel:value rdf:resource="http://www.w3.org/2004/09/fresnel#image"/>
+    <fresnel:propertyStyle rdf:datatype="http://www.w3.org/2004/09/fresnel#stylingInstructions">display: block; width: 100%;</fresnel:propertyStyle>
+    <fresnel:group rdf:resource="http://bibliographica.org/lens/owl#owlGroup"/>
+  </fresnel:Format>
+  <rdf:Description rdf:about="http://bibliographica.org/lens/owl">
+    <rdfs:label>Generic OWL</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="WgSylyIl69">
+    <rdf:first rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+    <rdf:rest rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.w3.org/2004/09/fresnel#allProperties"/>
+    </rdf:rest>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="WgSylyIl68">
+    <rdf:first rdf:resource="http://purl.org/dc/terms/description"/>
+    <rdf:rest rdf:nodeID="WgSylyIl69"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="WgSylyIl66">
+    <rdf:first rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <rdf:rest rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://purl.org/dc/terms/title"/>
+      <rdf:Description rdf:about="http://purl.org/dc/terms/description"/>
+      <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#comment"/>
+      <rdf:Description rdf:about="http://www.w3.org/2004/09/fresnel#allProperties"/>
+    </rdf:rest>
+  </rdf:Description>
+</rdf:RDF>
