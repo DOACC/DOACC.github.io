@@ -1,0 +1,3 @@
+p#second-onload-loading-element {
+	-moz-binding: url(onload.xml#loader);
+}

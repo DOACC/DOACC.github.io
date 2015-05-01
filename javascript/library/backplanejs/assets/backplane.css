@@ -1,0 +1,2443 @@
+/*
+Copyright (c) 2010, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.com/yui/license.html
+version: 2.8.2r1
+*/
+.yui-overlay,
+.yui-panel-container {
+    visibility: hidden;
+    position: absolute;
+    z-index: 2;
+}
+
+.yui-panel {
+    position:relative;
+}
+
+.yui-panel-container form {
+    margin: 0;
+}
+
+.mask {
+    z-index: 1;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.mask.block-scrollbars {
+    /*
+        Application of "overflow:auto" prevents Mac scrollbars from bleeding
+        through the modality mask in Gecko. The block-scollbars class is only 
+        added for Gecko on MacOS
+    */
+    overflow: auto;
+}
+
+/* 
+    PLEASE NOTE:
+
+    1) ".masked select" is used to prevent <SELECT> elements bleeding through 
+       the modality mask in IE 6. 
+
+    2) ".drag select" is used to hide <SELECT> elements when dragging a 
+       Panel in IE 6.  This is necessary to prevent some redraw problems with 
+       the <SELECT> elements when a Panel instance is dragged.
+    
+    3) ".hide-select select" is appended to an Overlay instance's root HTML 
+       element when it is being annimated by YAHOO.widget.ContainerEffect.  
+       This is necessary because <SELECT> elements don't inherit their parent
+       element's opacity in IE 6.
+
+*/
+
+.masked select,
+.drag select,
+.hide-select select {
+    _visibility: hidden;
+}
+
+.yui-panel-container select {
+    _visibility: inherit;
+}
+
+/*
+
+There are two known issues with YAHOO.widget.Overlay (and its subclasses) that 
+manifest in Gecko-based browsers on Mac OS X:
+
+    1) Elements with scrollbars will poke through Overlay instances floating 
+       above them.
+    
+    2) An Overlay's scrollbars and the scrollbars of its child nodes remain  
+       visible when the Overlay is hidden.
+
+To fix these bugs:
+
+    1) The "overflow" property of an Overlay instance's root element and child 
+       nodes is toggled between "hidden" and "auto" (through the application  
+       and removal of the "hide-scrollbars" and "show-scrollbars" CSS classes)
+       as its "visibility" configuration property is toggled between 
+       "false" and "true."
+    
+    2) The "display" property of <SELECT> elements that are child nodes of the 
+       Overlay instance's root element is set to "none" when it is hidden.
+
+PLEASE NOTE:  
+  
+    1) The "hide-scrollbars" and "show-scrollbars" CSS classes classes are 
+       applied only for Gecko on Mac OS X and are added/removed to/from the 
+       Overlay's root HTML element (DIV) via the "hideMacGeckoScrollbars" and 
+       "showMacGeckoScrollbars" methods of YAHOO.widget.Overlay.
+    
+    2) There may be instances where the CSS for a web page or application 
+       contains style rules whose specificity override the rules implemented by 
+       the Container CSS files to fix this bug.  In such cases, is necessary to 
+       leverage the provided "hide-scrollbars" and "show-scrollbars" classes to 
+       write custom style rules to guard against this bug.
+
+** For more information on this issue, see:
+
+   + https://bugzilla.mozilla.org/show_bug.cgi?id=187435
+   + YUILibrary bug #1723530
+
+*/
+
+.hide-scrollbars,
+.hide-scrollbars * {
+
+    overflow: hidden;
+
+}
+
+.hide-scrollbars select {
+    display: none;
+}
+
+.show-scrollbars {
+    overflow: auto;
+}
+
+.yui-panel-container.show-scrollbars,
+.yui-tt.show-scrollbars {
+    overflow: visible;
+}
+
+.yui-panel-container.show-scrollbars .underlay,
+.yui-tt.show-scrollbars .yui-tt-shadow {
+
+    overflow: auto;
+
+}
+
+/* 
+   Workaround for Safari 2.x - the yui-force-redraw class is applied, and then removed when
+   the Panel's content changes, to force Safari 2.x to redraw the underlay.
+   We attempt to choose a CSS property which has no visual impact when added,
+   removed.
+*/
+.yui-panel-container.shadow .underlay.yui-force-redraw {
+    padding-bottom: 1px;
+}
+
+.yui-effect-fade .underlay, .yui-effect-fade .yui-tt-shadow {
+    display:none;
+}
+
+/*
+    PLEASE NOTE: The <DIV> element used for a Tooltip's shadow is appended 
+    to its root element via JavaScript once it has been rendered.  The 
+    code that creates the shadow lives in the Tooltip's public "onRender" 
+    event handler that is a prototype method of YAHOO.widget.Tooltip.  
+    Implementers wishing to remove a Tooltip's shadow or add any other markup
+    required for a given skin for Tooltip should override the "onRender" method.
+*/
+
+.yui-tt-shadow {
+    position: absolute;
+}
+
+.yui-override-padding {
+    padding:0 !important;
+}
+
+.yui-panel-container .container-close {
+    overflow:hidden;
+    text-indent:-10000em;
+    text-decoration:none;
+}
+
+.yui-overlay.yui-force-redraw, .yui-panel-container.yui-force-redraw {
+    margin-bottom:1px;
+}/*
+Copyright (c) 2010, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.com/yui/license.html
+version: 2.8.2r1
+*/
+.yui-overlay,
+.yui-panel-container {
+    visibility:hidden;
+    position:absolute;
+    z-index: 2;
+}
+
+.yui-tt {
+    visibility:hidden;
+    position:absolute;
+    color:#333;
+    background-color:#FDFFB4;
+    font-family:arial,helvetica,verdana,sans-serif;
+    padding:2px;
+    border:1px solid #FCC90D;
+    font:100% sans-serif;
+    width:auto;
+}
+
+/*
+    PLEASE NOTE: The <DIV> element used for a Tooltip's shadow is appended 
+    to its root element via JavaScript once it has been rendered.  The 
+    code that creates the shadow lives in the Tooltip's public "onRender" 
+    event handler that is a prototype method of YAHOO.widget.Tooltip.  
+    Implementers wishing to remove a Tooltip's shadow or add any other markup
+    required for a given skin for Tooltip should override the "onRender" method.
+*/
+
+.yui-tt-shadow {
+    display: none;
+}
+
+* html body.masked select {
+    visibility:hidden;
+}
+
+* html div.yui-panel-container select {
+    visibility:inherit;
+}
+
+* html div.drag select {
+    visibility:hidden;
+}
+
+* html div.hide-select select {
+    visibility:hidden;
+}
+
+.mask {
+    z-index: 1; 
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+    -moz-opacity: 0.5;
+    opacity:.50;
+    filter: alpha(opacity=50);
+    background-color:#CCC;
+}
+
+/*
+
+There are two known issues with YAHOO.widget.Overlay (and its subclasses) that 
+manifest in Gecko-based browsers on Mac OS X:
+
+    1) Elements with scrollbars will poke through Overlay instances floating 
+       above them.
+    
+    2) An Overlay's scrollbars and the scrollbars of its child nodes remain  
+       visible when the Overlay is hidden.
+
+To fix these bugs:
+
+    1) The "overflow" property of an Overlay instance's root element and child 
+       nodes is toggled between "hidden" and "auto" (through the application  
+       and removal of the "hide-scrollbars" and "show-scrollbars" CSS classes)
+       as its "visibility" configuration property is toggled between 
+       "false" and "true."
+    
+    2) The "display" property of <SELECT> elements that are child nodes of the 
+       Overlay instance's root element is set to "none" when it is hidden.
+
+PLEASE NOTE:  
+  
+    1) The "hide-scrollbars" and "show-scrollbars" CSS classes classes are 
+       applied only for Gecko on Mac OS X and are added/removed to/from the 
+       Overlay's root HTML element (DIV) via the "hideMacGeckoScrollbars" and 
+       "showMacGeckoScrollbars" methods of YAHOO.widget.Overlay.
+    
+    2) There may be instances where the CSS for a web page or application 
+       contains style rules whose specificity override the rules implemented by 
+       the Container CSS files to fix this bug.  In such cases, is necessary to 
+       leverage the provided "hide-scrollbars" and "show-scrollbars" classes to 
+       write custom style rules to guard against this bug.
+
+** For more information on this issue, see: 
+   + https://bugzilla.mozilla.org/show_bug.cgi?id=187435
+   + YUILibrary bug #1723530
+
+*/
+
+.hide-scrollbars,
+.hide-scrollbars * {
+
+    overflow: hidden;
+
+}
+
+.hide-scrollbars select {
+
+    display: none;
+
+}
+
+.show-scrollbars {
+
+    overflow: auto;
+
+}
+
+.yui-panel-container.show-scrollbars {
+
+    overflow: visible;
+
+}
+
+.yui-panel-container.show-scrollbars .underlay {
+
+    overflow: auto;
+
+}
+
+.yui-panel-container.focused {
+
+}
+
+
+/* Panel underlay styles */
+
+.yui-panel-container .underlay {
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+}
+
+.yui-panel-container.matte {
+
+    padding: 3px;
+    background-color: #fff;
+
+}
+
+.yui-panel-container.shadow .underlay {
+
+    top: 3px;
+    bottom: -3px;
+    right: -3px;
+    left: 3px;
+    background-color: #000;
+    opacity: .12;
+    filter: alpha(opacity=12);  /* For IE */
+
+}
+
+/* 
+   Workaround for Safari 2.x - the yui-force-redraw class is applied, and then removed when
+   the Panel's content changes, to force Safari 2.x to redraw the underlay.
+   We attempt to choose a CSS property which has no visual impact when added,
+   removed, but still causes Safari to redraw
+*/
+.yui-panel-container.shadow .underlay.yui-force-redraw {
+    padding-bottom: 1px;
+}
+
+.yui-effect-fade .underlay {
+    display:none;
+}
+
+.yui-panel {
+    visibility:hidden;
+    border-collapse:separate;
+    position:relative;
+    left:0;
+    top:0;
+    font:1em Arial;
+    background-color:#FFF;
+    border:1px solid #000;
+    z-index:1;
+    overflow:hidden;
+}
+
+.yui-panel .hd {
+    background-color:#3d77cb;
+    color:#FFF;
+    font-size:100%;
+    line-height:100%;
+    border:1px solid #FFF;
+    border-bottom:1px solid #000;
+    font-weight:bold;
+    padding:4px;
+    white-space:nowrap;
+}
+
+.yui-panel .bd {
+    overflow:hidden;
+    padding:4px;
+}
+
+.yui-panel .bd p {
+    margin:0 0 1em;
+}
+
+.yui-panel .container-close {
+    position:absolute;
+    top:5px;
+    right:4px;
+    z-index:6;
+    height:12px;
+    width:12px;
+    margin:0px;
+    padding:0px;
+    background:url(close12_1.gif) no-repeat;
+    cursor:pointer;
+    visibility:inherit;
+    text-indent:-10000em;
+    overflow:hidden;
+    text-decoration:none;
+}
+
+.yui-panel .ft {
+    padding:4px;
+    overflow:hidden;
+}
+
+.yui-simple-dialog .bd .yui-icon {
+    background-repeat:no-repeat;
+    width:16px;
+    height:16px;
+    margin-right:10px;
+    float:left;
+}
+
+.yui-simple-dialog .bd span.blckicon {
+    background: url("blck16_1.gif") no-repeat;
+}
+
+.yui-simple-dialog .bd span.alrticon {
+    background: url("alrt16_1.gif") no-repeat;
+}
+
+.yui-simple-dialog .bd span.hlpicon {
+    background: url("hlp16_1.gif") no-repeat;
+}
+
+.yui-simple-dialog .bd span.infoicon {
+    background: url("info16_1.gif") no-repeat;
+}
+
+.yui-simple-dialog .bd span.warnicon {
+    background: url("warn16_1.gif") no-repeat;
+}
+
+.yui-simple-dialog .bd span.tipicon {
+    background: url("tip16_1.gif") no-repeat;
+}
+
+.yui-dialog .ft, 
+.yui-simple-dialog .ft {
+    padding-bottom:5px;
+    padding-right:5px;
+    text-align:right;
+}
+
+.yui-dialog form, 
+.yui-simple-dialog form {
+    margin:0;
+}
+
+.button-group button {
+    font:100 76% verdana;
+    text-decoration:none;
+    background-color: #E4E4E4;
+    color: #333;
+    cursor: hand;
+    vertical-align: middle;
+    border: 2px solid #797979;
+    border-top-color:#FFF;
+    border-left-color:#FFF;
+    margin:2px;
+    padding:2px;
+}
+
+.button-group button.default {
+    font-weight:bold;
+}
+
+.button-group button:hover, 
+.button-group button.hover {
+    border:2px solid #90A029;
+    background-color:#EBF09E;
+    border-top-color:#FFF;
+    border-left-color:#FFF;
+}
+
+.button-group button:active {
+    border:2px solid #E4E4E4;
+    background-color:#BBB;
+    border-top-color:#333;
+    border-left-color:#333;
+}
+
+.yui-override-padding {
+    padding:0 !important;
+}
+xf\:instance, xforms\:instance {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:model, xforms\:model {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:submission, xforms\:submission {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:header, xforms\:header {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:submit, xforms\:submit {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:trigger, xforms\:trigger {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:output >  pe-value, xforms\:output >  pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:mediatype >  pe-value, xforms\:mediatype >  pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:value  > pe-value,  xforms\:value  > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:copy  > pe-value,  xforms\:copy  > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:help >  pe-value, xforms\:help >  pe-value,
+xf\:hint >  pe-value, xforms\:hint >  pe-value,
+xf\:message >  pe-value, xforms\:message >  pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:alert >  pe-value, xforms\:alert >  pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:alert, xforms\:alert {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:input, xforms\:input {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:range, xforms\:range {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:output, xforms\:output {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:textarea, xforms\:textarea {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:secret, xforms\:secret {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:label, xforms\:label {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:mediatype, xforms\:mediatype {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:value, xforms\:value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:copy, xforms\:copy {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:item, xforms\:item {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:input > pe-value, xforms\:input > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:secret  > pe-value, xforms\:secret  > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:textarea > pe-value, xforms\:textarea > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:select > pe-value, xforms\:select > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:select1 >  pe-value , xforms\:select1 >  pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:range > pe-value, xforms\:range > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:range.geolocation > pe-value, xforms\:range.geolocation > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:range.geolocation > xf\:label > pe-value, xforms\:range.geolocation > xforms\:label > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:output.geolocation > pe-value, xforms\:output.geolocation > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:output.geolocation > xf\:label > pe-value, xforms\:output.geolocation > xforms\:label > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:input.yui-widget-color > pe-value, xforms\:input.yui-widget-color > pe-value,
+xf\:input[datatype='xhd:color'] > pe-value, xforms\:input[datatype='xhd:color'] > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+  border: none;
+  background-color: transparent;
+}
+xf\:input.yui-widget-color > xf\:label > pe-value, xforms\:input.yui-widget-color > xforms\:label > pe-value,
+xf\:input[datatype='xhd:color'] > xf\:label > pe-value, xforms\:input[datatype='xhd:color'] > xforms\:label > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:input.yui-widget-calendar > pe-value, xforms\:input.yui-widget-calendar > pe-value,
+xf\:input[datatype='xsd\:date'] > pe-value, xforms\:input[datatype='xsd\:date'] > pe-value,
+xf\:input[datatype='xf\:date'] > pe-value, xforms\:input[datatype='xforms\:date'] > pe-value,
+xf\:input[x4h\:datatype='date'] > pe-value  {
+  -moz-binding: url("decorator.xml#decorator");
+  border: none;
+  background-color: transparent;
+}
+xf\:input.yui-widget-calendar > xf\:label > pe-value, xforms\:input.yui-widget-calendar > xforms\:label > pe-value,
+xf\:input[datatype='xsd\:date'] > xf\:label > pe-value, xforms\:input[datatype='xsd\:date'] > xforms\:label > pe-value,
+xf\:input[datatype='xf\:date'] > xf\:label > pe-value, xforms\:input[datatype='xforms\:date'] > xforms\:label > pe-value,
+xf\:input[x4h\:datatype='date'] > xf\:label > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:input[datatype='xf\:date'][appearance='minimal'] > pe-value, xforms\:input[datatype='xforms\:date'][appearance='minimal'] > pe-value,
+xf\:input[datatype='xsd\:date'][appearance='minimal'] > pe-value, xforms\:input[datatype='xsd\:date'][appearance='minimal'] > pe-value,
+xf\:input[x4h\:datatype='date'][appearance='minimal'] > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+  border: 2px inset #f0f0f0;
+  background-color: white;
+}
+xf\:input[datatype='xf\:date'][appearance='minimal'] > xf\:label > pe-value, xforms\:input[datatype='xforms\:date'][appearance='minimal'] > xforms\:label > pe-value,
+xf\:input[datatype='xsd\:date'][appearance='minimal'] > xf\:label > pe-value, xforms\:input[datatype='xsd\:date'][appearance='minimal'] > xforms\:label > pe-value,
+xf\:input[x4h\:datatype='date'][appearance='minimal'] > xf\:label > pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:select, xforms\:select {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:select1, xforms\:select1 {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:repeat, xforms\:repeat {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:group, xforms\:group {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:case, xforms\:case {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:switch, xforms\:switch {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:action, xforms\:action {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:load, xforms\:load {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:help, xforms\:help,
+xf\:hint, xforms\:hint,
+xf\:message, xforms\:message {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:setvalue, xforms\:setvalue {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:insert, xforms\:insert,
+xf\:delete, xforms\:delete {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:send, xforms\:send {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:dispatch, xforms\:dispatch {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:toggle, xforms\:toggle {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:rebuild, xforms\:rebuild {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:recalculate, xforms\:recalculate {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:revalidate, xforms\:revalidate {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:refresh, xforms\:refresh {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:reset, xforms\:reset {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:setindex, xforms\:setindex {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:setfocus, xforms\:setfocus {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:label >  pe-value, xforms\:label >  pe-value {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:repeat *, xforms\:repeat *, xf\:itemset *, xforms\:itemset *, xforms\:header *, xf\:header * {
+  -binding-ignore:true;
+}
+
+xf\:repeat.repeat-ready *, xforms\:repeat.repeat-ready *, xf\:itemset.repeat-ready *, xforms\:itemset.repeat-ready *, xf\:header.header-ready *, xforms\:header.header-ready * {
+  -binding-ignore:false;
+}
+
+
+xf\:select > xf\:item , xforms\:select > xforms\:item,
+xf\:select > xf\:itemset , xforms\:select >  xforms\:itemset,
+xf\:select > xf\:choices, xforms\:select >  xforms\:choices {
+  -binding-ignore:true;
+}
+xforms\:select .pe-choices xforms\:item, xforms\:select .pe-choices xforms\:item * {
+  -binding-ignore:false;
+}
+
+xf\:itemset.repeat-ready > xf\:item, xforms\:itemset.repeat-ready > xforms\:item {
+  -moz-binding: url("decorator.xml#decorator");
+}
+xf\:itemset, xforms\:itemset {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+xf\:select1 > xf\:item , xforms\:select1 > xforms\:item,
+xf\:select1 > xf\:itemset , xforms\:select1 >  xforms\:itemset {
+  -moz-binding:url();
+}
+xf\:select1 > xf\:item *, xforms\:select1 >  xforms\:item *,
+xf\:select1 > xf\:itemset *, xforms\:select1 >  xforms\:itemset * {
+  -moz-binding:url();
+}
+
+xf\:select > xf\:item , xforms\:select > xforms\:item,
+xf\:select > xf\:itemset , xforms\:select >  xforms\:itemset,
+xf\:select > xf\:choices, xforms\:select >  xforms\:choices {
+  -moz-binding:url();
+}
+xf\:select > xf\:item *, xforms\:select >  xforms\:item *,
+xf\:select > xf\:itemset *, xforms\:select >  xforms\:itemset *,
+xf\:select > xf\:choices *, xforms\:select >  xforms\:choices *
+{
+  -moz-binding:url();
+}
+xf\:repeat > *, xforms\:repeat > *, xf\:itemset > *, xforms\:itemset > *, xf\:header > *, xforms\:header > * {
+  -moz-binding:url();
+}
+
+xf\:repeat.repeat-ready > xf\:group, xforms\:repeat.repeat-ready >  xforms\:group, xf\:header.header-ready > *, xforms\:header.header-ready > * {
+  -moz-binding: url("decorator.xml#decorator");
+}
+
+smil\:animate {
+  -moz-binding: url("decorator.xml?Listener&SmilAnimate#decorator");
+}
+smil\:animateColor {
+  -moz-binding: url("decorator.xml?Listener&SmilAnimate#decorator");
+}
+smil\:set {
+  -moz-binding: url("decorator.xml?Listener&SmilSet#decorator");
+}
+/*
+Copyright (c) 2010, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.com/yui/license.html
+version: 2.8.2r1
+*/
+/* logger default styles */
+/* default width: 31em */
+/* default font-size 77% */
+.yui-log {padding:1em;width:31em;background-color:#AAA;color:#000;border:1px solid black;font-family:monospace;font-size:77%;text-align:left;z-index:9000;}
+
+/* for containers built from scratch */
+.yui-log-container {position:absolute;top:1em;right:1em;}
+
+/* buttons */
+.yui-log input {
+    margin:0;padding:0;
+    font-family:arial;
+    font-size:100%;
+    font-weight:normal;
+}
+.yui-log .yui-log-btns {position:relative;float:right;bottom:.25em;}
+
+/* header */
+.yui-log .yui-log-hd {margin-top:1em;padding:.5em;background-color:#575757;}
+.yui-log .yui-log-hd h4 {margin:0;padding:0;font-size:107%;font-weight:bold;color:#FFF;}
+
+/* body */
+
+.yui-log .yui-log-bd {width:100%;height:20em;background-color:#FFF;border:1px solid gray;overflow:auto;} /* height is controlled here: default 20em*/
+.yui-log p {margin:1px;padding:.1em;}
+.yui-log pre {margin:0;padding:0;}
+
+/* for pre to respect newlines yet wrap long lines */
+/* http://www.longren.org/2006/09/27/wrapping-text-inside-pre-tags/ */
+.yui-log pre.yui-log-verbose {
+    white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+/* footer */
+.yui-log .yui-log-ft {margin-top:.5em;}
+.yui-log .yui-log-ft .yui-log-categoryfilters {}
+.yui-log .yui-log-ft .yui-log-sourcefilters {width:100%;border-top:1px solid #575757;margin-top:.75em;padding-top:.75em;}
+.yui-log .yui-log-filtergrp {margin-right:.5em;}
+/*.yui-log .yui-log-ft ul {margin:0;padding:0;line-height:1.8}
+.yui-log .yui-log-ft li {list-style:none;display:inline;white-space:nowrap;}*/
+
+/* logs */
+.yui-log .info {background-color:#A7CC25;} /* A7CC25 green */
+.yui-log .warn {background-color:#F58516;} /* F58516 orange */
+.yui-log .error {background-color:#E32F0B;} /* E32F0B red */
+.yui-log .time {background-color:#A6C9D7;} /* A6C9D7 blue */
+.yui-log .window {background-color:#F2E886;} /* F2E886 tan */
+p#second-onload-loading-element {
+	-moz-binding: url(onload.xml#loader);
+}
+/*
+Copyright (c) 2010, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.com/yui/license.html
+version: 2.8.2r1
+*/
+/* Panel modality mask styles */
+.yui-skin-sam .mask {
+    background-color: #000;
+    opacity: .25;
+    filter: alpha(opacity=25);  /* Set opacity in IE */
+}
+
+/* Panel styles */
+.yui-skin-sam .yui-panel-container {
+    padding:0 1px;
+    /* Padding added for IE to allow 0,0 alignment with shadow */
+    *padding:2px;
+}
+
+.yui-skin-sam .yui-panel {
+    position: relative;
+    left:0;
+    top:0;
+    border-style: solid;
+    border-width: 1px 0;
+    border-color: #808080;
+    z-index: 1;
+
+    /* Rollback rounded corner support for IE6/7 */
+    *border-width:1px;
+    *zoom:1;
+    _zoom:normal;
+}
+
+.yui-skin-sam .yui-panel .hd,
+.yui-skin-sam .yui-panel .bd,
+.yui-skin-sam .yui-panel .ft {
+    border-style: solid;
+    border-width: 0 1px;
+    border-color: #808080;
+    margin: 0 -1px;
+
+    /* Rollback rounded corner support for IE6/7 */
+    *margin:0;
+    *border:0;
+}
+
+.yui-skin-sam .yui-panel .hd {
+    border-bottom: solid 1px #ccc;
+}
+
+.yui-skin-sam .yui-panel .bd,
+.yui-skin-sam .yui-panel .ft {
+    background-color: #F2F2F2;
+}
+
+.yui-skin-sam .yui-panel .hd {
+    padding: 0 10px;
+    font-size: 93%;  /* 12px */
+    line-height: 2;  /* ~24px */
+    *line-height: 1.9; /* For IE */
+    font-weight: bold;
+    color: #000;
+    background: url(../../../../assets/skins/sam/sprite.png) repeat-x 0 -200px;
+}
+
+.yui-skin-sam .yui-panel .bd {
+    padding: 10px;
+}
+
+.yui-skin-sam .yui-panel .ft {
+    border-top: solid 1px #808080;
+    padding: 5px 10px;
+    font-size: 77%;
+}
+
+.yui-skin-sam .yui-panel-container.focused .yui-panel .hd {
+
+}
+
+.yui-skin-sam .container-close {
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    width: 25px;
+    height: 15px;
+    background: url(../../../../assets/skins/sam/sprite.png) no-repeat 0 -300px;
+    cursor:pointer;
+}
+
+/* Panel underlay styles */
+.yui-skin-sam .yui-panel-container .underlay {
+    right: -1px;
+    left: -1px;
+}
+
+.yui-skin-sam .yui-panel-container.matte {
+    padding: 9px 10px;
+    background-color: #fff;
+}
+
+.yui-skin-sam .yui-panel-container.shadow {
+    /* IE 7 Quirks Mode and IE 6 Standards Mode and Quirks mode */
+    _padding: 2px 4px 0 2px;
+}
+
+.yui-skin-sam .yui-panel-container.shadow .underlay {
+    position: absolute;
+    top: 2px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+
+    /* IE7 Strict (provides 3px shadow (when combined with 2px padding applied to container) */
+    *top: 4px;
+    *left: -1px;
+    *right: -1px;
+    *bottom: -1px;
+
+    /* IE 7 Quirks Mode and IE 6 Standards Mode and Quirks mode */
+    _top: 0;
+    _left: 0;
+    _right: 0;
+    _bottom: 0;
+    _margin-top: 3px;
+    _margin-left: -1px;
+
+    background-color: #000;
+    opacity: .12;
+    filter: alpha(opacity=12);  /* Set opacity in IE */
+}
+
+
+/* Dialog styles */
+.yui-skin-sam .yui-dialog .ft {
+    border-top: none;
+    padding: 0 10px 10px 10px;
+    font-size: 100%;
+}
+
+.yui-skin-sam .yui-dialog .ft .button-group {
+    display: block;
+    text-align: right;
+}
+
+/* Dialog default button style */
+.yui-skin-sam .yui-dialog .ft button.default {
+    font-weight:bold;
+}
+
+/* Dialog default YUI Button style */
+.yui-skin-sam .yui-dialog .ft span.default {
+    border-color: #304369;
+    background-position: 0 -1400px;
+}
+
+.yui-skin-sam .yui-dialog .ft span.default .first-child {
+    border-color: #304369;
+}
+
+.yui-skin-sam .yui-dialog .ft span.default button {
+    color: #fff;
+}
+
+/* Dialog YUI Button disabled state */
+.yui-skin-sam .yui-dialog .ft span.yui-button-disabled {
+    background-position:0pt -1500px;
+    border-color:#ccc;
+}
+
+.yui-skin-sam .yui-dialog .ft span.yui-button-disabled .first-child {
+    border-color:#ccc;
+}
+
+.yui-skin-sam .yui-dialog .ft span.yui-button-disabled button {
+    color:#a6a6a6;
+}
+
+/* SimpleDialog icon styles */
+.yui-skin-sam .yui-simple-dialog .bd .yui-icon {
+    background: url(../../../../assets/skins/sam/sprite.png) no-repeat 0 0;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    float: left;
+}
+
+.yui-skin-sam .yui-simple-dialog .bd span.blckicon {
+    background-position: 0 -1100px;
+}
+
+.yui-skin-sam .yui-simple-dialog .bd span.alrticon {
+    background-position: 0 -1050px;
+}
+
+.yui-skin-sam .yui-simple-dialog .bd span.hlpicon {
+    background-position: 0 -1150px;
+}
+
+.yui-skin-sam .yui-simple-dialog .bd span.infoicon {
+    background-position: 0 -1200px;
+}
+
+.yui-skin-sam .yui-simple-dialog .bd span.warnicon {
+    background-position: 0 -1900px;
+}
+
+.yui-skin-sam .yui-simple-dialog .bd span.tipicon {
+    background-position: 0 -1250px;
+}
+
+/* Tooltip styles */
+.yui-skin-sam .yui-tt .bd {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    color: #000;
+    padding: 2px 5px;
+    border-color: #D4C237 #A6982B #A6982B #A6982B;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #FFEE69;
+}
+
+.yui-skin-sam .yui-tt.show-scrollbars .bd {
+    overflow: auto;
+}
+
+.yui-skin-sam .yui-tt-shadow {
+    top: 2px;
+    right: -3px;
+    left: -3px;
+    bottom: -3px;
+    background-color: #000;
+}
+
+.yui-skin-sam .yui-tt-shadow-visible {
+    opacity: .12;
+    filter: alpha(opacity=12);  /* For IE */
+}/*
+Copyright (c) 2010, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.com/yui/license.html
+version: 2.8.2r1
+*/
+.yui-overlay,.yui-panel-container{visibility:hidden;position:absolute;z-index:2;}.yui-panel{position:relative;}.yui-panel-container form{margin:0;}.mask{z-index:1;display:none;position:absolute;top:0;left:0;right:0;bottom:0;}.mask.block-scrollbars{overflow:auto;}.masked select,.drag select,.hide-select select{_visibility:hidden;}.yui-panel-container select{_visibility:inherit;}.hide-scrollbars,.hide-scrollbars *{overflow:hidden;}.hide-scrollbars select{display:none;}.show-scrollbars{overflow:auto;}.yui-panel-container.show-scrollbars,.yui-tt.show-scrollbars{overflow:visible;}.yui-panel-container.show-scrollbars .underlay,.yui-tt.show-scrollbars .yui-tt-shadow{overflow:auto;}.yui-panel-container.shadow .underlay.yui-force-redraw{padding-bottom:1px;}.yui-effect-fade .underlay,.yui-effect-fade .yui-tt-shadow{display:none;}.yui-tt-shadow{position:absolute;}.yui-override-padding{padding:0!important;}.yui-panel-container .container-close{overflow:hidden;text-indent:-10000em;text-decoration:none;}.yui-overlay.yui-force-redraw,.yui-panel-container.yui-force-redraw{margin-bottom:1px;}.yui-skin-sam .mask{background-color:#000;opacity:.25;filter:alpha(opacity=25);}.yui-skin-sam .yui-panel-container{padding:0 1px;*padding:2px;}.yui-skin-sam .yui-panel{position:relative;left:0;top:0;border-style:solid;border-width:1px 0;border-color:#808080;z-index:1;*border-width:1px;*zoom:1;_zoom:normal;}.yui-skin-sam .yui-panel .hd,.yui-skin-sam .yui-panel .bd,.yui-skin-sam .yui-panel .ft{border-style:solid;border-width:0 1px;border-color:#808080;margin:0 -1px;*margin:0;*border:0;}.yui-skin-sam .yui-panel .hd{border-bottom:solid 1px #ccc;}.yui-skin-sam .yui-panel .bd,.yui-skin-sam .yui-panel .ft{background-color:#F2F2F2;}.yui-skin-sam .yui-panel .hd{padding:0 10px;font-size:93%;line-height:2;*line-height:1.9;font-weight:bold;color:#000;background:url(../../../../assets/skins/sam/sprite.png) repeat-x 0 -200px;}.yui-skin-sam .yui-panel .bd{padding:10px;}.yui-skin-sam .yui-panel .ft{border-top:solid 1px #808080;padding:5px 10px;font-size:77%;}.yui-skin-sam .container-close{position:absolute;top:5px;right:6px;width:25px;height:15px;background:url(../../../../assets/skins/sam/sprite.png) no-repeat 0 -300px;cursor:pointer;}.yui-skin-sam .yui-panel-container .underlay{right:-1px;left:-1px;}.yui-skin-sam .yui-panel-container.matte{padding:9px 10px;background-color:#fff;}.yui-skin-sam .yui-panel-container.shadow{_padding:2px 4px 0 2px;}.yui-skin-sam .yui-panel-container.shadow .underlay{position:absolute;top:2px;left:-3px;right:-3px;bottom:-3px;*top:4px;*left:-1px;*right:-1px;*bottom:-1px;_top:0;_left:0;_right:0;_bottom:0;_margin-top:3px;_margin-left:-1px;background-color:#000;opacity:.12;filter:alpha(opacity=12);}.yui-skin-sam .yui-dialog .ft{border-top:none;padding:0 10px 10px 10px;font-size:100%;}.yui-skin-sam .yui-dialog .ft .button-group{display:block;text-align:right;}.yui-skin-sam .yui-dialog .ft button.default{font-weight:bold;}.yui-skin-sam .yui-dialog .ft span.default{border-color:#304369;background-position:0 -1400px;}.yui-skin-sam .yui-dialog .ft span.default .first-child{border-color:#304369;}.yui-skin-sam .yui-dialog .ft span.default button{color:#fff;}.yui-skin-sam .yui-dialog .ft span.yui-button-disabled{background-position:0 -1500px;border-color:#ccc;}.yui-skin-sam .yui-dialog .ft span.yui-button-disabled .first-child{border-color:#ccc;}.yui-skin-sam .yui-dialog .ft span.yui-button-disabled button{color:#a6a6a6;}.yui-skin-sam .yui-simple-dialog .bd .yui-icon{background:url(../../../../assets/skins/sam/sprite.png) no-repeat 0 0;width:16px;height:16px;margin-right:10px;float:left;}.yui-skin-sam .yui-simple-dialog .bd span.blckicon{background-position:0 -1100px;}.yui-skin-sam .yui-simple-dialog .bd span.alrticon{background-position:0 -1050px;}.yui-skin-sam .yui-simple-dialog .bd span.hlpicon{background-position:0 -1150px;}.yui-skin-sam .yui-simple-dialog .bd span.infoicon{background-position:0 -1200px;}.yui-skin-sam .yui-simple-dialog .bd span.warnicon{background-position:0 -1900px;}.yui-skin-sam .yui-simple-dialog .bd span.tipicon{background-position:0 -1250px;}.yui-skin-sam .yui-tt .bd{position:relative;top:0;left:0;z-index:1;color:#000;padding:2px 5px;border-color:#D4C237 #A6982B #A6982B #A6982B;border-width:1px;border-style:solid;background-color:#FFEE69;}.yui-skin-sam .yui-tt.show-scrollbars .bd{overflow:auto;}.yui-skin-sam .yui-tt-shadow{top:2px;right:-3px;left:-3px;bottom:-3px;background-color:#000;}.yui-skin-sam .yui-tt-shadow-visible{opacity:.12;filter:alpha(opacity=12);}
+smil\:animate {
+  -moz-binding: url("decorator.xml?Listener&SmilAnimate#decorator");
+}
+smil\:animateColor {
+  -moz-binding: url("decorator.xml?Listener&SmilAnimate#decorator");
+}
+smil\:set {
+  -moz-binding: url("decorator.xml?Listener&SmilSet#decorator");
+}
+﻿/* Ubiquity provides a standards-based suite of browser enhancements for
+ * building a new generation of internet-related applications.
+ *
+ * The Ubiquity XForms module adds XForms 1.1 support to the Ubiquity
+ * library.
+ *
+ * Copyright (c) 2009 Backplane Ltd.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@namespace xhtml url(http://www.w3.org/1999/xhtml);
+@namespace xforms url(http://www.w3.org/2002/xforms);
+@namespace xf url(http://www.w3.org/2002/xforms);
+
+xforms\:dispatch,
+xf\:dispatch,
+xforms\:setvalue,
+xf\:setvalue,
+xforms\:toggle,
+xf\:toggle
+{
+    display: none;
+}
+
+xforms|dispatch,
+xf|dispatch,
+xforms|setvalue,
+xf|setvalue,
+xforms|toggle,
+xf|toggle
+{
+    display: none;
+}
+﻿/* Ubiquity provides a standards-based suite of browser enhancements for
+ * building a new generation of internet-related applications.
+ *
+ * The Ubiquity XForms module adds XForms 1.1 support to the Ubiquity
+ * library.
+ *
+ * Copyright (c) 2009 Backplane Ltd.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@namespace xhtml url(http://www.w3.org/1999/xhtml);
+@namespace xforms url(http://www.w3.org/2002/xforms);
+@namespace xf url(http://www.w3.org/2002/xforms);
+
+.valid > xf\:alert, .valid > xforms\:alert  {
+    display: none;
+}
+
+*[class~="valid"] > xf|alert, *[class~="valid"] > xforms|alert  { 
+    display: none;
+}
+﻿/* Ubiquity provides a standards-based suite of browser enhancements for
+ * building a new generation of internet-related applications.
+ *
+ * The Ubiquity XForms module adds XForms 1.1 support to the Ubiquity
+ * library.
+ *
+ * Copyright (c) 2009 Backplane Ltd.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@namespace xhtml url(http://www.w3.org/1999/xhtml);
+@namespace xforms url(http://www.w3.org/2002/xforms);
+@namespace xf url(http://www.w3.org/2002/xforms);
+
+.pe-choices
+{
+	cursor: pointer;
+}
+
+xforms\:control,
+xf\:control {
+	display: none;
+}
+
+xforms|control,
+xf|control {
+	display: none;
+}
+/*
+  // Ubiquity provides a standards-based suite of browser enhancements for
+  // building a new generation of internet-related applications.
+  //
+  // The Ubiquity XForms module adds XForms 1.1 support to the Ubiquity
+  // library.
+  //
+  // Copyright (C) 2008-2009 Backplane Ltd.
+  //
+  // Licensed under the Apache License, Version 2.0 (the "License");
+  // you may not use this file except in compliance with the License.
+  // You may obtain a copy of the License at
+  //
+  //  http://www.apache.org/licenses/LICENSE-2.0
+  //
+  // Unless required by applicable law or agreed to in writing, software
+  // distributed under the License is distributed on an "AS IS" BASIS,
+  // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  // See the License for the specific language governing permissions and
+  // limitations under the License.
+ */
+@namespace xhtml url(http://www.w3.org/1999/xhtml);
+@namespace xforms url(http://www.w3.org/2002/xforms);
+@namespace xf url(http://www.w3.org/2002/xforms);
+
+body {
+    font-family: "Lucida Grande",verdana,arial,helvetica,sans-serif;
+    font-size: 14px;
+}
+
+/*
+ * These rules concern the default appearance of a hint. For the rules that
+ * govern its behaviour, see lib/xforms/style/hint.css.
+ */
+
+xforms\:hint,
+xf\:hint {
+    opacity: 1;
+    padding: 5px;
+    background-color: #323232;
+    color: #fff;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+xforms|hint,
+xf|hint {
+    opacity: 1;
+    padding: 5px;
+    background-color: #323232;
+    color: #fff;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+/*
+ * These rules concern the default appearance of a message. For the rules that
+ * govern its behaviour, see lib/xforms/style/message.css.
+ */
+
+xforms\:message,
+xf\:message {
+  padding: 5px;
+  background-color: #323232;
+  color: #fff;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+xforms|message,
+xf|message {
+  padding: 5px;
+  background-color: #323232;
+  color: #fff;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+xforms\:select1,
+xf\:select1,
+xforms\:select,
+xf\:select {
+    display: inline-block;
+    padding: 0.2em;
+}
+
+xforms|select1,
+xf|select1,
+xforms|select,
+xf|select {
+    display: inline-block;
+    padding: 0.2em;
+}
+
+xforms\:output,
+xf\:output,
+xforms\:input,
+xf\:input,
+xforms\:secret,
+xf\:secret,
+xforms\:textarea,
+xf\:textarea {
+    display: block;
+    padding: 0.2em;
+}
+
+xforms|output,
+xf|output,
+xforms|input,
+xf|input,
+xforms|secret,
+xf|secret,
+xforms|textarea,
+xf|textarea {
+    display: block;
+    padding: 0.2em;
+}
+
+
+xforms\:input xforms\:label,
+xf\:input xf\:label,
+xforms\:secret xforms\:label,
+xf\:secret xf\:label,
+xforms\:textarea xforms\:label,
+xf\:textarea xf\:label {
+    display: inline-block;
+    color: black;
+}
+
+xforms|input xforms|label,
+xf|input xf|label,
+xforms|secret xforms|label,
+xf|secret xf|label,
+xforms|textarea xforms|label,
+xf|textarea xf|label {
+    color: black;
+    white-space: -moz-pre-wrap;
+}
+
+xforms\:input pe-value,
+xf\:input pe-value,
+xforms\:secret pe-value,
+xf\:secret pe-value,
+xforms\:textarea pe-value textarea,
+xf\:textarea pe-value textarea {
+    border: 2px inset #f0f0f0;
+    background-color: white;
+}
+
+xforms|input pe-value,
+xf|input pe-value,
+xforms|secret pe-value,
+xf|secret pe-value,
+xforms|textarea pe-value textarea,
+xf|textarea pe-value textarea {
+    border: 2px inset #f0f0f0;
+    background-color: white;
+}
+
+xforms\:input xforms\:label pe-value,
+xf\:input xf\:label pe-value,
+xforms\:secret xforms\:label pe-value,
+xf\:secret xf\:label pe-value,
+xforms\:textarea xforms\:label pe-value,
+xf\:textarea xf\:label pe-value {
+    border: none;
+    background-color: transparent;
+}
+
+xforms|input xforms|label pe-value,
+xf|input xf|label pe-value,
+xforms|secret xforms|label pe-value,
+xf|secret xf|label pe-value,
+xforms|textarea xforms|label pe-value,
+xf|textarea xf|label pe-value {
+    border: none;
+    background-color: transparent;
+}
+
+xforms\:submit,
+xf\:submit,
+xforms\:trigger,
+xf\:trigger {
+    background-color: #D3D3D3;
+    border-width: 2px;
+    border-style: outset;
+    border-color: ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight;
+    color: black;
+    padding: 3px;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+}
+
+xforms|submit,
+xf|submit,
+xforms|trigger,
+xf|trigger {
+    background-color: #D3D3D3;
+    border-width: 2px;
+    border-style: outset;
+    border-color: ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight;
+    color: black;
+    padding: 3px;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+}
+
+xforms\:submit:hover,
+xf\:submit:hover,
+xforms\:trigger:hover,
+xf\:trigger:hover {
+    background-color: #A9A9A9;
+    border-color: ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight;
+    border-style: inset;
+    cursor: pointer;
+}
+
+xforms|submit:hover,
+xf|submit:hover,
+xforms|trigger:hover,
+xf|trigger:hover {
+    background-color: #A9A9A9;
+    border-color: ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight;
+    border-style: inset;
+    cursor: pointer;
+}
+
+xforms\:submit:focus xforms\:label,
+xf\:submit:focus xf\:label,
+xforms\:trigger:focus xforms\:label,
+xf\:trigger:focus xf\:label  {
+    border: 1px dotted #808080;
+}
+
+xforms|submit:focus > xforms|label,
+xf|submit:focus > xf|label,
+xforms|trigger:focus > xforms|label,
+xf|trigger:focus > xf|label {
+    border: 1px dotted #808080;
+}
+
+xforms\:submit:active  xforms\:label,
+xf\:submit:active  xf\:label,
+xforms\:trigger:active  xforms\:label,
+xf\:trigger:active  xf\:label {
+    border: 1px dotted #808080;
+}
+
+xforms|submit:active > xforms|label,
+xf|submit:active > xf|label,
+xforms|trigger:active > xforms|label,
+xf|trigger:active > xf|label {
+    border: 1px dotted #808080;
+}
+
+xforms\:submit:active,
+xf\:submit:active,
+xforms\:trigger:active,
+xf\:trigger:active {
+    background-color: #A9A9A9;
+    border-color: ThreeDShadow ThreeDHighlight ThreeDHighlight ThreeDShadow;
+    border-style: inset;
+    cursor: pointer;
+}
+
+xforms|submit:active,
+xf|submit:active,
+xforms|trigger:active,
+xf|trigger:active {
+    background-color: #A9A9A9;
+    border-color: ThreeDShadow ThreeDHighlight ThreeDHighlight ThreeDShadow;
+    border-style: inset;
+    cursor: pointer;
+}
+
+xforms\:submit  xforms\:label,
+xf\:submit xf\:label,
+xforms\:trigger xforms\:label,
+xf\:trigger xf\:label {
+    padding: 3px;
+}
+
+xforms|submit  xforms|label,
+xf|submit xf|label,
+xforms|trigger xforms|label,
+xf|trigger xf|label {
+    padding: 3px;
+}
+
+xforms\:trigger.appearance-minimal,
+xf\:submit.appearance-minimal,
+xforms\:trigger.appearance-minimal,
+xf\:trigger.appearance-minimal {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+xforms|submit.appearance-minimal,
+xf|submit.appearance-minimal,
+xforms|trigger.appearance-minimal,
+xf|trigger.appearance-minimal {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+xforms\:submit.appearance-minimal:hover,
+xf\:submit.appearance-minimal:hover,
+xforms\:trigger.appearance-minimal:hover,
+xf\:trigger.appearance-minimal:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+xforms|submit.appearance-minimal:hover,
+xf|submit.appearance-minimal:hover,
+xforms|trigger.appearance-minimal:hover,
+xf|trigger.appearance-minimal:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+xforms\:submit.appearance-minimal:active,
+xf\:submit.appearance-minimal:active,
+xforms\:trigger.appearance-minimal:active,
+xf\:trigger.appearance-minimal:active {
+    cursor: pointer;
+}
+
+xforms|submit.appearance-minimal:active,
+xf|submit.appearance-minimal:active,
+xforms|trigger.appearance-minimal:active,
+xf|trigger.appearance-minimal:active {
+    cursor: pointer;
+}
+
+xforms\:submit.appearance-minimal:focus xforms\:label,
+xf\:submit.appearance-minimal:focus xf\:label,
+xforms\:trigger.appearance-minimal:focus xforms\:label,
+xf\:trigger.appearance-minimal:focus xf\:label  {
+    border: 0;
+}
+
+xforms|submit.appearance-minimal:focus > xforms|label,
+xf|submit.appearance-minimal:focus > xf|label,
+xforms|trigger.appearance-minimal:focus > xforms|label,
+xf|trigger.appearance-minimal:focus > xf|label {
+    border: 0;
+}
+
+xforms\:submit.appearance-minimal:active  xforms\:label,
+xf\:submit.appearance-minimal:active  xf\:label,
+xforms\:trigger.appearance-minimal:active  xforms\:label,
+xf\:trigger.appearance-minimal:active  xf\:label {
+    border: 0;
+}
+
+xforms|submit.appearance-minimal:active > xforms|label,
+xf|submit.appearance-minimal:active > xf|label,
+xforms|trigger.appearance-minimal:active > xforms|label,
+xf|trigger.appearance-minimal:active > xf|label {
+    border: 0;
+}
+
+xforms\:submit.appearance-minimal xforms\:label,
+xf\:submit.appearance-minimal xf\:label,
+xforms\:trigger.appearance-minimal xforms\:label,
+xf\:trigger.appearance-minimal xf\:label {
+    padding: 0;
+}
+
+xforms|submit.appearance-minimal xforms|label,
+xf|submit.appearance-minimal xf|label,
+xforms|trigger.appearance-minimal xforms|label,
+xf|trigger.appearance-minimal xf|label {
+    padding: 0;
+}
+
+.invalid > xf\:alert, .invalid > xforms\:alert {
+    display: inline;
+    background-color: transparent;
+    color: #D00;
+}
+
+*[class~="invalid"] > xf|alert, *[class~="invalid"] > xforms|alert {
+    display: inline;
+    background-color: transparent;
+    color: #D00;
+}
+
+xforms\:alert pe-value,
+xf\:alert pe-value {
+    border: none;
+    background-color: transparent;
+}
+
+xforms|alert pe-value,
+xf|alert pe-value {
+    border: none;
+    background-color: transparent;
+}
+
+xforms\:alert xforms\:input pe-value,
+xf\:alert xf\:input pe-value {
+    border: 2px inset #f0f0f0;
+    background-color: white;
+}
+
+xforms|alert xforms|input pe-value,
+xf|alert xf|input pe-value {
+    border: 2px inset #f0f0f0;
+    background-color: white;
+}
+
+xforms\:alert xforms\:label pe-value,
+xf\:alert xf\:label pe-value {
+    border: none;
+    background-color: transparent;
+}
+
+xforms|alert xforms|label pe-value,
+xf|alert xf|label pe-value {
+    border: none;
+    background-color: transparent;
+}
+
+.slider-bg {
+    position: relative;
+    background:url(bg-fader.gif) 5px 0 no-repeat;
+    height:28px;
+    width:228px;
+}
+
+*[class~="slider-bg"] {
+    position: relative;
+    background:url(bg-fader.gif) 5px 0 no-repeat;
+    height:28px;
+    width:228px;
+}
+
+.slider-thumb {
+  position: absolute;
+   top: 4px;
+   height:21px;
+   width: 17px;
+   background-image:url(thumb-n.gif)
+}
+
+*[class~="slider-thumb"] {
+    position: absolute;
+    top: 4px;
+}
+
+
+.ux-calendar-bg {
+    display: inline;
+}
+
+*[class~="ux-calendar-bg"] {
+    display: inline;
+}
+
+.ux-input-compact-calendar {
+    background: #ffffff;
+    color:#000000;
+    vertical-align:top;
+    max-width:75px;
+}
+
+*[class~="ux-input-compact-calendar"] {
+    background: #ffffff;
+    color:#000000;
+    vertical-align:top;
+    max-width:75px;
+}
+
+.ux-color-bg {
+    position:relative;
+    background-color:#eeeeee;
+    width:360px;
+    height:200px;
+}
+
+*[class~="ux-color-bg"] {
+    position:relative;
+    background-color:#eeeeee;
+    width:360px;
+    height:200px;
+}
+
+xforms\:output pe-value,
+xf\:output pe-value {
+    border: none;
+    background-color: transparent;
+}
+
+xforms|output pe-value,
+xf|output pe-value {
+    border: none;
+    background-color: transparent;
+}
+
+
+/* The YAHOO libraries are pretty much HTML specific, so there will be exceptions for
+ * XML Parsing for *.xhtml file
+ * This class makes the drop-down display on xhtml files.
+ */
+*[class~="pe-choices"] {
+    background-color: #ffffff;
+    border: 1px solid #808080;
+}
+
+xforms\:output .calnavleft, xf\:output .calnavleft,
+xforms\:output .calnavright, xf\:output .calnavright {
+  display: none;
+}
+
+xforms|output *[class~="calnavleft"], xf|output *[class~="calnavleft"],
+xforms|output *[class~="calnavright"], xf|output *[class~="calnavright"] {
+  display: none;
+}
+
+
+.focus {
+  border: 1px lightgray dashed;
+}
+
+/*
+  select, select1 and children thereof.
+*/
+
+xf\:choices, xforms\:choices {
+  margin-left: 1em;
+}
+
+xf|choices {
+  margin-left: 1em;
+}
+
+xforms\:select.appearance-minimal pe-value,
+xf\:select.appearance-minimal pe-value,
+xforms\:select1.appearance-minimal pe-value,
+xf\:select1.appearance-minimal pe-value
+{
+    border: 2px inset #f0f0f0;
+    background-color: white;
+}
+
+xforms|select.appearance-minimal pe-value,
+xforms|select1.appearance-minimal pe-value
+{
+    border: 2px inset #f0f0f0;
+    background-color: white;
+}
+
+xforms\:select.appearance-compact .pe-choices,
+xf\:select.appearance-compact .pe-choices,
+xforms\:select1.appearance-compact .pe-choices,
+xf\:select1.appearance-compact .pe-choices {
+  height:4em;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  padding-right:20px;
+}
+
+xforms|select.appearance-compact .pe-choices,
+xforms|select1.appearance-compact .pe-choices {
+  height:4em;
+  overflow-y:scroll;
+  overflow-x:visible;
+}
+
+.appearance-minimal xf\:item pe-value,
+.appearance-minimal xforms\:item pe-value {
+    border: none;
+    background-color:transparent;
+}
+
+.appearance-minimal xf|item pe-value {
+    border: none;
+    background-color:transparent;
+}
+
+xf\:select1.appearance-minimal xf\:label pe-value, xforms\:select1.appearance-minimal xforms\:label pe-value,
+xf\:select.appearance-minimal xf\:label pe-value, xforms\:select.appearance-minimal xforms\:label pe-value {
+    border: none;
+    background-color: transparent;
+    display:inline-block;
+}
+
+xf|select1.appearance-minimal xf|label pe-value, xforms|select1.appearance-minimal xforms|label pe-value,
+xf|select.appearance-minimal xf|label pe-value, xforms|select.appearance-minimal xforms|label pe-value {
+    border: none;
+    background-color: transparent;
+    display:inline-block;
+}
+
+
+.ux-drop-button {
+    font-size:1pt;
+    display:inline-block;
+    margin:0px;
+    padding:0px;
+    position:relative;
+	background:#F9F9F9;
+	cursor:pointer;
+	width:20px;
+}
+
+.ux-drop-button button{
+	background-image: url(http://yui.yahooapis.com/2.8.0r4/build/button/assets/skins/sam/menu-button-arrow.png);
+    background-repeat: no-repeat;
+    background-position: 4px center;
+    background-color:transparent;
+	height:100%;
+	width:100%;
+	padding:0;
+}
+
+*[class~="ux-drop-button"] {
+    font-size:1pt;
+    display:inline-block;
+    margin:0px;
+    padding:0px;
+    position:relative;
+    min-height: 17px;
+}
+
+.ux-drop-button .first-child {
+    height:100%;
+	width:100%;
+    margin:0px;
+    padding:0px;
+	display:inline-block;
+}
+
+
+*[class~="ux-drop-button"] *[class~="first-child"] {
+    height:100%;
+    margin:0px;
+    padding:0px;
+}
+
+
+
+.focus {
+  border: 1px lightgray dashed;
+}
+
+*[class~="focus"] {
+  border: 1px lightgray dashed;
+}
+
+.ux-boolean-value {
+  border: none;
+}
+
+*[class~="ux-boolean-value"] {
+  border: none;
+}
+
+xforms\:select .pc-deselected, xf\:select .pc-deselected {
+  background-image: url(select-deselected.png);
+}
+
+xforms|select .pc-deselected {
+  background-image: url(select-deselected.png);
+}
+
+xforms\:select .pc-selected , xf\:select .pc-selected {
+  background-image: url(select-selected.png);
+}
+
+xforms|select .pc-selected {
+  background-image: url(select-selected.png);
+}
+
+xforms\:select xforms\:item, xf\:select xf\:item {
+  background-position:left;
+  background-repeat: no-repeat;
+  text-indent: 14px;
+}
+
+xforms|select xforms|item {
+  background-position:left;
+  background-repeat: no-repeat;
+  text-indent: 14px;
+}
+
+xforms\:select1 .pc-deselected, xf\:select1 .pc-deselected {
+  background-image: url(select1-deselected.png);
+}
+
+xforms|select1 .pc-deselected {
+  background-image: url(select1-deselected.png);
+}
+
+xforms\:select1 .pc-selected , xf\:select1 .pc-deselected {
+  background-image: url(select1-selected.png);
+}
+
+xforms|select1 .pc-selected {
+  background-image: url(select1-selected.png);
+}
+
+xforms\:select1 xforms\:item, xf\:select1 xf\:item {
+  background-position:left;
+  background-repeat: no-repeat;
+  text-indent: 14px;
+}
+
+xforms|select1 xforms|item {
+  background-position:left;
+  background-repeat: no-repeat;
+  text-indent: 14px;
+}
+
+xforms\:select1.appearance-minimal xforms\:item, xf\:select1.appearance-minimal xf\:item {
+  background-image: none;
+  text-indent: 0px;
+}
+
+xforms|select1.appearance-minimal xforms|item {
+  background-image: none;
+  text-indent: 0px;
+}
+
+xf\:select1 .pe-choices{
+	max-height:300px;
+	overflow:auto;
+}
+
+xf|select1 .pe-choices{
+	max-height:300px;
+	overflow:auto;
+}
+/*
+  // Ubiquity provides a standards-based suite of browser enhancements for
+  // building a new generation of internet-related applications.
+  //
+  // The Ubiquity XForms module adds XForms 1.1 support to the Ubiquity
+  // library.
+  //
+  // Copyright (c) 2009 Backplane Ltd.
+  //
+  // Licensed under the Apache License, Version 2.0 (the "License");
+  // you may not use this file except in compliance with the License.
+  // You may obtain a copy of the License at
+  //
+  //  http://www.apache.org/licenses/LICENSE-2.0
+  //
+  // Unless required by applicable law or agreed to in writing, software
+  // distributed under the License is distributed on an "AS IS" BASIS,
+  // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  // See the License for the specific language governing permissions and
+  // limitations under the License.
+ */
+
+@namespace xhtml url(http://www.w3.org/1999/xhtml);
+@namespace xforms url(http://www.w3.org/2002/xforms);
+@namespace xf url(http://www.w3.org/2002/xforms);
+/*
+ * This stylesheet contains CSS rules that assist in the way that message behaves.
+ * For the rules for formatting messages see default.css.
+ */
+
+.xf-help-container {
+    position: relative;
+}
+
+*[class~="xf-help-container"] {
+    position: relative;
+}
+
+xforms\:help pe-value,
+xf\:help pe-value {
+    border: none;
+    background-color: transparent;
+}
+
+xforms|help pe-value,
+xf|help pe-value {
+    border: none;
+    background-color: transparent;
+}
+
+xforms\:help,
+xf\:help {
+    display: none;
+}
+
+xforms|help,
+xf|help {
+    display: none;
+}
+
+xforms\:help.active,
+xf\:help.active {
+    display: inline;
+    white-space: pre;
+}
+
+xforms|help[class~="active"],
+xf|help[class~="active"] {
+    display: inline;
+    white-space: pre;
+}
+
+xforms\:help.inactive,
+xf\:help.inactive {
+    display: none;
+}
+
+xforms|help[class~="inactive"],
+xf|help[class~="inactive"] {
+    display: none;
+}
+/*
+  // Ubiquity provides a standards-based suite of browser enhancements for
+  // building a new generation of internet-related applications.
+  //
+  // The Ubiquity XForms module adds XForms 1.1 support to the Ubiquity
+  // library.
+  //
+  // Copyright (c) 2008 Backplane Ltd.
+  //
+  // Licensed under the Apache License, Version 2.0 (the "License");
+  // you may not use this file except in compliance with the License.
+  // You may obtain a copy of the License at
+  //
+  //  http://www.apache.org/licenses/LICENSE-2.0
+  //
+  // Unless required by applicable law or agreed to in writing, software
+  // distributed under the License is distributed on an "AS IS" BASIS,
+  // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  // See the License for the specific language governing permissions and
+  // limitations under the License.
+ */
+
+@namespace xhtml url(http://www.w3.org/1999/xhtml);
+@namespace xforms url(http://www.w3.org/2002/xforms);
+@namespace xf url(http://www.w3.org/2002/xforms);
+
+/*
+ * This stylesheet contains CSS rules that assist in the way that hint behaves.
+ * For the rules for formatting hints see default.css.
+ */
+
+.xf-hint-container {
+    position: relative;
+}
+
+*[class~="xf-hint-container"] {
+    position: relative;
+}
+
+xforms\:hint pe-value,
+xf\:hint pe-value {
+    border: none;
+    background-color: transparent;
+}
+
+xforms|hint pe-value,
+xf|hint pe-value {
+    border: none;
+    background-color: transparent;
+}
+
+xforms\:hint,
+xf\:hint {
+    display: none;
+    z-index: 100;
+    position: absolute;
+    top: 90%;
+    left: 15px;
+}
+
+xforms|hint,
+xf|hint {
+    display: none;
+    z-index: 100;
+    position: absolute;
+    top: 90%;
+    left: 15px;
+}
+
+xforms\:hint.active,
+xf\:hint.active {
+    display: inline;
+}
+
+xforms|hint[class~="active"],
+xf|hint[class~="active"] {
+    display: inline;
+}
+xforms\:hint.inactive,
+xf\:hint.inactive {
+    display: none;
+}
+
+xforms|hint[class~="inactive"],
+xf|hint[class~="inactive"] {
+    display: none;
+}/*
+  // Ubiquity provides a standards-based suite of browser enhancements for
+  // building a new generation of internet-related applications.
+  //
+  // The Ubiquity XForms module adds XForms 1.1 support to the Ubiquity
+  // library.
+  //
+  // Copyright (C) 2008 Backplane Ltd.
+  //
+  // Licensed under the Apache License, Version 2.0 (the "License");
+  // you may not use this file except in compliance with the License.
+  // You may obtain a copy of the License at
+  //
+  //  http://www.apache.org/licenses/LICENSE-2.0
+  //
+  // Unless required by applicable law or agreed to in writing, software
+  // distributed under the License is distributed on an "AS IS" BASIS,
+  // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  // See the License for the specific language governing permissions and
+  // limitations under the License.
+ */
+
+@namespace xhtml url(http://www.w3.org/1999/xhtml);
+@namespace xforms url(http://www.w3.org/2002/xforms);
+@namespace xf url(http://www.w3.org/2002/xforms);
+/*
+ * This stylesheet contains CSS rules that assist in the way that message behaves.
+ * For the rules for formatting messages see default.css.
+ */
+
+.xf-message-container {
+    position: relative;
+}
+
+*[class~="xf-message-container"] {
+    position: relative;
+}
+
+xforms\:message,
+xf\:message {
+    z-index: 100;
+    position: absolute;
+    top: 90%;
+    left: 15px;
+}
+
+xforms|message,
+xf|message {
+    z-index: 100;
+    position: absolute;
+    top: 90%;
+    left: 15px;
+}
+
+xforms\:message pe-value,
+xf\:message pe-value {
+    border: none;
+    background-color: transparent;
+}
+
+xforms|message pe-value,
+xf|message pe-value {
+    border: none;
+    background-color: transparent;
+}
+
+xforms\:message,
+xf\:message {
+    display: none;
+}
+
+xforms|message,
+xf|message {
+    display: none;
+}
+
+xforms\:message.active,
+xf\:message.active {
+    display: inline;
+    white-space: pre;
+}
+
+xforms|message[class~="active"],
+xf|message[class~="active"] {
+    display: inline;
+    white-space: pre;
+}
+
+xforms\:message.inactive,
+xf\:message.inactive {
+    display: none;
+}
+
+xforms|message[class~="inactive"],
+xf|message[class~="inactive"] {
+    display: none;
+}
+﻿/* Ubiquity provides a standards-based suite of browser enhancements for
+ * building a new generation of internet-related applications.
+ *
+ * The Ubiquity XForms module adds XForms 1.1 support to the Ubiquity
+ * library.
+ *
+ * Copyright (c) 2009 Backplane Ltd.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@namespace xhtml url(http://www.w3.org/1999/xhtml);
+@namespace xforms url(http://www.w3.org/2002/xforms);
+@namespace xf url(http://www.w3.org/2002/xforms);
+
+xforms\:mediatype, xf\:mediatype {
+  display: none;
+}
+
+xforms|mediatype, xf|mediatype {
+  display: none;
+}
+/* Ubiquity provides a standards-based suite of browser enhancements for
+ * building a new generation of internet-related applications.
+ *
+ * The Ubiquity XForms module adds XForms 1.1 support to the Ubiquity
+ * library.
+ *
+ * Copyright (c) 2009 Backplane Ltd.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@namespace xhtml url(http://www.w3.org/1999/xhtml);
+@namespace xforms url(http://www.w3.org/2002/xforms);
+@namespace xf url(http://www.w3.org/2002/xforms);
+
+xforms\:item, xf\:item {
+	display: block;
+}
+
+xforms|item, xf|item {
+	display: block;
+}
+
+xf\:choices, xforms\:choices {
+	display: block;
+}
+
+xf|choices, xforms|choices {
+	display: block;
+}
+
+xforms\:copy, xf\:copy {
+	display: none;
+}
+
+xforms|copy, xf|copy {
+	display: none;
+}
+
+xforms\:select.selection-open pe-value,
+xf\:select.selection-open pe-value,
+xforms\:select1.selection-open pe-value,
+xf\:select1.selection-open pe-value
+{
+	border: 2px inset #f0f0f0;
+	background-color: white;
+}
+
+xforms\:select.selection-closed pe-value,
+xf\:select.selection-closed pe-value,
+xforms\:select1.selection-closed pe-value,
+xf\:select1.selection-closed pe-value
+{
+	display: none;
+}
+
+xf|select.selection-closed pe-value,
+xf|select1.selection-closed pe-value
+{
+	display: none;
+}
+
+.appearance-full xf\:label pe-value,
+.appearance-compact xf\:label pe-value,
+.appearance-full xforms\:label pe-value, 
+.appearance-compact xforms\:label pe-value {
+	display: block;
+}
+
+.appearance-compact xf\:label pe-value {
+	display: block;
+}
+﻿/* Ubiquity provides a standards-based suite of browser enhancements for
+ * building a new generation of internet-related applications.
+ *
+ * The Ubiquity XForms module adds XForms 1.1 support to the Ubiquity
+ * library.
+ *
+ * Copyright (c) 2009 Backplane Ltd.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@namespace xhtml url(http://www.w3.org/1999/xhtml);
+@namespace xforms url(http://www.w3.org/2002/xforms);
+@namespace xf url(http://www.w3.org/2002/xforms);
+
+xforms\:resource,
+xf\:resource,
+xforms\:method,
+xf\:method  {
+    display: none;
+}
+
+xforms|resource,
+xf|resource,
+xforms|method,
+xf|method {
+    display: none;
+}
+.yui-log{padding-top:3em;}.yui-log-container{width:40em;}.yui-log .yui-log-bd{height:60em;}.yui-log .yui-log-btns{display:none;}.yui-log .yui-log-ft .yui-log-sourcefilters{visibility:hidden;}.yui-log .yui-log-hd{display:none;}.yui-log .yui-log-ft{position:absolute;top:0;}.pass{background-color:green;font-weight:bold;color:white;}.fail{background-color:red;font-weight:bold;color:white;}.ignore{background-color:#666;font-weight:bold;color:white;}/*
+Copyright (c) 2009, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.8.0r4
+*/
+table.ygtvtable{margin-bottom:0;border:none;border-collapse:collapse;}td.ygtvcell{border:none;padding:0;}a.ygtvspacer{text-decoration:none;outline-style:none;display:block;}.ygtvtn{width:18px;height:22px;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 -5600px no-repeat;cursor:pointer;}.ygtvtm{width:18px;height:22px;cursor:pointer;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 -4000px no-repeat;}.ygtvtmh,.ygtvtmhh{width:18px;height:22px;cursor:pointer;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 -4800px no-repeat;}.ygtvtp{width:18px;height:22px;cursor:pointer;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 -6400px no-repeat;}.ygtvtph,.ygtvtphh{width:18px;height:22px;cursor:pointer;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 -7200px no-repeat;}.ygtvln{width:18px;height:22px;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 -1600px no-repeat;cursor:pointer;}.ygtvlm{width:18px;height:22px;cursor:pointer;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 0 no-repeat;}.ygtvlmh,.ygtvlmhh{width:18px;height:22px;cursor:pointer;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 -800px no-repeat;}.ygtvlp{width:18px;height:22px;cursor:pointer;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 -2400px no-repeat;}.ygtvlph,.ygtvlphh{width:18px;height:22px;cursor:pointer;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 -3200px no-repeat;cursor:pointer;}.ygtvloading{width:18px;height:22px;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-loading.gif) 0 0 no-repeat;}.ygtvdepthcell{width:18px;height:22px;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 -8000px no-repeat;}.ygtvblankdepthcell{width:18px;height:22px;}* html .ygtvchildren{height:2%;}.ygtvlabel,.ygtvlabel:link,.ygtvlabel:visited,.ygtvlabel:hover{margin-left:2px;text-decoration:none;background-color:white;cursor:pointer;}.ygtvcontent{cursor:default;}.ygtvspacer{height:22px;width:18px;}.ygtvfocus{background-color:#c0e0e0;border:none;}.ygtvfocus .ygtvlabel,.ygtvfocus .ygtvlabel:link,.ygtvfocus .ygtvlabel:visited,.ygtvfocus .ygtvlabel:hover{background-color:#c0e0e0;}.ygtvfocus a{outline-style:none;}.ygtvok{width:18px;height:22px;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 -8800px no-repeat;}.ygtvok:hover{background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 -8844px no-repeat;}.ygtvcancel{width:18px;height:22px;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 -8822px no-repeat;}.ygtvcancel:hover{background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/treeview-sprite.gif) 0 -8866px no-repeat;}.ygtv-label-editor{background-color:#f2f2f2;border:1px solid silver;position:absolute;display:none;overflow:hidden;margin:auto;z-index:9000;}.ygtv-edit-TextNode{width:190px;}.ygtv-edit-TextNode .ygtvcancel,.ygtv-edit-TextNode .ygtvok{border:none;}.ygtv-edit-TextNode .ygtv-button-container{float:right;}.ygtv-edit-TextNode .ygtv-input input{width:140px;}.ygtv-edit-DateNode .ygtvcancel{border:none;}.ygtv-edit-DateNode .ygtvok{display:none;}.ygtv-edit-DateNode .ygtv-button-container{text-align:right;margin:auto;}.ygtv-highlight .ygtv-highlight1,.ygtv-highlight .ygtv-highlight1 .ygtvlabel{background-color:blue;color:white;}.ygtv-highlight .ygtv-highlight2,.ygtv-highlight .ygtv-highlight2 .ygtvlabel{background-color:silver;}.ygtv-highlight .ygtv-highlight0 .ygtvfocus .ygtvlabel,.ygtv-highlight .ygtv-highlight1 .ygtvfocus .ygtvlabel,.ygtv-highlight .ygtv-highlight2 .ygtvfocus .ygtvlabel{background-color:#c0e0e0;}.ygtv-highlight .ygtvcontent{padding-right:1em;}.ygtv-checkbox .ygtv-highlight0 .ygtvcontent{padding-left:1em;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/check0.gif) no-repeat;}.ygtv-checkbox .ygtv-highlight0 .ygtvfocus.ygtvcontent,.ygtv-checkbox .ygtv-highlight1 .ygtvfocus.ygtvcontent,.ygtv-checkbox .ygtv-highlight2 .ygtvfocus.ygtvcontent{background-color:#c0e0e0;}.ygtv-checkbox .ygtv-highlight1 .ygtvcontent{padding-left:1em;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/check1.gif) no-repeat;}.ygtv-checkbox .ygtv-highlight2 .ygtvcontent{padding-left:1em;background:url(http://yui.yahooapis.com/2.8.0r4/build/treeview/assets/skins/sam/check2.gif) no-repeat;}
+#yui_notification_container
+{
+  border: 0px solid red;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: 300px;
+}
+
+.notification
+{
+position: relative;
+color: black;
+margin: 3px 3px 3px 3px;
+padding: 6px 6px 6px 6px;
+font-family: Skia, sans-serif;
+min-height: 51px;
+  z-index: 1000;
+}
+.notification .background
+{
+position: absolute;
+left: 0;
+top: 0;
+margin: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+  z-index: -1;
+}
+.notification .icon
+{
+float: left;
+top: 10px;
+left: 10px;
+width: 32px;
+height: 32px;
+margin-right: 15px;
+}
+.notification .icon img
+{
+width: 32px;
+height: 32px;
+}
+.notification .title
+{
+font-weight: bold;
+font-size: small;
+}
+.notification .text
+{
+font-size: x-small;
+}
+.notification.emergency .text
+{
+color: red;
+}
+

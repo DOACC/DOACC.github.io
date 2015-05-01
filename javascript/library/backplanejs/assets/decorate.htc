@@ -1,0 +1,14 @@
+<PUBLIC:COMPONENT LIGHTWEIGHT="true">
+	<SCRIPT>
+		var self = this;
+		spawn(function () {
+			// NOTE: Unless this call is spawned, only the
+			//       first XForms element will be decorated.
+			try{
+				DECORATOR.decorate(self.element);
+			} catch(e) {
+				
+			}
+		});
+	</SCRIPT>
+</PUBLIC:COMPONENT>

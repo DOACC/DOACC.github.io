@@ -1,0 +1,9 @@
+<PUBLIC:COMPONENT LIGHTWEIGHT="true">
+	<SCRIPT>
+		var element = this.element;
+		spawn(function(){
+			element.parentNode.removeChild(this.element);
+		});
+		spawn(DECORATOR.callDocumentReadyHandlers);
+	</SCRIPT>
+</PUBLIC:COMPONENT>
