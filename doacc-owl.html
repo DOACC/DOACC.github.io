@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+
+
+
+<html dir="ltr" lang="en-gb">
+  <head>
+    
+
+    
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- View -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <title>DOACC</title>
+    <meta name="description" content="descripts" />
+    <meta name="keywords" content="kwds" />
+
+    <link rel="stylesheet" type="text/css" class="ui" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.5/semantic.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/dark.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/docs.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/rtl.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/overlay.css">
+    <link rel="stylesheet/less" type="text/css" href="/src/definitions/elements/button.less" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Karma:600,400,400italic,600italic' rel='stylesheet' type='text/css'>
+    <!-- Standard Meta -->
+    <link rel="image_src" type="image/png" href="/images/logo.png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <link rel="dns-prefetch" href="//ajax.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    <meta name="ICBM" content="51.96659,-2.481413" />
+    <meta name="Robots" content="index, follow" />
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/assets/ico/apple-touch-icon-144x144-precomposed.png" />
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/assets/ico/apple-touch-icon-114x114-precomposed.png" />
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/assets/ico/apple-touch-icon-72x72-precomposed.png" />
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="/images/assets/ico/apple-touch-icon-57-precomposed.png" />
+    <link rel="alternate" type="application/atom+xml" href="/feed/atom" title="Atom feed for DOACC" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.5/semantic.min.js"></script>
+    <script type="text/javascript" src="/javascript/rdflib/rdflib.js"></script>
+
+  </head>
+  <body id="example" class="index" 
+    prefix="dc: http://purl.org/dc/terms/ doacc: http://purl.org/net/bel-epa/doacc# ccs: http://purl.org/net/bel-epa/cc# skos: http://www.w3.org/2004/02/skos/core# foaf: http://xmlns.com/foaf/0.1/ fresnel: http://www.w3.org/2004/09/fresnel#">
+    <noscript>
+      <div class="noscript">
+      Your browser settings show that JavaScript is disabled. (Good call, we too browse with javascript disabled). If you enable it for this site, you’ll get the full benefit of the user-oriented enhancements: nice fonts, drop-down menus, active tabs and the like. We recommend that you turn on Javascript and then refresh this page. <a href="http://www3.qwest.com/cgi-bin/qwest.cfg/php/enduser/std_adp.php?p_faqid=1095" target="_blank">How do I turn on Javascript?</a>
+      </div>
+    </noscript>
+    
+  <div class="ui vertical inverted sidebar menu" id="toc">
+
+    <div class="item">
+      <a class="ui logo icon image" href="index.html"><img src="/images/logo.png" alt="logo"></a>
+      <a href="index.html"><b>DOACC home</b></a>
+    </div>
+    <div class="item">
+      <div class="ui small inverted header">Facts</div>
+      <div class="menu">
+        <a class="item" href="altcoins.html">altcoins</a>
+        <a class="item" href="protectionschemes.html">protection schemes</a>
+        <a class="item" href="distributionschemes.html">distribution schemes</a>
+      </div>
+    </div>
+    <div class="item">
+      <div class="ui small inverted header">Concepts</div>
+      <div class="menu">
+        <a class="item" href="doacc-owl.html">DOACC</a>
+        <a class="item" href="ccy-owl.html">CCY</a>
+      </div>
+    </div>
+    <div class="item">
+      <div class="ui small inverted header">Technology</div>
+      <div class="menu">
+        <a class="item" href="rdf.html">Making statements</a>
+        <a class="item" href="sparql.html">Asking questions</a>
+        <a class="item" href="faq.html">FAQ</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui black big launch right attached fixed button"> <i class="content icon"></i> <span class="text">Menu</span>
+  </div>
+
+  <div class="ui fixed main menu">
+    <div class="container">
+      <a class="launch item"><i class="content icon"></i> Menu</a>
+      <div class="right menu">
+      </div>
+    </div>
+  </div>
+
+
+
+    <div class="pusher">
+      <div class="full height">
+        
+      <div class="following bar">
+        <div class="ui page grid">
+          <div class="column">
+            <div class="ui logo shape">
+              <div class="sides">
+                <div class="active ui side"><a href="/" title="home"><img class="ui image" src="/images/logo.png" alt="Logo"></a></div>
+              </div>
+            </div>
+            <div class="ui inverted right floated secondary menu">
+              <a class="ui item" href="facts.html">
+                <i class="large icon-rdf"></i> 
+                <span class="ui inverted blue header">Facts</span>
+              </a>
+              <a class="ui item" href="concepts.html">
+                <i class="large icon-semantic-web"></i>
+                <span class="ui inverted orange header">Concepts</span>
+              </a>
+              <a class="ui item" href="techniques.html">
+                <i class="large icon-semantics"></i>
+                <span class="ui inverted green header">Techniques</span>
+              </a>
+              <a class="ui item" href="altcoins.svg">
+                <i class="icon-bitcoin"></i> 
+                <span class="ui inverted yellow header">Coins (big)</span>
+              </a>
+            </div>
+            <div class="ui large inverted secondary network menu">
+              <a class="view-ui item">
+                <i class="sidebar icon"></i> Menu
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+              <a href="#">“When I use a word, it means just what I choose it to mean — neither more nor less.”</a> <span class="rth"> - Humpty Dumpty</span>
+            </div>
+            <h2 class="ui header inverted">Concepts
+              <div class="sub header">Representing knowledge about the domain</div>
+            </h2>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="ui sub secondary pointing menu">
+            <a class="item" href="/concepts.html">Index</a>
+            <a class="item" href="/things-protectionschemes.html">Protection</a>
+            <a class="item" href="/things-distributionschemes.html">Distribution</a>
+            <a class="item" href="/things-powschemes.html">PoW</a>
+            <a class="item" href="/things-posschemes.html">PoS</a>
+            <a class="item" href="/things-protocols.html">Protocols</a>
+            <a class="item" href="/things-coins.html">Coins</a>
+            <a class="active item" href="/doacc-owl.html">DOACC OWL</a>
+            <a class="item" href="/ccy-owl.html">CCY OWL</a>
+          </div>
+
+          <h2 class="ui dividing header">DOACC in OWL</h2>
+          <h3 class="ui header">Description of a Cryptocurrency</h3>
+          <p>Provides machine- and human-readable definitions for features of the cryptocurrency: the name, exchange trading symbol, block time, pow / pos, premine, that sort of thing. Everything is spelled out in detail.</p>
+          <div class="ui segment">
+            <iframe class="doacc" src="/doacc.xml" allowtransparency="true" frameborder="0" scrolling="0" width="100%" height="13300"></iframe>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+    
+  <div class="ui vertical inverted black footer segment">
+    <div class="container">
+      <div class="ui stackable inverted divided relaxed grid">
+
+        <div class="four wide column">
+          <h3 class="ui blue inverted header">Facts</h3>
+          <div class="ui inverted link list">
+            <a class="item" href="/facts-protectionschemes.html">protection schemes</a>
+            <a class="item" href="/facts-distributionschemes.html">distribution schemes</a>
+            <a class="item" href="/facts-powschemes.html">PoW schemes</a>
+            <a class="item" href="/facts-posschemes.html">PoS schemes</a>
+            <a class="item" href="/facts-protocols.html">protocols</a>
+            <a class="item" href="/facts-coins.html">altcoins</a>
+          </div>
+        </div>
+
+        <div class="four wide column">
+          <h3 class="ui orange inverted header">Concepts</h3>
+          <div class="ui inverted link list">
+            <a class="item" href="doacc-owl.html">DOACC</a>
+            <a class="item" href="ccy-owl.html">CCY</a>
+          </div>
+        </div>
+
+        <div class="four wide column">
+          <h3 class="ui green inverted header">Techniques</h3>
+          <div class="ui inverted link list">
+            <a class="item" href="rdf.html">Adding facts</a>
+            <a class="item" href="/techniques-reasoning.html">Reasoning</a>
+            <a class="item" href="sparql.html">asking questions</a>
+            <a class="item" href="faq.html">FAQ</a>
+          </div>
+        </div>
+
+        <div class="four wide column">
+          <h3 class="ui inverted header">DOACC <img style="padding-left: 1.3rem; height:32px; width:88px; vertical-align:middle;" src="/images/data-badge-5.png" alt="five star open Web data"/></h3>
+          <p></p>
+          <p class="terms-privacy">made with <i class="icon-rdf icon"></i> in the UK.</p>
+          <p class="terms-privacy">&copy; 2015</p>
+          <div class="ui inverted link list">
+            <a class="terms-privacy" href="about.html">About</a> |
+            <a class="terms-privacy" href="privacy-policy.html">Privacy</a> |
+            <a class="terms-privacy" href="terms.html">Terms</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui demo page dimmer">
+    <div class="content">
+      <div class="center"><h2 class="ui inverted icon header"><i class="mail icon"></i>Dimmer Message<br/><span class="sub header">Dimmer sub-header</span></h2></div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/javascript/jquery/jquery.humane_dates.js"></script>
+  <script type="text/javascript" src="/javascript/library/svg.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+  <script type="text/javascript" src="/javascript/library/easing.min.js"></script>
+  <script type="text/javascript" src="/javascript/library/typing.min.js"></script>
+  <script type="text/javascript" src="/javascript/library/n3-browser.min.js"></script>
+  <script type="text/javascript" src="/javascript/library/jsonld.js"></script>
+  <script src="/javascript/library/js-beautify/beautify.js"></script>
+  <script src="/javascript/library/js-beautify/beautify-html.js"></script>
+  <script src="/javascript/docs.js"></script>
+  <script src="/javascript/home.js"></script>
+  <script>
+    window.less = {
+      async        : true,
+      environment  : 'production',
+      fileAsync    : false,
+      onReady      : false,
+      useFileCache : true
+    };
+  </script>
+  <script type="text/javascript" src="/javascript/n3.js"></script>
+  <script src="/javascript/library/less.min.js"></script>
+
+  <script type="text/javascript">
+    // sgvizler.containerDrawAll("ex");
+    $('.ui .item').on('click', function() {
+      $('.ui .item').removeClass('active');
+      $(this).addClass('active');
+    });
+    $('.long.test.modal').modal('attach events', '.test.button', 'show');
+    $('.ui.modal').modal();
+    $('.ui.long.test.modal').modal();
+    $("#autocomplete").autocomplete({
+      prompt: "", source: "/coin/symbol"});
+    $('time').humaneDates();
+    $('.accordion').accordion();
+    /* beautify all code with class="raw" */
+    $('.raw').each(function() {beautify(this)});
+  </script>
+
+    
+
+  </body>
+</html>

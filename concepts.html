@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+
+
+
+<html dir="ltr" lang="en-gb">
+  <head>
+    
+    <style type="text/css">
+    </style>
+
+    
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- View -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <title>Concepts</title>
+    <meta name="description" content="descripts" />
+    <meta name="keywords" content="kwds" />
+
+    <link rel="stylesheet" type="text/css" class="ui" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.5/semantic.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/dark.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/docs.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/rtl.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/overlay.css">
+    <link rel="stylesheet/less" type="text/css" href="/src/definitions/elements/button.less" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Karma:600,400,400italic,600italic' rel='stylesheet' type='text/css'>
+    <!-- Standard Meta -->
+    <link rel="image_src" type="image/png" href="/images/logo.png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <link rel="dns-prefetch" href="//ajax.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    <meta name="ICBM" content="51.96659,-2.481413" />
+    <meta name="Robots" content="index, follow" />
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/assets/ico/apple-touch-icon-144x144-precomposed.png" />
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/assets/ico/apple-touch-icon-114x114-precomposed.png" />
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/assets/ico/apple-touch-icon-72x72-precomposed.png" />
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="/images/assets/ico/apple-touch-icon-57-precomposed.png" />
+    <link rel="alternate" type="application/atom+xml" href="/feed/atom" title="Atom feed for DOACC" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.5/semantic.min.js"></script>
+    <script type="text/javascript" src="/javascript/rdflib/rdflib.js"></script>
+
+  </head>
+  <body id="example" class="index" 
+    prefix="dc: http://purl.org/dc/terms/ doacc: http://purl.org/net/bel-epa/doacc# ccs: http://purl.org/net/bel-epa/cc# skos: http://www.w3.org/2004/02/skos/core# foaf: http://xmlns.com/foaf/0.1/ fresnel: http://www.w3.org/2004/09/fresnel#">
+    <noscript>
+      <div class="noscript">
+      Your browser settings show that JavaScript is disabled. (Good call, we too browse with javascript disabled). If you enable it for this site, you’ll get the full benefit of the user-oriented enhancements: nice fonts, drop-down menus, active tabs and the like. We recommend that you turn on Javascript and then refresh this page. <a href="http://www3.qwest.com/cgi-bin/qwest.cfg/php/enduser/std_adp.php?p_faqid=1095" target="_blank">How do I turn on Javascript?</a>
+      </div>
+    </noscript>
+    
+  <div class="ui vertical inverted sidebar menu" id="toc">
+
+    <div class="item">
+      <a class="ui logo icon image" href="index.html"><img src="/images/logo.png" alt="logo"></a>
+      <a href="index.html"><b>DOACC home</b></a>
+    </div>
+    <div class="item">
+      <div class="ui small inverted header">Facts</div>
+      <div class="menu">
+        <a class="item" href="altcoins.html">altcoins</a>
+        <a class="item" href="protectionschemes.html">protection schemes</a>
+        <a class="item" href="distributionschemes.html">distribution schemes</a>
+      </div>
+    </div>
+    <div class="item">
+      <div class="ui small inverted header">Concepts</div>
+      <div class="menu">
+        <a class="item" href="doacc-owl.html">DOACC</a>
+        <a class="item" href="ccy-owl.html">CCY</a>
+      </div>
+    </div>
+    <div class="item">
+      <div class="ui small inverted header">Technology</div>
+      <div class="menu">
+        <a class="item" href="rdf.html">Making statements</a>
+        <a class="item" href="sparql.html">Asking questions</a>
+        <a class="item" href="faq.html">FAQ</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui black big launch right attached fixed button"> <i class="content icon"></i> <span class="text">Menu</span>
+  </div>
+
+  <div class="ui fixed main menu">
+    <div class="container">
+      <a class="launch item"><i class="content icon"></i> Menu</a>
+      <div class="right menu">
+      </div>
+    </div>
+  </div>
+
+
+
+    <div class="pusher">
+      <div class="full height">
+        
+      <div class="following bar">
+        <div class="ui page grid">
+          <div class="column">
+            <div class="ui logo shape">
+              <div class="sides">
+                <div class="active ui side"><a href="/" title="home"><img class="ui image" src="/images/logo.png" alt="Logo"></a></div>
+              </div>
+            </div>
+            <div class="ui inverted right floated secondary menu">
+              <a class="ui item" href="facts.html">
+                <i class="large icon-rdf"></i> 
+                <span class="ui inverted blue header">Facts</span>
+              </a>
+              <a class="ui item" href="concepts.html">
+                <i class="large icon-semantic-web"></i>
+                <span class="ui inverted orange header">Concepts</span>
+              </a>
+              <a class="ui item" href="techniques.html">
+                <i class="large icon-semantics"></i>
+                <span class="ui inverted green header">Techniques</span>
+              </a>
+              <a class="ui item" href="altcoins.svg">
+                <i class="icon-bitcoin"></i> 
+                <span class="ui inverted yellow header">Coins (big)</span>
+              </a>
+            </div>
+            <div class="ui large inverted secondary network menu">
+              <a class="view-ui item">
+                <i class="sidebar icon"></i> Menu
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+              <a href="#">“When I use a word, it means just what I choose it to mean<br/>— neither more nor less.”</a> <span class="rth"> - Humpty Dumpty, <i>Through the Looking Glass</i></span>
+            </div>
+            <h2 class="ui header inverted">Concepts
+              <div class="sub header">Representing knowledge about the domain</div>
+            </h2>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="ui sub secondary pointing menu">
+            <a class="active item" href="/concepts.html">Index</a>
+            <a class="item" href="/things-protectionschemes.html">Protection</a>
+            <a class="item" href="/things-distributionschemes.html">Distribution</a>
+            <a class="item" href="/things-powschemes.html">PoW</a>
+            <a class="item" href="/things-posschemes.html">PoS</a>
+            <a class="item" href="/things-protocols.html">Protocols</a>
+            <a class="item" href="/things-coins.html">Coins</a>
+            <a class="item" href="/doacc-owl.html">DOACC OWL</a>
+            <a class="item" href="/ccy-owl.html">CCY OWL</a>
+          </div>
+
+          <h2 class="ui dividing header">Cryptocurrency, the very idea!</h2>
+          <h3 class="ui header"><b><i>Altcoin</i></b>. <i>defn:</i> a cryptocurrency that is not Bitcoin.</h3>
+          <p>The vocabulary that DOACC uses to make statements about altcoins is based on concepts used by developers in online forum announcements, primarily bitcointalk.</p>
+          <p>One altcoin advertises “algo: x11”, another mounts a crowdfunding ICO, yet another announces “PoS 2.0”. All three are surface features denoting a deeper conceptual separation that reflects different approaches taken to i) protecting the public ledger from tampering, ii) the task of distributing the coins and iii) a specific choice of PoW scheme.</p>
+          <p>And so the DOACC vocabulary includes general altcoin concepts such as “protection scheme”, “distribution scheme”, and “proof-of-work scheme”. The tabs above link to descriptions of the more salient concepts. The DOACC and CCY OWL ontology pages present (very nicely) all the concepts, their properties and how they are used to describe an altcoin and its features.</p>
+          <h2 class="ui dividing header">It’s a graph, but not as you know it, Jim.</h2>
+          <h3 class="ui header">A reprise of some facts in DOACC</h3>
+                    <p><pre><span class="shy">ccs:<span class="subj">Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span> <span class="pred">a</span> doacc:<span class="reln">Cryptocurrency</span> ;
+    doacc:<span class="pred">block-reward</span> <span class="obj">"500000"</span>^^xsd:string ;
+    doacc:<span class="pred">block-time</span> <span class="obj">60</span> ;
+    doacc:<span class="pred">coin</span> ccs:<span class="reln">D5e6e149c-2bf3-48e0-a8ab-4ca0a1f424a4</span> ;
+    doacc:<span class="pred">comment</span> <span class="obj">"supported"</span>^^xsd:string ;
+    doacc:<span class="pred">date-founded</span> <span class="obj">"2013-12-08"</span>^^xsd:date ;
+    doacc:<span class="pred">distribution-scheme</span> ccs:<span class="reln">Dc10c93fb-f7ec-40cd-a06e-7890686f6ef8</span> 
+    doacc:<span class="pred">expiration</span> <span class="obj">"listed"</span>@en ;
+    doacc:<span class="pred">image</span> <span class="obj">"dogecoin_doge.png"</span>^^xsd:anyURI ;
+    doacc:<span class="pred">incept</span> <span class="obj">"2013-12"</span>^^xsd:string ;
+    doacc:<span class="pred">pow</span> ccs:<span class="reln">D338257f8-402f-4c76-969b-6fc041d52e40</span> ;
+    doacc:<span class="pred">protection-scheme</span> ccs:<span class="reln">D451a49d8-c9e7-46e5-8b8d-bcbe16f75c24</span> ;
+    doacc:<span class="pred">protocol</span> ccs:<span class="reln">Db8ade99f-11f1-476b-ae77-03c005c1bb66</span> ;
+    doacc:<span class="pred">source</span> <span class="obj">&lt;https://github.com/dogecoin/dogecoin&gt;</span> ;
+    doacc:<span class="pred">symbol</span> <span class="obj">"DOGE"</span>^^xsd:string ;
+    doacc:<span class="pred">total-coins</span> <span class="obj">"100000000000"</span>^^xsd:string ;
+    doacc:<span class="pred">website</span> <span class="obj">"http://dogecoin.com/"</span>^^xsd:anyURI ;
+    rdfs:<span class="pred">comment</span> <span class="obj">"Scrypt-based, re-target every 4 hours, variable block reward, 100 billion total coins."</span>^^xsd:string ;
+    skos:<span class="pred">prefLabel</span> <span class="obj">"Dogecoin"</span>@en .</pre></p>
+          <h3 class="ui header">The same facts / triples but this time laid out as a diagram of boxes and arrows.</h3>
+          <p><a href="/images/assets/dogegraph.svg" title="Full size diagram"><img width="850px" src="/images/assets/dogegraph.svg" alt="Dogecoin graph"/></a></p>
+          <p>It's a little more than <em>just</em> a diagram, it’s a hand-executed illustration of how facts are modelled in an RDF graph.</p>
+          <p>Here’re the actual boxes and arrows for DOACC’s model of Dogecoin, as rendered by the machine.</p>
+          <p><a href="/images/assets/Dd5bd8eaf-b432-440b-9502-3707aa57ff93.svg" title="Full size diagram"><img width="850px" src="/images/assets/Dd5bd8eaf-b432-440b-9502-3707aa57ff93.svg" alt="Actual Dogecoin RDF graph"/></a></p>
+          <p>Facts can be shuffled around and re-presented. The following graph contains three statements of fact about Namecoin, Litecoin and Dogecoin respectively, stating that each entity is a cryptocurrency:
+            <dd><tt><span class="shy">ccs:</span><span class="subj">D8896b685-79c8-4a1f-a2dd-eee72eabb8e8</span> <span class="shy">rdf:</span><span class="pred">type</span> <span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt></dd>
+            <dd><tt><span class="shy">ccs:</span><span class="subj">D8c037049-fb79-41f4-bb61-3d8ac12961d9</span> <span class="shy">rdf:</span><span class="pred">type</span> <span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt></dd>
+            <dd><tt><span class="shy">ccs:</span><span class="subj">Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span> <span class="shy">rdf:</span><span class="pred">type</span> <span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt></dd>
+          </p>
+          <p><a href="/images/assets/coinsgraph.svg" title="Full size diagram"><img width="850px" src="/images/assets/coinsgraph.svg" alt="Three altcoins"/></a></p>
+          <p>This puts us in a strong position, referentially speaking. Each individual coin has its own unique UUID identifier. In addition, <tt><span class="shy">rdf:</span><span class="pred">type</span></tt> is <a href="http://www.w3.org/TR/rdf-schema/#ch_type" title="W3 definition">also a unique reference</a>. And the same is true of our very own <tt><span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt>.</p>
+          <p>There is no ambiguity or vagueness about the facts, every concept used to express them is clearly identified and defined, e.g. the W3 definition of <tt>rdf:type</tt></p>
+          <p>“A triple of the form: <tt>R rdf:type C</tt> states that <tt>C</tt> is an instance of <tt>rdfs:Class</tt> and <tt>R</tt> is an instance of <tt>C</tt>.”</p>
+          <p>It’s all very carefully done, no loose ends, no vague, hand-wavy stuff, just precise, formal definitions which make sense to both humans and machines, in their own respective fashion.</p>
+          <p>And it is the ontology which contains these definitions, e.g. <tt><span class="shy">doacc:</span><span class="pred">date-founded</span>:</p>
+          <div class="code xml" data-title="date-founded" data-type="xml"><owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#date-founded">
+      <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"></rdfs:domain>
+      <rdfs:range rdf:resource="&rdfs;Literal"></rdfs:range>
+      <rdfs:label xml:lang="en">date-founded</rdfs:label>
+      <skos:prefLabel xml:lang="en">date founded</skos:prefLabel>
+      <ns:term_status>unstable</ns:term_status>
+      <rdfs:comment xml:lang="en">YYYY-MM-DD of coin appearance / launch date.</rdfs:comment>
+</owl:DatatypeProperty></div>
+          <p>or, in a more readable serialization:</p>
+          <div class="code N3" data-title="date-founded" data-type="N3">doacc:date-founded a owl:DatatypeProperty ;
+      rdfs:label "date-founded"@en ;
+      rdfs:comment "YYYY-MM-DD of coin appearance / launch date."@en ;
+      rdfs:domain doacc:Cryptocurrency ;
+      rdfs:range rdfs:Literal ;
+      ns:term_status "unstable" ;
+      skos:prefLabel "date-founded"@en .</div>
+          <p>Aside from providing basic language-specific labels and text strings, the relation is defined to be a <tt><span class="shy">owl:</span><span class="obj">DatatypeProperty</span></tt> of a <tt><span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt> and whose value is a <tt><span class="shy">rdf:</span><span class="obj">Literal</span></tt> (a string). It’s an <tt><span class="shy">owl:</span><span class="obj">DatatypeProperty</span></tt> because the value is a literal datum point rather than a pointer to an instance of say, a <tt><span class="shy">doacc:</span><span class="obj">ProtectionScheme</span></tt> because if it were, the relation would instead have to be declared to be a <tt><span class="shy">owl:</span><span class="obj">ObjecType</span></tt> with a specified range of <tt><span class="shy">doacc:</span><span class="obj">ProtectionScheme</span></tt>). The purpose of all this is to enable the machine to <em>process unaided</em> what it reads in the ontology and to be able to look up those definitions when they are referenced in statements about individual coins .e.g.: <dd><tt><span class="shy">ccs:</span><span class="subj">D8896b685-79c8-4a1f-a2dd-eee72eabb8e8</span> <span class="shy">rdf:</span><span class="pred">type</span> <span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt></dd></p>
+          <h3 class="ui header">Next gen coins</h3>
+          <p>The p2p protocol used by Bitcoin is also used by nearly all of the “1st gen” altcoins, it’s a defining characteristic. However, “next generation” cryptocurrencies typically (but not always) use a entirely different protocol and only a relatively few of the nextgens use another nextgen’s protocol (cryptonote, nxt, etc.), it’s almost an identifying characteristic. At the most recent count, there have been 35 different cryptocurrency protocols developed thus far, several are primarily asset-issuance vehicles.</p>
+          <p>2ndgen alts are sufficiently different to 1stgen alts to need an ontology of their own and that is very clearly an ecumenical matter best devolved to the development team.</p>
+          <h3 class="ui header">Assets of nextgen coins</h3>
+          <p>Not recorded as the features / properties are idiosyncratic to the specific asset issuance vehicle.</p>
+          <div class="ui hidden divider"></div>
+
+        </div>
+
+
+      </div>
+    </div>
+    
+  <div class="ui vertical inverted black footer segment">
+    <div class="container">
+      <div class="ui stackable inverted divided relaxed grid">
+
+        <div class="four wide column">
+          <h3 class="ui blue inverted header">Facts</h3>
+          <div class="ui inverted link list">
+            <a class="item" href="/facts-protectionschemes.html">protection schemes</a>
+            <a class="item" href="/facts-distributionschemes.html">distribution schemes</a>
+            <a class="item" href="/facts-powschemes.html">PoW schemes</a>
+            <a class="item" href="/facts-posschemes.html">PoS schemes</a>
+            <a class="item" href="/facts-protocols.html">protocols</a>
+            <a class="item" href="/facts-coins.html">altcoins</a>
+          </div>
+        </div>
+
+        <div class="four wide column">
+          <h3 class="ui orange inverted header">Concepts</h3>
+          <div class="ui inverted link list">
+            <a class="item" href="doacc-owl.html">DOACC</a>
+            <a class="item" href="ccy-owl.html">CCY</a>
+          </div>
+        </div>
+
+        <div class="four wide column">
+          <h3 class="ui green inverted header">Techniques</h3>
+          <div class="ui inverted link list">
+            <a class="item" href="rdf.html">Adding facts</a>
+            <a class="item" href="/techniques-reasoning.html">Reasoning</a>
+            <a class="item" href="sparql.html">asking questions</a>
+            <a class="item" href="faq.html">FAQ</a>
+          </div>
+        </div>
+
+        <div class="four wide column">
+          <h3 class="ui inverted header">DOACC <img style="padding-left: 1.3rem; height:32px; width:88px; vertical-align:middle;" src="/images/data-badge-5.png" alt="five star open Web data"/></h3>
+          <p></p>
+          <p class="terms-privacy">made with <i class="icon-rdf icon"></i> in the UK.</p>
+          <p class="terms-privacy">&copy; 2015</p>
+          <div class="ui inverted link list">
+            <a class="terms-privacy" href="about.html">About</a> |
+            <a class="terms-privacy" href="privacy-policy.html">Privacy</a> |
+            <a class="terms-privacy" href="terms.html">Terms</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui demo page dimmer">
+    <div class="content">
+      <div class="center"><h2 class="ui inverted icon header"><i class="mail icon"></i>Dimmer Message<br/><span class="sub header">Dimmer sub-header</span></h2></div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/javascript/jquery/jquery.humane_dates.js"></script>
+  <script type="text/javascript" src="/javascript/library/svg.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+  <script type="text/javascript" src="/javascript/library/easing.min.js"></script>
+  <script type="text/javascript" src="/javascript/library/typing.min.js"></script>
+  <script type="text/javascript" src="/javascript/library/n3-browser.min.js"></script>
+  <script type="text/javascript" src="/javascript/library/jsonld.js"></script>
+  <script src="/javascript/library/js-beautify/beautify.js"></script>
+  <script src="/javascript/library/js-beautify/beautify-html.js"></script>
+  <script src="/javascript/docs.js"></script>
+  <script src="/javascript/home.js"></script>
+  <script>
+    window.less = {
+      async        : true,
+      environment  : 'production',
+      fileAsync    : false,
+      onReady      : false,
+      useFileCache : true
+    };
+  </script>
+  <script type="text/javascript" src="/javascript/n3.js"></script>
+  <script src="/javascript/library/less.min.js"></script>
+
+  <script type="text/javascript">
+    // sgvizler.containerDrawAll("ex");
+    $('.ui .item').on('click', function() {
+      $('.ui .item').removeClass('active');
+      $(this).addClass('active');
+    });
+    $('.long.test.modal').modal('attach events', '.test.button', 'show');
+    $('.ui.modal').modal();
+    $('.ui.long.test.modal').modal();
+    $("#autocomplete").autocomplete({
+      prompt: "", source: "/coin/symbol"});
+    $('time').humaneDates();
+    $('.accordion').accordion();
+    /* beautify all code with class="raw" */
+    $('.raw').each(function() {beautify(this)});
+  </script>
+
+    
+
+  </body>
+</html>

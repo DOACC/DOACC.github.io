@@ -99,7 +99,7 @@ var card = function(coin) {
 
 var g = $rdf.graph();
 var coin = $rdf.sym('http://purl.org/net/bel-epa/doacc#Dd5bd8eaf-b432-440b-9502-3707aa57ff93');
-var docURI = "http://ashpool.bel-epa.com/cryptocurrency.n3";
+var docURI = "http://ashpool.bel-epa.com/altcoinfull.n3";
 var fetch = $rdf.fetcher(g);
 fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
     card(coin)
