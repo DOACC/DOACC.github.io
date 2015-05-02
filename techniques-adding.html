@@ -7,6 +7,7 @@
   <head>
     
   <style type="text/css">
+    tt.ttp {color: #55b;}
     .posttitle {
       background-color : yellow;
       color: black;
@@ -180,9 +181,33 @@
           </div>
 
           <h2 class="ui dividing header">Adding facts</h2>
-          <h3 class="ui header">Adding facts</h3>
-          <p>How to add DOACC information to web pages</p>
+          <h3 class="ui header">Careful now.</h3>
+          <p>A cautionary tale. The “animal game” attempts to guess which animal you have in mind by asking a series of yes/no questions about the animal’s characteristics - basically following a simple decision tree. If it fails to guess successfully, the program asks the user to supply the name of the animal-in-mind and a feature to distinguish that animal from the one in the failed guess. Try it for yourself: <a href="http://animalgame.com/">http://animalgame.com/</a>.
+          <p>As you may have independently discovered, it seems to provide users with endless hours of cynical amusement to feed the programme with non-existent animals distinguished by outrageous or offensive features:
+          <dd>computer: “Hello. Welcome to the animal game.”</dd>
+          <dd>...</dd>
+          <dd>...</dd>
+          <dd>computer: “Does it eat nuts?”</dd>
+          <dd>user: “Yes.”</dd>
+          <dd>computer: “Is it a <tt class="ttp">dormouse</tt>?”</dd>
+          <dd>user: “No.”</dd>
+          <dd>computer: “I give up. What animal did you have in mind?”</dd>
+          <dd>user: “A lesser-spotted cheeseburger”</dd>
+          <dd>computer: “What feature distinguishes a <tt class="ttp">lesser-spotted cheeseburger</tt> from a <tt class="ttp">dormouse</tt>?”</dd>
+          <dd>user: “It has stripes, sharp metal teeth and claws.”</dd>
+          <dd>computer: “Thank you”</dd></p>
+          <p>The next time the programme visits that part of the decision tree, it will dutifully enquire of the user, just at the point when the user is expecting a successful guess: “Does it have stripes, sharp metal teeth and claws?”</p>
+          <p><em>I've been cowardly; direct experience (the OU, early 80s) reveals that users typically supply distinguishing features that are NSFW in quite a profound way and it can come as a bit of shock to the unwary.</em></p>
 
+          <p>The principle is known as GIGO, short for “Garbage In, Garbage Out” and you are <strong>strongly</strong> admonished to keep the principle <em>very</em> clearly in mind when dealing with DOACC data --- because it is based on the tissue of lies, rafts of empty promises and towering edifices of personal delusion that seem to characterise typical bitcointalk ANN posts.</p>
+          <p>There are a few altcoins where the available Linux/Win/OSX binaries have been upgraded to v2.0 but the source code in the Github repository remains unchanged at v1.0. In such cases, the DOACC data for those coins is almost certainly partially (and indeterminately) outdated. In other cases, coin devs have made changes to the parameters, hash algo, logo, name, protection scheme --- much of which is recorded in the source but the corresponding DOACC statements has yet to be updated. Plans are afoot to programatically check the veracity of the DOACC statements by cross-referencing the actual repository code.</p>
+
+          <h3 class="ui header">A <em>very brief</em> case study in augmenting DOACC with additional data.</h3>
+          <p>To be frank, 2100+ entries is too much to comprehend in one pass. No, I'm quite sure of that; take a <a href="/altcoins.svg">look for yourself</a>. In order to populate the examples for this documentation it proved necessary to construct an arbitrary subset. I chose to use the top 20 marketcap coins, (using a [2:22] offset to avoid the overwhelming disproportion of BTC &amp; LTC data).</p>
+
+
+
+          <h3 class="ui header">“The Alice and Bob story” episode #3435</h3>
           <div prefix="dc: http://purl.org/dc/terms/ schema: http://schema.org/" resource="/alice/posts/trouble_with_bob" typeof="schema:BlogPosting">
               <h2 property="dc:title" content="Trouble">The trouble with Bob</h2>
               ...
