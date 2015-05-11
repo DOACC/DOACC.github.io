@@ -28,7 +28,6 @@
 
     <link rel="stylesheet" type="text/css" class="ui" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.5/semantic.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/dark.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/docs.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/rtl.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
@@ -64,7 +63,7 @@
     <script type="text/javascript" src="/javascript/rdflib/rdflib.js"></script>
 
   </head>
-  <body id="example" class="index" 
+  <body id="doacc" class="index" 
     prefix="dc: http://purl.org/dc/terms/ doacc: http://purl.org/net/bel-epa/doacc# ccs: http://purl.org/net/bel-epa/cc# skos: http://www.w3.org/2004/02/skos/core# foaf: http://xmlns.com/foaf/0.1/ fresnel: http://www.w3.org/2004/09/fresnel#">
     <noscript>
       <div class="noscript">
@@ -81,26 +80,59 @@
     <div class="item">
       <div class="ui small inverted header">Facts</div>
       <div class="menu">
-        <a class="item" href="altcoins.html">altcoins</a>
-        <a class="item" href="protectionschemes.html">protection schemes</a>
-        <a class="item" href="distributionschemes.html">distribution schemes</a>
+        <a class="item" href="/facts.html">Intro</a>
+        <a class="item" href="/facts-protectionschemes.html">Protection</a>
+        <a class="item" href="/facts-distributionschemes.html">Distribution</a>
+        <a class="item" href="/facts-powschemes.html">PoW</a>
+        <a class="item" href="/facts-posschemes.html">PoS</a>
+        <a class="item" href="/facts-protocols.html">Protocols</a>
+        <a class="item" href="/facts-coins.html">Coins</a>
+        <a class="item" href="/facts-future.html">Upcoming</a>
       </div>
     </div>
     <div class="item">
       <div class="ui small inverted header">Concepts</div>
       <div class="menu">
-        <a class="item" href="doacc-owl.html">DOACC</a>
-        <a class="item" href="ccy-owl.html">CCY</a>
+        <a class="item" href="/concepts.html">Intro</a>
+        <a class="item" href="/things-protectionschemes.html">Protection</a>
+        <a class="item" href="/things-distributionschemes.html">Distribution</a>
+        <a class="item" href="/things-powschemes.html">PoW</a>
+        <a class="item" href="/things-posschemes.html">PoS</a>
+        <a class="item" href="/things-protocols.html">Protocols</a>
+        <a class="item" href="/things-coins.html">Coins</a>
+        <a class="item" href="/doacc-owl.html">DOACC OWL</a>
+        <a class="item" href="/ccy-owl.html">CCY OWL</a>
       </div>
     </div>
     <div class="item">
-      <div class="ui small inverted header">Technology</div>
+      <div class="ui small inverted header">Techniques</div>
       <div class="menu">
-        <a class="item" href="rdf.html">Making statements</a>
-        <a class="item" href="sparql.html">Asking questions</a>
-        <a class="item" href="faq.html">FAQ</a>
+        <a class="item" href="/techniques.html">Intro</a>
+        <a class="item" href="/techniques-rdfa.html">DOM</a>
+        <a class="item" href="/techniques-querying.html">Query results</a>
+        <a class="item" href="/techniques-javascript.html">Javascript</a>
+        <a class="item" href="/techniques-interactive.html">Interactive</a>
+        <a class="item" href="/techniques-charting.html">Charting</a>
+        <a class="item" href="/techniques-graphing.html">Graphing</a>
+        <a class="item" href="/techniques-adding.html">Adding facts</a>
+        <a class="item" href="/techniques-reasoning.html">Reasoning</a>
       </div>
     </div>
+
+    <div class="item">
+      <div class="ui small inverted header">Etc</div>
+      <div class="menu">
+        <a class="item" href="about.html">About</a>
+        <a class="item" href="privacy-policy.html">Privacy</a>
+        <a class="item" href="terms.html">Terms</a>
+        <a class="item" href="/altcoins.svg">Altcoin cheatsheet</a>
+        <a class="item" href="/hercules-demo.html">SPARQL demo</a>
+        <a class="item" href="/rdfstore-demo.html">RDFstore demo</a>
+        <a class="item" href="/twitter-demo.html">RDF/a demo</a>
+      </div>
+    </div>
+
+
   </div>
 
   <div class="ui black big launch right attached fixed button"> <i class="content icon"></i> <span class="text">Menu</span>
@@ -181,66 +213,91 @@
           </div>
 
           <h2 class="ui dividing header">Adding facts</h2>
-          <h3 class="ui header">Careful now.</h3>
-          <p>A cautionary tale. The “animal game” attempts to guess which animal you have in mind by asking a series of yes/no questions about the animal’s characteristics - basically following a simple decision tree. If it fails to guess successfully, the program asks the user to supply the name of the animal-in-mind and a feature to distinguish that animal from the one in the failed guess. Try it for yourself: <a href="http://animalgame.com/">http://animalgame.com/</a>.
-          <p>As you may have independently discovered, it seems to provide users with endless hours of cynical amusement to feed the programme with non-existent animals distinguished by outrageous or offensive features:
-          <dd>computer: “Hello. Welcome to the animal game.”</dd>
-          <dd>...</dd>
-          <dd>...</dd>
-          <dd>computer: “Does it eat nuts?”</dd>
-          <dd>user: “Yes.”</dd>
-          <dd>computer: “Is it a <tt class="ttp">dormouse</tt>?”</dd>
-          <dd>user: “No.”</dd>
-          <dd>computer: “I give up. What animal did you have in mind?”</dd>
-          <dd>user: “A lesser-spotted cheeseburger”</dd>
-          <dd>computer: “What feature distinguishes a <tt class="ttp">lesser-spotted cheeseburger</tt> from a <tt class="ttp">dormouse</tt>?”</dd>
-          <dd>user: “It has stripes, sharp metal teeth and claws.”</dd>
-          <dd>computer: “Thank you”</dd></p>
-          <p>The next time the programme visits that part of the decision tree, it will dutifully enquire of the user, just at the point when the user is expecting a successful guess: “Does it have stripes, sharp metal teeth and claws?”</p>
-          <p><em>I've been cowardly; direct experience (the OU, early 80s) reveals that users typically supply distinguishing features that are NSFW in quite a profound way and it can come as a bit of shock to the unwary.</em></p>
-
-          <p>The principle is known as GIGO, short for “Garbage In, Garbage Out” and you are <strong>strongly</strong> admonished to keep the principle <em>very</em> clearly in mind when dealing with DOACC data --- because it is based on the tissue of lies, rafts of empty promises and towering edifices of personal delusion that seem to characterise typical bitcointalk ANN posts.</p>
-          <p>There are a few altcoins where the available Linux/Win/OSX binaries have been upgraded to v2.0 but the source code in the Github repository remains unchanged at v1.0. In such cases, the DOACC data for those coins is almost certainly partially (and indeterminately) outdated. In other cases, coin devs have made changes to the parameters, hash algo, logo, name, protection scheme --- much of which is recorded in the source but the corresponding DOACC statements has yet to be updated. Plans are afoot to programatically check the veracity of the DOACC statements by cross-referencing the actual repository code.</p>
-
           <h3 class="ui header">A <em>very brief</em> case study in augmenting DOACC with additional data.</h3>
           <p>To be frank, 2100+ entries is too much to comprehend in one pass. No, I'm quite sure of that; take a <a href="/altcoins.svg">look for yourself</a>. In order to populate the examples for this documentation it proved necessary to construct an arbitrary subset. I chose to use the top 20 marketcap coins, (using a [2:22] offset to avoid the overwhelming disproportion of BTC &amp; LTC data).</p>
+          <p>I worked through the archive.org records for coinmarketcap.com for the last 12 months, month by month. Sponging up the data from the web page is relatively straightforward and as an example, this is what the row of data for Stellar can be boiled down to:
+          <div class="code json" data-title="Example post datum" data-type="json">{
+  "st": "ok",
+  "nm": "Stellar",
+  "sy": "STR",
+  "mcu": 12951957.9384,
+  "mcb": 52836.5556735,
+  "pu": 0.00269609,
+  "pb": 1.09985e-05,
+  "ps": "pos",
+  "ch": 4803978331,
+  "vu": 21592.5,
+  "vb": 88.0852,
+  "hu": -1.23,
+  "hb": -1.00,
+  "du": 0.43,
+  "db": 3.81,
+  "wu": -3.42,
+  "wb": -2.46
+}</div>  
+          <p>Each of the monthly postings of data must record the date and pertaining BTC/USD exchange rate price, for later reconstruction of $ values. Each update of the coinmarketcap page is a fresh posting of data. A “Post” thing is indicated, stating the date of posting and the BTC-USD price pertaining at that time.</p>
+          <p>For the datum points themselves, a “Datum” thing will be needed to make statements about the contents of each of the row cells. The outline below is rendered in Notation3 format for brevity and just hits the high points:
+          <div class="code n3" data-title="Coinmarketcap mini-ontology" data-type="n3">:CMPost a owl:Class ;
+      rdfs:comment "coinmarketcap.com post"@en ;
+      skos:prefLabel "CMPost"@en .
 
+:date a owl:DatatypeProperty ;
+      rdfs:domain :CMPost ;
+      rdfs:comment "The timestamp of the post"@en ;
+      skos:prefLabel "date"@en .
 
+:CMPostDatum a owl:Class ;
+      rdfs:comment "datum from a coinmarketcap.com post"@en ;
+      skos:prefLabel "CMPostDatum"@en .
 
-          <h3 class="ui header">“The Alice and Bob story” episode #3435</h3>
-          <div prefix="dc: http://purl.org/dc/terms/ schema: http://schema.org/" resource="/alice/posts/trouble_with_bob" typeof="schema:BlogPosting">
-              <h2 property="dc:title" content="Trouble">The trouble with Bob</h2>
-              ...
-              <h3 property="dc:creator schema:creator" resource="#me">Alice</h3>
-              <div property="schema:articleBody">
-                <p>The trouble with Bob is that he takes much better photos than I do:</p>
-              </div>
-             ...
-          </div>
+:cmp a owl:ObjectProperty ;
+      rdfs:domain :CMPostDatum ;
+      rdfs:range :CMPost ;
+      rdfs:comment "contextual post"@en ;
+      skos:prefLabel "cmp"@en .
 
-          <div
-            xmlns:fresnel="http://www.w3.org/2004/09/fresnel#"
-            typeof="fresnel:Group"
-            style="display: none;"
-            >
-            <div rev="fresnel:group">
-              <div typeof="fresnel:Format">
-                <div property="fresnel:instanceFormatDomain">
-                  select: [ "s", "title" ],
-                  where:
-                  [
-                    { pattern: [ "?s", "http://purl.org/dc/terms/", "?title" ], setUserData: true }
-                  ]
-                </div>
-                
-                <span property="fresnel:resourceStyle" datatype="fresnel:styleClass">posttitle</span>
-              </div>
-            </div>
-          </div>
+:marketcap a owl:DatatypeProperty ;
+      rdfs:domain :CMPostDatum ;
+      rdfs:range xsd:float ;
+      rdfs:comment "Market capitalisation"@en ;
+      skos:prefLabel "marketcap"@en .</div>
+        <p>And examples of a post and related datum point also rendered in Notation3:</p>
+          <div class="code n3" data-title="Coinmarketcap mini-ontology" data-type="n3">:cmp-1 a :CMPost ;
+      dc:date "2014-01-29T10:35:00"^^xsd:date ;
+      :btc "817.62"^^xsd:float .
+
+:cmpd-1 a :CMPostDatum ;
+      :cmp :cmp-1 ;
+      :cryptocurrency doacc:D1edd900c-399e-471c-87a3-c214ce3c969d ;
+      :daily "0.0"^^xsd:float ;
+      :marketcap "2457847.0"^^xsd:float ;
+      :price "2.458e-05"^^xsd:float ;
+      :qual 2 ;
+      :stale false ;
+      :volume "110.0"^^xsd:float .</div>
+          <p>Feel free to grab <a href="/cmdata.n3" title="Coinmarketcap data for 2014">the full content</a> (268K)</p>
+          <p>The <a href="/techniques-charting.html">Charting</a> page (also see tab above) goes into detail about getting the data into the charting library but the core activity is outlined below:</p>
+          <div class="code javascript" data-title="Core of processing added data" data-type="javascript">var listout = function() { // a callback function, runs after the data is retrieved
+      cmpno = 'cmp-'+'2'; // arbitrary example
+      dt = g.any(CCS(cmpno), DC('date'), null); // date, for title
+      cmpds = g.each(null, CCS('cmp'), CCS(cmpno)); // the datapoints for the post
+      var res = $.map(cmpds.slice(2,22), function(cmp) { // map over the datum points
+          var cn = g.any(g.any(cmp, CCS('cryptocurrency'), null), DOACC('symbol'), null); // get the coin symbol
+          var val = g.any(cmp, CCS('marketcap'), null); // read the marketcap value
+          return  {"label": cn.value, "value": parseFloat(val.value).toFixed(0)} // return a dictionary
+      });
+      data = $.map(res, function(p) {return p['value'] * 10});  // create list of size-adjusted values
+      labels = $.map(res, function(p) {return p['label']}); // create list of labels
+      ...  // the lists are passed to the chart library.
+};
+var g = $rdf.graph(); // instantiate the graph
+var docURI = "http://localhost.localdomain/altcoin.n3"; // specify the source
+var fetch = $rdf.fetcher(g); // bind the graph and return the fetcher
+fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
+      listout() // callback, see above
+});</div>
           <div class="ui hidden divider"></div>
-
         </div>
-
 
       </div>
     </div>
@@ -264,6 +321,10 @@
         <div class="four wide column">
           <h3 class="ui orange inverted header">Concepts</h3>
           <div class="ui inverted link list">
+            <a class="item" href="/things-protectionschemes.html">protection schemes</a>
+            <a class="item" href="/things-distributionschemes.html">distribution schemes</a>
+            <a class="item" href="/things-powschemes.html">PoW schemes</a>
+            <a class="item" href="/things-posschemes.html">PoS schemes</a>
             <a class="item" href="doacc-owl.html">DOACC</a>
             <a class="item" href="ccy-owl.html">CCY</a>
           </div>
@@ -272,9 +333,9 @@
         <div class="four wide column">
           <h3 class="ui green inverted header">Techniques</h3>
           <div class="ui inverted link list">
-            <a class="item" href="rdf.html">Adding facts</a>
-            <a class="item" href="/techniques-reasoning.html">Reasoning</a>
-            <a class="item" href="sparql.html">asking questions</a>
+            <a class="item" href="/techniques-adding.html">adding facts</a>
+            <a class="item" href="/techniques-reasoning.html">reasoning</a>
+            <a class="item" href="/techniques-querying.html">asking questions</a>
             <a class="item" href="faq.html">FAQ</a>
           </div>
         </div>
@@ -343,13 +404,6 @@
   </script>
 
     
-<script type="text/javascript" src="/javascript/jquery/jquery.xdomainajax.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.5.1/build/yuiloader/yuiloader-beta-min.js" >/**/</script>
-<script type="text/javascript" src="/javascript/ubiquity-rdfa.js"></script>
-<script type="text/javascript">
-var n3data = '@prefix dc: <http://purl.org/dc/elements/1.1/> . @prefix doacc: <http://purl.org/net/bel-epa/doacc#> . @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . @prefix skos: <http://www.w3.org/2004/02/skos/core#> . @prefix xml: <http://www.w3.org/XML/1998/namespace> . @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .  doacc:D001c782e-f6dc-4833-bc0a-2b5049432ab9 a doacc:Cryptocurrency ;     rdfs:label "Fixcoin"^^xsd:string ;     dc:title "Fixcoin"@en ;     doacc:coin doacc:D5f3385ab-8b4b-4d1e-bf2a-149854a14bb6 ;     doacc:expiration "extant"@en ;     doacc:image "fixcoin_fix.png"^^xsd:anyURI ;     doacc:incept "2014-04"^^xsd:string ;     doacc:pow doacc:D338257f8-402f-4c76-969b-6fc041d52e40 ;     doacc:protection-scheme doacc:D451a49d8-c9e7-46e5-8b8d-bcbe16f75c24 ;     doacc:protocol doacc:Db8ade99f-11f1-476b-ae77-03c005c1bb66 ;     doacc:release doacc:D6ece0a37-683c-4a22-8b7b-22ba04b6c3a9 ;     doacc:symbol "FIX"^^xsd:string ;     rdfs:comment "Scrypt based cryptocoin with block range coin rewards and 27 million total coins."^^xsd:string ;     skos:prefLabel "Fixcoin"@en .  doacc:D008d4c2d-3d0e-4390-98eb-8933fc0408cf a doacc:Cryptocurrency ;     rdfs:label "IceCoin"^^xsd:string ;     dc:title "IceCoin"@en ;     doacc:coin doacc:Def60415b-1140-40f5-94fd-d0e352627547 ;     doacc:expiration "defunct"@en ;     doacc:image "icecoin_ice.png"^^xsd:anyURI ;     doacc:incept "2013-06"^^xsd:string ;     doacc:pow doacc:D338257f8-402f-4c76-969b-6fc041d52e40 ;     doacc:protection-scheme doacc:D451a49d8-c9e7-46e5-8b8d-bcbe16f75c24 ;     doacc:protocol doacc:Db8ade99f-11f1-476b-ae77-03c005c1bb66 ;     doacc:release doacc:D914bf19d-c4ce-43a6-a42b-4c55f289ef8e ;     doacc:symbol "ICE"^^xsd:string ;     rdfs:comment "DoA, relaunched by someone else and dead again."^^xsd:string ;     skos:prefLabel "IceCoin"@en .  doacc:D00add470-26f1-49a2-8ccd-f9a417dd624e a doacc:Cryptocurrency ;     rdfs:label "Distrocoin"^^xsd:string ;     dc:title "Distrocoin"@en ;     doacc:block-reward "50"^^xsd:string ;     doacc:coin doacc:D4fd7560b-c2bb-46d4-9d83-014ee004c8e6 ;     doacc:date-founded "2014-05-12"^^xsd:date ;     doacc:diff-adjustment "(\'h\', 1000000, \'b\')"^^xsd:string ;     doacc:expiration "listed"@en ;     doacc:image "distrocoin_distro.png"^^xsd:anyURI ;     doacc:incept "2014-05"^^xsd:string ;     doacc:pow doacc:D338257f8-402f-4c76-969b-6fc041d52e40 ;     doacc:premine "0.7%"^^xsd:string ;     doacc:protection-scheme doacc:D451a49d8-c9e7-46e5-8b8d-bcbe16f75c24 ;     doacc:protocol doacc:Db8ade99f-11f1-476b-ae77-03c005c1bb66 ;     doacc:release doacc:Dd8471951-2352-42ce-919e-aa2c9f962035 ;     doacc:retarget-time "1 block"^^xsd:string ;     doacc:symbol "DISTRO"^^xsd:string ;     doacc:total-coins "100000000"^^xsd:string ;     doacc:website "https://raxe.io"^^xsd:anyURI ;     rdfs:comment "Stopped 5/15/2014. Sources removed."^^xsd:string ;     skos:prefLabel "Distrocoin"@en .';
-
-</script>
 
   </body>
 </html>

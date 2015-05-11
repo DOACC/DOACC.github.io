@@ -19,7 +19,6 @@
 
     <link rel="stylesheet" type="text/css" class="ui" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.5/semantic.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/dark.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/docs.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/rtl.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
@@ -55,7 +54,7 @@
     <script type="text/javascript" src="/javascript/rdflib/rdflib.js"></script>
 
   </head>
-  <body id="example" class="index" 
+  <body id="doacc" class="index" 
     prefix="dc: http://purl.org/dc/terms/ doacc: http://purl.org/net/bel-epa/doacc# ccs: http://purl.org/net/bel-epa/cc# skos: http://www.w3.org/2004/02/skos/core# foaf: http://xmlns.com/foaf/0.1/ fresnel: http://www.w3.org/2004/09/fresnel#">
     <noscript>
       <div class="noscript">
@@ -72,26 +71,59 @@
     <div class="item">
       <div class="ui small inverted header">Facts</div>
       <div class="menu">
-        <a class="item" href="altcoins.html">altcoins</a>
-        <a class="item" href="protectionschemes.html">protection schemes</a>
-        <a class="item" href="distributionschemes.html">distribution schemes</a>
+        <a class="item" href="/facts.html">Intro</a>
+        <a class="item" href="/facts-protectionschemes.html">Protection</a>
+        <a class="item" href="/facts-distributionschemes.html">Distribution</a>
+        <a class="item" href="/facts-powschemes.html">PoW</a>
+        <a class="item" href="/facts-posschemes.html">PoS</a>
+        <a class="item" href="/facts-protocols.html">Protocols</a>
+        <a class="item" href="/facts-coins.html">Coins</a>
+        <a class="item" href="/facts-future.html">Upcoming</a>
       </div>
     </div>
     <div class="item">
       <div class="ui small inverted header">Concepts</div>
       <div class="menu">
-        <a class="item" href="doacc-owl.html">DOACC</a>
-        <a class="item" href="ccy-owl.html">CCY</a>
+        <a class="item" href="/concepts.html">Intro</a>
+        <a class="item" href="/things-protectionschemes.html">Protection</a>
+        <a class="item" href="/things-distributionschemes.html">Distribution</a>
+        <a class="item" href="/things-powschemes.html">PoW</a>
+        <a class="item" href="/things-posschemes.html">PoS</a>
+        <a class="item" href="/things-protocols.html">Protocols</a>
+        <a class="item" href="/things-coins.html">Coins</a>
+        <a class="item" href="/doacc-owl.html">DOACC OWL</a>
+        <a class="item" href="/ccy-owl.html">CCY OWL</a>
       </div>
     </div>
     <div class="item">
-      <div class="ui small inverted header">Technology</div>
+      <div class="ui small inverted header">Techniques</div>
       <div class="menu">
-        <a class="item" href="rdf.html">Making statements</a>
-        <a class="item" href="sparql.html">Asking questions</a>
-        <a class="item" href="faq.html">FAQ</a>
+        <a class="item" href="/techniques.html">Intro</a>
+        <a class="item" href="/techniques-rdfa.html">DOM</a>
+        <a class="item" href="/techniques-querying.html">Query results</a>
+        <a class="item" href="/techniques-javascript.html">Javascript</a>
+        <a class="item" href="/techniques-interactive.html">Interactive</a>
+        <a class="item" href="/techniques-charting.html">Charting</a>
+        <a class="item" href="/techniques-graphing.html">Graphing</a>
+        <a class="item" href="/techniques-adding.html">Adding facts</a>
+        <a class="item" href="/techniques-reasoning.html">Reasoning</a>
       </div>
     </div>
+
+    <div class="item">
+      <div class="ui small inverted header">Etc</div>
+      <div class="menu">
+        <a class="item" href="about.html">About</a>
+        <a class="item" href="privacy-policy.html">Privacy</a>
+        <a class="item" href="terms.html">Terms</a>
+        <a class="item" href="/altcoins.svg">Altcoin cheatsheet</a>
+        <a class="item" href="/hercules-demo.html">SPARQL demo</a>
+        <a class="item" href="/rdfstore-demo.html">RDFstore demo</a>
+        <a class="item" href="/twitter-demo.html">RDF/a demo</a>
+      </div>
+    </div>
+
+
   </div>
 
   <div class="ui black big launch right attached fixed button"> <i class="content icon"></i> <span class="text">Menu</span>
@@ -170,7 +202,34 @@
             <a class="item" href="/techniques-reasoning.html">Reasoning</a>
           </div>
           <h2 class="ui dividing header">Accessing the dataset, using it, re-using it, augmenting it, burying it in soft peat</h2>
-          <h3 class="ui header">It’s still all about the facts.</h3>
+          <p>The subnavigation menu (above) presents links to various (hacked-up, scribbled) examples of using the DOACC dataset. The dataset is published as <a href="https://en.wikipedia.org/wiki/Resource_Description_Framework" title="Wikipedia page">RDF</a> (<a href="http://dbpedia.org/page/Resource_Description_Framework" title="dbpedia page">RDF</a>), mostly self-documenting and there are third-party server-side and client-side libraries specifically designed for RDF data-slinging.</p>
+          <h3 class="ui header">Accessing the dataset</h3>
+          <p>The dataset, the DOACC and CCY ontologies are all maintained as git repositories made publicly accessible on Github:
+            <dd><a href="https://github.com/DOACC/doacc" title="Visit the DOACC Github repository">DOACC ontology</a></dd>
+            <dd><a href="https://github.com/DOACC/ccy" title="Visit the CCY Github repository">CCY ontology</a></dd>
+            <dd><a href="https://github.com/DOACC/individuals" title="Visit the dataset Github repository">dataset</a></dd>
+            <dd><a href="https://github.com/DOACC/imprint" title="Visit the images Github repository">images</a></dd>
+          </p>
+          <h3 class="ui header">Using it. Careful now.</h3>
+          <p>A cautionary tale. The “animal game” attempts to guess which animal you have in mind by asking a series of yes/no questions about the animal’s characteristics - basically following a simple decision tree. If it fails to guess successfully, the program asks the user to supply the name of the animal-in-mind and a feature to distinguish that animal from the one in the failed guess. Try it for yourself: <a href="http://animalgame.com/">http://animalgame.com/</a>.
+          <p>As you may have independently discovered, it seems to provide users with endless hours of cynical amusement to feed the programme with non-existent animals distinguished by outrageous or offensive features:
+          <dd>computer: “Hello. Welcome to the animal game.”</dd>
+          <dd>...</dd>
+          <dd>...</dd>
+          <dd>computer: “Does it eat nuts?”</dd>
+          <dd>user: “Yes.”</dd>
+          <dd>computer: “Is it a <tt class="ttp">dormouse</tt>?”</dd>
+          <dd>user: “No.”</dd>
+          <dd>computer: “I give up. What animal did you have in mind?”</dd>
+          <dd>user: “A lesser-spotted cheeseburger”</dd>
+          <dd>computer: “What feature distinguishes a <tt class="ttp">lesser-spotted cheeseburger</tt> from a <tt class="ttp">dormouse</tt>?”</dd>
+          <dd>user: “It has stripes, sharp metal teeth and claws.”</dd>
+          <dd>computer: “Thank you”</dd></p>
+          <p>The next time the programme visits that part of the decision tree, it will dutifully enquire of the user, just at the point when the user is expecting a successful guess: “Does it have stripes, sharp metal teeth and claws?”</p>
+          <p><em>I've been cowardly; direct experience (the OU, early 80s, user population of “mature” students) reveals that mischief-makers typically supply distinguishing features that are NSFW in quite a profound way and it can come as a bit of shock to the unwary.</em></p>
+
+          <p>The principle is known as GIGO, short for “Garbage In, Garbage Out” and you are <strong>strongly</strong> admonished to keep the principle <em>very</em> clearly in mind when dealing with DOACC data --- because it is based on the tissue of lies, rafts of empty promises and towering edifices of personal delusion that seem to characterise typical bitcointalk ANN posts.</p>
+          <h3 class="ui header">Re-use ... it’s still all about the facts.</h3>
           <p>Working with the DOACC dataset is to work with basic facts about altcoins</p>
           <div class="ui segment">
             <pre class="ui inverted"><span class="shy">ccs:<span class="subj">Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span> doacc:<span class="pred">symbol</span> <span class="obj">"DOGE"</span>^^xsd:string ;</span></pre>
@@ -195,14 +254,50 @@ fetch.nowOrWhenFetched(docURI, undefined, function(ok, body, xhr) { // @@ check 
 });</div>
           </div>
           <p>Handling the retrieval and processing via a callback is a necessary evil on the client side in order that the entire dataset is fully retrieved <em>before</em> processing begins. Server-side processing is less demanding of the user’s machine and the results can also be usefully cached for faster response.</p> 
+          <h3 class="ui header">Augmenting the data.</h3>
+          <p>One of the under-appreciated delights of working with RDF sources that draw from the same vocabulary is the ability to just (literally) add another set of statements. For example, we could reach out and pick up “in danger of being delisted” from the Bittrex API <a href="https://bittrex.com/api/v1.1/public/getmarkets" title="Bittrex markets">“getmarkets”</a> call.</p>
+          <p>The call returns data of the form:</p>
+          <div class="code javascript" data-title="market entry" data-type="javascript">{
+"MarketCurrency":"XWC",
+"BaseCurrency":"BTC",
+"MarketCurrencyLong":"WhiteCoin",
+"BaseCurrencyLong":"Bitcoin",
+"MinTradeSize":0.00000001,
+"MarketName":"BTC-XWC",
+"IsActive":true,
+"Created":"2014-04-14T00:00:00",
+"Notice":"This market is in danger of de-listing due to low trade volume and lack of
+user interest. It may be removed on May 15th unless the average daily trade volume
+for the last 7 days exceeds 0.2 BTC.",
+"IsSponsored":null,
+"LogoUrl":"https://i.imgur.com/ZK80S7l.png"
+}</div>
+          <p>The information pertains to the coin whose <span class="shy">doacc:<span class="pred">name</span></span> is <tt>"Whitecoin"^^xsd:string</tt> and whose <span class="shy">doacc:<span class="pred">symbol</span></span> is <tt>"XWC"^^xsd:string</tt>, i.e. <tt><span class="shy">doacc:<span class="subj">D3c844f6a-04ec-4eb0-a1df-8a096b8c76f2</span></span></tt>. The <tt>^^xsd:string</tt> construction specifies the datatype of the information. The information is added in the form of new statements about the coin:</p>
+          <pre><span class="shy">doacc:<span class="subj">D3c844f6a-04ec-4eb0-a1df-8a096b8c76f2</span> doacc:<span class="pred">endangered</span> <span class="obj">"True"^^xsd:boolean</span></span> ;
+    doacc:<span class="pred">firstlisted</span> <span class="obj">"2014-04-14T00:00:00"^^xsd:dateTimeStamp</span></span> .</pre>
+          <p>The statements can be straightforwardly added to the existing DOACC graph either programatically or by reading a saved file of statements.</p>
+          <p>Although neither of <span class="shy">doacc:<span class="pred">endangered</span></span> and <span class="shy">doacc:<span class="pred">firstlisted</span></span> appears in the DOACC ontology, that’s not a barrier to private/informal use. It only starts to become an issue when you either want to publish your statements or want to perform reasoning on the dataset. One solution is to add the relations to a local copy of the ontology, another solution would be to lobby for the inclusion of the relations in the “official” DOACC ontology or simply submit a PR.</p>
+          <h3 class="ui header">Burying in soft peat</h3>
+          <div class="ui accordion">
+            <div class="title">
+              <i class="dropdown icon"></i>
+              Peat gatherers, Westhay, the Somerset levels (just down the road from DOACC’s spiritual home)
+            </div>
+            <div class="content">
+              <div class="ui segment">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Peat_gatherers.JPG/565px-Peat_gatherers.JPG" alt="Wikimedia image"/>
+              </div>
+            </div>
+          </div>
+          <h3 class="ui header">In the future, there will be robots.</h3>
+          <p>There are a few altcoins where the available Linux/Win/OSX binaries have been upgraded to v2.0 but the source code in the Github repository remains unchanged at v1.0. In such cases, the DOACC data for those coins is almost certainly partially and indeterminately <span style="text-decoration: line-through">outdated</span> incorrect. In other cases, coin devs have made changes to the parameters, hash algo, logo, name, protection scheme --- much of which is recorded in the source but the corresponding DOACC statements <span style="text-decoration: line-through">have yet to be updated</span> are incorrect. Plans are afoot to programatically check the veracity of the DOACC statements by cross-referencing the actual repository code.</p>
           <h3 class="ui header">JS libraries for working with RDF.</h3>
           <div class="ui segment">
             <ul>
-              <li><p><a href="/javascript/library/mashlib.js" title="mashlib.js source">mashlib.js</a>, distilled from tabulator to provide a separate, standlone library --- see below for example.</p></li>
-              <li><p><a href="/javascript/library/hercules.js" title="hercules.js source">Hercules</a> simple APIs for handling RDF, RDFS and SPARQL --- <a href="hercules-demo.html" title="Hercules demo">demo</a>.</p></li>
-              <li><p><a href="/javascript/rdflib/dist/rdflib.js" title="rdflib.js source">rdflib.js</a>, javascript RDF library for browsers and NodeJS.</p></li>
-              <li><p><a href="/javascript/library/rdfstore-js/rdf_store.js" title="rdfstore-js">rdfstore-js</a> Antonio Garrote’s RDF store and SPARQL query library --- <a href="https://github.com/antoniogarrote/rdfstore-js" title="Github repository"></a> <a href="rdfstore-demo.html" title="Demo">demo</a></p></li>
-              <li><p><a href="/javascript/library/backplane/backplane.js" title="Backplane library">backplane.js</a> (<a href="https://code.google.com/p/backplanejs/" title="Google code repository">Google code</a>) in-browser RDF/RDFa parser, store and query --- <a href="twitter-demo.html" title="Twitter demo">demo</a>.</p></li>
+              <li><p><a href="/javascript/library/mashlib.js" title="mashlib.js source">mashlib.js</a>: tabulator, distilled into a standlone library --- see <a href="/techniques-adding.html" title="mashlib.js example in “Adding facts”">Adding facts</a> for an example.</p></li>
+              <li><p><a href="/javascript/library/hercules.js" title="hercules.js source">Hercules</a> simple APIs for handling RDF, RDFS and SPARQL --- <a href="hercules-demo.html" title="Hercules demo">demo with DOACC data</a>.</p></li>
+              <li><p><a href="/javascript/library/rdfstore-js/rdf_store.js" title="rdfstore-js">rdfstore-js</a> Antonio Garrote’s RDF store and SPARQL query library --- <a href="https://github.com/antoniogarrote/rdfstore-js" title="Github repository"></a> <a href="rdfstore-demo.html" title="Demo">demo with DOACC data</a></p></li>
+              <li><p><a href="/javascript/library/backplane/backplane.js" title="Backplane library">backplane.js</a> (<a href="https://code.google.com/p/backplanejs/" title="Google code repository">Google code</a>) in-browser RDF/RDFa parser, store and query --- <a href="twitter-demo.html" title="Twitter demo">demo with DOACC data</a>.</p></li>
             </ul>
           </div>
           <div class="ui hidden divider"></div>
@@ -230,6 +325,10 @@ fetch.nowOrWhenFetched(docURI, undefined, function(ok, body, xhr) { // @@ check 
         <div class="four wide column">
           <h3 class="ui orange inverted header">Concepts</h3>
           <div class="ui inverted link list">
+            <a class="item" href="/things-protectionschemes.html">protection schemes</a>
+            <a class="item" href="/things-distributionschemes.html">distribution schemes</a>
+            <a class="item" href="/things-powschemes.html">PoW schemes</a>
+            <a class="item" href="/things-posschemes.html">PoS schemes</a>
             <a class="item" href="doacc-owl.html">DOACC</a>
             <a class="item" href="ccy-owl.html">CCY</a>
           </div>
@@ -238,9 +337,9 @@ fetch.nowOrWhenFetched(docURI, undefined, function(ok, body, xhr) { // @@ check 
         <div class="four wide column">
           <h3 class="ui green inverted header">Techniques</h3>
           <div class="ui inverted link list">
-            <a class="item" href="rdf.html">Adding facts</a>
-            <a class="item" href="/techniques-reasoning.html">Reasoning</a>
-            <a class="item" href="sparql.html">asking questions</a>
+            <a class="item" href="/techniques-adding.html">adding facts</a>
+            <a class="item" href="/techniques-reasoning.html">reasoning</a>
+            <a class="item" href="/techniques-querying.html">asking questions</a>
             <a class="item" href="faq.html">FAQ</a>
           </div>
         </div>

@@ -25,7 +25,6 @@ span.largefriendly {color: #7407EA;}
 
     <link rel="stylesheet" type="text/css" class="ui" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.5/semantic.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/dark.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/docs.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/rtl.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
@@ -61,7 +60,7 @@ span.largefriendly {color: #7407EA;}
     <script type="text/javascript" src="/javascript/rdflib/rdflib.js"></script>
 
   </head>
-  <body id="example" class="index" 
+  <body id="doacc" class="index" 
     prefix="dc: http://purl.org/dc/terms/ doacc: http://purl.org/net/bel-epa/doacc# ccs: http://purl.org/net/bel-epa/cc# skos: http://www.w3.org/2004/02/skos/core# foaf: http://xmlns.com/foaf/0.1/ fresnel: http://www.w3.org/2004/09/fresnel#">
     <noscript>
       <div class="noscript">
@@ -78,26 +77,59 @@ span.largefriendly {color: #7407EA;}
     <div class="item">
       <div class="ui small inverted header">Facts</div>
       <div class="menu">
-        <a class="item" href="altcoins.html">altcoins</a>
-        <a class="item" href="protectionschemes.html">protection schemes</a>
-        <a class="item" href="distributionschemes.html">distribution schemes</a>
+        <a class="item" href="/facts.html">Intro</a>
+        <a class="item" href="/facts-protectionschemes.html">Protection</a>
+        <a class="item" href="/facts-distributionschemes.html">Distribution</a>
+        <a class="item" href="/facts-powschemes.html">PoW</a>
+        <a class="item" href="/facts-posschemes.html">PoS</a>
+        <a class="item" href="/facts-protocols.html">Protocols</a>
+        <a class="item" href="/facts-coins.html">Coins</a>
+        <a class="item" href="/facts-future.html">Upcoming</a>
       </div>
     </div>
     <div class="item">
       <div class="ui small inverted header">Concepts</div>
       <div class="menu">
-        <a class="item" href="doacc-owl.html">DOACC</a>
-        <a class="item" href="ccy-owl.html">CCY</a>
+        <a class="item" href="/concepts.html">Intro</a>
+        <a class="item" href="/things-protectionschemes.html">Protection</a>
+        <a class="item" href="/things-distributionschemes.html">Distribution</a>
+        <a class="item" href="/things-powschemes.html">PoW</a>
+        <a class="item" href="/things-posschemes.html">PoS</a>
+        <a class="item" href="/things-protocols.html">Protocols</a>
+        <a class="item" href="/things-coins.html">Coins</a>
+        <a class="item" href="/doacc-owl.html">DOACC OWL</a>
+        <a class="item" href="/ccy-owl.html">CCY OWL</a>
       </div>
     </div>
     <div class="item">
-      <div class="ui small inverted header">Technology</div>
+      <div class="ui small inverted header">Techniques</div>
       <div class="menu">
-        <a class="item" href="rdf.html">Making statements</a>
-        <a class="item" href="sparql.html">Asking questions</a>
-        <a class="item" href="faq.html">FAQ</a>
+        <a class="item" href="/techniques.html">Intro</a>
+        <a class="item" href="/techniques-rdfa.html">DOM</a>
+        <a class="item" href="/techniques-querying.html">Query results</a>
+        <a class="item" href="/techniques-javascript.html">Javascript</a>
+        <a class="item" href="/techniques-interactive.html">Interactive</a>
+        <a class="item" href="/techniques-charting.html">Charting</a>
+        <a class="item" href="/techniques-graphing.html">Graphing</a>
+        <a class="item" href="/techniques-adding.html">Adding facts</a>
+        <a class="item" href="/techniques-reasoning.html">Reasoning</a>
       </div>
     </div>
+
+    <div class="item">
+      <div class="ui small inverted header">Etc</div>
+      <div class="menu">
+        <a class="item" href="about.html">About</a>
+        <a class="item" href="privacy-policy.html">Privacy</a>
+        <a class="item" href="terms.html">Terms</a>
+        <a class="item" href="/altcoins.svg">Altcoin cheatsheet</a>
+        <a class="item" href="/hercules-demo.html">SPARQL demo</a>
+        <a class="item" href="/rdfstore-demo.html">RDFstore demo</a>
+        <a class="item" href="/twitter-demo.html">RDF/a demo</a>
+      </div>
+    </div>
+
+
   </div>
 
   <div class="ui black big launch right attached fixed button"> <i class="content icon"></i> <span class="text">Menu</span>
@@ -282,6 +314,10 @@ span.largefriendly {color: #7407EA;}
         <div class="four wide column">
           <h3 class="ui orange inverted header">Concepts</h3>
           <div class="ui inverted link list">
+            <a class="item" href="/things-protectionschemes.html">protection schemes</a>
+            <a class="item" href="/things-distributionschemes.html">distribution schemes</a>
+            <a class="item" href="/things-powschemes.html">PoW schemes</a>
+            <a class="item" href="/things-posschemes.html">PoS schemes</a>
             <a class="item" href="doacc-owl.html">DOACC</a>
             <a class="item" href="ccy-owl.html">CCY</a>
           </div>
@@ -290,9 +326,9 @@ span.largefriendly {color: #7407EA;}
         <div class="four wide column">
           <h3 class="ui green inverted header">Techniques</h3>
           <div class="ui inverted link list">
-            <a class="item" href="rdf.html">Adding facts</a>
-            <a class="item" href="/techniques-reasoning.html">Reasoning</a>
-            <a class="item" href="sparql.html">asking questions</a>
+            <a class="item" href="/techniques-adding.html">adding facts</a>
+            <a class="item" href="/techniques-reasoning.html">reasoning</a>
+            <a class="item" href="/techniques-querying.html">asking questions</a>
             <a class="item" href="faq.html">FAQ</a>
           </div>
         </div>

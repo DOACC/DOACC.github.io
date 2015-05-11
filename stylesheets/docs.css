@@ -111,51 +111,51 @@ a:hover {
      Sidebar
 ---------------*/
 
-#example #toc > :last-child {
+#doacc #toc > :last-child {
   padding-bottom: 2em;
 }
-#example #toc .logo.image {
+#doacc #toc .logo.image {
   width: 35px;
   margin-right: 1em;
 }
-#example #toc .item {
+#doacc #toc .item {
   position: relative;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
 }
-#example #toc .item .circular.label {
+#doacc #toc .item .circular.label {
   position: absolute;
   top: 0.75rem;
   right: 1em;
   opacity: 0.2;
   transition: background 0.3s ease;
 }
-#example #toc .item.active > .circular.label,
-#example #toc .item:hover > .circular.label {
+#doacc #toc .item.active > .circular.label,
+#doacc #toc .item:hover > .circular.label {
   opacity: 0.8;
 }
 
-#example #toc .inverted.header {
+#doacc #toc .inverted.header {
   font-size: 1em;
   font-weight: normal;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 0.5em;
 }
-#example #toc a.inverted.header.active,
-#example #toc a.inverted.header:hover {
+#doacc #toc a.inverted.header.active,
+#doacc #toc a.inverted.header:hover {
   color: rgba(255, 255, 255, 1);
 }
-#example #toc .hide.item {
+#doacc #toc .hide.item {
   display: none;
 }
-#example #toc .menu .active.item {
+#doacc #toc .menu .active.item {
   color: #6DFFFF !important;
 }
 
 
 /* segment headers */
-#example .header.segment {
+#doacc .header.segment {
   position: relative;
   z-index: 2;
   margin: 0em;
@@ -166,168 +166,81 @@ a:hover {
   border-bottom: 1px solid #DDDDDD;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-#example .header.segment h1 {
+#doacc .header.segment h1 {
   margin-bottom: 0em;
 }
-#example .tab.header.segment {
+#doacc .tab.header.segment {
   padding-bottom: 0em;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1) inset;
 }
-#example .tab.header.segment .vertical.menu {
+#doacc .tab.header.segment .vertical.menu {
   display: none;
   margin: 2rem 0em 1rem;
 }
-#example .tab.header.segment .tabular.menu {
+#doacc .tab.header.segment .tabular.menu {
   clear: both;
   margin: 2rem 0px 0em;
   border-bottom: none;
 }
-#example .tab.header.segment .tabular.menu .active.item {
+#doacc .tab.header.segment .tabular.menu .active.item {
   background-color: #FFFFFF;
   border-bottom-color: #FFFFFF;
 }
 
-#example .header.segment .download.popup {
+#doacc .header.segment .download.popup {
   width: 400px;
 }
-#example .header.segment .download.popup .check.icon {
+#doacc .header.segment .download.popup .check.icon {
   margin-left: -1em;
 }
-#example .header.segment .download.popup .framework.grid,
-#example .header.segment .download.popup .standalone.grid,
-#example .header.segment .download.popup .integration.grid,
-#example .header.segment .download.popup .link.grid {
+#doacc .header.segment .download.popup .framework.grid,
+#doacc .header.segment .download.popup .standalone.grid,
+#doacc .header.segment .download.popup .integration.grid,
+#doacc .header.segment .download.popup .link.grid {
   display: none;
 }
 
-#example.legacy .main.menu,
-#example.legacy .launch.button {
+#doacc.legacy .main.menu,
+#doacc.legacy .launch.button {
   left: auto !important;
 }
-#example.scale.down.pushed .header.segment {
+#doacc.scale.down.pushed .header.segment {
   padding-top: 30px;
 }
 
-#example.divider .ui.grid {
+#doacc.divider .ui.grid {
   position: relative;
 }
-#example.dim .segment .wireframe.image {
+#doacc.dim .segment .wireframe.image {
   margin-bottom: 0em;
 }
 
-#example .main.menu .title.item b {
+#doacc .main.menu .title.item b {
   margin-right: 0.5em;
 }
 
 
-#example .download.menu {
+#doacc .download.menu {
   margin-top: 0em;
   margin-bottom: 3rem;
 }
 
-#example .main.menu iframe.github {
+#doacc .main.menu iframe.github {
   margin: 1px 0px 0px 0px;
 }
 /* lists */
-#example .features {
+#doacc .features {
   list-style-position: inside;
   margin: 10px 0px 0px;
   padding: 0px;
 }
-#example .features li {
+#doacc .features li {
   list-style-type: disc;
   margin: 0px 0px 10px;
   font-weight: bold;
 }
 
-/*--------------
-  Advertisement
----------------*/
-
-#example .advertisement {
-  float: right;
-  margin-left: 2em;
-}
-#example .index.advertisement {
-  display: block;
-  position: absolute;
-}
-#example .advertisement {
-  float: none;
-  display: table-cell;
-  vertical-align: top;
-  padding-left: 2em;
-}
-#example #carbonads-container {
-  float: right;
-}
-#example .advertisement #carbonads {
-  display: block;
-  width: 300px;
-  height: 118px;
-  background-color: #F7F7F7;
-  padding: 8px;
-  font-size: 12px;
-  font-family: Helvetica Neue, Arial, sans-serif;
-  overflow: hidden;
-  float: right;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  border: 1px solid #CCCCCC;
-}
-#example .advertisement .carbon-img {
-  float: left;
-  margin-right: 10px;
-  width: 130px;
-}
-#example .advertisement .carbon-text {
-  width: 140px;
-  float: left;
-  height: auto;
-  color: #000000;
-  line-height: 1.3;
-}
-#example .advertisement .carbon-text:hover {
-  color: #666666;
-}
-#example .carbon-poweredby {
-  text-align: left;
-  color: #BBB;
-  float: left;
-  font-size: 11px;
-  margin-top: 9px;
-  text-align: left;
-  width: 140px;
-}
-
-/* Inverted Ad */
-#example .inverted.advertisement #carbonads {
-  background-color: rgba(0, 0, 0, 0.25);
-  border: none;
-  overflow: hidden;
-  height: auto;
-  padding: 6px 0px 13px;
-}
-#example .inverted.advertisement .carbon-text {
-  color: rgba(255, 255, 255, 0.6);
-}
-#example .inverted.advertisement .carbon-text:hover {
-  color: rgba(255, 255, 255, 1);
-}
-#example .inverted.advertisement .carbon-poweredby {
-  margin-top: 10px;
-  color: rgba(255, 255, 255, 0.4);
-}
-#example .inverted.advertisement .carbon-poweredby a {
-  color: rgba(255, 255, 255, 0.8);
-}
-#example .inverted.advertisement .carbon-poweredby a:hover {
-  color: #FFFFFF;
-}
-
-
-#example .main.container a.anchor {
+#doacc .main.container a.anchor {
   height: 1px;
   position: absolute;
   right: 100%;
@@ -340,21 +253,21 @@ a:hover {
   Fixed Columns
 ---------------*/
 
-#example .fixed.column {
+#doacc .fixed.column {
   position: absolute;
   right: 2em;
   top: 0px;
   width: 300px;
 }
 
-#example .tab.header.segment .fixed .tabular.menu {
+#doacc .tab.header.segment .fixed .tabular.menu {
   position: fixed;
   top: 50px;
 }
-#example .fixed .launch {
+#doacc .fixed .launch {
   display: none;
 }
-#example .fixed.column .sticky {
+#doacc .fixed.column .sticky {
   padding-top: 4em;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
@@ -369,19 +282,19 @@ body#example {
   background: #2C2C2C !important;
 }
 
-#example .masthead .grid {
+#doacc .masthead .grid {
   position: relative;
   z-index: 2;
 }
-#example .masthead .column {
+#doacc .masthead .column {
   display: table;
 }
-#example .introduction {
+#doacc .introduction {
   display: table-cell;
   vertical-align: top;
   width: 100%;
 }
-#example .introduction .theme.buttons {
+#doacc .introduction .theme.buttons {
   margin: -0.1em 0em 0em 0.5em;
   vertical-align: middle;
 }
@@ -389,7 +302,7 @@ body#example {
      Footer
 ---------------*/
 
-#example .footer.link.list {
+#doacc .footer.link.list {
   display: block;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -404,13 +317,13 @@ body#example {
   opacity: 0.95;
 }
 
-#example.pushable.left.overlay .fixed.launch.button {
+#doacc.pushable.left.overlay .fixed.launch.button {
   transform: translate3d(0, 0, 0);
 }
-#example.pushable.overlay.left.pushed .fixed.launch.button {
+#doacc.pushable.overlay.left.pushed .fixed.launch.button {
   transform: translate3d(260px, 0, 0);
 }
-#example .fixed.launch.button {
+#doacc .fixed.launch.button {
   position: fixed;
   top: 63px;
   left: -1px;
@@ -441,7 +354,7 @@ body#example {
   ;
 }
 
-#example .fixed.launch.button .text {
+#doacc .fixed.launch.button .text {
   position: absolute;
   white-space: nowrap;
   top: auto;
@@ -463,19 +376,19 @@ body#example {
     0.3s opacity 0.3s
   ;
 }
-#example .fixed.launch.button:hover {
+#doacc .fixed.launch.button:hover {
   width: 130px;
 }
-#example .fixed.launch.button:hover .text {
+#doacc .fixed.launch.button:hover .text {
   opacity: 1;
 }
 
 
-#example .shortcuts {
+#doacc .shortcuts {
   float: right;
   clear: both;
 }
-#example .launch.button .icon {
+#doacc .launch.button .icon {
   margin-left: 0px;
 }
 
@@ -483,45 +396,45 @@ body#example {
    Basic Display
 -----------------*/
 
-#example.basic .container {
+#doacc.basic .container {
   width: 650px !important;
   max-width: 100%;
 }
 
-#example.basic .main.container {
+#doacc.basic .main.container {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   padding: 2em 0em !important;
 }
-#example.basic > .pusher > .full.height {
+#doacc.basic > .pusher > .full.height {
   background-color: #F9F9F9;
 }
-#example.basic .main.container .definition.table thead th:first-child {
+#doacc.basic .main.container .definition.table thead th:first-child {
   background-color: #F9F9F9;
   box-shadow: 0 -1px 0 1px #F9F9F9;
 }
-#example.basic .tab.header.segment .tabular.menu .active.item {
+#doacc.basic .tab.header.segment .tabular.menu .active.item {
   background-color: #F9F9F9;
   border-bottom-color: #F9F9F9;
   box-shadow: none;
 }
 
-#example.basic .main.container > .rail,
-#example.basic .main.container > .tab > .rail {
+#doacc.basic .main.container > .rail,
+#doacc.basic .main.container > .tab > .rail {
   display: none !important;
 }
-#example.basic .container {
+#doacc.basic .container {
   right: 0px !important;
 }
-#example.basic .main.container .introduction {
+#doacc.basic .main.container .introduction {
   font-size: 16px;
 }
-#example.basic .main.container .introduction p {
+#doacc.basic .main.container .introduction p {
   color: rgba(0, 0, 0, 0.8);
 }
 
-#example .ui.ad {
+#doacc .ui.ad {
   max-width: 100%;
 }
 
@@ -529,27 +442,27 @@ body#example {
    Overview Mode
 -----------------*/
 
-#example .right.floated.overview.button {
+#doacc .right.floated.overview.button {
   margin-bottom: 0.5em;
 }
 
-#example.overview h2.ui.header {
+#doacc.overview h2.ui.header {
   margin-bottom: 0.5em;
 }
-#example.overview .example {
+#doacc.overview .example {
   display: table-row;
   min-height: 0px !important;
   overflow: hidden;
 }
-#example.overview .example .ui.header,
-#example.overview .example p {
+#doacc.overview .example .ui.header,
+#doacc.overview .example p {
   display: table-cell;
   font-size: 1em;
   min-width: 170px;
   font-weight: bold;
   padding: 0.5em 0em;
 }
-#example.overview .example p {
+#doacc.overview .example p {
   font-size: 1rem;
   font-weight: normal;
   padding: 0em 0em 0em 0.5em;
@@ -561,7 +474,7 @@ body#example {
       Footer
 -----------------*/
 
-#example > .pusher > .footer {
+#doacc > .pusher > .footer {
   margin: 0em;
   border-radius: 0em;
   padding: 4em 0em 5em;
@@ -571,23 +484,23 @@ body#example {
   Settings Table
 -----------------*/
 
-#example .settings.table {
+#doacc .settings.table {
   margin-bottom: 20px;
 }
-#example .settings.table td:first-child {
+#doacc .settings.table td:first-child {
   font-weight: bold;
 }
-#example .settings.table td:nth-child(2n) {
+#doacc .settings.table td:nth-child(2n) {
   width: 100px;
 }
 
 
-#example .segment pre {
+#doacc .segment pre {
   background-color: transparent;
   margin: 0em;
   padding: 0em;
 }
-#example .segment pre .code {
+#doacc .segment pre .code {
   margin: 0em;
   padding: 0em;
   max-height: 610px;
@@ -595,29 +508,29 @@ body#example {
   font-family:  'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
 }
 
-#example table .instructive.segment {
+#doacc table .instructive.segment {
   background-color: transparent;
   border: 0px;
   box-shadow: none;
   padding: 0em;
 }
 
-#example .ui.label + .instructive.segment {
+#doacc .ui.label + .instructive.segment {
   margin-top: 0em;
 }
-#example .instructive.segment:after {
+#doacc .instructive.segment:after {
   display: none;
 }
-#example .existing.segment em,
-#example .instructive.segment em {
+#doacc .existing.segment em,
+#doacc .instructive.segment em {
   font-style: normal;
   color: rgba(0, 0, 0, 0.4);
 }
-#example .existing.segment .title + em,
-#example .instructive.segment .title + em {
+#doacc .existing.segment .title + em,
+#doacc .instructive.segment .title + em {
   float: right;
 }
-#example .label + .code {
+#doacc .label + .code {
   margin-top: 1.5em;
 }
 
@@ -627,7 +540,7 @@ body#example {
     Examples
 -----------------*/
 
-#example .example {
+#doacc .example {
   position: relative;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   margin: 3em 0em 0em;
@@ -636,88 +549,88 @@ body#example {
 }
 
 /* Header */
-#example .example > h4:first-child {
+#doacc .example > h4:first-child {
   margin: -0.2em 0em 0em;
 }
 
 /* Wireframe Image */
-#example .example .wireframe.image {
+#doacc .example .wireframe.image {
   opacity: 0.5;
 }
-#example .example :not(.images) > .wireframe.image {
+#doacc .example :not(.images) > .wireframe.image {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-#example .example :not(.images) > .wireframe.image:first-child {
+#doacc .example :not(.images) > .wireframe.image:first-child {
   margin-top: 0em;
 }
-#example .example :not(.images) > .wireframe.image:last-child {
+#doacc .example :not(.images) > .wireframe.image:last-child {
   margin-bottom: 0em;
 }
 
 /* Description */
-#example .example .anchor + p {
+#doacc .example .anchor + p {
   margin: 0.25em 0px 1.5em;
   color: rgba(0, 0, 0, 0.6);
 }
-#example .no.example .anchor + p {
+#doacc .no.example .anchor + p {
   margin: 0em 0px 1em;
 }
-#example .example > p {
+#doacc .example > p {
   color: rgba(0, 0, 0, 0.8);
 }
 
 /* Message */
-#example .example .anchor + p + .ignored.message:not(.attached),
-#example .example .anchor + p + .ignored.message + .ignored.message:not(.attached) {
+#doacc .example .anchor + p + .ignored.message:not(.attached),
+#doacc .example .anchor + p + .ignored.message + .ignored.message:not(.attached) {
   margin: -0.5em 0em 2em;
 }
 
-#example .pushing.example .rail .sticky {
+#doacc .pushing.example .rail .sticky {
   margin: 2em 0em;
 }
 
-#example .inline.example > .segment > .sticky.fixed {
+#doacc .inline.example > .segment > .sticky.fixed {
   background-color: #FFFFFF;
 }
-#example .inline.example > .segment > .sticky.fixed + * {
+#doacc .inline.example > .segment > .sticky.fixed + * {
   margin-top: 39px;
 }
 
 
 /* Another */
-#example .another.example {
+#doacc .another.example {
   margin-top: 0em;
   border-top: none;
 }
 
 /* Spaced */
-#example .spaced.example .buttons,
-#example .spaced.example .button {
+#doacc .spaced.example .buttons,
+#doacc .spaced.example .button {
   margin-bottom: 0.75em;
 }
-#example .spaced.example .buttons .button {
+#doacc .spaced.example .buttons .button {
   margin-bottom: 0em;
 }
-#example .example .toggle.button {
+#doacc .example .toggle.button {
   min-width: 100px;
 }
 
 
-#example .intro .example > h4 {
+#doacc .intro .example > h4 {
   font-size: 1.2em;
 }
-#example .intro .example > h4 ~ p,
-#example .intro .example > h4 ~ .ignored {
+#doacc .intro .example > h4 ~ p,
+#doacc .intro .example > h4 ~ .ignored {
   margin: 1em 0em !important;
 }
 
-#example .intro .example > p {
+#doacc .intro .example > p {
   color: rgba(0, 0, 0, 0.8);
 }
 
-#example .existing.segment:after,
-#example .instructive.segment:after {
+#doacc .existing.segment:after,
+#doacc .instructive.segment:after {
   display: none;
 }
 
@@ -726,87 +639,87 @@ body#example {
 -----------------*/
 
 /* No Example */
-#example .no.example i.code {
+#doacc .no.example i.code {
   display: none;
 }
 
 /* Requires Clear */
-#example .clearing.example {
+#doacc .clearing.example {
   overflow: hidden;
   clear: both;
   padding-left: 1px;
   padding-right: 1px;
   padding-bottom: 1px;
 }
-#example .main.container:after {
+#doacc .main.container:after {
   content: '';
   display: block;
   height: 0px;
   clear: both;
   visibility: hidden;
 }
-#example .example-group {
+#doacc .example-group {
   position: relative;
 }
-#example .main.container .examples > h2,
-#example .main.container > h2,
-#example .main.container > .tab > h2{
+#doacc .main.container .examples > h2,
+#doacc .main.container > h2,
+#doacc .main.container > .tab > h2{
   position: relative;
   margin: 5rem 0rem 3rem;
 }
-#example .main.container .examples > h3,
-#example .main.container > h3,
-#example .main.container > .tab > h3{
+#doacc .main.container .examples > h3,
+#doacc .main.container > h3,
+#doacc .main.container > .tab > h3{
   position: relative;
   margin: 3rem 0rem 2rem;
 }
-#example .main.container .examples > .rail + h2,
-#example .main.container > .rail + h2,
-#example .main.container > .tab > .rail + h2,
-#example .main.container .examples > h2:first-child,
-#example .main.container > h2:first-child,
-#example .main.container > .tab > h2:first-child {
+#doacc .main.container .examples > .rail + h2,
+#doacc .main.container > .rail + h2,
+#doacc .main.container > .tab > .rail + h2,
+#doacc .main.container .examples > h2:first-child,
+#doacc .main.container > h2:first-child,
+#doacc .main.container > .tab > h2:first-child {
   margin-top: 0em;
 }
-#example .main.container .examples > h2 + p,
-#example .main.container > h2 + p,
-#example .main.container > .tab > h2 + p {
+#doacc .main.container .examples > h2 + p,
+#doacc .main.container > h2 + p,
+#doacc .main.container > .tab > h2 + p {
   margin: -2rem 0 2em;
 }
 
 /* After Section Header */
-#example .example:first-child,
-#example h2 + .example,
-#example h3 + .example,
-#example h4 + .example {
+#doacc .example:first-child,
+#doacc h2 + .example,
+#doacc h3 + .example,
+#doacc h4 + .example {
   margin-top: 0px;
   padding-top: 0px;
   border-top: none;
 }
-#example .example:first-child i.code,
-#example h2 + .example i.code,
-#example h3 + .example i.code,
-#example h4 + .example i.code {
+#doacc .example:first-child i.code,
+#doacc h2 + .example i.code,
+#doacc h3 + .example i.code,
+#doacc h4 + .example i.code {
   top: 0.4em;
 }
-#example .another.example i.code {
+#doacc .another.example i.code {
   top: 0.5em;
 }
 
 /* Spaced */
-#example .spaced.example .buttons,
-#example .spaced.example .button {
+#doacc .spaced.example .buttons,
+#doacc .spaced.example .button {
   margin-bottom: 0.75em;
 }
-#example .spaced.example .buttons .button {
+#doacc .spaced.example .buttons .button {
   margin-bottom: 0em;
 }
-#example .example .toggle.button {
+#doacc .example .toggle.button {
   min-width: 200px;
 }
 
 /* Code Language */
-#example .example .language.label {
+#doacc .example .language.label {
   margin: 1em 0em 0.75em;
 }
 
@@ -815,7 +728,7 @@ body#example {
    Code Button
 ---------------*/
 
-#example .example i.code {
+#doacc .example i.code {
   cursor: pointer;
   position: absolute;
 
@@ -834,37 +747,37 @@ body#example {
   transition: opacity 0.3s ease-out;
 }
 
-#example .example i.code:before {
+#doacc .example i.code:before {
   font-family: 'Docs';
   content: "\e600";
 }
-#example .example:hover i.code {
+#doacc .example:hover i.code {
   opacity: 0.7;
 }
-#example .example:hover i.code:hover {
+#doacc .example:hover i.code:hover {
   opacity: 1;
 }
-#example .example .grid i.code {
+#doacc .example .grid i.code {
   right: 25%;
 }
 
-#example .pointing.label + .existing.segment {
+#doacc .pointing.label + .existing.segment {
   margin-top: 0em;
 }
 
-#example .existing.code {
+#doacc .existing.code {
   display: none;
 }
-#example .example .annotation {
+#doacc .example .annotation {
   margin: 0em;
 }
 
-#example .transition.example .ui.button {
+#doacc .transition.example .ui.button {
   margin-bottom: 0.5em;
 }
 
 /* HTML Wrapper */
-#example .example > .html {
+#doacc .example > .html {
   padding: 0em;
   transition:
     box-shadow 0.2s ease,
@@ -872,29 +785,29 @@ body#example {
   ;
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
-#example .example > .html > .top.attached.label {
+#doacc .example > .html > .top.attached.label {
   display: none;
   background-color: #F8F8F8;
   box-shadow: 0px 0px 0px 1px #DDDDDD;
 }
-#example .example > .html.segment > .attached.label {
+#doacc .example > .html.segment > .attached.label {
   display: block;
 }
-#example .example > .html.segment {
+#doacc .example > .html.segment {
   padding: 3.5em 1em 1em;
 }
-#example .example .instructive.segment {
+#doacc .example .instructive.segment {
   margin-top: -1px;
 }
 
 /* Fixes for UI */
-#example .segment > .dimmer {
+#doacc .segment > .dimmer {
   z-index: 800;
 }
-#example .code .active.ui.modal {
+#doacc .code .active.ui.modal {
   display: none !important;
 }
-#example .example .circular.segment {
+#doacc .example .circular.segment {
   width: 175px;
   height: 175px;
 }
@@ -907,10 +820,10 @@ body#example {
       Grid
 ---------------*/
 
-#example .highlighted.example .grid {
+#doacc .highlighted.example .grid {
   position: relative;
 }
-#example .highlighted.example .grid:before {
+#doacc .highlighted.example .grid:before {
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -921,78 +834,78 @@ body#example {
   box-shadow: 0px 0px 0px 1px #DDDDDD inset;
 }
 /* Consecutive */
-#example .highlighted.example > .grid + .grid {
+#doacc .highlighted.example > .grid + .grid {
   margin-top: 1rem;
 }
 
-#example .highlighted.example .grid .grid:before {
+#doacc .highlighted.example .grid .grid:before {
   background-color: #E0E0E0;
 }
-#example .highlighted.example .row {
+#doacc .highlighted.example .row {
   position: relative;
 }
 
-#example .highlighted.example .grid > .column {
+#doacc .highlighted.example .grid > .column {
   position: relative;
   z-index: 11;
 }
-#example .highlighted.example .grid .column:not(.row):not(.grid):after {
+#doacc .highlighted.example .grid .column:not(.row):not(.grid):after {
   background-color: #FFFFFF;
   box-shadow: 0px 0px 0px 1px #DDDDDD inset;
   content: "";
   display: block;
   min-height: 50px;
 }
-#example .highlighted.example .grid .column:not(.grid):first-child,
-#example .ui.type.cards .image .grid .column:not(.grid):first-child {
+#doacc .highlighted.example .grid .column:not(.grid):first-child,
+#doacc .ui.type.cards .image .grid .column:not(.grid):first-child {
   box-shadow: none;
 }
-#example .highlighted.example .grid .column:not(.grid),
-#example .ui.type.cards .image .grid .column:not(.grid) {
+#doacc .highlighted.example .grid .column:not(.grid),
+#doacc .ui.type.cards .image .grid .column:not(.grid) {
   min-height: 50px;
 }
-#example .highlighted.example .grid .segment,
-#example .ui.type.cards .image .grid .segment {
+#doacc .highlighted.example .grid .segment,
+#doacc .ui.type.cards .image .grid .segment {
   border-radius: 0px;
   box-shadow: 0 0 0 1px #D4D4D4;
 }
-#example .negative.example > .button {
+#doacc .negative.example > .button {
   position: relative;
   z-index: 10;
 }
-#example .highlighted.special.example .page.grid > .column:first-child:after,
-#example .highlighted.special.example .page.grid > .column:last-child:after {
+#doacc .highlighted.special.example .page.grid > .column:first-child:after,
+#doacc .highlighted.special.example .page.grid > .column:last-child:after {
   display: none;
 }
-#example.animated .negative.example > .grid {
+#doacc.animated .negative.example > .grid {
   margin: -1rem !important;
   background-color: #FFEEEE;
 }
 
 /* Animation */
-#example.animated .highlighted.example > .grid,
-#example.animated .animated.example > .grid {
+#doacc.animated .highlighted.example > .grid,
+#doacc.animated .animated.example > .grid {
   margin: -1rem auto;
   -webkit-animation: grid 7s ease infinite;
   -moz-animation: grid 7s ease infinite;
   animation: grid 7s ease infinite;
 }
-#example.animated .negative.example > .grid {
+#doacc.animated .negative.example > .grid {
   -webkit-animation: none;
   -moz-animation: none;
   -ms-animation: none;
   animation: none;
 }
 /* Grid Inside Grid */
-#example.animated .highlighted.example .grid .grid,
-#example.animated .animated.example .grid .grid {
+#doacc.animated .highlighted.example .grid .grid,
+#doacc.animated .animated.example .grid .grid {
   -webkit-animation: none;
   -moz-animation: none;
   -ms-animation: none;
   animation: none;
 }
 
-#example.site .colors.example .column {
+#doacc.site .colors.example .column {
   min-height: 100px;
 }
 
@@ -1044,27 +957,27 @@ body#example {
       Demo
 ---------------*/
 
-#example .demo.container .button.demo > .buttons,
-#example .demo.container .button.demo > .button,
-#example .demo.container .button.demo > .segment > .button {
+#doacc .demo.container .button.demo > .buttons,
+#doacc .demo.container .button.demo > .button,
+#doacc .demo.container .button.demo > .segment > .button {
   margin-bottom: 0.5em;
 }
-#example .demo.container h4:first-child {
+#doacc .demo.container h4:first-child {
   font-weight: bold !important;
   margin: 0em 0em 1em !important;
   font-size: 18px;
 }
-#example .demo.container .example:first-child {
+#doacc .demo.container .example:first-child {
   margin-top: 0;
   padding-top: 0;
 }
-#example .demo.container .segment.example {
+#doacc .demo.container .segment.example {
   z-index: 1;
 }
-#example .demo.container > .ui.label:not(.empty) {
+#doacc .demo.container > .ui.label:not(.empty) {
   margin-bottom: 1em;
 }
-#example .demo.container .segment .ui.label {
+#doacc .demo.container .segment .ui.label {
   margin-bottom: 0em;
 }
 
@@ -1161,7 +1074,7 @@ body.progress.animated .ui.progress .bar {
       Header
 ---------------*/
 
-#example.header .wireframe.image {
+#doacc.header .wireframe.image {
   max-width: 500px;
 }
 
@@ -1169,10 +1082,10 @@ body.progress.animated .ui.progress .bar {
       Popup
 ---------------*/
 
-#example.popup .inline.example .popup {
+#doacc.popup .inline.example .popup {
   color: #FF0000;
 }
-#example .position.example .icon {
+#doacc .position.example .icon {
   position: absolute;
   margin: 0em;
   width: auto;
@@ -1180,48 +1093,48 @@ body.progress.animated .ui.progress .bar {
   height: auto;
   padding: 0.5em !important;
 }
-#example .position.example .segment:not(.instructive) {
+#doacc .position.example .segment:not(.instructive) {
   width: 250px;
   height: 250px;
 }
-#example .position.example .segment .icon:nth-of-type(1) {
+#doacc .position.example .segment .icon:nth-of-type(1) {
   top: 0em;
   left: 0em;
 }
-#example .position.example .segment .icon:nth-of-type(2) {
+#doacc .position.example .segment .icon:nth-of-type(2) {
   top: 0em;
   left: 50%;
   margin-left: -1em;
 }
-#example .position.example .segment .icon:nth-of-type(3) {
+#doacc .position.example .segment .icon:nth-of-type(3) {
   top: 0em;
   right: 0em;
 }
-#example .position.example .segment .icon:nth-of-type(4) {
+#doacc .position.example .segment .icon:nth-of-type(4) {
   top: 50%;
   margin-top: -1em;
   right: 0em;
 }
-#example .position.example .segment .icon:nth-of-type(5) {
+#doacc .position.example .segment .icon:nth-of-type(5) {
   bottom: 0em;
   right: 0em;
 }
-#example .position.example .segment .icon:nth-of-type(6) {
+#doacc .position.example .segment .icon:nth-of-type(6) {
   bottom: 0em;
   left: 50%;
   margin-left: -1em;
 }
-#example .position.example .segment .icon:nth-of-type(7) {
+#doacc .position.example .segment .icon:nth-of-type(7) {
   bottom: 0em;
   left: 0em;
 }
-#example .position.example .segment .icon:nth-of-type(8) {
+#doacc .position.example .segment .icon:nth-of-type(8) {
   top: 50%;
   margin-top: -1em;
   left: 0em;
 }
 
-#example .main.ui.grid {
+#doacc .main.ui.grid {
   position: relative;
 }
 
@@ -1229,13 +1142,13 @@ body.progress.animated .ui.progress .bar {
       Icon
 ---------------*/
 
-#example .icon.example .grid {
+#doacc .icon.example .grid {
   text-align: left;
 }
-#example .icon.example .grid .code {
+#doacc .icon.example .grid .code {
   position: static;
 }
-#example .icon.example .grid > .row > .column {
+#doacc .icon.example .grid > .row > .column {
   height: 6em;
   opacity: 0.8;
   text-align: center;
@@ -1262,7 +1175,7 @@ body.progress.animated .ui.progress .bar {
     opacity 0.3s ease
   ;
 }
-#example .icon.example .column .icon {
+#doacc .icon.example .column .icon {
   opacity: 1;
   height: 1em;
   color: #333333;
@@ -1291,14 +1204,14 @@ body.progress.animated .ui.progress .bar {
     transform 0.2s ease
   ;
 }
-#example .icon.example .grid:hover > .row > .column {
+#doacc .icon.example .grid:hover > .row > .column {
   color: #CCCCCC;
 }
-#example .icon.example .grid:hover > .row > .column .icon {
+#doacc .icon.example .grid:hover > .row > .column .icon {
   color: #888888;
 }
 
-#example .icon.example .grid > .row > .column:hover .icon {
+#doacc .icon.example .grid > .row > .column:hover .icon {
   color: #000000;
   -webkit-transform: scale(1.5);
   -moz-transform: scale(1.5);
@@ -1306,15 +1219,15 @@ body.progress.animated .ui.progress .bar {
   -ms-transform: scale(1.5);
   transform: scale(1.5);
 }
-#example .icon.example .grid > .row > .column:hover {
+#doacc .icon.example .grid > .row > .column:hover {
   opacity: 1;
   color: #444444;
 }
-#example .another.icon.example {
+#doacc .another.icon.example {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#example .another.example i.code ~ .ignored.message {
+#doacc .another.example i.code ~ .ignored.message {
   margin-top: 0em;
 }
 
@@ -1322,18 +1235,18 @@ body.progress.animated .ui.progress .bar {
     List Page
 ---------------*/
 
-#example .element.cards .image {
+#doacc .element.cards .image {
   overflow: hidden;
   min-height: 100px;
 }
-#example .collection.cards {
+#doacc .collection.cards {
   min-height: 350px;
 }
-#example .ui.type.cards > .item {
+#doacc .ui.type.cards > .item {
   min-height: 255px;
 }
 
-#example .ui.type.cards > .item > .image {
+#doacc .ui.type.cards > .item > .image {
   padding: 1em;
   height: 165px;
   vertical-align: middle;
@@ -1342,7 +1255,7 @@ body.progress.animated .ui.progress .bar {
       Header
 ---------------*/
 
-#example.header .sizer {
+#doacc.header .sizer {
   padding: 1rem 0em;
 }
 
@@ -1350,7 +1263,7 @@ body.progress.animated .ui.progress .bar {
       Flag
 ---------------*/
 
-#example.flag .basic.table tbody td:first-child {
+#doacc.flag .basic.table tbody td:first-child {
   width: 20px;
 }
 
@@ -1358,7 +1271,7 @@ body.progress.animated .ui.progress .bar {
       Feed
 ---------------*/
 
-#example.feed .example .segment {
+#doacc.feed .example .segment {
   max-width: 800px;
 }
 
@@ -1558,7 +1471,7 @@ body.progress.animated .ui.progress .bar {
   color: #aaa;
 }
 
-#example:not(.site) > .pusher > .full.height {
+#doacc:not(.site) > .pusher > .full.height {
   background-color: #F7F7F7;
 }
 
@@ -1567,11 +1480,11 @@ body.progress.animated .ui.progress .bar {
       Definition Container
 *******************************/
 
-#example > .pusher > .footer {
+#doacc > .pusher > .footer {
   clear: both;
 }
 
-#example .main.container {
+#doacc .main.container {
   background-color: #FFFFFF;
   margin: 0em auto;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.05);
@@ -1581,33 +1494,33 @@ body.progress.animated .ui.progress .bar {
   padding: 2em 2em 7em;
   z-index: 1;
 }
-#example .wide.main.container {
+#doacc .wide.main.container {
   width: 80%;
   margin: 0 auto;
   right: 0;
   max-width: 1140px;
 }
 
-#example .main.container > .right.rail .sticky,
-#example .main.container > .tab > .examples > .right.rail .sticky,
-#example .main.container > .tab > .right.rail .sticky {
+#doacc .main.container > .right.rail .sticky,
+#doacc .main.container > .tab > .examples > .right.rail .sticky,
+#doacc .main.container > .tab > .right.rail .sticky {
   margin: 2em 0em;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-#example .container {
+#doacc .container {
   position: relative;
   width: 915px;
   margin: 0px auto;
 }
 
-#example .following.menu .menu .active.item {
+#doacc .following.menu .menu .active.item {
   font-weight: bold;
 }
-#example .following.menu .item .menu {
+#doacc .following.menu .item .menu {
   margin: 0em;
 }
-#example .following.menu .menu .item {
+#doacc .following.menu .menu .item {
   margin: 0em;
   padding: 0.5rem 0.25rem;
 }
@@ -1826,7 +1739,7 @@ body.progress.animated .ui.progress .bar {
   }
 }
 
-#example .masthead .mobile.buttons {
+#doacc .masthead .mobile.buttons {
   display: none;
 }
 @media only screen and (max-width : 470px) {
