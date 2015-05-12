@@ -1,1 +1,673 @@
-../doacc/doacc.owl
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/stylesheets/assets/ns-schema.xsl"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY ccy "http://purl.org/net/bel-epa/ccy#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY ns "http://www.w3.org/2003/06/sw-vocab-status/ns#" >
+    <!ENTITY dbp "http://dbpedia.org/resource/" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/net/bel-epa/doacc#"
+     xml:base="http://purl.org/net/bel-epa/doacc"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:ccy="http://purl.org/net/bel-epa/ccy#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ns="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#" 
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:dbp="http://dbpedia.org/resource/">
+    <owl:Ontology rdf:about="http://purl.org/net/bel-epa/doacc">
+        <dc:rights>Copyright © 2014 Graham Higgins</dc:rights>
+        <dc:creator>Graham Higgins</dc:creator>
+        <dc:description>The Description of a Cryptocurrency (DOACC) vocabulary, described using W3C RDF Schema and the Web Ontology Language.</dc:description>
+        <dc:format>application/rdf+xml</dc:format>
+        <dc:title>Description of a Cryptocurrency (DOACC) vocabulary</dc:title>
+        <rdfs:comment>An adaptation of of Edd Dumbill’s DOAP (Description of a Project) RDF schema - https://en.wikipedia.org/wiki/DOAP and XML vocabulary for FOSS projects, fused with Melvin Carvalho’s Ontology for Crypto Currencies - https://cc.rww.io/vocab.</rdfs:comment>
+        <dc:description xml:lang="cs">Slovník Description of a Cryptocurrency (DOACC, Popis kryptomena), popsaný použitím W3C RDF Schema a Web Ontology Language.</dc:description>
+        <dc:description xml:lang="de">Das Vokabular &quot;Description of a Cryptocurrency (DOACC, beschreibung einer Crypto-Währung)&quot;, beschrieben durch W3C RDF Schema and the Web Ontology Language.</dc:description>
+        <dc:description xml:lang="es">El vocabulario Description of a Cryptocurrency (DOACC, Descripción de una Cryptodivisa), descrito usando RDF Schema de W3C y Web Ontology Language.</dc:description>
+        <dc:description xml:lang="fr">Le vocabulaire Description Of A Crypto-monnaie (DOACC, Description D&apos;Une Crypto-monnaie), décrit en utilisant RDF Schema du W3C et OWL.</dc:description>
+        <dc:description xml:lang="ja">暗号通貨 の説明の語彙 (DOACC)。W3C RDF SchemaとWeb Ontology Languageで作られた。</dc:description>
+        <!-- <owl:imports rdf:resource="&ccy;#"/> -->
+        <owl:imports rdf:resource="http://www.w3.org/TR/skos-reference/skos-owl1-dl.rdf"/>
+        <owl:versionIRI rdf:resource="http://purl.org/net/bel-epa/doacc/1.2"/>
+    </owl:Ontology>
+    
+    <owl:Class rdf:about="&dbp;Algorithm">
+        <owl:equivalentClass rdf:resource="http://purl.org/net/bel-epa/doacc#Algorithm"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&dbp;Cryptographic_hash_function">
+        <owl:equivalentClass rdf:resource="http://purl.org/net/bel-epa/doacc#HashFunction"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://purl.org/net/bel-epa/doacc#Algorithm">
+        <rdfs:label xml:lang="en">Hashing Algorithm</rdfs:label>
+        <skos:prefLabel xml:lang="en">HashingAlgorithm</skos:prefLabel>
+        <rdfs:comment xml:lang="en">Use of one or more cryptographic hash functions to secure a cryptocurrency p2p network.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://purl.org/net/bel-epa/doacc#Cryptocurrency">
+        <rdfs:label xml:lang="cs">Kryptomena</rdfs:label>
+        <rdfs:label xml:lang="de">Crypto-Währung</rdfs:label>
+        <rdfs:label xml:lang="en">Cryptocurrency</rdfs:label>
+        <skos:prefLabel xml:lang="en">Cryptocurrency</skos:prefLabel>
+        <rdfs:label xml:lang="es">Cryptodivisa</rdfs:label>
+        <rdfs:label xml:lang="fr">Crypto-monnaie</rdfs:label>
+        <rdfs:label xml:lang="ja">暗号通貨</rdfs:label>
+        <rdfs:comment xml:lang="cs">Kryptomena.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Ein Crypto-Währung.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A cryptocurrency.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Una cryptodivisa.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Une crypto-monnaie.</rdfs:comment>
+        <rdfs:comment xml:lang="ja">暗号の通貨</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://purl.org/net/bel-epa/doacc#HashFunction">
+        <rdfs:label xml:lang="en">Cryptographic hash function</rdfs:label>
+        <skos:prefLabel xml:lang="en">HashFunction</skos:prefLabel>
+        <rdfs:comment xml:lang="en">Cryptographic function for producing hashes.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://purl.org/net/bel-epa/doacc#PoSscheme">
+        <rdfs:label xml:lang="en">Proof of Stake</rdfs:label>
+        <skos:prefLabel xml:lang="en">PoSScheme</skos:prefLabel>
+        <rdfs:subClassOf rdf:resource="http://purl.org/net/bel-epa/doacc#ProtectionScheme"/>
+        <rdfs:comment xml:lang="en">A method of securing a cryptocurrency p2p network through requesting users to show ownership of a certain amount of currency</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://purl.org/net/bel-epa/doacc#PoWscheme">
+        <rdfs:label xml:lang="en">Proof of Work</rdfs:label>
+        <skos:prefLabel xml:lang="en">PoWScheme</skos:prefLabel>
+        <rdfs:subClassOf rdf:resource="http://purl.org/net/bel-epa/doacc#ProtectionScheme"/>
+        <rdfs:comment xml:lang="en">A method of securing a cryptocurrency p2p network through requesting proof from users that (computational) work has been done.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://purl.org/net/bel-epa/doacc#ProtectionScheme">
+        <rdfs:label xml:lang="en">Approach to protecting the public ledger</rdfs:label>
+        <skos:prefLabel xml:lang="en">ProtectionScheme</skos:prefLabel>
+        <rdfs:comment xml:lang="en">A means of protecting cryptocurrency transaction records from tampering.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://purl.org/net/bel-epa/doacc#DistributionScheme">
+        <rdfs:label xml:lang="en">Approach to initial dissemination of coins</rdfs:label>
+        <skos:prefLabel xml:lang="en">DistributionScheme</skos:prefLabel>
+        <rdfs:comment xml:lang="en">A means of disseminating coins amongst miners and non-miners.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://purl.org/net/bel-epa/doacc#Protocol">
+        <rdfs:label xml:lang="en">Blockchain protocol</rdfs:label>
+        <skos:prefLabel xml:lang="en">Protocol</skos:prefLabel>
+        <rdfs:comment xml:lang="en">Means of distinguishing cryptocurrency transaction records.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://purl.org/net/bel-epa/doacc#Repository">
+        <rdfs:label xml:lang="cs">Úložiště</rdfs:label>
+        <rdfs:label xml:lang="de">Repository</rdfs:label>
+        <rdfs:label xml:lang="en">Repository</rdfs:label>
+        <skos:prefLabel xml:lang="en">Repository</skos:prefLabel>
+        <rdfs:label xml:lang="es">Repositorio</rdfs:label>
+        <rdfs:label xml:lang="fr">Dépôt</rdfs:label>
+        <rdfs:label xml:lang="ja">リポジトリ</rdfs:label>
+        <rdfs:comment xml:lang="cs">Úložiště zdrojových kódů.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Quellcode-Versionierungssystem.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Source code repository.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Repositorio del código fuente.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Dépôt du code source.</rdfs:comment>
+        <rdfs:comment xml:lang="ja">ソースコードのリポジトリ</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://purl.org/net/bel-epa/doacc#Version">
+        <rdfs:label xml:lang="cs">Verze</rdfs:label>
+        <rdfs:label xml:lang="de">Version</rdfs:label>
+        <rdfs:label xml:lang="en">Version</rdfs:label>
+        <skos:prefLabel xml:lang="en">Version</skos:prefLabel>
+        <rdfs:label xml:lang="es">Versión</rdfs:label>
+        <rdfs:label xml:lang="fr">Version</rdfs:label>
+        <rdfs:label xml:lang="ja">バーション</rdfs:label>
+        <rdfs:comment xml:lang="cs">Informace o uvolněné verzi.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Versionsinformation eines Releases.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Version information of a release.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Información sobre la versión de un release.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Détails sur une version d&apos;une realease.</rdfs:comment>
+        <rdfs:comment xml:lang="jp">リリースのバーション情報</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:Class>
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#coin">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">coin</rdfs:label>
+        <skos:prefLabel xml:lang="en">coin</skos:prefLabel>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="en">Electronic coin</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <rdfs:range rdf:resource="&ccy;ElectronicCoin"/>
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#developer">
+        <rdfs:label xml:lang="cs">vývojář</rdfs:label>
+        <rdfs:label xml:lang="de">Entwickler</rdfs:label>
+        <rdfs:label xml:lang="en">developer</rdfs:label>
+        <skos:prefLabel xml:lang="en">developer</skos:prefLabel>
+        <rdfs:label xml:lang="es">desarrollador</rdfs:label>
+        <rdfs:label xml:lang="fr">développeur</rdfs:label>
+        <rdfs:label xml:lang="ja">開発者</rdfs:label>
+        <rdfs:comment xml:lang="cs">Vývojář softwaru kryptomena.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Software-Entwickler für eine Crypto-Währung.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Developer of software for the cryptocurrency.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Desarrollador de software para la cryptodivisa.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Développeur pour la crypto-monnaie.</rdfs:comment>
+        <rdfs:comment xml:lang="ja">プロジェクトのソフトウェアの開発者</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&foaf;Person"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#hashfn">
+        <rdfs:label xml:lang="en">algorithm implementing the scheme</rdfs:label>
+        <skos:prefLabel xml:lang="en">hashfnalgorithm</skos:prefLabel>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <rdfs:range rdf:resource="http://purl.org/net/bel-epa/doacc#HashFunction"/>
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#PoWscheme"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#helper">
+        <rdfs:label xml:lang="cs">spoluautor</rdfs:label>
+        <rdfs:label xml:lang="de">Helfer</rdfs:label>
+        <rdfs:label xml:lang="en">helper</rdfs:label>
+        <skos:prefLabel xml:lang="en">helper</skos:prefLabel>
+        <rdfs:label xml:lang="es">colaborador</rdfs:label>
+        <rdfs:label xml:lang="fr">collaborateur</rdfs:label>
+        <rdfs:label xml:lang="ja">貢献者</rdfs:label>
+        <rdfs:comment xml:lang="cs">Spoluautor kryptomena.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Crypto-Währung-Mitarbeiter.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Project contributor.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Colaborador del la cryptodivisa.</rdfs:comment>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="fr">Collaborateur au projet.</rdfs:comment>
+        <rdfs:comment xml:lang="ja">このプロジェクトの貢献者</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&foaf;Person"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#maintainer">
+        <rdfs:label xml:lang="cs">správce</rdfs:label>
+        <rdfs:label xml:lang="de">Crypto-Währungverantwortlicher</rdfs:label>
+        <rdfs:label xml:lang="en">maintainer</rdfs:label>
+        <skos:prefLabel xml:lang="en">maintainer</skos:prefLabel>
+        <rdfs:label xml:lang="es">desarrollador principal</rdfs:label>
+        <rdfs:label xml:lang="fr">développeur principal</rdfs:label>
+        <rdfs:label xml:lang="ja">メンテナー</rdfs:label>
+        <rdfs:comment xml:lang="cs">Správce kryptomena, vedoucí kryptomena.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Hauptentwickler eines Crypto-Währungen</rdfs:comment>
+        <rdfs:comment xml:lang="en">Maintainer of a cryptocurrency, a project leader.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Desarrollador principal de una cryptodivisa, un líder de la cryptodivisa.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Développeur principal d&apos;une crypto-monnaie, un meneur de la crypto-monnaie.</rdfs:comment>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="ja">このプロジェクトのメンテなー及びリーダ。</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&foaf;Person"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#pos">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#ProtectionScheme"/>
+        <rdfs:range rdf:resource="http://purl.org/net/bel-epa/doacc#PoSscheme"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">proof of stake scheme</rdfs:label>
+        <skos:prefLabel xml:lang="en">posscheme</skos:prefLabel>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#pow">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#ProtectionScheme"/>
+        <rdfs:range rdf:resource="http://purl.org/net/bel-epa/doacc#PoWscheme"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">proof of work scheme</rdfs:label>
+        <skos:prefLabel xml:lang="en">powscheme</skos:prefLabel>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#protection-scheme">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="http://purl.org/net/bel-epa/doacc#ProtectionScheme"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">protection scheme</rdfs:label>
+        <skos:prefLabel xml:lang="en">protectionscheme</skos:prefLabel>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="en">Transaction record protection scheme</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#distribution-scheme">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="http://purl.org/net/bel-epa/doacc#DistributionScheme"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">distribution scheme</rdfs:label>
+        <skos:prefLabel xml:lang="en">distributionscheme</skos:prefLabel>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="en">Distribution scheme</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#release">
+        <rdfs:label xml:lang="cs">release</rdfs:label>
+        <rdfs:label xml:lang="de">Release</rdfs:label>
+        <rdfs:label xml:lang="en">release</rdfs:label>
+        <skos:prefLabel xml:lang="en">release</skos:prefLabel>
+        <rdfs:label xml:lang="es">release</rdfs:label>
+        <rdfs:label xml:lang="fr">release</rdfs:label>
+        <rdfs:label xml:lang="ja">リリース</rdfs:label>
+        <rdfs:comment xml:lang="cs">Relase (verze) kryptomena.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Ein Release (Version) eines Crypto-Währung.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A project release.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Un release (versión) de una cryptodivisa.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Une release (révision) d&apos;une crypto-monnaie.</rdfs:comment>
+        <rdfs:comment xml:lang="ja">このプロジェクトのリリース</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="http://purl.org/net/bel-epa/doacc#Version"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#repository">
+        <rdfs:label xml:lang="cs">úložiště</rdfs:label>
+        <rdfs:label xml:lang="de">Repository</rdfs:label>
+        <rdfs:label xml:lang="en">repository</rdfs:label>
+        <skos:prefLabel xml:lang="en">repository</skos:prefLabel>
+        <rdfs:label xml:lang="es">repositorio</rdfs:label>
+        <rdfs:label xml:lang="fr">dépôt</rdfs:label>
+        <rdfs:label xml:lang="ja">リポジトリ</rdfs:label>
+        <rdfs:comment xml:lang="cs">Úložiště zdrojových kódů.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Quellcode-Versionierungssystem.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Source code repository.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Repositorio del código fuente.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Dépôt du code source.</rdfs:comment>
+        <rdfs:comment xml:lang="ja">このプロジェクトのソースコードのリポジトリ</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="http://purl.org/net/bel-epa/doacc#Repository"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#tester">
+        <rdfs:label xml:lang="cs">tester</rdfs:label>
+        <rdfs:label xml:lang="de">Tester</rdfs:label>
+        <rdfs:label xml:lang="en">tester</rdfs:label>
+        <skos:prefLabel xml:lang="en">tester</skos:prefLabel>
+        <rdfs:label xml:lang="es">tester</rdfs:label>
+        <rdfs:label xml:lang="fr">testeur</rdfs:label>
+        <rdfs:label xml:lang="ja">試験者</rdfs:label>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="cs">Tester nebo jiný spoluautor kontrolující kvalitu.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Ein Tester oder anderer Mitarbeiter der Qualitätskontrolle.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A tester or other quality control contributor.</rdfs:comment>
+        <rdfs:comment xml:lang="en">このプロジェクトのため、試験をする人や品質メンテナー。</rdfs:comment>
+        <rdfs:comment xml:lang="es">Un tester u otro proveedor de control de calidad.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Un testeur ou un collaborateur au contrôle qualité.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&foaf;Person"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#translator">
+        <rdfs:label xml:lang="cs">překladatel</rdfs:label>
+        <rdfs:label xml:lang="de">Übersetzer</rdfs:label>
+        <rdfs:label xml:lang="en">translator</rdfs:label>
+        <skos:prefLabel xml:lang="en">translator</skos:prefLabel>
+        <rdfs:label xml:lang="es">traductor</rdfs:label>
+        <rdfs:label xml:lang="fr">traducteur</rdfs:label>
+        <rdfs:label xml:lang="ja">翻訳者</rdfs:label>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="cs">Spoluautor překladu kryptomena.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Mitarbeiter an den Übersetzungen eines Crypto-Währungen.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Contributor of translations to the cryptocurrency.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Proveedor de traducciones al cryptodivisa.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Collaborateur à la traduction de la crypto-monnaie.</rdfs:comment>
+        <rdfs:comment xml:lang="ja">このプロジェクトを翻訳する貢献者</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&foaf;Person"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#vendor">
+        <rdfs:label xml:lang="en">vendor</rdfs:label>
+        <skos:prefLabel xml:lang="en">vendor</skos:prefLabel>
+        <rdfs:label xml:lang="ja">提供組織</rdfs:label>
+        <rdfs:comment xml:lang="en">Vendor organization: commercial, free or otherwise</rdfs:comment>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="ja">提供組織、商業の組織や自由の組織。</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&foaf;Organization"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/bel-epa/doacc#protocol">
+        <rdfs:label xml:lang="en">protocol</rdfs:label>
+        <skos:prefLabel xml:lang="en">protocol</skos:prefLabel>
+        <rdfs:comment xml:lang="en">Blockchain protocol</rdfs:comment>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="http://purl.org/net/bel-epa/doacc#Protocol"/>
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#anon-root">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Repository"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:label xml:lang="cs">anonymní kořen</rdfs:label>
+        <rdfs:label xml:lang="de">Anonymes Root</rdfs:label>
+        <rdfs:label xml:lang="en">anonymous root</rdfs:label>
+        <skos:prefLabel xml:lang="en">anon-root</skos:prefLabel>
+        <rdfs:label xml:lang="es">raíz anónima</rdfs:label>
+        <rdfs:label xml:lang="fr">racine anonyme</rdfs:label>
+        <rdfs:label xml:lang="ja">匿名ルート</rdfs:label>
+        <rdfs:comment xml:lang="cs">Úložiště pro anonymní přístup.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Repository für anonymen Zugriff</rdfs:comment>
+        <rdfs:comment xml:lang="en">Repository for anonymous access.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Repositorio para acceso anónimo.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Dépôt pour accès anonyme.</rdfs:comment>
+        <rdfs:comment xml:lang="ja">匿名でアクセスできるパス</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#audience">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:label xml:lang="en">audience</rdfs:label>
+        <skos:prefLabel xml:lang="en">audience</skos:prefLabel>
+        <rdfs:label xml:lang="ja">目指したユーザ</rdfs:label>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="en">Description of target user base</rdfs:comment>
+        <rdfs:comment xml:lang="ja">目指したユーザたちの説明</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#block-reward">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:label xml:lang="en">block reward scheme</rdfs:label>
+        <skos:prefLabel xml:lang="en">block-reward</skos:prefLabel>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/net/bel-epa/doacc#block-time -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#block-time">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:label xml:lang="en">block target time</rdfs:label>
+        <skos:prefLabel xml:lang="en">block-time</skos:prefLabel>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#category">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="cs">kategorie</rdfs:label>
+        <rdfs:label xml:lang="de">Kategorie</rdfs:label>
+        <rdfs:label xml:lang="en">category</rdfs:label>
+        <skos:prefLabel xml:lang="en">category</skos:prefLabel>
+        <rdfs:label xml:lang="es">categoría</rdfs:label>
+        <rdfs:label xml:lang="fr">catégorie</rdfs:label>
+        <rdfs:label xml:lang="ja">分類</rdfs:label>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="cs">Kategorie kryptomena.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Eine Kategorie eines Crypto-Währungen.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A category of cryptocurrency.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Una categoría de cryptodivisa.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Une catégorie de crypto-monnaie.</rdfs:comment>
+        <rdfs:comment xml:lang="ja">このプロジェクトの分類。</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#confirmations">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">Number of blocks required to confirm a transaction</rdfs:label>
+        <skos:prefLabel xml:lang="en">confirmations</skos:prefLabel>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#date-founded">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:label xml:lang="en">date founded</rdfs:label>
+        <skos:prefLabel xml:lang="en">date founded</skos:prefLabel>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="en">YYYY-MM-DD of coin launch / announcement date.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#download-mirror">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:label xml:lang="cs">zrcadlo stránky pro stažení</rdfs:label>
+        <rdfs:label xml:lang="de">Spiegel der Seite zum Herunterladen</rdfs:label>
+        <rdfs:label xml:lang="en">download mirror</rdfs:label>
+        <skos:prefLabel xml:lang="en">download-mirror</skos:prefLabel>
+        <rdfs:label xml:lang="es">mirror de descarga</rdfs:label>
+        <rdfs:label xml:lang="fr">miroir pour le téléchargement</rdfs:label>
+        <rdfs:label xml:lang="ja">ダウンロードミラー</rdfs:label>
+        <rdfs:comment xml:lang="cs">Zrcadlo stránky pro stažení softwaru.</rdfs:comment>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="de">Spiegel der Seite von die Software heruntergeladen werden kann.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Mirror of software download web page.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Mirror de la página web de descarga.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Miroir de la page de téléchargement du programme.</rdfs:comment>
+        <rdfs:comment xml:lang="ja">このプロジェクトのダウンロードミラー</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#download-page">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:label xml:lang="cs">stránka pro stažení</rdfs:label>
+        <rdfs:label xml:lang="de">Seite zum Herunterladen</rdfs:label>
+        <rdfs:label xml:lang="en">download page</rdfs:label>
+        <skos:prefLabel xml:lang="en">download-page</skos:prefLabel>
+        <rdfs:label xml:lang="es">página de descarga</rdfs:label>
+        <rdfs:label xml:lang="fr">page de téléchargement</rdfs:label>
+        <rdfs:label xml:lang="ja">ダウンロードページ</rdfs:label>
+        <rdfs:comment xml:lang="de">Web-Seite von der die Software heruntergeladen werden kann.</rdfs:comment>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="cs">Webová stránka, na které lze stáhnout software.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Web page from which the software can be downloaded.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Página web de la cuál se puede bajar el software.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Page web à partir de laquelle on peut télécharger le programme.</rdfs:comment>
+        <rdfs:comment xml:lang="ja">このプロジェクトのダウンロードできるウェブページ</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#expiration">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:label xml:lang="en">expiration</rdfs:label>
+        <skos:prefLabel xml:lang="en">expiration</skos:prefLabel>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="en">Vital status: “listed” (recently or currently listed on an exchange, “exant” (not known to be defunct) and variously “unlaunched”, “foundered”, “abandoned”, “inactive”, “defunct” - to be rationalised.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#file-release">
+        <rdfs:label xml:lang="cs">soubor revize</rdfs:label>
+        <rdfs:label xml:lang="en">file-release</rdfs:label>
+        <skos:prefLabel xml:lang="en">file-release</skos:prefLabel>
+        <rdfs:label xml:lang="ja">このリリースのダウンロードできるファイルのURI</rdfs:label>
+        <rdfs:label xml:lang="ja">ファイル</rdfs:label>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="cs">URI adresa stažení asociované s revizí.</rdfs:comment>
+        <rdfs:comment xml:lang="en">URI of download associated with this release.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#forum">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+        <rdfs:label xml:lang="en">forum</rdfs:label>
+        <skos:prefLabel xml:lang="en">forum</skos:prefLabel>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="en">Forum web page.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#hashfn">
+        <rdfs:label xml:lang="en">algorithm implementing the scheme</rdfs:label>
+        <skos:prefLabel xml:lang="en">hashfnalgorithm</skos:prefLabel>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#incept">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:label xml:lang="en">incept</rdfs:label>
+        <skos:prefLabel xml:lang="en">incept</skos:prefLabel>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="en">YYYY-MM of coin launch date (lowest common denominator).</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#license">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:label xml:lang="cs">licence</rdfs:label>
+        <rdfs:label xml:lang="de">Lizenz</rdfs:label>
+        <rdfs:label xml:lang="en">license</rdfs:label>
+        <skos:prefLabel xml:lang="en">license</skos:prefLabel>
+        <rdfs:label xml:lang="es">licencia</rdfs:label>
+        <rdfs:label xml:lang="fr">licence</rdfs:label>
+        <rdfs:label xml:lang="ja">ライセンス</rdfs:label>
+        <ns:term_status>unstable</ns:term_status>
+        <rdfs:comment xml:lang="cs">URI adresa RDF popisu licence, pod kterou je software distribuován.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Die URI einer RDF-Beschreibung einer Lizenz unter der die Software herausgegeben wird.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The URI of an RDF description of the license the software is distributed under.</rdfs:comment>
+        <rdfs:comment xml:lang="es">El URI de una descripción RDF de la licencia bajo la cuál se distribuye el software.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">L&apos;URI d&apos;une description RDF de la licence sous laquelle le programme est distribué.</rdfs:comment>
+        <rdfs:comment xml:lang="ja">このプロジェクトの散布ライセンスのRDF説明のURI</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#maturation">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">maturation</rdfs:label>
+        <skos:prefLabel xml:lang="en">maturation</skos:prefLabel>
+        <rdfs:comment xml:lang="en">Additional depth of chain required for mined blocks to mature</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#retarget-time">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">retarget-time</rdfs:label>
+        <skos:prefLabel xml:lang="en">retarget-time</skos:prefLabel>
+        <rdfs:comment xml:lang="en">Difficulty retargeting period.</rdfs:comment>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#revision">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:label xml:lang="cs">verze</rdfs:label>
+        <rdfs:label xml:lang="de">Version</rdfs:label>
+        <rdfs:label xml:lang="en">revision</rdfs:label>
+        <skos:prefLabel xml:lang="en">revision</skos:prefLabel>
+        <rdfs:label xml:lang="es">versión</rdfs:label>
+        <rdfs:label xml:lang="fr">révision</rdfs:label>
+        <rdfs:label xml:lang="ja">リビジョンコート</rdfs:label>
+        <rdfs:comment xml:lang="cs">Identifikátor zpřístupněné revize softwaru.</rdfs:comment>
+        <rdfs:comment xml:lang="de">Versionsidentifikator eines Software-Releases.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Revision identifier of a software release.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Indentificador de la versión de un release de software.</rdfs:comment>
+        <rdfs:comment xml:lang="fr">Identifiant de révision d&apos;une release du programme.</rdfs:comment>
+        <rdfs:comment xml:lang="ja">このリリースのリビジョン識別子</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#service-endpoint">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+        <rdfs:label xml:lang="en">service endpoint</rdfs:label>
+        <skos:prefLabel xml:lang="en">service-endpoint</skos:prefLabel>
+        <rdfs:label xml:lang="ja">サービスサイト</rdfs:label>
+        <rdfs:comment xml:lang="en">The URI of a web service endpoint where software as a service may be accessed</rdfs:comment>
+        <rdfs:comment xml:lang="ja">ことプロジェクトが提供したサーブスを載せるサイト。</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#slug">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">slug</rdfs:label>
+        <skos:prefLabel xml:lang="en">slug</skos:prefLabel>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#symbol">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">exchange trading symbol</rdfs:label>
+        <skos:prefLabel xml:lang="en">symbol</skos:prefLabel>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#total-coins">
+        <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">total coins produced</rdfs:label>
+        <skos:prefLabel xml:lang="en">total-coins</skos:prefLabel>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/net/bel-epa/doacc"/>
+        <ns:term_status>unstable</ns:term_status>
+    </owl:DatatypeProperty>
+    
+</rdf:RDF>
