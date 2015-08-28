@@ -1,0 +1,58 @@
+# Site navigation links
+
+
+- title: Introduction
+  url: /basics/introduction/
+  excerpt: Learn the basics of the VCoin network.  
+  
+- title: Getting Started
+  url: /basics/getting-started/
+  excerpt: Only what you need to get involved with the VCoin network; nothing more.  
+
+- title: Download
+  url: /basics/download/
+  excerpt: Download the VCoin client software.  
+  
+- title: Distribution
+  url: /intermediate/distribution/
+  excerpt: 'Learn what makes the CLAM network so fair.'  
+
+- title: Development
+  url: /intermediate/development/
+  excerpt: Discover what is in store for the future of VCoin and how you can join in.
+
+- title: Market
+  url: /intermediate/market/
+  excerpt: Explore some of the things you can do with your VCoins.
+  
+- title: Manifesto
+  url: /intermediate/manifesto/
+  excerpt: Why was the VCoin network developed?
+  
+- title: Technical Information
+  url: /intermediate/technical-information/
+  excerpt: Study the technical parameters of the VCoin protocol.
+  
+- title: Create VCoins
+  url: /intermediate/create-clams/
+  excerpt: Start earning Vcoin by helping to secure the network.
+  
+- title: Earn VCoin
+  url: /intermediate/earn-vcoin/
+  excerpt: Help to develop the network and earn VCoin.
+  
+- title: News Articles
+  url: /basics/news-articles/
+  excerpt: VCoin mentions on the internet.
+  
+- title: Theme Setup
+  url: /theme-setup/
+  excerpt: Derp.
+  
+- title: About
+  url: /about/
+  excerpt: Derp.
+
+- title: Sample Posts
+  url: /posts/
+  excerpt: Derp. 

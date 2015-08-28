@@ -1,0 +1,27 @@
+# Authors
+
+billy_rick:
+  name: Billy Rick
+  web: http://thewhip.com
+  email: billy@rick.com
+  bio: "What do you want, jewels? I am a very extravagant man."
+  avatar: bio-photo-2.jpg
+  twitter: extravagantman
+  google:
+    plus: BillyRick
+
+cornelius_fiddlebone:
+  name: Cornelius Fiddlebone
+  email: cornelius@thewhip.com
+  bio: "I ordered what?"
+  avatar: bio-photo.jpg
+  twitter: rhymeswithsackit
+  google:
+    plus: CorneliusFiddlebone
+
+graham_higgins:
+  name: Graham Higgins
+  email: gjh@bel-epa.com
+  bio: "What you thought you heard me say might not be what I thought I said."
+  avatar: gjh-bio-photo.jpg
+  twitter: bel-epa

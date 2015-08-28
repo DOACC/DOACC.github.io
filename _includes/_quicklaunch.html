@@ -1,0 +1,11 @@
+<div id="quicklaunch">
+	<h3>Explore CLAMs</h3>
+	{% for currPage in site.data.quicklaunch %}
+	<article>
+		<h2><a href="{{ site.url }}{{ currPage.url }}" title="{{ currPage.title }}">{{ currPage.title }}</a></h2>
+		{% if currPage.excerpt %}
+			<p>{{ currPage.excerpt | strip_html | truncate: 160 }}</p>
+		{% endif %}
+	</article>
+	{% endfor %}
+</div>

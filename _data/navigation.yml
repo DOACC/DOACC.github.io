@@ -1,0 +1,14 @@
+# Site navigation links
+
+
+- title: Start
+  url: /start/
+  excerpt: Get started with the VCoin network.
+  
+- title: Learn
+  url: /learn/
+  excerpt: Delve deeper and learn about the VCoin network.
+  
+- title: News
+  url: /news/
+  excerpt: VCoin network news and announcements.
