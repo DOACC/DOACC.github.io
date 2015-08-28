@@ -16,7 +16,7 @@
    -->
    <!-- eoi(stinfo-navi) -->
    <!--
-   <a href="/"><img src="/images/kanzaki/logo.png" id="twk-logo" width="88" height="31" alt="The Web KANZAKI " title="Go to the top page of this site" /></a>
+   <a href="/"><img src="images/kanzaki/logo.png" id="twk-logo" width="88" height="31" alt="The Web KANZAKI " title="Go to the top page of this site" /></a>
    <span id="gnavi">
     <a href="/#epages" title="English introduction to Japanese arts and computing">Japan</a>, 
     <a href="/#music" title="Japanese contens on Music, such as Cntrabass pages and Norrington pages">Music</a>, 

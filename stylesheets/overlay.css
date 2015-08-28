@@ -1,6 +1,6 @@
-@import url('http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
-@import url('http://fonts.googleapis.com/css?family=Karma:400,600,400italic,600italic');
-@import url('http://fonts.googleapis.com/css?family=Cantarell');
+@import url('//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
+@import url('//fonts.googleapis.com/css?family=Karma:400,600,400italic,600italic');
+@import url('//fonts.googleapis.com/css?family=Cantarell');
 @import 'openwebicons.css';
 .index .subheader {width:100%;background:#2f3238;height:160px;padding-top:60px;z-index:99;}
 .hero {/*position:relative;height:260px;*/width:100%;/*background-color:#2f4050;background-image:linear-gradient(#263340, #2f4050)*/}

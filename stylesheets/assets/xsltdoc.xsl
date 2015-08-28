@@ -236,7 +236,7 @@
  <xsl:template match="doas:description">
   <!--** Presents doas description. -->
   <xsl:if test="@xml:lang='ja'">
-   <img src="/images/kanzaki/jp.gif" alt="[J]"/>
+   <img src="images/kanzaki/jp.gif" alt="[J]"/>
   </xsl:if>
   <xsl:value-of select="."/>
  </xsl:template>

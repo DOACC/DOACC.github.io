@@ -363,7 +363,7 @@
  <xsl:template match="dc:description|rdfs:comment|@rdfs:comment|@dc:description" mode="ontdesc">
  <!--** Ontology/Schema description property -->
   <p>
-   <xsl:if test="@xml:lang='ja'"><img src="/images/kanzaki/ja.png" alt="[ja]"/></xsl:if>
+   <xsl:if test="@xml:lang='ja'"><img src="images/kanzaki/ja.png" alt="[ja]"/></xsl:if>
    <xsl:value-of select="normalize-space(.)"/>
   </p>
  </xsl:template>
@@ -596,7 +596,7 @@ if(navigator.userAgent.indexOf('MSIE') != -1) document.getElementById('ie-notice
      <xsl:if test="$exc &gt; 1"><h3>Example <xsl:value-of select="position()"/></h3></xsl:if>
      <!--@ description of this example -->
      <p><xsl:value-of select="rdfs:comment|dc:description"/></p>
-     <p><img src="/images/kanzaki/ja.png" alt="[ja]"/> <xsl:value-of select="rdfs:comment[@xml:lang='ja']|dc:description[@xml:lang='ja']"/>
+     <p><img src="images/kanzaki/ja.png" alt="[ja]"/> <xsl:value-of select="rdfs:comment[@xml:lang='ja']|dc:description[@xml:lang='ja']"/>
      <xsl:apply-templates select="ex:pfx"/></p>
      
      <!--@ link to trial example (e.g. web app) -->
@@ -858,13 +858,13 @@ if(navigator.userAgent.indexOf('MSIE') != -1) document.getElementById('ie-notice
   <xsl:if test="vs:term_status or @vs:term_status">
    <xsl:choose>
     <xsl:when test="vs:term_status='testing' or @vs:term_status='testing'">
-     <img class="term_status" src="/images/kanzaki/construction.gif" alt="testing term"/>
+     <img class="term_status" src="images/kanzaki/construction.gif" alt="testing term"/>
     </xsl:when>
     <xsl:when test="vs:term_status='unstable' or @vs:term_status='unstable'">
-     <img class="term_status" src="/images/kanzaki/watchout.gif" alt="unstable term"/>
+     <img class="term_status" src="images/kanzaki/watchout.gif" alt="unstable term"/>
     </xsl:when>
     <xsl:when test="vs:term_status='deprecated' or @vs:term_status='deprecated'">
-     <img class="term_status" src="/images/kanzaki/deprecated.gif" alt="deprecated term"/>
+     <img class="term_status" src="images/kanzaki/deprecated.gif" alt="deprecated term"/>
     </xsl:when>
    </xsl:choose>
   </xsl:if>
@@ -1021,7 +1021,7 @@ if(navigator.userAgent.indexOf('MSIE') != -1) document.getElementById('ie-notice
 
  <xsl:template name="htmlhead">
  <!--** Generates some XHTML head elements, especially style sheet and javascript -->
-  <link rel="stylesheet" href="/stylesheets/assets/kan01.css" type="text/css" />
+  <link rel="stylesheet" href="stylesheets/assets/kan01.css" type="text/css" />
   <xsl:if test="/rdf:RDF/ex:Example"><link rel="bookmark" href="#_ex_usage" /></xsl:if>
   <xsl:if test="$classes"><link rel="bookmark" href="#_class_def" /></xsl:if>
   <xsl:if test="$properties"><link rel="bookmark" href="#_property_def" /></xsl:if>
@@ -1065,7 +1065,7 @@ p {line-height: 1.3}
 dt.group {font-size:1.6em; color: navy; margin-top:1.5em}
 span.legend {font-size:0.7em; float:right; line-height:1; } span.legend span {display:block; float:left; margin:2px; width:4em; height:1em}
 /*   ]]>*/</style>
-  <script type="text/javascript" src="/javascript/ns-schema.js">//</script>
+  <script type="text/javascript" src="javascript/ns-schema.js">//</script>
  </xsl:template>
 
  

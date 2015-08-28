@@ -33,23 +33,23 @@
   function(){
     var loader = new YAHOO.util.YUILoader();
 
-    loader.addModule({ name: "ubiquity-array",          type: "js",  fullpath: "http://ubiquity-rdfa.googlecode.com/svn/branches/0.7/third-party/array.js" });
+    loader.addModule({ name: "ubiquity-array",          type: "js",  fullpath: "https://ubiquity-rdfa.googlecode.com/svn/branches/0.7/third-party/array.js" });
 
-    loader.addModule({ name: "ubiquity-threads",        type: "js",  fullpath: "http://ubiquity-rdfa.googlecode.com/svn/branches/0.7/third-party/threads.js" });
+    loader.addModule({ name: "ubiquity-threads",        type: "js",  fullpath: "https://ubiquity-rdfa.googlecode.com/svn/branches/0.7/third-party/threads.js" });
 
-    loader.addModule({ name: "ubiquity-uri",            type: "js",  fullpath: "http://ubiquity-rdfa.googlecode.com/svn/branches/0.7/third-party/uri.js" });
+    loader.addModule({ name: "ubiquity-uri",            type: "js",  fullpath: "https://ubiquity-rdfa.googlecode.com/svn/branches/0.7/third-party/uri.js" });
 
-    loader.addModule({ name: "ubiquity-submissionjson", type: "js",  fullpath: "http://ubiquity-rdfa.googlecode.com/svn/branches/0.7/third-party/submission/submission-json.js" });
+    loader.addModule({ name: "ubiquity-submissionjson", type: "js",  fullpath: "https://ubiquity-rdfa.googlecode.com/svn/branches/0.7/third-party/submission/submission-json.js" });
 
-    loader.addModule({ name: "ubiquity-rdfparser",      type: "js",  fullpath: "http://ubiquity-rdfa.googlecode.com/svn/branches/0.7/RDFParser.js",
+    loader.addModule({ name: "ubiquity-rdfparser",      type: "js",  fullpath: "https://ubiquity-rdfa.googlecode.com/svn/branches/0.7/RDFParser.js",
       requires: [ "ubiquity-uri", "ubiquity-array" ] });
 
-    loader.addModule({ name: "ubiquity-rdfstore",       type: "js",  fullpath: "http://ubiquity-rdfa.googlecode.com/svn/branches/0.7/RDFStore.js" });
+    loader.addModule({ name: "ubiquity-rdfstore",       type: "js",  fullpath: "https://ubiquity-rdfa.googlecode.com/svn/branches/0.7/RDFStore.js" });
 
-    loader.addModule({ name: "ubiquity-rdfquery",       type: "js",  fullpath: "http://ubiquity-rdfa.googlecode.com/svn/branches/0.7/RDFQuery.js",
+    loader.addModule({ name: "ubiquity-rdfquery",       type: "js",  fullpath: "https://ubiquity-rdfa.googlecode.com/svn/branches/0.7/RDFQuery.js",
       requires: [ "dom", "container", "ubiquity-rdfstore", "ubiquity-submissionjson" ] });
 
-    loader.addModule({ name: "ubiquity-metascan",       type: "js",  fullpath: "http://ubiquity-rdfa.googlecode.com/svn/branches/0.7/metascan.js",
+    loader.addModule({ name: "ubiquity-metascan",       type: "js",  fullpath: "https://ubiquity-rdfa.googlecode.com/svn/branches/0.7/metascan.js",
       requires: [ "ubiquity-rdfquery", "ubiquity-rdfstore", "ubiquity-rdfparser", "ubiquity-threads" ] });
 
     loader.require( "event", "ubiquity-metascan" );
