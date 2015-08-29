@@ -1065,7 +1065,7 @@ p {line-height: 1.3}
 dt.group {font-size:1.6em; color: navy; margin-top:1.5em}
 span.legend {font-size:0.7em; float:right; line-height:1; } span.legend span {display:block; float:left; margin:2px; width:4em; height:1em}
 /*   ]]>*/</style>
-  <script type="text/javascript" src="/assets/js/vendor/ns-schema.js">//</script>
+  <script type="text/javascript" src="/assets/js/ns-schema.js">//</script>
  </xsl:template>
 
  
