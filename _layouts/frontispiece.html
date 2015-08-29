@@ -1,0 +1,36 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+{% include _head.html %}
+</head>
+
+<body id="home" class="index">
+    <noscript>
+      <div class="noscript">
+      Your browser settings show that JavaScript is disabled. (Good call, we too browse with javascript disabled). If you enable it for this site, you’ll get the full benefit of the user-oriented enhancements: nice fonts, drop-down menus, active tabs and the like. We recommend that you turn on Javascript and then refresh this page. <a href="http://www3.qwest.com/cgi-bin/qwest.cfg/php/enduser/std_adp.php?p_faqid=1095" target="_blank">How do I turn on Javascript?</a>
+      </div>
+    </noscript>
+{% include _browser-upgrade.html %}
+{% include _navigation.html %}
+
+    <div class="pusher">
+      <div class="full height">
+        {% include _toc.html %}
+        {{content}}
+      </div>
+    </div>
+
+  </div><!-- /#index -->
+</div><!-- /#main -->
+
+<footer>
+    {% include _footer.html %}
+</footer>
+
+{% include _scripts.html %}
+  
+</body>
+</html>
