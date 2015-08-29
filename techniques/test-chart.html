@@ -1,0 +1,170 @@
+---
+layout: page
+title: Javascript processing example
+section: techniques
+---
+  <script src="{{site.url}}/assets/js/vendor/library/raphael-min.js"></script>
+  <script src="{{site.url}}/assets/js/vendor/library/treemap-squared-0.5.min.js"></script>
+  <style type="text/css">
+  form {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  .node {
+    border: solid 1px white;
+    font: 10px sans-serif;
+    line-height: 12px;
+    overflow: hidden;
+    position: absolute;
+    text-indent: 2px;
+  }
+  </style>
+
+
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+            </div>
+            <h2 class="ui header inverted">${title}
+              <div class="sub header"></div>
+            </h2>
+          </div>
+        </div>
+
+        <div class="container">
+          <h2 class="ui dividing header" id="title">${title}</h2>
+          <div id="results">
+          </div>
+        </div>
+
+      </div>
+
+<script type="text/javascript" src="{{site.url}}/assets/js/plugins/jquery.xdomainajax.js"></script>
+<script type="text/javascript">
+  // For quick access to those namespaces:
+  var FOAF = $rdf.Namespace("http://xmlns.com/foaf/0.1/")
+  var RDF = $rdf.Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+  var RDFS = $rdf.Namespace("http://www.w3.org/2000/01/rdf-schema#")
+  var OWL = $rdf.Namespace("http://www.w3.org/2002/07/owl#")
+  var DC = $rdf.Namespace("http://purl.org/dc/elements/1.1/")
+  var XSD = $rdf.Namespace("http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/#dt-")
+  var SKOS = $rdf.Namespace("http://www.w3.org/2004/02/skos/core#")
+  var DOACC = $rdf.Namespace("http://purl.org/net/bel-epa/doacc#")
+  var CCS = $rdf.Namespace('http://purl.org/net/bel-epa/2015/05/ccs#')
+
+  var data = []; 
+  var labels = [];
+  var maxd = 0;
+  var dt;
+  // var flare = {};
+  var listout = function() {
+      // doacc:cmp ccs:cmp-14
+      // cmpno = 'cmp-'+'29'
+      cmpno = 'cmp-'+'2'
+      cmp = g.any(CCS(cmpno), RDF('type'), DOACC('CMPost'))
+      dt = g.any(CCS(cmpno), DC('date'), null)
+      cmpds = g.each(null, DOACC('cmp'), CCS(cmpno));
+      var res = $.map(cmpds.slice(2,20), function(sy) { 
+        var idx = $(sy).attr('value');
+        var c = g.any(sy, DOACC('cryptocurrency'), null);
+        var cn = g.any(c, DOACC('symbol'), null);
+        var val = g.any(sy, DOACC('marketcap'), null);
+        return  {"label": cn.value, "value": parseFloat(val.value).toFixed(0)}
+      });
+      data = $.map(res, function(p) {return p['value'] * 10});
+      labels = $.map(res, function(p) {return p['label']});
+      maxd = ((Math.max.apply(null, data) / 50000) | 0) * 50000;
+      // console.log(data);
+      // flare = {"name": "flare", "children": list_of_names};
+      // n = data.length;
+      // for (i=0; i<n; i++) {
+      // }
+      // $("#results").html(op)
+
+      var boxFormatter = function (coordinates, index) {
+            // so in this case an index of [1,1] would refer to "London" and [2,1] to "Berlin"
+            // coordinates are in the form [x1,y1,x2,y2]
+            var datapoint,i, color;
+            // get the value of the data point using the index to find it         
+            datapoint = data;
+            for (i=0; i<index.length; i++){
+                datapoint = datapoint[index[i]];
+            }  
+            var saturation = ((datapoint / maxd)*0.6) + 0.4;
+            var brightness = ((datapoint / maxd)*0.3) + 0.2;
+            color = "hsb(0." + (Math.random() * (9 - 1) + 1) + "," + saturation + "," + brightness + ")";
+            return{ "fill" : color, "fill-opacity": "0.6" };
+      };
+
+      Treemap.draw(
+        "results", 850, 450, data, labels, {
+          'label' : {'fill' : 'white'},
+          'background' : {'fill': 'url("images/assets/marble.jpg")'},
+          // 'box' : {'fill':'#eee', 'stroke':'black', 'stroke-width':'1px', 'fill-opacity':"0.7"}
+          'box' : boxFormatter,
+        }
+      );
+      $('#title').html('Chart test <em>#'+cmpno+' ('+dt+')</em>');
+  };
+
+  var g = $rdf.graph();
+  var docURI = "{{site.url}}/altcoin.n3";
+  var fetch = $rdf.fetcher(g);
+  fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
+      listout()
+  });
+  /*
+  var margin = {top: 40, right: 10, bottom: 10, left: 10},
+      width = 960 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
+
+  var color = d3.scale.category20c();
+
+  var treemap = d3.layout.treemap()
+      .size([width, height])
+      .sticky(true)
+      .value(function(d) { return d.size; });
+
+  var div = d3.select("body").append("div")
+      .style("position", "relative")
+      .style("width", (width + margin.left + margin.right) + "px")
+      .style("height", (height + margin.top + margin.bottom) + "px")
+      .style("left", margin.left + "px")
+      .style("top", margin.top + "px");
+
+  d3.json("flare.json", function(error, root) {
+    var node = div.datum(root).selectAll(".node")
+        .data(treemap.nodes)
+      .enter().append("div")
+        .attr("class", "node")
+        .call(position)
+        .style("background", function(d) { return d.children ? color(d.name) : null; })
+        .text(function(d) { return d.children ? null : d.name; });
+
+    d3.selectAll("input").on("change", function change() {
+      var value = this.value === "count"
+          ? function() { return 1; }
+          : function(d) { return d.size; };
+
+      node
+          .data(treemap.value(value).nodes)
+        .transition()
+          .duration(1500)
+          .call(position);
+    });
+  });
+
+  function position() {
+    this.style("left", function(d) { return d.x + "px"; })
+        .style("top", function(d) { return d.y + "px"; })
+        .style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })
+        .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; });
+  };
+  */
+  // var data = [60000, 60000, 40000, 30000, 20000, 10000];
+  // var labels = ["Paris", "London", "New York", "Moscow", "Berlin", "Tokyo"];
+  
+
+</script>

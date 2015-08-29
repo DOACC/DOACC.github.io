@@ -7,7 +7,7 @@
   {% include _head.html %}
 </head>
 
-<body id="doacc" class="index">
+<body id="doacc" class="mainindex">
   <noscript>
     <div class="noscript">
     Your browser settings show that JavaScript is disabled. (Good call, we too browse with javascript disabled). If you enable it for this site, you’ll get the full benefit of the user-oriented enhancements: nice fonts, drop-down menus, active tabs and the like. We recommend that you turn on Javascript and then refresh this page. <a href="http://www3.qwest.com/cgi-bin/qwest.cfg/php/enduser/std_adp.php?p_faqid=1095" target="_blank">How do I turn on Javascript?</a>
@@ -20,41 +20,37 @@
   <div class="pusher">
     <div class="full height">
       {% include _navigation.html %}
-      <div id="main" role="main">
-        <div class="article-author-side">
-          {% include _author-bio.html %}
-        </div>
-        <article class="post">
-          <div class="headline-wrap">
-            {% if page.link %}
-              <h1><a href="{{ page.link }}">{{ page.title }}</a></h1>
-            {% else %}
-              <h1><a href="{{ site.url }}{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a></h1>
-            {% endif %}
-          </div><!--/ .headline-wrap -->
-          <div class="article-wrap">
-            {{ content }}
+      <div class="ui page grid">
+        <div class="column">
+          {% if page.link %}
+            <h1><a href="{{ page.link }}"
+              >{{ page.title }}</a></h1>
+          {% else %}
+            <h1><a href="{{ site.url }}{{ page.url }}" rel="bookmark" title="{{ page.title }}"
+              >{{ page.title }}</a></h1>
+          {% endif %}
+          {{ content }}
+          <hr />
+          <footer role="contentinfo">
+            <p class="byline"><strong>{{ page.title }}</strong> was published on <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>{% if page.modified %} and last modified on <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time>{% endif %}.</p>
+          </footer>
+          {% if site.owner.disqus-shortname and page.comments == true %}
+            <section id="disqus_thread"></section><!-- /#disqus_thread -->
+          {% endif %}
+          <!-- </div> --><!-- /#main -->
+          {% if site.related_posts.size > 0 %}
+          <div class="related-articles">
+            <h4>You might also enjoy <small class="pull-right">(<a href="{{ site.url }}/posts/">View all posts</a>)</small></h4>
+            <ul>
+            {% for post in site.related_posts limit:3 %}
+              <li><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+            {% endfor %}
+            </ul>
             <hr />
-            <footer role="contentinfo">
-              <p class="byline"><strong>{{ page.title }}</strong> was published on <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>{% if page.modified %} and last modified on <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time>{% endif %}.</p>
-            </footer>
-          </div><!-- /.article-wrap -->
-        {% if site.owner.disqus-shortname and page.comments == true %}
-          <section id="disqus_thread"></section><!-- /#disqus_thread -->
-        {% endif %}
-        </article>
-      </div><!-- /#main -->
-      {% if site.related_posts.size > 0 %}
-      <div class="related-articles">
-        <h4>You might also enjoy <small class="pull-right">(<a href="{{ site.url }}/posts/">View all posts</a>)</small></h4>
-        <ul>
-        {% for post in site.related_posts limit:3 %}
-          <li><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
-        {% endfor %}
-        </ul>
-        <hr />
-      </div><!-- /.related-articles -->
-      {% endif %}
+          </div><!-- /.related-articles -->
+          {% endif %}
+        </div>
+      </div>
     </div>
   </div>
 

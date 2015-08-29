@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet href="/stylesheets/assets/xsltdoc.xsl" type="text/xsl" media="screen"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/img/kansaki/xsltdoc.xsl" type="text/xsl" media="screen"?>
 <!DOCTYPE xsl:stylesheet [
  <!ENTITY rdf  'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
  <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
@@ -31,7 +31,14 @@
   exclude-result-prefixes="rdf rdfs dc owl dcterms ex doas ont vs"
 >
 
- <xsl:output indent="yes"/>
+ <xsl:output
+    method="xml" 
+    indent="yes"
+    encoding="UTF-8" 
+    doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+    doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
+    omit-xml-declaration="no"
+    />
  <xsl:param name="xmlfile"/><!--** target xml file name if the parameter is provided by sysytem -->
  <!-- avoid Opera error
  <xsl:variable name="_doas" select="document('')//rdf:Description[1]"/>
@@ -44,12 +51,12 @@
     <description>This stylesheet is designed to convert RDF Schema / OWL Ontology file to visible XHTML with structured definition list, with class/property trees as the table of contents.</description>
     <author rdf:parseType="Resource">
      <name>Masahide Kanzaki</name>
-     <homepage rdf:resource="http://www.kanzaki.com/"/>
+     <mbox rdf:resource="mailto:webmaster@kanzaki.com"/>
     </author>
     <created>2003</created>
     <release rdf:parseType="Resource">
-     <revision>2.3.8</revision>
-     <created>2010-11-12</created>
+     <revision>2.3.7</revision>
+     <created>2008-10-30</created>
     </release>
     <rights>(c) 2003-2008 by the author, copyleft under LGPL</rights>
     <license rdf:resource="http://creativecommons.org/licenses/LGPL/2.1/"/>
@@ -165,7 +172,7 @@
   <html>
    <xsl:if test="@xml:lang"><xsl:attribute name="lang"><xsl:value-of select="@xml:lang"/></xsl:attribute></xsl:if>
    <head>
-    <title><xsl:value-of select="$self/dc:title|$self/rdfs:label"/> - XHTML view</title>
+    <title><xsl:value-of select="$self/dc:title|$self/rdfs:label"/></title>
     <xsl:call-template name="htmlhead"/>
    </head>
    <body>
@@ -215,7 +222,7 @@
       <xsl:with-param name="nest">0</xsl:with-param>
       <xsl:with-param name="cp">c</xsl:with-param>
      </xsl:call-template>
-     <dl id="_class_def_list">
+     <dl>
       <xsl:comment>class processing</xsl:comment>
       <xsl:apply-templates select="$classes" mode="pcproc"/>
      </dl>
@@ -242,7 +249,7 @@
       <xsl:with-param name="nest">0</xsl:with-param>
       <xsl:with-param name="cp">p</xsl:with-param>
      </xsl:call-template>
-     <dl id="_prop_def_list">
+     <dl>
       <xsl:comment>property processing</xsl:comment>
       <xsl:apply-templates select="$properties" mode="pcproc"/>
      </dl>
@@ -265,20 +272,18 @@
  
  <xsl:template match="*" mode="ontelt">
  <!--** Description of this ontoloty/schema itself  -->
-  <hgroup>
-  <h1><xsl:value-of select="rdfs:label|dc:title|dcterms:title|@dc:title"/></h1>
-  </hgroup>
+  <h1><xsl:value-of select="rdfs:label|dc:title|@dc:title"/></h1>
   <div class="abstract" id="_descr">
    <xsl:comment>ontology description</xsl:comment><!--to avoid empty element-->
-   <xsl:apply-templates select="rdfs:comment|dc:description|dcterms:description|@rdfs:comment|@dc:description" mode="ontdesc"/>
+   <xsl:apply-templates select="rdfs:comment|dc:description|@rdfs:comment|@dc:description" mode="ontdesc"/>
   </div>
-  <script type="text/javascript">
-  var desc = document.getElementById('_descr');
-  desc.innerHTML= desc.innerHTML.replace(/\n/g,"<br/>");
-  var pp=desc.getElementsByTagName('p');
-  for(var i=0; i&lt;desc.length;i++){
-    pp[i].innerHTML = pp[i].innerHTML.replace(/\n/g,"<br/>");
-  }
+  <script type="text/javascript"><![CDATA[
+	var desc = document.getElementById('_descr');
+	desc.innerHTML= desc.innerHTML.replace(/\n/g,"<br/>");
+	var pp=desc.getElementsByTagName('p');
+	for(var i=0; i<desc.length;i++){
+		pp[i].innerHTML = pp[i].innerHTML.replace(/\n/g,"<br/>");
+	}]]>
   </script>
   <dl>
    <dt>Namespace</dt>
@@ -363,7 +368,7 @@
  <xsl:template match="dc:description|rdfs:comment|@rdfs:comment|@dc:description" mode="ontdesc">
  <!--** Ontology/Schema description property -->
   <p>
-   <xsl:if test="@xml:lang='ja'"><img src="images/kanzaki/ja.png" alt="[ja]"/></xsl:if>
+   <xsl:if test="@xml:lang='ja'"><img src="/img/kanzaki/ja.png" alt="[ja]"/></xsl:if>
    <xsl:value-of select="normalize-space(.)"/>
   </p>
  </xsl:template>
@@ -524,7 +529,7 @@
 
  <xsl:template match="*/rdfs:label|*/@rdfs:label" mode="heading">
  <!--** Labels of class/property will be shown in a [] blacket for heading. -->
-  <span class="label"> [<xsl:value-of select="."/>]</span>
+  <span class="rdfslabel"> [<xsl:value-of select="."/>]</span>
  </xsl:template>
  
  <xsl:template match="*/rdfs:label|*/@rdfs:label">
@@ -596,7 +601,7 @@ if(navigator.userAgent.indexOf('MSIE') != -1) document.getElementById('ie-notice
      <xsl:if test="$exc &gt; 1"><h3>Example <xsl:value-of select="position()"/></h3></xsl:if>
      <!--@ description of this example -->
      <p><xsl:value-of select="rdfs:comment|dc:description"/></p>
-     <p><img src="images/kanzaki/ja.png" alt="[ja]"/> <xsl:value-of select="rdfs:comment[@xml:lang='ja']|dc:description[@xml:lang='ja']"/>
+     <p><img src="/img/kanzaki/ja.png" alt="[ja]"/> <xsl:value-of select="rdfs:comment[@xml:lang='ja']|dc:description[@xml:lang='ja']"/>
      <xsl:apply-templates select="ex:pfx"/></p>
      
      <!--@ link to trial example (e.g. web app) -->
@@ -858,13 +863,10 @@ if(navigator.userAgent.indexOf('MSIE') != -1) document.getElementById('ie-notice
   <xsl:if test="vs:term_status or @vs:term_status">
    <xsl:choose>
     <xsl:when test="vs:term_status='testing' or @vs:term_status='testing'">
-     <img class="term_status" src="images/kanzaki/construction.gif" alt="testing term"/>
+     <img class="term_status" src="/img/kanzaki/construction.gif" alt="testing term"/>
     </xsl:when>
     <xsl:when test="vs:term_status='unstable' or @vs:term_status='unstable'">
-     <img class="term_status" src="images/kanzaki/watchout.gif" alt="unstable term"/>
-    </xsl:when>
-    <xsl:when test="vs:term_status='deprecated' or @vs:term_status='deprecated'">
-     <img class="term_status" src="images/kanzaki/deprecated.gif" alt="deprecated term"/>
+     <img class="term_status" src="/img/kanzaki/watchout.gif" alt="unstable term"/>
     </xsl:when>
    </xsl:choose>
   </xsl:if>
@@ -1021,7 +1023,7 @@ if(navigator.userAgent.indexOf('MSIE') != -1) document.getElementById('ie-notice
 
  <xsl:template name="htmlhead">
  <!--** Generates some XHTML head elements, especially style sheet and javascript -->
-  <link rel="stylesheet" href="stylesheets/assets/kan01.css" type="text/css" />
+  <link rel="stylesheet" href="/css/kan01.css" type="text/css" />
   <xsl:if test="/rdf:RDF/ex:Example"><link rel="bookmark" href="#_ex_usage" /></xsl:if>
   <xsl:if test="$classes"><link rel="bookmark" href="#_class_def" /></xsl:if>
   <xsl:if test="$properties"><link rel="bookmark" href="#_property_def" /></xsl:if>
@@ -1035,7 +1037,7 @@ if(navigator.userAgent.indexOf('MSIE') != -1) document.getElementById('ie-notice
 
 .Class {background:#fee; border-color: maroon}
 .Property, .DatatypeProperty, .AnnotationProperty {background:#eef; border-color: navy}
-.ObjectProperty, /*.FunctionalProperty,*/ .InverseFunctionalProperty {background:#cdf; border-color: navy; border:#33c 1px solid}
+.ObjectProperty, .FunctionalProperty, .InverseFunctionalProperty {background:#cdf; border-color: navy; border:#33c 1px solid}
 .DeprecatedClass, .DeprecatedProperty {color: gray; border:none; background:#eee}
 
 .more-elt {background:#eee; border-color: green; border-style: solid}
@@ -1044,7 +1046,7 @@ if(navigator.userAgent.indexOf('MSIE') != -1) document.getElementById('ie-notice
 dt.inferred, .legend span.inferred {/*border-color:silver;*/background-color:white}
 /*dt.Class.Property*/ dt.error {border: red 2px solid}
 span.inferred {color: gray}
-.label {font-weight: normal; color: #555}
+.rdfslabel {font-weight: normal; color: #555}
 .cp-type {font-weight: normal; font-size:90%; color: maroon; position:absolute; right:20px}
 .outer .cp-type {color: gray}
 dd dt {font-weight: normal; color: #060}
@@ -1065,10 +1067,14 @@ p {line-height: 1.3}
 dt.group {font-size:1.6em; color: navy; margin-top:1.5em}
 span.legend {font-size:0.7em; float:right; line-height:1; } span.legend span {display:block; float:left; margin:2px; width:4em; height:1em}
 /*   ]]>*/</style>
-  <script type="text/javascript" src="/assets/js/vendor/ns-schema.js">//</script>
+  <script type="text/javascript" src="/js/ns-schema.js">//</script>
+  <link type="text/css" rel="stylesheet" href="/css/bootstrap/journal/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap-responsive.css" />
+  <link type="text/css" rel="stylesheet" href="/css/jquery-ui.css" />
+
  </xsl:template>
 
  
- <xsl:include href="./banner-footer.xsl"/>
+ <xsl:include href="./wrapper.xsl"/>
 
 </xsl:stylesheet>

@@ -1,0 +1,108 @@
+---
+layout: page
+title: Javascript Fresnel processing example
+section: techniques
+---
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+            </div>
+            <h2 class="ui header inverted">Techniques<br/>
+              <span class="sub header">how to use DOACC data in your own application / web site.</span>
+            </h2>
+            <div class="ui divider"></div>
+          </div>
+        </div>
+        <div class="container" >
+
+          <div class="ui sub secondary pointing menu">
+            <a class="active item" href="/techniques/index.html">Basics</a>
+            <a class="item" href="/techniques/rdfa.html">DOM</a>
+            <a class="item" href="/techniques/querying.html">Query results</a>
+            <a class="item" href="/techniques/javascript.html">Javascript</a>
+            <a class="item" href="/techniques/interactive.html">Interactive</a>
+            <a class="item" href="/techniques/charting.html">Charting</a>
+            <a class="item" href="/techniques/graphing.html">Graphing</a>
+            <a class="item" href="/techniques/adding.html">Adding facts</a>
+            <a class="item" href="/techniques/reasoning.html">Reasoning</a>
+          </div>
+
+          <h2 class="ui dividing header">${title}</h2>
+          <h3 class="ui header">${title}</h3>
+          <p>How to add DOACC information to web pages</p>
+
+          <div resource="/alice/posts/trouble_with_bob" typeof="schema:BlogPosting">
+              <h2 property="dc:title">The trouble with Bob</h2>
+              ...
+              <h3 property="dc:creator schema:creator" resource="#me">Alice</h3>
+              <div property="schema:articleBody">
+                <p>The trouble with Bob is that he takes much better photos than I do:</p>
+              </div>
+             ...
+          </div>
+
+          <p>
+            Welcome to my blog. I have lots of things to say, but before I do, let me
+            tell you that I have
+            <span about="#bike" xmlns:ebay="http://ebay.com/"
+              property="ebay:item" content="120245313159"
+              >a bike for sale</span>.
+            Now I think about it, I've also got
+            <span about="#boat" xmlns:ebay="http://ebay.com/"
+              property="ebay:item" content="170225336431"
+              >a speedboat</span>
+            and
+            <span about="#castle" xmlns:ebay="http://ebay.com/"
+              property="ebay:item" content="310056337208"
+              >a castle for sale</span>.
+          </p>
+          <div
+            xmlns:fresnel="http://www.w3.org/2004/09/fresnel#"
+            typeof="fresnel:Group"
+            style="display: none;"
+            >
+            <div rev="fresnel:group">
+              <div typeof="fresnel:Format">
+                <div property="fresnel:instanceFormatDomain">
+                  select: [ "s", "item" ],
+                  where:
+                  [
+                    { pattern: [ "?s", "http://ebay.com/item", "?item" ], setUserData: true }
+                  ]
+                </div>
+                
+                <span property="fresnel:resourceStyle" datatype="fresnel:styleClass">ebay-item</span>
+              </div>
+            </div>
+          </div>
+          <p style="padding-bottom:2rem"></p>
+
+        </div>
+
+<script type="text/javascript" src="{{site.url}}/assets/js/plugins/jquery.xdomainajax.js"></script>
+<script type="text/javascript" src="{{site.url}}/assets/js/vendor/ordf/jquery.rdfquery.rules.js"></script>
+<script type="text/javascript" src="{{site.url}}/assets/js/vendor/ordf/jquery.ordf.js"></script>
+<script type="text/javascript" src="{{site.url}}/assets/js/vendor/ordf/jquery.fresnel.js"></script>
+<script type="text/javascript" src="{{site.url}}/assets/js/vendor/ordf/jquery.fresnel.widgets.js"></script>
+<script type="text/javascript">
+  // 1. initialize the fresnel object
+  fresnel = new $.rdf.fresnel();
+  var bar = function(arg){
+    alert(arg);
+  };
+  // 2. load fresnel format instructions into fresnel.fresnel_data
+  // fresnel.addFresnel({ uri: foo, callback: bar });
+  fresnel.addFresnel({
+      uri: "{{site.url}}/lens/owl",
+      callback: function(graph) {
+          ok(graph.tripleStore, "lens");
+          start();
+      }});
+
+  var databank = {};
+  // 3. add some databank
+  fresnel.addData(databank);
+  // 4. format the data
+  fresnel.format().appendTo("#results");
+
+</script>

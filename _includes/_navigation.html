@@ -1,49 +1,58 @@
-  <div class="following bar">
-    <div class="ui page grid">
-      <div class="column">
-        <div class="ui logo shape">
-          <div class="sides">
-            <div class="active ui side"><a href="/index.html" title="home"><img class="ui image" src="/images/logo.png" alt="Logo"></a></div>
+      <div class="following bar">
+        <div class="ui page grid">
+          <div class="column">
+            <div class="ui logo shape">
+              <div class="sides">
+                <div class="active ui side"><a href="/index.html" title="home"><img class="ui image" src="/images/logo.png" alt="Logo"></a></div>
+              </div>
+            </div>
+            <div class="ui inverted right floated secondary menu">
+              <a class="ui item" href="/facts/index.html">
+                <i class="large icon-rdf"></i> 
+                <span
+                  class="ui inverted blue header"
+                {% if page.section contains 'facts' %}
+                  style="text-decoration: underline;"
+                {% endif %}
+                >Facts</span>
+              </a>
+              <a class="ui item" href="/concepts/index.html">
+                <i class="large icon-semantic-web"></i>
+                <span
+                  class="ui inverted orange header"
+                {% if page.section contains 'concepts' %}
+                  style="text-decoration: underline;"
+                {% endif %}
+                  >Concepts</span>
+              </a>
+              <a class="ui item" href="/techniques/index.html">
+                <i class="large icon-semantics"></i>
+                <span
+                  class="ui inverted green header"
+                {% if page.section contains 'techniques' %}
+                  style="text-decoration: underline;"
+                {% endif %}
+                  >Techniques</span>
+              </a>
+              <a class="ui item" href="/news/index.html">
+                <i class="announcement icon"></i> 
+                <span
+                  class="ui inverted pink header"
+                {% if page.section contains 'news' %}
+                  style="text-decoration: underline;"
+                {% endif %}
+                >News</span>
+              </a>
+              <a class="ui item" href="/altcoins.svg">
+                <i class="icon-bitcoin"></i> 
+                <span class="ui inverted yellow header">Coins (big)</span>
+              </a>
+            </div>
+            <div class="ui large inverted secondary network menu">
+              <a class="view-ui item">
+                <i class="sidebar icon"></i> Menu
+              </a>
+            </div>
           </div>
         </div>
-        <div class="ui inverted right floated secondary menu">
-          <a class="ui item" href="/facts/index.html">
-            <i class="large icon-rdf"></i> 
-            <span
-              class="ui inverted blue header"
-            {% if page.section contains 'facts' %}
-              style="text-decoration: underline;"
-            {% endif %}
-            >Facts</span>
-          </a>
-          <a class="ui item" href="/concepts/index.html">
-            <i class="large icon-semantic-web"></i>
-            <span
-              class="ui inverted orange header"
-            {% if page.section contains 'concepts' %}
-              style="text-decoration: underline;"
-            {% endif %}
-              >Concepts</span>
-          </a>
-          <a class="ui item" href="/techniques/index.html">
-            <i class="large icon-semantics"></i>
-            <span
-              class="ui inverted green header"
-            {% if page.section contains 'techniques' %}
-              style="text-decoration: underline;"
-            {% endif %}
-              >Techniques</span>
-          </a>
-          <a class="ui item" href="/altcoins.svg">
-            <i class="icon-bitcoin"></i> 
-            <span class="ui inverted yellow header">Coins (big)</span>
-          </a>
-        </div>
-        <div class="ui large inverted secondary network menu">
-          <a class="view-ui item">
-            <i class="sidebar icon"></i> Menu
-          </a>
-        </div>
       </div>
-    </div>
-  </div>

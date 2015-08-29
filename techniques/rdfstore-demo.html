@@ -1,0 +1,74 @@
+
+---
+layout: page
+title: Adding facts
+section: techniques
+---
+  <link rel="stylesheet" href="{{site.url}}/stylesheets/library/rdfstore-js/rdfstore_frontend.css">
+  <link rel="stylesheet" href="{{site.url}}/stylesheets/library/rdfstore-js/ui-lightness/jquery-ui-1.8.14.custom.css">
+  <link rel="stylesheet" href="{{site.url}}/stylesheets/library/rdfstore-js/demo.css">
+
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+            </div>
+            <h2 class="ui header inverted">rdfstore-js demo
+              <div class="sub header"></div>
+            </h2>
+          </div>
+        </div>
+        <div class="container">
+          <div id='target'></div>
+          <div id='about'><div id='launch'><a href='#'>start frontend</a></div></div>
+        </div>
+
+  <script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js'></script>
+  <script type='text/javascript' src='{{site.url}}/assets/js/vendor/library/rdfstore-js/rdf_store.js'></script>
+  <script type='text/javascript' src='{{site.url}}/assets/js/vendor/library/rdfstore-js/rdfquery.js'></script>
+  <script type='text/javascript' src='{{site.url}}/assets/js/vendor/library/rdfstore-js/knockout-1.2.1.js'></script>
+  <script type='text/javascript' src='{{site.url}}/assets/js/vendor/library/rdfstore-js/rdfstore_frontend.js'></script>
+  <script type='text/javascript'>
+    frontend = null;
+    var startDemo = function(cb) {
+      rdfstore.create(
+        {"communication": {
+           "parsers": {
+             "text/html" :           rdfstore_frontend.rdfaParser,
+             "application/rdf+xml":  rdfstore_frontend.rdfParser
+           },
+          "precedences": ["text/n3", "text/turtle", "application/rdf+xml", "text/html", "application/json"] }
+          }, 
+          function(store) {
+             // original network transport
+             // var originalNetworkTransport = store.getNetworkTransport();
+             // rdfstore_frontend.ProxyNetworkTransport.proxyUri = "http://localhost:3000/rdfstoreproxy";
+             // store.setNetworkTransport(rdfstore_frontend.ProxyNetworkTransport);
+
+             store.execute("PREFIX : <http://example.org/ns#> \
+              INSERT DATA { \
+               <https://github.com/antoniogarrote/rdfstore-js> <http://purl.org/dc/elements/1.1/creator> <http://foaf.me/antoniogarrote#me> .\
+               <https://github.com/antoniogarrote/rdfstore-js> <http://purl.org/dc/elements/1.1/rights> <http://www.gnu.org/licenses/agpl-3.0.rdf> \
+             }", function(){
+                   frontend = new rdfstore_frontend('#target',store);
+                   if(cb) { cb(); }
+                 })
+          });
+      };
+
+      jQuery("#launch").click(function() {
+        var runDemo = function() {
+          frontend.viewModel.newLoadGraphDialog();
+          jQuery("#rdf-store-graph-to-load").val('/ccs.n3');
+        };
+        if(jQuery("#rdfstore-frontend").length==0) {
+          startDemo(function() {
+            runDemo();
+          })
+        } else {
+          runDemo();
+        }
+      });
+  </script>
+
+
+

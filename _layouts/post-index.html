@@ -19,30 +19,36 @@
 
   <div class="pusher">
     <div class="full height">
-      {% include _navigation.html %}
-      <div id="main" role="main">
-        <div class="article-author-side">
-          {% include _author-bio.html %}
+{% include _navigation.html %}
+      <div class="subheader">
+        <div class="container">
+          <div class="right-content">
+            <a href="#">“All we know are the facts, ma’am.”</a> <span class="rth"> - Joe Friday, <i>Dragnet</i></span>
+          </div>
+          <h2 class="ui header inverted">News
+            <div class="sub header">News of the DOACC community, developments, interesting usage cases, approaches, insights, administrivia, etc..</div>
+          </h2>
         </div>
-        <div id="index">
-          <h3><a href="{{ site.url}}/posts/">News</a></h3>
-          {% for post in site.posts limit:20 %}    
-          <article>
+      </div>
+        <div class="container">
+          <div class="ui sub secondary pointing menu">
+            <a class="item" href="/news/index.html">Index</a>
+            <a class="active item" href="/news/all-news/index.html">Archive</a>
+            <a class="item" href="/news/new-articles/index.html">New</a>
+            <a class="item" href="/news/posts/index.html">Posts</a>
+          </div>
+          {% for post in site.posts limit:20 %}
             {% if post.link %}
-              <h2 class="link-post"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></h2>
+            <h2 class="ui dividing header"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></h2>
             {% else %}
-              <h2><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+              <h2  class="ui dividing header"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
               <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
             {% endif %}
-          </article>
           {% endfor %}
-        <hr>
-        <article>
-              <h2><a href="{{ site.url }}/all-news" title="All News and Announcements">SHOW ALL NEWS</a></h2>
-              <p>Show all news and announcements.</p>
-        </article>
-        </div><!-- /#index -->
-      </div><!-- /#main -->
+          <div class="ui hidden divider"></div>
+        </div>
+      <h2><a href="{{ site.url }}/all-news" title="All News and Announcements">SHOW ALL NEWS</a></h2>
+      <p>Show all news and announcements.</p>
     </div>
   </div>
 
@@ -54,7 +60,3 @@
   
 </body>
 </html>
-
-
-
-
