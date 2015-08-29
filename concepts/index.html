@@ -1,0 +1,102 @@
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+              <a href="#">“When I use a word, it means just what I choose it to mean<br/>— neither more nor less.”</a> <span class="rth"> - Humpty Dumpty, <i>Through the Looking Glass</i></span>
+            </div>
+            <h2 class="ui header inverted">Concepts
+              <div class="sub header">Representing knowledge about the domain</div>
+            </h2>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="ui sub secondary pointing menu">
+            <a class="active item" href="concepts.html">Index</a>
+            <a class="item" href="things-protectionschemes.html">Protection</a>
+            <a class="item" href="things-distributionschemes.html">Distribution</a>
+            <a class="item" href="things-powschemes.html">PoW</a>
+            <a class="item" href="things-posschemes.html">PoS</a>
+            <a class="item" href="things-protocols.html">Protocols</a>
+            <a class="item" href="things-coins.html">Coins</a>
+            <a class="item" href="doacc-owl.html">DOACC OWL</a>
+            <a class="item" href="ccy-owl.html">CCY OWL</a>
+          </div>
+
+          <h2 class="ui dividing header">Cryptocurrency, the very idea!</h2>
+          <h3 class="ui header"><b><i>Altcoin</i></b>. <i>defn:</i> a cryptocurrency that is not Bitcoin.</h3>
+          <p>There are two main ontologies in use. They provide definitions of the terms used in statements about cryptocurrencies.</p>
+          <h3 class="ui header">DOACC</h3>
+          <p><a href="doacc-owl.html" title="Full DOACC ontology content">DOACC</a> is for general statements about algo, pow/pos, ico/no ico, premine, etc. and is based on concepts used by developers in online forum announcements, primarily bitcointalk. One altcoin advertises “algo: x11”, another mounts a crowdfunding ICO, yet another announces “PoS 2.0”. All three are surface features of a deeper conceptual separation reflecting different approaches taken to i) protecting the public ledger, ii) distributing the coins and iii) choice of PoW scheme.</p>
+          <p>And so the <a href="doacc-owl.html" title="Full DOACC ontology content">DOACC vocabulary</a> includes general altcoin concepts such as “protection scheme”, “distribution scheme”, and “proof-of-work scheme”.</p>
+          <h3 class="ui header">CCY</h3>
+          <p><a href="ccy-owl.html" title="Full CCY ontology content">CCY</a> is for making statements of technical detail; blockhash, scriptSig, txin/out, etc.</p>
+          <p>The <a href="ccy-owl.html" title="Full CCY ontology content">CCY vocabulary</a> is an expansion and adaptation of Melvin Carvalho’s CC ontology. The additions are mainly for making additional statements about i) blockchain contents and ii) the values bound to a range of program variables that effectively profile the coin.</p>
+          <p>The submenu navigation on this page offers links to descriptions of the more salient concepts. The DOACC and CCY OWL ontology pages present <em>all</em> of the concepts, their properties and how they are used to describe an altcoin and its features.</p>
+
+          <h2 class="ui dividing header">It’s a graph, but not as you know it, Jim.</h2>
+          <p>The remainder of this introduction attempts to cast illumination from several different angles, emphasising the essential <em>utility</em> of the approach.</p>
+          <h3 class="ui header">A reprise of some facts in DOACC</h3>
+                    <p><pre><span class="shy">ccs:<span class="subj">Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span> <span class="pred">a</span> doacc:<span class="reln">Cryptocurrency</span> ;
+    doacc:<span class="pred">block-reward</span> <span class="obj">"500000"</span>^^xsd:string ;
+    doacc:<span class="pred">block-time</span> <span class="obj">60</span> ;
+    doacc:<span class="pred">coin</span> ccs:<span class="reln">D5e6e149c-2bf3-48e0-a8ab-4ca0a1f424a4</span> ;
+    doacc:<span class="pred">comment</span> <span class="obj">"supported"</span>^^xsd:string ;
+    doacc:<span class="pred">date-founded</span> <span class="obj">"2013-12-08"</span>^^xsd:date ;
+    doacc:<span class="pred">distribution-scheme</span> ccs:<span class="reln">Dc10c93fb-f7ec-40cd-a06e-7890686f6ef8</span> 
+    doacc:<span class="pred">expiration</span> <span class="obj">"listed"</span>@en ;
+    doacc:<span class="pred">image</span> <span class="obj">"dogecoin_doge.png"</span>^^xsd:anyURI ;
+    doacc:<span class="pred">incept</span> <span class="obj">"2013-12"</span>^^xsd:string ;
+    doacc:<span class="pred">pow</span> ccs:<span class="reln">D338257f8-402f-4c76-969b-6fc041d52e40</span> ;
+    doacc:<span class="pred">protection-scheme</span> ccs:<span class="reln">D451a49d8-c9e7-46e5-8b8d-bcbe16f75c24</span> ;
+    doacc:<span class="pred">protocol</span> ccs:<span class="reln">Db8ade99f-11f1-476b-ae77-03c005c1bb66</span> ;
+    doacc:<span class="pred">source</span> <span class="obj">&lt;https://github.com/dogecoin/dogecoin&gt;</span> ;
+    doacc:<span class="pred">symbol</span> <span class="obj">"DOGE"</span>^^xsd:string ;
+    doacc:<span class="pred">total-coins</span> <span class="obj">"100000000000"</span>^^xsd:string ;
+    doacc:<span class="pred">website</span> <span class="obj">"http://dogecoin.com/"</span>^^xsd:anyURI ;
+    rdfs:<span class="pred">comment</span> <span class="obj">"Scrypt-based, re-target every 4 hours, variable block reward, 100 billion total coins."</span>^^xsd:string ;
+    skos:<span class="pred">prefLabel</span> <span class="obj">"Dogecoin"</span>@en .</pre></p>
+          <h3 class="ui header">The same facts / triples but this time laid out as a diagram of boxes and arrows.</h3>
+          <p><a href="images/assets/dogegraph.svg" title="Full size diagram"><img width="850px" src="images/assets/dogegraph.svg" alt="Dogecoin graph"/></a></p>
+          <p>It's a little more than <em>just</em> a diagram, it’s a hand-executed illustration of how facts are modelled in an RDF graph.</p>
+          <p>Here’re the actual boxes and arrows for DOACC’s model of Dogecoin, as rendered by the machine.</p>
+          <p><a href="images/assets/Dd5bd8eaf-b432-440b-9502-3707aa57ff93.svg" title="Full size diagram"><img width="850px" src="images/assets/Dd5bd8eaf-b432-440b-9502-3707aa57ff93.svg" alt="Actual Dogecoin RDF graph"/></a></p>
+          <p>Facts can be shuffled around and re-presented. The following graph contains three statements of fact about Namecoin, Litecoin and Dogecoin respectively, each stating that the entity is a cryptocurrency:
+            <dd><tt><span class="shy">ccs:</span><span class="subj">D8896b685-79c8-4a1f-a2dd-eee72eabb8e8</span> <span class="shy">rdf:</span><span class="pred">type</span> <span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt></dd>
+            <dd><tt><span class="shy">ccs:</span><span class="subj">D8c037049-fb79-41f4-bb61-3d8ac12961d9</span> <span class="shy">rdf:</span><span class="pred">type</span> <span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt></dd>
+            <dd><tt><span class="shy">ccs:</span><span class="subj">Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span> <span class="shy">rdf:</span><span class="pred">type</span> <span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt></dd>
+          </p>
+          <p><a href="images/assets/coinsgraph.svg" title="Full size diagram"><img width="850px" src="images/assets/coinsgraph.svg" alt="Three altcoins"/></a></p>
+          <p>This puts us in a strong position with respect to precise references. Each individual coin has its own unique UUID identifier. In addition, <tt><span class="shy">rdf:</span><span class="pred">type</span></tt> is <a href="http://www.w3.org/TR/rdf-schema/#ch_type" title="W3 definition">also a unique reference</a>. And the same is true of our very own <tt><span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt>.</p>
+          <p>There is no ambiguity or vagueness about the facts, every concept used to express them is clearly identified and defined, e.g. the W3 definition of <tt>rdf:type</tt></p>
+          <p>“A triple of the form: <tt>R rdf:type C</tt> states that <tt>C</tt> is an instance of <tt>rdfs:Class</tt> and <tt>R</tt> is an instance of <tt>C</tt>.”</p>
+          <p>It’s all very carefully done, no loose ends, no vague, hand-wavy stuff, just precise, formal definitions which make sense to both humans and machines, in their own respective fashion.</p>
+          <h3 class="ui header">Defining the terms</h3>
+          <p>It is the associated ontology which carries the above-mentioned definitions of the terms which are used in the “domain of discourse” (in this instance, cryptocurrency).</p>
+          <p>For example, the concept <tt><span class="shy">doacc:</span><span class="pred">date-founded</span></tt> is defined as follows:</p>
+          <div class="code xml" data-title="date-founded" data-type="xml"><owl:DatatypeProperty rdf:about="http://purl.org/net/bel-epa/doacc#date-founded">
+      <rdfs:domain rdf:resource="http://purl.org/net/bel-epa/doacc#Cryptocurrency"></rdfs:domain>
+      <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"></rdfs:range>
+      <rdfs:label xml:lang="en">date-founded</rdfs:label>
+      <skos:prefLabel xml:lang="en">date founded</skos:prefLabel>
+      <ns:term_status>unstable</ns:term_status>
+      <rdfs:comment xml:lang="en">YYYY-MM-DD of coin appearance / launch date.</rdfs:comment>
+</owl:DatatypeProperty></div>
+          <p>or, in a hopefully more readable serialization:</p>
+          <div class="code N3" data-title="date-founded" data-type="N3">doacc:date-founded a owl:DatatypeProperty ;
+      rdfs:label "date-founded"@en ;
+      rdfs:comment "YYYY-MM-DD of coin appearance / launch date."@en ;
+      rdfs:domain doacc:Cryptocurrency ;
+      rdfs:range rdfs:Literal ;
+      ns:term_status "unstable" ;
+      skos:prefLabel "date-founded"@en .</div>
+          <p>In addition to the basic (language-specific) labels and text strings, the definition asserts that the relation is a <tt><span class="shy">owl:</span><span class="obj">DatatypeProperty</span></tt> of a <tt><span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt> whose value is a <tt><span class="shy">rdf:</span><span class="obj">Literal</span></tt> (a string).</p>
+          <p>It’s an <tt><span class="shy">owl:</span><span class="obj">DatatypeProperty</span></tt> because the value is a literal datum point rather than a pointer to an instance of say, a <tt><span class="shy">doacc:</span><span class="obj">ProtectionScheme</span></tt> because if it were, the relation would instead have to be declared to be a <tt><span class="shy">owl:</span><span class="obj">ObjecType</span></tt> with a specified range of <tt><span class="shy">doacc:</span><span class="obj">ProtectionScheme</span></tt>).</p>
+          <p>The purpose of all this is to enable the machine to <em>process unaided</em> what it reads in the ontology and to be able to look up those definitions when they are referenced in statements about individual coins .e.g.: <dd><tt><span class="shy">ccs:</span><span class="subj">D8896b685-79c8-4a1f-a2dd-eee72eabb8e8</span> <span class="shy">rdf:</span><span class="pred">type</span> <span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt></dd></p>
+          <h3 class="ui header">Next gen coins</h3>
+          <p>The p2p protocol used by Bitcoin is also used by nearly all of the “1st gen” altcoins, it’s a defining characteristic. However, “next generation” cryptocurrencies typically (but not always) use a entirely different protocol and only a relatively few of the nextgens use another nextgen’s protocol (cryptonote, nxt, etc.), it’s almost an identifying characteristic. At the most recent count, there have been 35 different cryptocurrency protocols developed thus far, several are primarily asset-issuance vehicles.</p>
+          <p>2ndgen alts are sufficiently different to 1stgen alts to need an ontology of their own and that is very clearly an ecumenical matter best devolved to the development team.</p>
+          <h3 class="ui header">Assets of nextgen coins</h3>
+          <p>Not recorded as the features / properties are idiosyncratic to the specific asset issuance vehicle.</p>
+          <div class="ui hidden divider"></div>
+
+        </div>

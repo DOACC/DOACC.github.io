@@ -4,55 +4,47 @@
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
-{% include _head.html %}
+  {% include _head.html %}
 </head>
 
-<body class="post-index">
+<body id="doacc" class="index">
+  <noscript>
+    <div class="noscript">
+    Your browser settings show that JavaScript is disabled. (Good call, we too browse with javascript disabled). If you enable it for this site, you’ll get the full benefit of the user-oriented enhancements: nice fonts, drop-down menus, active tabs and the like. We recommend that you turn on Javascript and then refresh this page. <a href="http://www3.qwest.com/cgi-bin/qwest.cfg/php/enduser/std_adp.php?p_faqid=1095" target="_blank">How do I turn on Javascript?</a>
+    </div>
+  </noscript>
 
-{% include _browser-upgrade.html %}
+  {% include _browser-upgrade.html %}
+  {% include _toc.html %}
 
-{% include _navigation.html %}
-
-{% if page.image.feature %}
-  <div class="image-wrap">
-  <img src=
-    {% if page.image.feature contains 'http' %}
-      "{{ page.image.feature }}"
-    {% else %}
-      "{{ site.url }}/images/{{ page.image.feature }}"
-    {% endif %}
-  alt="{{ page.title }} feature image">
-  {% if page.image.credit %}
-    <span class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></span>
-  {% endif %}
-  </div><!-- /.image-wrap -->
-{% endif %}
-
-<div id="main" role="main">
-  <div class="article-author-side">
-    {% include _author-bio.html %}
+  <div class="pusher">
+    <div class="full height">
+      {% include _navigation.html %}
+      <div id="main" role="main">
+        <div class="article-author-side">
+          {% include _author-bio.html %}
+        </div>
+        <div id="index">
+          <h3><a href="{{ site.url}}/posts/">News</a></h3>
+          {% for post in site.posts %}    
+          <article>
+            {% if post.link %}
+              <h2 class="link-post"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></h2>
+            {% else %}
+              <h2><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+            {% endif %}
+          </article>
+          {% endfor %}
+        </div><!-- /#index -->
+      </div><!-- /#main -->
+    </div>
   </div>
-  <div id="index">
-    <h3><a href="{{ site.url}}/posts/">News</a></h3>
-    {% for post in site.posts %}    
-    <article>
-      {% if post.link %}
-        <h2 class="link-post"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></h2>
-      {% else %}
-        <h2><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
-      {% endif %}
-    </article>
-    {% endfor %}
-  </div><!-- /#index -->
-</div><!-- /#main -->
 
-<div class="footer-wrap">
   <footer>
     {% include _footer.html %}
   </footer>
-</div><!-- /.footer-wrap -->
 
-{% include _scripts.html %}
+  {% include _scripts.html %}
   
 </body>
 </html>

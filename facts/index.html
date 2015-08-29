@@ -1,0 +1,118 @@
+---
+layout: page
+title: Facts
+---
+
+<style type="text/css">
+h3.ui.header tt {color: #E57A00; font-weight: bold;}
+span.ont {padding: 0 1.5rem;}
+span.onturl {color: #E57A00; font-weight: bold;}
+span.largefriendly {color: #7407EA;}
+</style>
+
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+              <a href="#">“All we know are the facts, ma’am.”</a> <span class="rth"> - Joe Friday, <i>Dragnet</i></span>
+            </div>
+            <h2 class="ui header inverted">Facts <div class="sub header">Making statements about altcoins</div></h2>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="ui sub secondary pointing menu">
+            <a class="active item" href="/facts/index.html">Index</a>
+            <a class="item" href="/facts/protectionschemes.html">Protection</a>
+            <a class="item" href="/facts/distributionschemes.html">Distribution</a>
+            <a class="item" href="/facts/powschemes.html">PoW</a>
+            <a class="item" href="/facts/posschemes.html">PoS</a>
+            <a class="item" href="/facts/protocols.html">Protocols</a>
+            <a class="item" href="/facts/coins.html">Coins</a>
+            <a class="item" href="/facts/future.html">Upcoming</a>
+          </div>
+
+          <h2 class="ui dividing header">Facts in DOACC</h2>
+          <h3 class="ui header">DOACC’s purpose in life is to publish facts about altcoins.</h3>
+          <p>The facts have been transcribed from a variety of sources, ranging from bitcointalk ANNs to github code repositories. In DOACC, these facts are expressed as <em>triples</em>, basic units of knowledge in the semantic web.</p>
+          <p>Accordingly, DOACC facts are composed of three elements: a <i>subject</i> (a <span class="subj">thing</span>), a <i>predicate</i> (a <span class="pred">relation</span>) and an <i>object</i> (either another <span class="reln">thing</span> or a <span class="obj">value</span>).</p>
+          <p>Every concept in DOACC has its own <strong>globally unique identifier</strong>, a URI located in one of three temporary <tt>purl.org</tt> namespaces:</p>
+
+          <div class="ui segment">
+            <div class="ui top attached label">
+              <h3 class="ui header">1. <span class="ont">DOACC</span> <tt>http://purl.org/net/bel-epa/doacc#</tt></h3>
+            </div>
+            <p>Several dozen statements describing the concept of a cryptocurrency and its associated properties, such as “proof-of-work”. As an example, <tt><span class="onturl">http://purl.org/net/bel-epa/doacc#Cryptocurrency</span></tt> is the reference for DOACC’s concept of a cryptocurrency. Overall, such a set of statements is termed an “ontology” and the full content is rendered as readable text in the <a href="doacc-owl.html">DOACC ontology page</a>. The <a href="concepts.html">Concepts</a> section has more information on DOACC concepts.</p>
+            <p>The URI example above is also a URL, <a href="http://purl.org/net/bel-epa/doacc#Cryptocurrency">resolves to a web resource</a> showing the statements serialised in a readable form. By comparison, the reference for the concept used by the semantic web project <a href="http://dbpediawww.informatik.uni-leipzig.de/about">dbpedia</a>  is <tt><span class="onturl">http://dbpedia.org/resource/Cryptocurrency</span></tt>, which also resolves as a <a href="http://dbpedia.org/resource/Cryptocurrency">web resource</a>, a web page rendering with links to the statements in a variety of serialisations. The “N-Triples” is the simplest and most direct rendering; each line is a triple, giving <a href="http://dbpedia.org/data/Cryptocurrency.ntriples">one statement per line</a>.</p>
+          </div>
+          <div class="ui hidden clearing divider"></div>
+          <div class="ui segment">
+            <div class="ui top attached label">
+              <h3 class="ui header">2. <span class="ont">CCY</span> <tt>http://purl.org/net/bel-epa/ccy#</tt></h3>
+            </div>
+            <p>Several dozen more statements, but about the concepts of blocks, blockchains and transactions, along with their properties, such as “MerkleRoot”: <tt><span class="onturl">http://purl.org/net/bel-epa/ccy#MerkleRoot</span></tt>. As with DOACC, this is an ontology, a definition of terms. The content has been adapted from the original <a href="https://cc.rww.io/vocab">CC ontology</a> by Melvin Carvalho, the adaptation being made on the principle that there’s little point in reinventing the wheel, just add a few more spokes as needed. The full contents are presented in the <a href="/ccy-owl.html">CCY ontology page</a>.</p>
+          </div>
+          <div class="ui hidden clearing divider"></div>
+          <div class="ui segment">
+            <div class="ui top attached label">
+              <h3 class="ui header">3. <span class="ont">CCS</span> <tt>http://purl.org/net/bel-epa/ccs#</tt></h3>
+            </div>
+            <p> Several thousand statements about invidual instances of the concepts, i.e. about a specific coin, about a specific algorithm, protection scheme, a specific coin’s block target time, a specific coin’s trading symbol, etc. Although the individuals do have labels, they’re not unique so a UUID identifier is used for the final fragment.</p>
+            <p>For example, the full DOACC reference for the cryptocurrency currently known as “Dogecoin” is:</p>
+            <p><pre><span class="shy">http://purl.org/net/bel-epa/ccs#</span><span class="subj">Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span></pre></p>
+            <p>UUID identifiers are a bit unwieldy but they are specifically designed to act as globally unique references.</p>
+          </div>
+          <div class="ui hidden clearing divider"></div>
+          <div class="ui segment">
+            <div class="ui top attached label">
+              <h3 class="ui header"><span class="largefriendly">DON’T PANIC</span></h3>
+            </div>
+            <p>In practice, the references are used in a shortened form, where <tt><span class="onturl">http://purl.org/net/bel-epa/doacc#</span></tt> is boiled down to just <tt><span class="onturl">doacc:</span></tt> (a “qname”) which offers a less unwieldy notation ...</p>
+            <p>
+              <pre class="code"><span class="shy">ccs:<span class="subj">Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span>  rdfs:<span class="pred">type</span>       doacc:<span class="reln">CryptoCurrency</span></span><br/><span class="shy">ccs:<span class="subj">Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span>  skos:<span class="pred">prefLabel</span>  <span class="obj">"Dogecoin"</span>@en</span><br/><span class="shy">ccs:<span class="subj">Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span>  skos:<span class="pred">prefLabel</span>  <span class="obj">"狗狗币"</span>@cn</span><br/><span class="shy">ccs:<span class="subj">Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span>  doacc:<span class="pred">pow</span>       ccs:<span class="reln">D338257f8-402f-4c76-969b-6fc041d52e40</span></span></pre>
+            </p>
+            <p>The first statement’s <span class="reln">object</span> does not refer to any particular altcoin but to a separate description of the <em>concept</em> of a cryptocurrency (<em>see <a href="/concepts.html" title="Concepts">Concepts</a></em>) and the last statement’s <span class="reln">object</span> refers to some thing that is the <span class="subj">subject</span> of other statements, to wit:</p>
+            <p><pre><span class="shy">ccs:<span class="subj">D338257f8-402f-4c76-969b-6fc041d52e40</span>  skos:<span class="pred">prefLabel</span>  doacc:<span class="obj">"scrypt"</span>@en</span></pre></p>
+          </div>
+          <h2 class="ui dividing header">Some Facts</h2>
+          <h3 class="ui header">About ccs:Dd5bd8eaf-b432-440b-9502-3707aa57ff93</h3>
+          <p>As an example of the range of facts in DOACC, this is the complete set of statements made about <tt><span class="onturl">http://purl.org/net/bel-epa/ccs#Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span></tt>...</p>
+                    <p><pre><span class="shy">ccs:<span class="subj">Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span> <span class="pred">a</span> doacc:<span class="reln">Cryptocurrency</span> ;
+    doacc:<span class="pred">block-reward</span> <span class="obj">"500000"</span>^^xsd:string ;
+    doacc:<span class="pred">block-time</span> <span class="obj">60</span> ;
+    doacc:<span class="pred">coin</span> ccs:<span class="reln">D5e6e149c-2bf3-48e0-a8ab-4ca0a1f424a4</span> ;
+    doacc:<span class="pred">comment</span> <span class="obj">"supported"</span>^^xsd:string ;
+    doacc:<span class="pred">date-founded</span> <span class="obj">"2013-12-08"</span>^^xsd:date ;
+    doacc:<span class="pred">distribution-scheme</span> ccs:<span class="reln">Dc10c93fb-f7ec-40cd-a06e-7890686f6ef8</span> 
+    doacc:<span class="pred">expiration</span> <span class="obj">"listed"</span>@en ;
+    doacc:<span class="pred">image</span> <span class="obj">"dogecoin_doge.png"</span>^^xsd:anyURI ;
+    doacc:<span class="pred">incept</span> <span class="obj">"2013-12"</span>^^xsd:string ;
+    doacc:<span class="pred">pow</span> ccs:<span class="reln">D338257f8-402f-4c76-969b-6fc041d52e40</span> ;
+    doacc:<span class="pred">protection-scheme</span> ccs:<span class="reln">D451a49d8-c9e7-46e5-8b8d-bcbe16f75c24</span> ;
+    doacc:<span class="pred">protocol</span> ccs:<span class="reln">Db8ade99f-11f1-476b-ae77-03c005c1bb66</span> ;
+    doacc:<span class="pred">source</span> <span class="obj">&lt;https://github.com/dogecoin/dogecoin&gt;</span> ;
+    doacc:<span class="pred">symbol</span> <span class="obj">"DOGE"</span>^^xsd:string ;
+    doacc:<span class="pred">total-coins</span> <span class="obj">"100000000000"</span>^^xsd:string ;
+    doacc:<span class="pred">website</span> <span class="obj">"http://dogecoin.com/"</span>^^xsd:anyURI ;
+    rdfs:<span class="pred">comment</span> <span class="obj">"Scrypt-based, re-target every 4 hours, variable block reward, 100 billion total coins."</span>^^xsd:string ;
+    skos:<span class="pred">prefLabel</span> <span class="obj">"Dogecoin"</span>@en .</pre></p>
+          <p>Um, we don’t seem to have an explicit statement about the 4-hour block retarget time mentioned in the comment. See the <a href="/techniques.html" title="Techniques">“Techniques”</a> section for how to add facts to the DOACC collection.</p>
+          <h2 class="ui dividing header">Other facts</h2>
+          <h3 class="ui header">Remote references to things and relations</h3>
+         <p>The different qnames in the description show that reference can be made to relations (and things) located remotely, e.g. <a href="http://www.w3.org/2009/08/skos-reference/skos.html#prefLabel"><tt>http://www.w3.org/2004/02/skos/core#prefLabel</tt></a> from the W3’s SKOS (Simple Knowledge Organisation Scheme), a recommended best practice for publishing to the <a href="https://en.wikipedia.org/wiki/Linked_Open_Data">“Linked Data”</a> standard.</p>
+          <h3 class="ui header">Linked data slide presentation</h3>
+          <div class="ui accordion">
+            <div class="title">
+              <i class="dropdown icon"></i>
+              Michael Hausenblas’ short slideshow introduction to Linked Data
+            </div>
+            <div class="content">
+              <div class="ui segment">
+                <iframe src="//www.slideshare.net/slideshow/embed_code/502011" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/mediasemanticweb/quick-linked-data-introduction" title="Quick Linked Data Introduction" target="_blank">Quick Linked Data Introduction</a> </strong> from <strong><a href="//www.slideshare.net/mediasemanticweb" target="_blank">Michael Hausenblas</a></strong> </div>
+              </div>
+            </div>
+          </div>
+          <h2 class="ui dividing header">Lists of individuals</h2>
+          <h3 class="ui header">What’s in the tabs</h3>
+          <p>For convenience, listings of the DOACC references of several distinct populations of individuals are presented in the associated tabs (in the tab bar above): <a href="/facts/protectionschemes.html">protection schemes</a>, <a href="/facts/distributionschemes.html">distribution schemes</a>, <a href="/facts/powschemes.html">PoW schemes</a>, <a href="/facts/posschemes.html">PoS schemes</a>, <a href="/facts/protocols.html">protocols</a>, <a href="/facts/coins.html">Altcoins</a>.</p>
+          <div class="ui hidden divider"></div>
+        </div>
