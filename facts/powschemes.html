@@ -15,18 +15,18 @@ title: PoW
 
         <div class="container">
           <div class="ui sub secondary pointing menu">
-            <a class="item" href="facts.html">Index</a>
-            <a class="item" href="facts-protectionschemes.html">Protection</a>
-            <a class="item" href="facts-distributionschemes.html">Distribution</a>
-            <a class="active item" href="facts-powschemes.html">PoW</a>
-            <a class="item" href="facts-posschemes.html">PoS</a>
-            <a class="item" href="facts-protocols.html">Protocols</a>
-            <a class="item" href="facts-coins.html">Coins</a>
-            <a class="item" href="facts-future.html">Upcoming</a>
+            <a class="item" href="/facts/index.html">Index</a>
+            <a class="item" href="/facts/protectionschemes.html">Protection</a>
+            <a class="item" href="/facts/distributionschemes.html">Distribution</a>
+            <a class="active item" href="/facts/powschemes.html">PoW</a>
+            <a class="item" href="/facts/posschemes.html">PoS</a>
+            <a class="item" href="/facts/protocols.html">Protocols</a>
+            <a class="item" href="/facts/coins.html">Coins</a>
+            <a class="item" href="/facts/future.html">Upcoming</a>
           </div>
 
-          <h2 class="ui dividing header">${title}</h2>
-          <p>The meaning of “proof-of-work scheme” is defined in the corresponding <a href="things-powschemes.html" title="The concept of a proof-of-work scheme">DOACC conceptual description of ${title[6:]}</a></p>
+          <h2 class="ui dividing header">PoW</h2>
+          <p>The meaning of “proof-of-work scheme” is defined in the corresponding <a href="things-powschemes.html" title="The concept of a proof-of-work scheme">DOACC conceptual description of powscheme</a></p>
           <div id="results">
             <div class="ui segment">
               <div class="ui active inverted dimmer">
@@ -70,7 +70,7 @@ title: PoW
   };
 
   var g = $rdf.graph();
-  var docURI = "https://minkiz.co/doaccdoc/ccs.n3";
+  var docURI = "{{site.url}}}/ccs.n3";
   var fetch = $rdf.fetcher(g);
   fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
       listout()
