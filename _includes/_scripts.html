@@ -1,26 +1,50 @@
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.8/semantic.min.js"></script>
-<script src="{{ site.url }}/assets/js/scripts.min.js"></script>
-<script src="{{ site.url }}/assets/js/vendor/rdflib/rdflib.js"></script>
-{% if site.owner.google.analytics %}
-<!-- Asynchronous Google Analytics snippet -->
-<script>
-  var _gaq = _gaq || [];
-  var pluginUrl = 
- '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
-  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
-  _gaq.push(['_setAccount', '{{ site.owner.google.analytics }}']);
-  _gaq.push(['_trackPageview']);
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.8/semantic.min.js"></script>
+<script type="text/javascript" src="{{ site.url }}/assets/js/vendor/rdflib/rdflib.js"></script>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+<script type="text/javascript" src="javascript/jquery/jquery.humane_dates.js"></script>
+<script type="text/javascript" src="javascript/library/svg.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script type="text/javascript" src="{{site.url}}/assets/js/vendor/library/easing.min.js"></script>
+<script type="text/javascript" src="{{site.url}}/assets/js/vendor/library/typing.min.js"></script>
+<script type="text/javascript" src="{{site.url}}/assets/js/vendor/library/n3-browser.min.js"></script>
+<script type="text/javascript" src="{{site.url}}/assets/js/vendor/library/jsonld.js"></script>
+<script type="text/javascript" src="{{site.url}}/assets/js/vendor/library/js-beautify/beautify.js"></script>
+<script type="text/javascript" src="{{site.url}}/assets/js/vendor/library/js-beautify/beautify-html.js"></script>
+<script type="text/javascript" src="{{site.url}}/assets/js/vendor/docs.js"></script>
+<script type="text/javascript" src="{{site.url}}/assets/js/vendor/home.js"></script>
+<script>
+  window.less = {
+    async        : true,
+    environment  : 'production',
+    fileAsync    : false,
+    onReady      : false,
+    useFileCache : true
+  };
 </script>
-{% endif %}
+<script type="text/javascript" src="{{site.url}}/assets/js/vendor/n3.js"></script>
+<script src="{{site.url}}/assets/js/vendor/library/less.min.js"></script>
+
+<script type="text/javascript">
+  // sgvizler.containerDrawAll("ex");
+  $('.ui .item').on('click', function() {
+    $('.ui .item').removeClass('active');
+    $(this).addClass('active');
+  });
+  $('.long.test.modal').modal('attach events', '.test.button', 'show');
+  $('.ui.modal').modal();
+  $('.ui.long.test.modal').modal();
+  $("#autocomplete").autocomplete({
+    prompt: "", source: "/coin/symbol"});
+  $('time').humaneDates();
+  $('.accordion').accordion();
+  /* beautify all code with class="raw" */
+  $('.raw').each(function() {beautify(this)});
+</script>
+
+
 {% if page.comments %}
   {% include _disqus_comments.html %}
 {% endif %}
