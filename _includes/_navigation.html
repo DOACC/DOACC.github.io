@@ -9,15 +9,30 @@
         <div class="ui inverted right floated secondary menu">
           <a class="ui item" href="/facts/index.html">
             <i class="large icon-rdf"></i> 
-            <span class="ui inverted blue header">Facts</span>
+            <span
+              class="ui inverted blue header"
+            {% if page.section contains 'facts' %}
+              style="text-decoration: underline;"
+            {% endif %}
+            >Facts</span>
           </a>
           <a class="ui item" href="/concepts/index.html">
             <i class="large icon-semantic-web"></i>
-            <span class="ui inverted orange header">Concepts</span>
+            <span
+              class="ui inverted orange header"
+            {% if page.section contains 'concepts' %}
+              style="text-decoration: underline;"
+            {% endif %}
+              >Concepts</span>
           </a>
           <a class="ui item" href="/techniques/index.html">
             <i class="large icon-semantics"></i>
-            <span class="ui inverted green header">Techniques</span>
+            <span
+              class="ui inverted green header"
+            {% if page.section contains 'techniques' %}
+              style="text-decoration: underline;"
+            {% endif %}
+              >Techniques</span>
           </a>
           <a class="ui item" href="/altcoins.svg">
             <i class="icon-bitcoin"></i> 
