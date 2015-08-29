@@ -1,0 +1,47 @@
+---
+layout: page
+title: RDF/a processing example
+section: techniques
+---
+
+  <link rel="stylesheet" href="/assets/js/vendor/backplanejs/assets/backplane.css" />
+  <link rel="stylesheet" href="/assets/js/vendor/backplanejs/rdfa/formats/twitter.css" />
+
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+            </div>
+            <h2 class="ui header inverted">{{page.title}}
+              <div class="sub header"></div>
+            </h2>
+          </div>
+        </div>
+        <div class="container">
+          <h2 class="ui dividing header">{{page.title}}</h2>
+          <h3 class="ui header">backplane’s RDFa parser</h3>
+          <div class="ui segment">
+            <p>
+              This example shows how you might have a page of references to different Twitter people, based on some subject that they all have in common. At the moment we just show their latest Tweets, but we could easily provide a link to allow people to follow them:</p>
+            <p xmlns:foaf="http://xmlns.com/foaf/0.1/">
+                If you’re interested in RDFa you might consider following
+                Mark Birbeck (@<span typeof=""
+                    rel="foaf:accountServiceHomepage" resource="http://www.twitter.com/"
+                    property="foaf:accountName">markbirbeck</span>),
+                Ben Adida (@<span typeof=""
+                    rel="foaf:accountServiceHomepage" resource="http://www.twitter.com/"
+                    property="foaf:accountName">benadida</span>),
+                Shane Maccarron (@<span typeof=""
+                    rel="foaf:accountServiceHomepage" resource="http://www.twitter.com/"
+                    property="foaf:accountName">halindrome</span>),
+                and Manu Sporny (@<span typeof=""
+                    rel="foaf:accountServiceHomepage" resource="http://www.twitter.com/"
+                    property="foaf:accountName">manusporny</span>).
+            </p>
+          </div>
+          <p><em>(Reload the page a few times. The twitter stream processing and the subsequent text decoration is driven by the parsing of the RDF/a data embedded in the HTML mark-up. This brings a precise additional expressivity to the mark-up / content generation.)</em></p>
+          <div class="ui hidden divider"></div>
+        </div>
+
+  <script src="{{site.url}}/assets/js/vendor/backplanejs/backplane.js" type="text/javascript">/**/</script>
+  <script src="{{site.url}}/assets/js/vendor/backplanejs/rdfa/formats/twitter.js" type="text/javascript">/**/</script>
+

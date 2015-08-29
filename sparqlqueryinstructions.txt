@@ -1,0 +1,38 @@
+sparql query instructions
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ccy: <http://purl.org/net/bel-epa/ccy#>
+PREFIX doacc: <http://purl.org/net/bel-epa/doacc#>
+
+
+SELECT DISTINCT ?node ?label WHERE 
+{
+ ?node rdf:type doacc:PoWscheme .
+ ?node skos:prefLabel ?label .
+}
+ORDER BY ?label
+LIMIT 5 
+
+
+SELECT DISTINCT ?pred ?obj WHERE 
+{
+ <http://purl.org/net/bel-epa/doacc#D7d4182fd-f49f-4198-a73f-2808a7bff52b> ?pred ?obj
+}
+
+
+SELECT DISTINCT ?node ?label WHERE 
+{
+ ?node rdf:type doacc:Cryptocurrency .
+ ?node doacc:pow <http://purl.org/net/bel-epa/doacc#D7d4182fd-f49f-4198-a73f-2808a7bff52b> .
+ ?node skos:prefLabel ?label .
+}
+ORDER BY ?node
+
+
+SELECT DISTINCT ?pred ?obj WHERE 
+{
+ <http://purl.org/net/bel-epa/doacc#Dc58d1db8-e901-4680-a582-94fe1f69c54a> ?pred ?obj
+}
+

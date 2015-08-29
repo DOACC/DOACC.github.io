@@ -1,0 +1,273 @@
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix wv: <http://vocab.org/waiver/terms/norms> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix : <#> .
+
+:gjhiggins a foaf:Person;
+    rdfs:label "Graham Higgins";
+    foaf:mbox <mailto:gjh@bel-epa.com>;
+
+:DOACC
+        a                void:Dataset ;
+        void:vocabulary dc: , <http://www.w3.org/2004/02/skos/core> , <http://www.w3.org/1999/02/22-rdf-syntax-ns#> , <http://purl.org/net/bel-epa/doacc> .
+
+        dcterms:title "DOACC";
+        dcterms:description "RDF data about altcoins";
+        dcterms:publisher :gjhiggins ;
+        dcterms:source <https://github.com/DOACC/individuals>;
+        dcterms:modified "2014-12-22"^^xsd:date;
+        dcterms:license <http://www.opendatacommons.org/licenses/odbl/> ;
+        dcterms:license <http://www.opendatacommons.org/odc-public-domain-dedication-and-licence/>;
+        wv:norms <http://www.opendatacommons.org/norms/odc-by-sa/>;
+        wv:waiver """To the extent possible under law, Graham Higgins has waived all copyright and related or neighbouring rights to the DOACC Dataset.""";
+
+
+        foaf:homepage        <https://github.com/DOACC/individuals/> ;
+
+        void:feature <http://www.w3.org/ns/formats/RDF_XML>;
+        void:sparqlEndpoint <https://minkiz.co/sparql/query>;
+        void:dataDump <https://minkiz.co/xml>;
+
+        void:classPartition  [ void:class     doacc:Protocol ;
+                               void:entities  36
+                             ] ;
+        void:classPartition  [ void:class     doacc:Version ;
+                               void:entities  1959
+                             ] ;
+        void:classPartition  [ void:class     doacc:ProtectionScheme ;
+                               void:entities  8
+                             ] ;
+        void:classPartition  [ void:class     doacc:PoSscheme ;
+                               void:entities  6
+                             ] ;
+        void:classPartition  [ void:class     doacc:PoWscheme ;
+                               void:entities  75
+                             ] ;
+        void:classPartition  [ void:class     doacc:Repository ;
+                               void:entities  640
+                             ] ;
+        void:classPartition  [ void:class     doacc:Cryptocurrency ;
+                               void:entities  1936
+                             ] ;
+        void:classPartition  [ void:class     doacc:DistributionScheme ;
+                               void:entities  26
+                             ] ;
+        void:classPartition  [ void:class     doacc:ElectricCoin ;
+                               void:entities  1937
+                             ] ;
+        void:classPartition  [ void:class     doacc:HashFunction ;
+                               void:entities  25
+                             ] ;
+        void:classPartition  [ void:class     rdfs:Resource ;
+                               void:entities  13
+                             ] ;
+
+        void:propertyPartition  [ void:distinctObjects   38 ;
+                                  void:distinctSubjects  1907 ;
+                                  void:property          doacc:incept ;
+                                  void:triples           1911
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   1728 ;
+                                  void:distinctSubjects  1950 ;
+                                  void:property          doacc:symbol ;
+                                  void:triples           1954
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   21 ;
+                                  void:distinctSubjects  290 ;
+                                  void:property          doacc:confirmations ;
+                                  void:triples           290
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   1351 ;
+                                  void:distinctSubjects  1374 ;
+                                  void:property          doacc:thread ;
+                                  void:triples           1387
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   645 ;
+                                  void:distinctSubjects  647 ;
+                                  void:property          doacc:cctthread ;
+                                  void:triples           647
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   921 ;
+                                  void:distinctSubjects  639 ;
+                                  void:property          doacc:repository ;
+                                  void:triples           921
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   71 ;
+                                  void:distinctSubjects  1886 ;
+                                  void:property          doacc:pow ;
+                                  void:triples           1962
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   6 ;
+                                  void:distinctSubjects  100 ;
+                                  void:property          doacc:pos ;
+                                  void:triples           100
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   2028 ;
+                                  void:distinctSubjects  2083 ;
+                                  void:property          rdfs:label ;
+                                  void:triples           2093
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   34 ;
+                                  void:distinctSubjects  1950 ;
+                                  void:property          doacc:protocol ;
+                                  void:triples           1963
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   643 ;
+                                  void:distinctSubjects  1562 ;
+                                  void:property          doacc:total-coins ;
+                                  void:triples           1566
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   1 ;
+                                  void:distinctSubjects  175 ;
+                                  void:property          rdfs:isDefinedBy ;
+                                  void:triples           175
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   166 ;
+                                  void:distinctSubjects  259 ;
+                                  void:property          doacc:diff-adjustment ;
+                                  void:triples           259
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   50 ;
+                                  void:distinctSubjects  359 ;
+                                  void:property          doacc:maturation ;
+                                  void:triples           359
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   106 ;
+                                  void:distinctSubjects  116 ;
+                                  void:property          dc:description ;
+                                  void:triples           119
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   1573 ;
+                                  void:distinctSubjects  1638 ;
+                                  void:property          rdfs:comment ;
+                                  void:triples           1661
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   10 ;
+                                  void:distinctSubjects  6011 ;
+                                  void:property          rdf:type ;
+                                  void:triples           6648
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   467 ;
+                                  void:distinctSubjects  1300 ;
+                                  void:property          doacc:date-founded ;
+                                  void:triples           1306
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   153 ;
+                                  void:distinctSubjects  509 ;
+                                  void:property          doacc:retarget-time ;
+                                  void:triples           509
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   187 ;
+                                  void:distinctSubjects  901 ;
+                                  void:property          doacc:premine ;
+                                  void:triples           905
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   699 ;
+                                  void:distinctSubjects  704 ;
+                                  void:property          doacc:website ;
+                                  void:triples           706
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   714 ;
+                                  void:distinctSubjects  716 ;
+                                  void:property          doacc:source ;
+                                  void:triples           718
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   251 ;
+                                  void:distinctSubjects  753 ;
+                                  void:property          doacc:block-reward ;
+                                  void:triples           754
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   16 ;
+                                  void:distinctSubjects  1952 ;
+                                  void:property          doacc:expiration ;
+                                  void:triples           1952
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   2071 ;
+                                  void:distinctSubjects  2125 ;
+                                  void:property          skos:prefLabel ;
+                                  void:triples           2137
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   76 ;
+                                  void:distinctSubjects  1167 ;
+                                  void:property          doacc:block-time ;
+                                  void:triples           1169
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   1958 ;
+                                  void:distinctSubjects  1950 ;
+                                  void:property          doacc:release ;
+                                  void:triples           1967
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   1924 ;
+                                  void:distinctSubjects  1950 ;
+                                  void:property          dc:title ;
+                                  void:triples           1962
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   1936 ;
+                                  void:distinctSubjects  1936 ;
+                                  void:property          doacc:coin ;
+                                  void:triples           1936
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   1957 ;
+                                  void:distinctSubjects  1950 ;
+                                  void:property          doacc:image ;
+                                  void:triples           1958
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   23 ;
+                                  void:distinctSubjects  891 ;
+                                  void:property          doacc:distribution-scheme ;
+                                  void:triples           894
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   170 ;
+                                  void:distinctSubjects  834 ;
+                                  void:property          doacc:comment ;
+                                  void:triples           851
+                                ] ;
+        void:propertyPartition  [ void:distinctObjects   9 ;
+                                  void:distinctSubjects  1944 ;
+                                  void:property          doacc:protection-scheme ;
+                                  void:triples           1985
+                                ] ;
+
+        void:subset  [ a                    void:Linkset ;
+                       void:linkPredicate   doacc:cctthread ;
+                       void:objectsTarget   <http://lod-cloud.net/domain/cryptocointalk.comtopic> ;
+                       void:subjectsTarget  <https://github.com/DOACC/individuals/raw/master/cryptocurrency.nt> ;
+                       void:triples         6
+                     ] ;
+        void:subset  [ a                    void:Linkset ;
+                       void:linkPredicate   doacc:source ;
+                       void:objectsTarget   <http://lod-cloud.net/domain/www.github.com> ;
+                       void:subjectsTarget  <https://github.com/DOACC/individuals/raw/master/cryptocurrency.nt> ;
+                       void:triples         8
+                     ] ;
+        void:subset  [ a                    void:Linkset ;
+                       void:linkPredicate   doacc:protocol ;
+                       void:objectsTarget   <https://github.com/DOACC/individuals/raw/master/cryptocurrency.nt> ;
+                       void:subjectsTarget  <http://lod-cloud.net/domain/purl.org.net> ;
+                       void:triples         1
+                     ] ;
+        void:subset  [ a                    void:Linkset ;
+                       void:linkPredicate   doacc:thread ;
+                       void:objectsTarget   <http://lod-cloud.net/domain/bitcointalk.org> ;
+                       void:subjectsTarget  <https://github.com/DOACC/individuals/raw/master/cryptocurrency.nt> ;
+                       void:triples         1387
+                     ] ;
+        void:subset  [ a                    void:Linkset ;
+                       void:linkPredicate   doacc:cctthread ;
+                       void:objectsTarget   <http://lod-cloud.net/domain/cryptocointalk.com> ;
+                       void:subjectsTarget  <https://github.com/DOACC/individuals/raw/master/cryptocurrency.nt> ;
+                       void:triples         641
+                     ] ;
+        void:subset  [ a                    void:Linkset ;
+                       void:linkPredicate   doacc:source ;
+                       void:objectsTarget   <http://lod-cloud.net/domain/github.com> ;
+                       void:subjectsTarget  <https://github.com/DOACC/individuals/raw/master/cryptocurrency.nt> ;
+                       void:triples         635
+                     ] .

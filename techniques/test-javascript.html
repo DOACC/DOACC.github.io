@@ -1,0 +1,89 @@
+---
+layout: page
+title: Javascript processing example
+section: techniques
+---
+  <style type="text/javascript">
+  .stale {color: #555;}
+  .dt {color: #aaa;}
+  .q0 {color: #a66;}
+  .q1 {color: #6a6;}
+  .q2 {color: #66a;}
+  .s0 {color: #444;}
+  .s1 {color: #bbb;}
+  </style>
+
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+            </div>
+            <h2 class="ui header inverted">{{page.title}}
+              <div class="sub header"></div>
+            }
+            </h2>
+          </div>
+        </div>
+        <div class="container">
+          <h2 class="ui dividing header">{{page.title}}</h2>
+          <div id="results">
+            <div class="ui segment">
+              <div class="ui active inverted dimmer">
+                <div class="ui text loader">Reading from graph</div>
+              </div>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<script type="text/javascript">
+  // For quick access to those namespaces:
+  var FOAF = $rdf.Namespace("http://xmlns.com/foaf/0.1/")
+  var RDF = $rdf.Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+  var RDFS = $rdf.Namespace("http://www.w3.org/2000/01/rdf-schema#")
+  var OWL = $rdf.Namespace("http://www.w3.org/2002/07/owl#")
+  var DC = $rdf.Namespace("http://purl.org/dc/elements/1.1/")
+  var XSD = $rdf.Namespace("http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/#dt-")
+  var SKOS = $rdf.Namespace("http://www.w3.org/2004/02/skos/core#")
+  var DOACC = $rdf.Namespace("http://purl.org/net/bel-epa/doacc#")
+  var CCS = $rdf.Namespace('http://purl.org/net/bel-epa/2015/05/ccs#')
+
+  var listout = function() {
+      rel = DOACC('CMPost');
+      op = '<div>';
+      res = g.each(null, RDF('type'), rel);
+      n = res.length - 1;
+      for (i=0; i<n; i++) {
+          ps = res[i];
+          pv = ps.value;
+          dps = g.each(null, DOACC('cmp'), ps);
+          dt = g.any(ps, DC('date'), null);
+          op += '<div class="ui segment"><h2 class="ui header"><a href="'+pv+'">'+pv.slice(pv.indexOf('#') + 1, pv.length) + '</a> <span class="dt">(' + dt.value + ')</span></h2><table class="ui table">';
+          op += '<thead><tr><td><strong>Name</strong></td><td class="mcap"><strong>MarCap</strong>  (BTC)</td><td class="price"><strong>Price</strong>  (BTC)</td><td class="vol"><strong>Vol</strong>  (BTC)</td></tr></thead><tbody>';
+          m = dps.length - 1;
+          for (j=0; j<m; j++) {
+              ds = dps[j];
+              cc = g.any(ds, DOACC('cryptocurrency'), null);
+              cnm = g.any(cc, SKOS('prefLabel'), null);
+              im = g.any(cc, DOACC('image'), null);
+              mb = g.any(ds, DOACC('marketcap'), null);
+              pb = g.any(ds, DOACC('price'), null);
+              vb = g.any(ds, DOACC('volume'), null);
+              q = g.any(ds, DOACC('qual'), null);
+              f = g.any(ds, DOACC('stale'), null);
+              // u = dv.slice(dv.indexOf('#') + 1, dv.length);
+              op += '<tr class="s'+f.value+' q'+q.value+'"><td><img style="height:20px; width:20px;vertical-align:middle" src="https://raw.githubusercontent.com/DOACC/imprint/master/'+ im.value[0].toUpperCase()+'/'+im.value+'" alt=""/> <a href="' + ds.value + '">' + cnm.value + '</a></td><td class="mcap">'+parseFloat(mb.value).toFixed(0)+'</td><td class="price">'+parseFloat(pb.value).toFixed(12)+'</td><td class="vol">'+parseFloat(vb.value).toFixed(0)+'</td></tr>';
+          }
+          op += '</tbody></table></div>'
+      }
+      op += '</div>';
+      $("#results").html(op)
+  };
+
+  var g = $rdf.graph();
+  var docURI = "{{site.url}}/altcoin.n3";
+  var fetch = $rdf.fetcher(g);
+  fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
+      listout()
+  });
+</script>
