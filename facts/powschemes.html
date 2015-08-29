@@ -70,7 +70,7 @@ title: PoW
   };
 
   var g = $rdf.graph();
-  var docURI = "{{site.url}}}/ccs.n3";
+  var docURI = "{{site.url}}/ccs.n3";
   var fetch = $rdf.fetcher(g);
   fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
       listout()
