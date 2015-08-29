@@ -1,3 +1,7 @@
+---
+layout: page
+title: RDF/a
+---
   <link rel="stylesheet" href="https://yui-s.yahooapis.com/2.8.1/build/container/assets/skins/sam/container.css" type="text/css"/>
     <style type="text/css">
     /*.container p {font-size: 110%; font-family: "Karma", serif;}*/
@@ -29,18 +33,18 @@
         <div class="container">
 
           <div class="ui sub secondary pointing menu">
-            <a class="item" href="techniques.html">Basics</a>
-            <a class="active item" href="techniques-rdfa.html">DOM</a>
-            <a class="item" href="techniques-querying.html">Querying</a>
-            <a class="item" href="techniques-javascript.html">Javascript</a>
-            <a class="item" href="techniques-interactive.html">Interactive</a>
-            <a class="item" href="techniques-charting.html">Charting</a>
-            <a class="item" href="techniques-graphing.html">Graphing</a>
-            <a class="item" href="techniques-adding.html">Adding facts</a>
-            <a class="item" href="techniques-reasoning.html">Reasoning</a>
+            <a class="item" href="/techniques/index.html">Basics</a>
+            <a class="active item" href="/techniques/rdfa.html">DOM</a>
+            <a class="item" href="/techniques/querying.html">Querying</a>
+            <a class="item" href="/techniques/javascript.html">Javascript</a>
+            <a class="item" href="/techniques/interactive.html">Interactive</a>
+            <a class="item" href="/techniques/charting.html">Charting</a>
+            <a class="item" href="/techniques/graphing.html">Graphing</a>
+            <a class="item" href="/techniques/adding.html">Adding facts</a>
+            <a class="item" href="/techniques/reasoning.html">Reasoning</a>
           </div>
 
-          <h2 class="ui dividing header">${title}</h2>
+          <h2 class="ui dividing header">{{page.title}}</h2>
           <h3 class="ui header">RDFa and the DOM</h3>
           <p>Using RDFa to embed machine-processble DOACC information into the structure of a web page, without intruding into the user experience.</p>
           <p>In this example, the embedded semantic information is processed in-browser, using a javascript library to find all instances of <tt>doacc:symbol</tt> and apply an orange highlight style.</p>

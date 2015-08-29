@@ -1,3 +1,8 @@
+---
+layout: page
+title: Charting
+---
+
   <script src="javascript/library/raphael-min.js"></script>
   <script src="javascript/library/treemap-squared-0.5.min.js"></script>
   <style type="text/css">
@@ -20,18 +25,18 @@
 
         <div class="container">
           <div class="ui sub secondary pointing menu">
-            <a class="item" href="techniques.html">Basics</a>
-            <a class="item" href="techniques-rdfa.html">DOM</a>
-            <a class="item" href="techniques-querying.html">Querying</a>
-            <a class="item" href="techniques-javascript.html">Javascript</a>
-            <a class="item" href="techniques-interactive.html">Interactive</a>
-            <a class="active item" href="techniques-charting.html">Charting</a>
-            <a class="item" href="techniques-graphing.html">Graphing</a>
-            <a class="item" href="techniques-adding.html">Adding facts</a>
-            <a class="item" href="techniques-reasoning.html">Reasoning</a>
+            <a class="item" href="/techniques/index.html">Basics</a>
+            <a class="item" href="/techniques/rdfa.html">DOM</a>
+            <a class="item" href="/techniques/querying.html">Querying</a>
+            <a class="item" href="/techniques/javascript.html">Javascript</a>
+            <a class="item" href="/techniques/interactive.html">Interactive</a>
+            <a class="active item" href="/techniques/charting.html">Charting</a>
+            <a class="item" href="/techniques/graphing.html">Graphing</a>
+            <a class="item" href="/techniques/adding.html">Adding facts</a>
+            <a class="item" href="/techniques/reasoning.html">Reasoning</a>
           </div>
 
-          <h2 class="ui dividing header" id="title">${title}</h2>
+          <h2 class="ui dividing header" id="title">{{page.title}}</h2>
           <h3 class="ui header">Squaretree and Raphael</h3>
           <p>An in-browser illustration of a populating a squaretree chart from the DOACC dataset augmented with <a href="ccs.n3" title="coinmarketcap graph">price, volume and market capitalisation facts</a> scraped from the Intenet Archive’s <a href="http://web.archive.org/web/20150408221520*/http://coinmarketcap.com/" title="archive.org page for coinmarketcap.com">copies of coinmarketcap web pages</a></p>
           <div id="results">
@@ -102,7 +107,7 @@ fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
             </div>
           </div>
           <h2 class="ui dividing header">market capitalisation and price data</h2>
-          <h3 class="ui header">${title}</h3>
+          <h3 class="ui header">{{page.title}}</h3>
           <p>This is an illustration of the N3 content of the file “altcoin.n3”, referenced in the above example:</p>
           <div class="ui segment">
             <div class="code n3" data-title="Charting with Tree-square and Rapahel" data-type="n3">@prefix ccs: &lt;http://purl.org/net/bel-epa/2015-04/ccs#&gt; .
@@ -131,6 +136,8 @@ ccs:cmpd-100 a css:CMPostDatum ;
           </div>
           <div class="ui hidden divider"></div>
         </div>
+
+
 
 <script type="text/javascript" src="{{site.url}}/assets/js/plugins/jquery.xdomainajax.js"></script>
 <script type="text/javascript">
@@ -177,7 +184,7 @@ ccs:cmpd-100 a css:CMPostDatum ;
       Treemap.draw(
         "results", 850, 450, data, labels, {
           'label' : {'fill' : 'white'},
-          'background' : {'fill': 'url("images/assets/marble.jpg")'},
+          'background' : {'fill': 'url("/images/assets/marble.jpg")'},
           'box' : boxFormatter,
         }
       );
@@ -185,10 +192,9 @@ ccs:cmpd-100 a css:CMPostDatum ;
   };
 
   var g = $rdf.graph();
-  var docURI = "https://minkiz.co/doaccdoc/altcoin-min.n3";
+  var docURI = "{{site.url}}/altcoin-min.n3";
   var fetch = $rdf.fetcher(g);
   fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
       listout()
   });
 </script>
-</%def>

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Distribution
+title: Distribution scheme
 ---
         <div class="subheader">
           <div class="container">
@@ -15,22 +15,22 @@ title: Distribution
 
         <div class="container">
           <div class="ui sub secondary pointing menu">
-            <a class="item" href="facts.html">Index</a>
-            <a class="item" href="facts-protectionschemes.html">Protection</a>
-            <a class="active item" href="facts-distributionschemes.html">Distribution</a>
-            <a class="item" href="facts-powschemes.html">PoW</a>
-            <a class="item" href="facts-posschemes.html">PoS</a>
-            <a class="item" href="facts-protocols.html">Protocols</a>
-            <a class="item" href="facts-coins.html">Coins</a>
-            <a class="item" href="facts-future.html">Upcoming</a>
+            <a class="item" href="/facts/index.html">Index</a>
+            <a class="item" href="/facts/protectionschemes.html">Protection</a>
+            <a class="active item" href="/facts/distributionschemes.html">Distribution</a>
+            <a class="item" href="/facts/powschemes.html">PoW</a>
+            <a class="item" href="/facts/posschemes.html">PoS</a>
+            <a class="item" href="/facts/protocols.html">Protocols</a>
+            <a class="item" href="/facts/coins.html">Coins</a>
+            <a class="item" href="/facts/future.html">Upcoming</a>
           </div>
 
-          <h2 class="ui dividing header">${title}</h2>
-          <p>The meaning of “distribution scheme” is defined in the corresponding <a href="things-distributionschemes.html" title="The concept of a distribution scheme">DOACC conceptual description of ${title[6:]}</a></p>
+          <h2 class="ui dividing header">{{page.title}}</h2>
+          <p>The meaning of “distribution scheme” is defined in the corresponding <a href="/concepts/distributionschemes.html" title="The concept of a distribution scheme">DOACC conceptual description of {{page.title}}</a></p>
             <div id="results">
               <div class="ui segment">
                 <div class="ui active inverted dimmer">
-                  <div class="ui text loader">Reading ${title} from graph</div>
+                  <div class="ui text loader">Reading {{page.title}} from graph</div>
                 </div>
                 <p></p>
               </div>
@@ -66,7 +66,7 @@ title: Distribution
   };
 
   var g = $rdf.graph();
-  var docURI = "https://minkiz.co/doaccdoc/ccs.n3";
+  var docURI = "{{site.url}}/ccs.n3";
   var fetch = $rdf.fetcher(g);
   fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
       listout()

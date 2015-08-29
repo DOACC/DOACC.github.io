@@ -1,3 +1,7 @@
+---
+layout: page
+title: Javascript
+---
     <link rel="stylesheet" type="text/css" href="stylesheets/dark.css" />
     <style type="text/css">
     .limg {height:30px; width:30px;}
@@ -24,15 +28,15 @@
         <div class="container">
 
           <div class="ui sub secondary pointing menu">
-            <a class="item" href="techniques.html">Basics</a>
-            <a class="item" href="techniques-rdfa.html">DOM</a>
-            <a class="item" href="techniques-querying.html">Querying</a>
-            <a class="active item" href="techniques-javascript.html">Javascript</a>
-            <a class="item" href="techniques-interactive.html">Interactive</a>
-            <a class="item" href="techniques-charting.html">Charting</a>
-            <a class="item" href="techniques-graphing.html">Graphing</a>
-            <a class="item" href="techniques-adding.html">Adding facts</a>
-            <a class="item" href="techniques-reasoning.html">Reasoning</a>
+            <a class="item" href="/techniques/index.html">Basics</a>
+            <a class="item" href="/techniques/rdfa.html">DOM</a>
+            <a class="item" href="/techniques/querying.html">Querying</a>
+            <a class="active item" href="/techniques/javascript.html">Javascript</a>
+            <a class="item" href="/techniques/interactive.html">Interactive</a>
+            <a class="item" href="/techniques/charting.html">Charting</a>
+            <a class="item" href="/techniques/graphing.html">Graphing</a>
+            <a class="item" href="/techniques/adding.html">Adding facts</a>
+            <a class="item" href="/techniques/reasoning.html">Reasoning</a>
           </div>
 
           <h2 class="ui dividing header">Using DOACC with Javascript</h2>
@@ -74,7 +78,7 @@ var listout = function() {
   $("#results").html(op)
 };
 var g = $rdf.graph();
-var docURI = "http://localhost.localdomain/altcoin.n3";
+var docURI = "{{site.url}}/altcoin.n3";
 var fetch = $rdf.fetcher(g);
 fetch.nowOrWhenFetched(docURI, undefined, function(ok, body, xhr) { // @@ check ok
   listout()

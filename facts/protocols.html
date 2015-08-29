@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Protocols
+title: Protocol
 ---
         <div class="subheader">
           <div class="container">
@@ -15,22 +15,22 @@ title: Protocols
 
         <div class="container">
           <div class="ui sub secondary pointing menu">
-            <a class="item" href="facts.html">Index</a>
-            <a class="item" href="facts-protectionschemes.html">Protection</a>
-            <a class="item" href="facts-distributionschemes.html">Distribution</a>
-            <a class="item" href="facts-powschemes.html">PoW</a>
-            <a class="item" href="facts-posschemes.html">PoS</a>
-            <a class="active item" href="facts-protocols.html">Protocols</a>
-            <a class="item" href="facts-coins.html">Coins</a>
-            <a class="item" href="facts-future.html">Upcoming</a>
+            <a class="item" href="/facts/index.html">Index</a>
+            <a class="item" href="/facts/protectionschemes.html">Protection</a>
+            <a class="item" href="/facts/distributionschemes.html">Distribution</a>
+            <a class="item" href="/facts/powschemes.html">PoW</a>
+            <a class="item" href="/facts/posschemes.html">PoS</a>
+            <a class="active item" href="/facts/protocols.html">Protocols</a>
+            <a class="item" href="/facts/coins.html">Coins</a>
+            <a class="item" href="/facts/future.html">Upcoming</a>
           </div>
 
-          <h2 class="ui dividing header">${title}</h2>
-          <p>The meaning of “protocol” is defined in the corresponding <a href="things-protocols.html" title="The concept of a protocol">DOACC conceptual description of ${title[6:]}</a></p>
+          <h2 class="ui dividing header">{{page.title}}</h2>
+          <p>The meaning of “protocol” is defined in the corresponding <a href="/concepts/protocols.html" title="The concept of a protocol">DOACC conceptual description of ${title[6:]}</a></p>
           <div id="results">
             <div class="ui segment">
               <div class="ui active inverted dimmer">
-                <div class="ui text loader">Reading ${title} from graph</div>
+                <div class="ui text loader">Reading {{page.title}} from graph</div>
               </div>
               <p></p>
             </div>
@@ -67,7 +67,7 @@ title: Protocols
   };
 
   var g = $rdf.graph();
-  var docURI = "http://ashpool.bel-epa.com/ccs.n3";
+  var docURI = "{{site.url}}/ccs.n3";
   var fetch = $rdf.fetcher(g);
   fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
       listout()

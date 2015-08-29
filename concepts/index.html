@@ -1,3 +1,7 @@
+---
+layout: page
+title: Concepts
+---
         <div class="subheader">
           <div class="container">
             <div class="right-content">
@@ -11,26 +15,26 @@
 
         <div class="container">
           <div class="ui sub secondary pointing menu">
-            <a class="active item" href="concepts.html">Index</a>
-            <a class="item" href="things-protectionschemes.html">Protection</a>
-            <a class="item" href="things-distributionschemes.html">Distribution</a>
-            <a class="item" href="things-powschemes.html">PoW</a>
-            <a class="item" href="things-posschemes.html">PoS</a>
-            <a class="item" href="things-protocols.html">Protocols</a>
-            <a class="item" href="things-coins.html">Coins</a>
-            <a class="item" href="doacc-owl.html">DOACC OWL</a>
-            <a class="item" href="ccy-owl.html">CCY OWL</a>
+            <a class="active item" href="/concepts/index.html">Index</a>
+            <a class="item" href="/concepts/protectionschemes.html">Protection</a>
+            <a class="item" href="/concepts/distributionschemes.html">Distribution</a>
+            <a class="item" href="/concepts/powschemes.html">PoW</a>
+            <a class="item" href="/concepts/posschemes.html">PoS</a>
+            <a class="item" href="/concepts/protocols.html">Protocols</a>
+            <a class="item" href="/concepts/coins.html">Coins</a>
+            <a class="item" href="/doacc-owl.html">DOACC OWL</a>
+            <a class="item" href="/ccy-owl.html">CCY OWL</a>
           </div>
 
           <h2 class="ui dividing header">Cryptocurrency, the very idea!</h2>
           <h3 class="ui header"><b><i>Altcoin</i></b>. <i>defn:</i> a cryptocurrency that is not Bitcoin.</h3>
           <p>There are two main ontologies in use. They provide definitions of the terms used in statements about cryptocurrencies.</p>
           <h3 class="ui header">DOACC</h3>
-          <p><a href="doacc-owl.html" title="Full DOACC ontology content">DOACC</a> is for general statements about algo, pow/pos, ico/no ico, premine, etc. and is based on concepts used by developers in online forum announcements, primarily bitcointalk. One altcoin advertises “algo: x11”, another mounts a crowdfunding ICO, yet another announces “PoS 2.0”. All three are surface features of a deeper conceptual separation reflecting different approaches taken to i) protecting the public ledger, ii) distributing the coins and iii) choice of PoW scheme.</p>
-          <p>And so the <a href="doacc-owl.html" title="Full DOACC ontology content">DOACC vocabulary</a> includes general altcoin concepts such as “protection scheme”, “distribution scheme”, and “proof-of-work scheme”.</p>
+          <p><a href="/doacc-owl.html" title="Full DOACC ontology content">DOACC</a> is for general statements about algo, pow/pos, ico/no ico, premine, etc. and is based on concepts used by developers in online forum announcements, primarily bitcointalk. One altcoin advertises “algo: x11”, another mounts a crowdfunding ICO, yet another announces “PoS 2.0”. All three are surface features of a deeper conceptual separation reflecting different approaches taken to i) protecting the public ledger, ii) distributing the coins and iii) choice of PoW scheme.</p>
+          <p>And so the <a href="/doacc-owl.html" title="Full DOACC ontology content">DOACC vocabulary</a> includes general altcoin concepts such as “protection scheme”, “distribution scheme”, and “proof-of-work scheme”.</p>
           <h3 class="ui header">CCY</h3>
-          <p><a href="ccy-owl.html" title="Full CCY ontology content">CCY</a> is for making statements of technical detail; blockhash, scriptSig, txin/out, etc.</p>
-          <p>The <a href="ccy-owl.html" title="Full CCY ontology content">CCY vocabulary</a> is an expansion and adaptation of Melvin Carvalho’s CC ontology. The additions are mainly for making additional statements about i) blockchain contents and ii) the values bound to a range of program variables that effectively profile the coin.</p>
+          <p><a href="/ccy-owl.html" title="Full CCY ontology content">CCY</a> is for making statements of technical detail; blockhash, scriptSig, txin/out, etc.</p>
+          <p>The <a href="/ccy-owl.html" title="Full CCY ontology content">CCY vocabulary</a> is an expansion and adaptation of Melvin Carvalho’s CC ontology. The additions are mainly for making additional statements about i) blockchain contents and ii) the values bound to a range of program variables that effectively profile the coin.</p>
           <p>The submenu navigation on this page offers links to descriptions of the more salient concepts. The DOACC and CCY OWL ontology pages present <em>all</em> of the concepts, their properties and how they are used to describe an altcoin and its features.</p>
 
           <h2 class="ui dividing header">It’s a graph, but not as you know it, Jim.</h2>
@@ -56,16 +60,16 @@
     rdfs:<span class="pred">comment</span> <span class="obj">"Scrypt-based, re-target every 4 hours, variable block reward, 100 billion total coins."</span>^^xsd:string ;
     skos:<span class="pred">prefLabel</span> <span class="obj">"Dogecoin"</span>@en .</pre></p>
           <h3 class="ui header">The same facts / triples but this time laid out as a diagram of boxes and arrows.</h3>
-          <p><a href="images/assets/dogegraph.svg" title="Full size diagram"><img width="850px" src="images/assets/dogegraph.svg" alt="Dogecoin graph"/></a></p>
+          <p><a href="/images/assets/dogegraph.svg" title="Full size diagram"><img width="850px" src="/images/assets/dogegraph.svg" alt="Dogecoin graph"/></a></p>
           <p>It's a little more than <em>just</em> a diagram, it’s a hand-executed illustration of how facts are modelled in an RDF graph.</p>
           <p>Here’re the actual boxes and arrows for DOACC’s model of Dogecoin, as rendered by the machine.</p>
-          <p><a href="images/assets/Dd5bd8eaf-b432-440b-9502-3707aa57ff93.svg" title="Full size diagram"><img width="850px" src="images/assets/Dd5bd8eaf-b432-440b-9502-3707aa57ff93.svg" alt="Actual Dogecoin RDF graph"/></a></p>
+          <p><a href="/images/assets/Dd5bd8eaf-b432-440b-9502-3707aa57ff93.svg" title="Full size diagram"><img width="850px" src="/images/assets/Dd5bd8eaf-b432-440b-9502-3707aa57ff93.svg" alt="Actual Dogecoin RDF graph"/></a></p>
           <p>Facts can be shuffled around and re-presented. The following graph contains three statements of fact about Namecoin, Litecoin and Dogecoin respectively, each stating that the entity is a cryptocurrency:
             <dd><tt><span class="shy">ccs:</span><span class="subj">D8896b685-79c8-4a1f-a2dd-eee72eabb8e8</span> <span class="shy">rdf:</span><span class="pred">type</span> <span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt></dd>
             <dd><tt><span class="shy">ccs:</span><span class="subj">D8c037049-fb79-41f4-bb61-3d8ac12961d9</span> <span class="shy">rdf:</span><span class="pred">type</span> <span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt></dd>
             <dd><tt><span class="shy">ccs:</span><span class="subj">Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span> <span class="shy">rdf:</span><span class="pred">type</span> <span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt></dd>
           </p>
-          <p><a href="images/assets/coinsgraph.svg" title="Full size diagram"><img width="850px" src="images/assets/coinsgraph.svg" alt="Three altcoins"/></a></p>
+          <p><a href="/images/assets/coinsgraph.svg" title="Full size diagram"><img width="850px" src="/images/assets/coinsgraph.svg" alt="Three altcoins"/></a></p>
           <p>This puts us in a strong position with respect to precise references. Each individual coin has its own unique UUID identifier. In addition, <tt><span class="shy">rdf:</span><span class="pred">type</span></tt> is <a href="http://www.w3.org/TR/rdf-schema/#ch_type" title="W3 definition">also a unique reference</a>. And the same is true of our very own <tt><span class="shy">doacc:</span><span class="obj">Cryptocurrency</span></tt>.</p>
           <p>There is no ambiguity or vagueness about the facts, every concept used to express them is clearly identified and defined, e.g. the W3 definition of <tt>rdf:type</tt></p>
           <p>“A triple of the form: <tt>R rdf:type C</tt> states that <tt>C</tt> is an instance of <tt>rdfs:Class</tt> and <tt>R</tt> is an instance of <tt>C</tt>.”</p>

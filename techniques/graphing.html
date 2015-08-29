@@ -1,3 +1,7 @@
+---
+layout: page
+title: Graphing
+---
   <link rel="stylesheet" type="text/css" href="stylesheets/jquery/jquery.tipsy.css"/>
   <style type="text/css">
     text { font: 7px sans-serif; fill: ivory; }
@@ -30,9 +34,9 @@
             <a class="item" href="/techniques/reasoning.html">Reasoning</a>
           </div>
 
-          <h2 class="ui dividing header">${title}</h2>
+          <h2 class="ui dividing header">{{page.title}}</h2>
           <h3 class="ui header">Marketcap leaderboard bubblechart</h3>
-          <p>An in-browser illustration of a populating a nested bubblechart from the DOACC dataset augmented with <a href="ccs.n3" title="coinmarketcap graph">price, volume and market capitalisation facts</a> scraped from the Intenet Archive’s <a href="http://web.archive.org/web/20150408221520*/http://coinmarketcap.com/" title="archive.org page for coinmarketcap.com">copies of coinmarketcap web pages</a></p>
+          <p>An in-browser illustration of a populating a nested bubblechart from the DOACC dataset augmented with <a href="/ccs.n3" title="coinmarketcap graph">price, volume and market capitalisation facts</a> scraped from the Intenet Archive’s <a href="http://web.archive.org/web/20150408221520*/http://coinmarketcap.com/" title="archive.org page for coinmarketcap.com">copies of coinmarketcap web pages</a></p>
           <div id="results">
             <div class="ui segment">
               <div id="bubblegraph">
@@ -161,7 +165,7 @@
   }
 
   var g = $rdf.graph();
-  var docURI = "https://minkiz.co/doaccdoc/altcoin-min.n3";
+  var docURI = "{{site.url}}/altcoin-min.n3";
   var fetch = $rdf.fetcher(g);
   fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
       listout();

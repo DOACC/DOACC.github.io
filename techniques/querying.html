@@ -1,3 +1,7 @@
+---
+layout: page
+title: Querying
+---
 <script src="{{site.url}}/assets/js/vendor/library/hercules.js" charset="utf-8" type="text/javascript"></script>
 
         <div class="subheader">
@@ -14,18 +18,18 @@
         <div class="container">
 
           <div class="ui sub secondary pointing menu">
-            <a class="item" href="techniques.html">Basics</a>
-            <a class="item" href="techniques-rdfa.html">DOM</a>
-            <a class="active item" href="techniques-querying.html">Querying</a>
-            <a class="item" href="techniques-javascript.html">Javascript</a>
-            <a class="item" href="techniques-interactive.html">Interactive</a>
-            <a class="item" href="techniques-charting.html">Charting</a>
-            <a class="item" href="techniques-graphing.html">Graphing</a>
-            <a class="item" href="techniques-adding.html">Adding facts</a>
-            <a class="item" href="techniques-reasoning.html">Reasoning</a>
+            <a class="item" href="/techniques/index.html">Basics</a>
+            <a class="item" href="/techniques/rdfa.html">DOM</a>
+            <a class="active item" href="/techniques/querying.html">Querying</a>
+            <a class="item" href="/techniques/javascript.html">Javascript</a>
+            <a class="item" href="/techniques/interactive.html">Interactive</a>
+            <a class="item" href="/techniques/charting.html">Charting</a>
+            <a class="item" href="/techniques/graphing.html">Graphing</a>
+            <a class="item" href="/techniques/adding.html">Adding facts</a>
+            <a class="item" href="/techniques/reasoning.html">Reasoning</a>
           </div>
 
-          <h2 class="ui dividing header">${title}</h2>
+          <h2 class="ui dividing header">{{page.title}}</h2>
           <h3 class="ui header">DOACC and SPARQL</h3>
           <p>As an alternative to programmed retrieval and manipulation, facts from the DOACC dataset can be retrieved interactively via queries expressed in the <a href="https://w3.org/TR/sparql11-query" title="SPARQL documentation">SPARQL</a> query language (an intended analogue of SQL). The following in-browser example uses a trivial dataset and a trivial but serves to illustrate the basic principles:</p>
           <div class="ui segment">

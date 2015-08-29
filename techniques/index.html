@@ -1,3 +1,7 @@
+---
+layout: page
+title: Techniques
+---
         <div class="subheader">
           <div class="container">
             <div class="right-content">
@@ -11,15 +15,15 @@
         </div>
         <div class="container">
           <div class="ui sub secondary pointing menu">
-            <a class="active item" href="techniques.html">Basics</a>
-            <a class="item" href="techniques-rdfa.html">DOM</a>
-            <a class="item" href="techniques-querying.html">Query results</a>
-            <a class="item" href="techniques-javascript.html">Javascript</a>
-            <a class="item" href="techniques-interactive.html">Interactive</a>
-            <a class="item" href="techniques-charting.html">Charting</a>
-            <a class="item" href="techniques-graphing.html">Graphing</a>
-            <a class="item" href="techniques-adding.html">Adding facts</a>
-            <a class="item" href="techniques-reasoning.html">Reasoning</a>
+            <a class="active item" href="/techniques/index.html">Basics</a>
+            <a class="item" href="/techniques/rdfa.html">DOM</a>
+            <a class="item" href="/techniques/querying.html">Query results</a>
+            <a class="item" href="/techniques/javascript.html">Javascript</a>
+            <a class="item" href="/techniques/interactive.html">Interactive</a>
+            <a class="item" href="/techniques/charting.html">Charting</a>
+            <a class="item" href="/techniques/graphing.html">Graphing</a>
+            <a class="item" href="/techniques/adding.html">Adding facts</a>
+            <a class="item" href="/techniques/reasoning.html">Reasoning</a>
           </div>
           <h2 class="ui dividing header">Accessing the dataset, using it, re-using it, augmenting it, burying it in soft peat</h2>
           <p>The subnavigation menu (above) presents links to various (hacked-up, scribbled) examples of using the DOACC dataset. The dataset is published as <a href="https://en.wikipedia.org/wiki/Resource_Description_Framework" title="Wikipedia page">RDF</a> (<a href="http://dbpedia.org/page/Resource_Description_Framework" title="dbpedia page">RDF as RDF</a>), mostly self-documenting and there are third-party server-side and client-side libraries specifically designed for RDF data-slinging.</p>
@@ -31,7 +35,7 @@
             <dd><a href="https://github.com/DOACC/imprint" title="Visit the images Github repository">images</a></dd>
           </p>
           <h3 class="ui header">Re-use ... it’s still all about the facts.</h3>
-          <p>Working with the DOACC dataset is to work with basic facts about altcoins <em>(facts in DOACC are described in more detail in the <a href="facts.html" title="Facts in DOACC">Facts</a> section and the concepts behind the facts are described in the <a href="concepts.html" title="Concepts in DOACC">Concepts</a> section)</em>.</p>
+          <p>Working with the DOACC dataset is to work with basic facts about altcoins <em>(facts in DOACC are described in more detail in the <a href="/facts/index.html" title="Facts in DOACC">Facts</a> section and the concepts behind the facts are described in the <a href="/concepts/index.html" title="Concepts in DOACC">Concepts</a> section)</em>.</p>
           <p>Shown below is an example of a fact in DOACC --- more specifically, a triple. The syntax highlighting shows the three parts: a globally unique identifier, a globally unique relation and a value and the latter’s datatype is declared to be an XSD string.</p>
           <div class="ui segment">
             <pre class="ui inverted"><span class="shy">ccs:<span class="subj">Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span> doacc:<span class="pred">symbol</span> <span class="obj">"DOGE"</span>^^xsd:string ;</span></pre>
@@ -96,11 +100,11 @@ for the last 7 days exceeds 0.2 BTC.",
           <h3 class="ui header">JS libraries for working with RDF.</h3>
           <div class="ui segment">
             <ul>
-              <li><p><a href="javascript/library/mashlib.js" title="mashlib.js source">mashlib.js</a>: tabulator, distilled into a standlone library --- see <a href="techniques-adding.html" title="mashlib.js example in “Adding facts”">Adding facts</a> for an example.</p></li>
-              <li><p><a href="javascript/library/hercules.js" title="hercules.js source">Hercules</a> simple APIs for handling RDF, RDFS and SPARQL --- <a href="hercules-demo.html" title="Hercules demo">demo with DOACC data</a>.</p></li>
-              ## <li><p><a href="javascript/rdflib/dist/rdflib.js" title="rdflib.js source">rdflib.js</a>, javascript RDF library for browsers and NodeJS.</p></li>
-              <li><p><a href="javascript/library/rdfstore-js/rdf_store.js" title="rdfstore-js">rdfstore-js</a> Antonio Garrote’s RDF store and SPARQL query library --- <a href="https://github.com/antoniogarrote/rdfstore-js" title="Github repository"></a> <a href="rdfstore-demo.html" title="Demo">demo with DOACC data</a></p></li>
-              <li><p><a href="javascript/library/backplane/backplane.js" title="Backplane library">backplane.js</a> (<a href="https://code.google.com/p/backplanejs/" title="Google code repository">Google code</a>) in-browser RDF/RDFa parser, store and query --- <a href="twitter-demo.html" title="Twitter demo">demo with DOACC data</a>.</p></li>
+              <li><p><a href="{{site.url}}/assets/js/vendors/library/mashlib.js" title="mashlib.js source">mashlib.js</a>: tabulator, distilled into a standlone library --- see <a href="/techniques/adding.html" title="mashlib.js example in “Adding facts”">Adding facts</a> for an example.</p></li>
+              <li><p><a href="{{site.url}}/assets/js/vendors//library/hercules.js" title="hercules.js source">Hercules</a> simple APIs for handling RDF, RDFS and SPARQL --- <a href="hercules-demo.html" title="Hercules demo">demo with DOACC data</a>.</p></li>
+              ## <li><p><a href="{{site.url}}/assets/js/vendors/rdflib/dist/rdflib.js" title="rdflib.js source">rdflib.js</a>, javascript RDF library for browsers and NodeJS.</p></li>
+              <li><p><a href="{{site.url}}/assets/js/vendors/library/rdfstore-js/rdf_store.js" title="rdfstore-js">rdfstore-js</a> Antonio Garrote’s RDF store and SPARQL query library --- <a href="https://github.com/antoniogarrote/rdfstore-js" title="Github repository"></a> <a href="rdfstore-demo.html" title="Demo">demo with DOACC data</a></p></li>
+              <li><p><a href="{{site.url}}/assets/js/vendors/library/backplane/backplane.js" title="Backplane library">backplane.js</a> (<a href="https://code.google.com/p/backplanejs/" title="Google code repository">Google code</a>) in-browser RDF/RDFa parser, store and query --- <a href="twitter-demo.html" title="Twitter demo">demo with DOACC data</a>.</p></li>
             </ul>
           </div>
           <div class="ui hidden divider"></div>

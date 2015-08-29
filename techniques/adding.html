@@ -1,3 +1,7 @@
+---
+layout: page
+title: Adding facts
+---
   <style type="text/css">
     tt.ttp {color: #55b;}
     .posttitle {
@@ -22,18 +26,18 @@
         <div class="container" >
 
           <div class="ui sub secondary pointing menu">
-            <a class="item" href="techniques.html">Basics</a>
-            <a class="item" href="techniques-rdfa.html">DOM</a>
-            <a class="item" href="techniques-querying.html">Querying</a>
-            <a class="item" href="techniques-javascript.html">Javascript</a>
-            <a class="item" href="techniques-interactive.html">Interactive</a>
-            <a class="item" href="techniques-charting.html">Charting</a>
-            <a class="item" href="techniques-graphing.html">Graphing</a>
-            <a class="active item" href="techniques-adding.html">Adding facts</a>
-            <a class="item" href="techniques-reasoning.html">Reasoning</a>
+            <a class="item" href="/techniques/index.html">Basics</a>
+            <a class="item" href="/techniques/rdfa.html">DOM</a>
+            <a class="item" href="/techniques/querying.html">Querying</a>
+            <a class="item" href="/techniques/javascript.html">Javascript</a>
+            <a class="item" href="/techniques/interactive.html">Interactive</a>
+            <a class="item" href="/techniques/charting.html">Charting</a>
+            <a class="item" href="/techniques/graphing.html">Graphing</a>
+            <a class="active item" href="/techniques/adding.html">Adding facts</a>
+            <a class="item" href="/techniques/reasoning.html">Reasoning</a>
           </div>
 
-          <h2 class="ui dividing header">${title}</h2>
+          <h2 class="ui dividing header">{{page.title}}</h2>
           <h3 class="ui header">A <em>very brief</em> case study in augmenting DOACC with additional data.</h3>
           <p>To be frank, 2100+ entries is too much to comprehend in one pass. No, I'm quite sure of that; take a <a href="/altcoins.svg">look for yourself</a>. In order to populate the examples for this documentation it proved necessary to construct an arbitrary subset. I chose to use the top 20 marketcap coins, (using a [2:22] offset to avoid the overwhelming disproportion of BTC &amp; LTC data).</p>
           <p>I worked through the archive.org records for coinmarketcap.com for the last 12 months, month by month. Sponging up the data from the web page is relatively straightforward and as an example, this is what the row of data for Stellar can be boiled down to:
@@ -96,8 +100,8 @@
       :qual 2 ;
       :stale false ;
       :volume "110.0"^^xsd:float .</div>
-          <p>Feel free to grab <a href="cmdata.n3" title="Coinmarketcap data for 2014">the full content</a> (268K)</p>
-          <p>The <a href="techniques-charting.html">Charting</a> page (also see tab above) goes into detail about getting the data into the charting library but the core activity is outlined below:</p>
+          <p>Feel free to grab <a href="/cmdata.n3" title="Coinmarketcap data for 2014">the full content</a> (268K)</p>
+          <p>The <a href="/techniques/charting.html">Charting</a> page (also see tab above) goes into detail about getting the data into the charting library but the core activity is outlined below:</p>
           <div class="code javascript" data-title="Core of processing added data" data-type="javascript">var listout = function() { // a callback function, runs after the data is retrieved
       cmpno = 'cmp-'+'2'; // arbitrary example
       dt = g.any(CCS(cmpno), DC('date'), null); // date, for title
