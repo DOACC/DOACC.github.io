@@ -1,0 +1,107 @@
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+              <a href="#">“In theory, theory and practice are the same.<br/>In practice, they are not.”</a> <span class="rth"> - Albert Einstein</span>
+            </div>
+            <h2 class="ui header inverted">Techniques
+              <div class="sub header">how to use DOACC data in your own application / web site.</div>
+            </h2>
+            <div class="ui divider"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="ui sub secondary pointing menu">
+            <a class="active item" href="techniques.html">Basics</a>
+            <a class="item" href="techniques-rdfa.html">DOM</a>
+            <a class="item" href="techniques-querying.html">Query results</a>
+            <a class="item" href="techniques-javascript.html">Javascript</a>
+            <a class="item" href="techniques-interactive.html">Interactive</a>
+            <a class="item" href="techniques-charting.html">Charting</a>
+            <a class="item" href="techniques-graphing.html">Graphing</a>
+            <a class="item" href="techniques-adding.html">Adding facts</a>
+            <a class="item" href="techniques-reasoning.html">Reasoning</a>
+          </div>
+          <h2 class="ui dividing header">Accessing the dataset, using it, re-using it, augmenting it, burying it in soft peat</h2>
+          <p>The subnavigation menu (above) presents links to various (hacked-up, scribbled) examples of using the DOACC dataset. The dataset is published as <a href="https://en.wikipedia.org/wiki/Resource_Description_Framework" title="Wikipedia page">RDF</a> (<a href="http://dbpedia.org/page/Resource_Description_Framework" title="dbpedia page">RDF as RDF</a>), mostly self-documenting and there are third-party server-side and client-side libraries specifically designed for RDF data-slinging.</p>
+          <h3 class="ui header">Accessing the dataset</h3>
+          <p>The dataset, the DOACC and CCY ontologies are all maintained as git repositories made publicly accessible on Github:
+            <dd><a href="https://github.com/DOACC/doacc" title="Visit the DOACC Github repository">DOACC ontology</a></dd>
+            <dd><a href="https://github.com/DOACC/ccy" title="Visit the CCY Github repository">CCY ontology</a></dd>
+            <dd><a href="https://github.com/DOACC/individuals" title="Visit the dataset Github repository">dataset</a></dd>
+            <dd><a href="https://github.com/DOACC/imprint" title="Visit the images Github repository">images</a></dd>
+          </p>
+          <h3 class="ui header">Re-use ... it’s still all about the facts.</h3>
+          <p>Working with the DOACC dataset is to work with basic facts about altcoins <em>(facts in DOACC are described in more detail in the <a href="facts.html" title="Facts in DOACC">Facts</a> section and the concepts behind the facts are described in the <a href="concepts.html" title="Concepts in DOACC">Concepts</a> section)</em>.</p>
+          <p>Shown below is an example of a fact in DOACC --- more specifically, a triple. The syntax highlighting shows the three parts: a globally unique identifier, a globally unique relation and a value and the latter’s datatype is declared to be an XSD string.</p>
+          <div class="ui segment">
+            <pre class="ui inverted"><span class="shy">ccs:<span class="subj">Dd5bd8eaf-b432-440b-9502-3707aa57ff93</span> doacc:<span class="pred">symbol</span> <span class="obj">"DOGE"</span>^^xsd:string ;</span></pre>
+          </div>
+          <p>Fortunately, such simplified and formalised statements are computationally tractable. The code below fetches data from a server, identifies all the different protection schemes mentioned in teh dataset and prints to the console any <span class="shy">skos:<span class="pred">prefLabel</span></span> values that it can find.</p>
+          <div class="ui segment">
+          <div class="code javascript" data-title="Javascript and RDF" data-type="javascript">var RDF = $rdf.Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+var SKOS = $rdf.Namespace("http://www.w3.org/2004/02/skos/core#")
+var DOACC = $rdf.Namespace("http://purl.org/net/bel-epa/doacc#")
+var CCS = $rdf.Namespace("http://purl.org/net/bel-epa/ccs#")
+var listout = function() {
+   for (var ps in g.each(null, RDF('type'), DOACC('ProtectionScheme'))) {
+          res = g.any(ps, SKOS('prefLabel'));
+          console.log("Protection scheme: " + res)
+   }
+};
+var g = $rdf.graph();
+var docURI = "http://localhost.localdomain/ccs.n3";
+var fetch = $rdf.fetcher(g);
+fetch.nowOrWhenFetched(docURI, undefined, function(ok, body, xhr) { // @@ check ok
+  listout()
+});</div>
+          </div>
+          <p>Handling the retrieval and processing via a callback is a necessary evil on the client side in order that the entire dataset is fully retrieved <em>before</em> processing begins. Server-side processing is less demanding of the user’s machine and the results can also be usefully cached for faster response.</p> 
+          <h3 class="ui header">Augmenting the data.</h3>
+          <p>One of the under-appreciated delights of working with RDF sources that draw from the same vocabulary is the ability to just (literally) add another set of statements. For example, we could reach out and pick up “in danger of being delisted” from the Bittrex API <a href="https://bittrex.com/api/v1.1/public/getmarkets" title="Bittrex markets">“getmarkets”</a> call.</p>
+          <p>The call returns data of the form:</p>
+          <div class="code javascript" data-title="market entry" data-type="javascript">{
+"MarketCurrency":"XWC",
+"BaseCurrency":"BTC",
+"MarketCurrencyLong":"WhiteCoin",
+"BaseCurrencyLong":"Bitcoin",
+"MinTradeSize":0.00000001,
+"MarketName":"BTC-XWC",
+"IsActive":true,
+"Created":"2014-04-14T00:00:00",
+"Notice":"This market is in danger of de-listing due to low trade volume and lack of
+user interest. It may be removed on May 15th unless the average daily trade volume
+for the last 7 days exceeds 0.2 BTC.",
+"IsSponsored":null,
+"LogoUrl":"https://i.imgur.com/ZK80S7l.png"
+}</div>
+          <p>The information pertains to the coin whose <span class="shy">doacc:<span class="pred">name</span></span> is <tt>"Whitecoin"^^xsd:string</tt> and whose <span class="shy">doacc:<span class="pred">symbol</span></span> is <tt>"XWC"^^xsd:string</tt>, i.e. <tt><span class="shy">doacc:<span class="subj">D3c844f6a-04ec-4eb0-a1df-8a096b8c76f2</span></span></tt>. The <tt>^^xsd:string</tt> construction specifies the datatype of the information. The information is added in the form of new statements about the coin:</p>
+          <pre><span class="shy">doacc:<span class="subj">D3c844f6a-04ec-4eb0-a1df-8a096b8c76f2</span> doacc:<span class="pred">endangered</span> <span class="obj">"True"^^xsd:boolean</span></span> ;
+    doacc:<span class="pred">firstlisted</span> <span class="obj">"2014-04-14T00:00:00"^^xsd:dateTimeStamp</span></span> .</pre>
+          <p>The statements can be straightforwardly added to the existing DOACC graph either programatically or by reading a saved file of statements.</p>
+          <p>Although neither of <span class="shy">doacc:<span class="pred">endangered</span></span> and <span class="shy">doacc:<span class="pred">firstlisted</span></span> appears in the DOACC ontology, that’s not a barrier to private/informal use. It only starts to become an issue when you either want to publish your statements or want to perform reasoning on the dataset. One solution is to add the relations to a local copy of the ontology, another solution would be to lobby for the inclusion of the relations in the “official” DOACC ontology or simply submit a PR.</p>
+          <h3 class="ui header">Burying in soft peat</h3>
+          <div class="ui accordion">
+            <div class="title">
+              <i class="dropdown icon"></i>
+              Peat gatherers, Westhay, the Somerset levels (just down the road from DOACC’s spiritual home)
+            </div>
+            <div class="content">
+              <div class="ui segment">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Peat_gatherers.JPG/565px-Peat_gatherers.JPG" alt="Wikimedia image"/>
+              </div>
+            </div>
+          </div>
+          <h3 class="ui header">In the future, there will be robots.</h3>
+          <p>There are a few altcoins where the available Linux/Win/OSX binaries have been upgraded to v2.0 but the source code in the Github repository remains unchanged at v1.0. In such cases, the DOACC data for those coins is almost certainly partially and indeterminately <span style="text-decoration: line-through">outdated</span> incorrect. In other cases, coin devs have made changes to the parameters, hash algo, logo, name, protection scheme --- much of which is recorded in the source but the corresponding DOACC statements <span style="text-decoration: line-through">have yet to be updated</span> are incorrect. Plans are afoot to programatically check the veracity of the DOACC statements by cross-referencing the actual repository code.</p>
+          <h3 class="ui header">JS libraries for working with RDF.</h3>
+          <div class="ui segment">
+            <ul>
+              <li><p><a href="javascript/library/mashlib.js" title="mashlib.js source">mashlib.js</a>: tabulator, distilled into a standlone library --- see <a href="techniques-adding.html" title="mashlib.js example in “Adding facts”">Adding facts</a> for an example.</p></li>
+              <li><p><a href="javascript/library/hercules.js" title="hercules.js source">Hercules</a> simple APIs for handling RDF, RDFS and SPARQL --- <a href="hercules-demo.html" title="Hercules demo">demo with DOACC data</a>.</p></li>
+              ## <li><p><a href="javascript/rdflib/dist/rdflib.js" title="rdflib.js source">rdflib.js</a>, javascript RDF library for browsers and NodeJS.</p></li>
+              <li><p><a href="javascript/library/rdfstore-js/rdf_store.js" title="rdfstore-js">rdfstore-js</a> Antonio Garrote’s RDF store and SPARQL query library --- <a href="https://github.com/antoniogarrote/rdfstore-js" title="Github repository"></a> <a href="rdfstore-demo.html" title="Demo">demo with DOACC data</a></p></li>
+              <li><p><a href="javascript/library/backplane/backplane.js" title="Backplane library">backplane.js</a> (<a href="https://code.google.com/p/backplanejs/" title="Google code repository">Google code</a>) in-browser RDF/RDFa parser, store and query --- <a href="twitter-demo.html" title="Twitter demo">demo with DOACC data</a>.</p></li>
+            </ul>
+          </div>
+          <div class="ui hidden divider"></div>
+        </div>

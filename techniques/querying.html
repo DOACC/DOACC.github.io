@@ -1,0 +1,153 @@
+<script src="{{site.url}}/assets/js/vendor/library/hercules.js" charset="utf-8" type="text/javascript"></script>
+
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+              <a href="#">“In theory, theory and practice are the same.<br/>In practice, they are not.”</a> <span class="rth"> - Albert Einstein</span>
+            </div>
+            <h2 class="ui header inverted">Techniques
+              <div class="sub header">how to use DOACC data in your own application / web site.</div>
+            </h2>
+            <div class="ui divider"></div>
+          </div>
+        </div>
+        <div class="container">
+
+          <div class="ui sub secondary pointing menu">
+            <a class="item" href="techniques.html">Basics</a>
+            <a class="item" href="techniques-rdfa.html">DOM</a>
+            <a class="active item" href="techniques-querying.html">Querying</a>
+            <a class="item" href="techniques-javascript.html">Javascript</a>
+            <a class="item" href="techniques-interactive.html">Interactive</a>
+            <a class="item" href="techniques-charting.html">Charting</a>
+            <a class="item" href="techniques-graphing.html">Graphing</a>
+            <a class="item" href="techniques-adding.html">Adding facts</a>
+            <a class="item" href="techniques-reasoning.html">Reasoning</a>
+          </div>
+
+          <h2 class="ui dividing header">${title}</h2>
+          <h3 class="ui header">DOACC and SPARQL</h3>
+          <p>As an alternative to programmed retrieval and manipulation, facts from the DOACC dataset can be retrieved interactively via queries expressed in the <a href="https://w3.org/TR/sparql11-query" title="SPARQL documentation">SPARQL</a> query language (an intended analogue of SQL). The following in-browser example uses a trivial dataset and a trivial but serves to illustrate the basic principles:</p>
+          <div class="ui segment">
+            <textarea id="n3" rows="18" cols="115">@prefix doacc: <https://minkiz.co/owl/doacc.rdf#> . 
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> . 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+ 
+doacc:D338257f8-402f-4c76-969b-6fc041d52e40 a doacc:PoWscheme ;
+    rdfs:label "scrypt"@en ;
+    dc:description "scrypt, based on tarsnap"@en ;
+    rdfs:comment "scrypt, based on tarsnap"@en ;
+    rdfs:isDefinedBy &lt;http://purl.org/net/bel-epa/doacc&gt; ;
+    skos:prefLabel "scrypt"@en .
+
+doacc:D001c782e-f6dc-4833-bc0a-2b5049432ab9 a doacc:Cryptocurrency ; 
+    doacc:expiration "extant"@en ; 
+    doacc:image "fixcoin_fix.png"^^xsd:anyURI ; 
+    doacc:incept "2014-04"^^xsd:string ; 
+    doacc:pow doacc:D338257f8-402f-4c76-969b-6fc041d52e40 ; 
+    doacc:symbol "FIX"^^xsd:string ; 
+    skos:prefLabel "Fixcoin"@en . 
+ 
+doacc:D008d4c2d-3d0e-4390-98eb-8933fc0408cf a doacc:Cryptocurrency ; 
+    doacc:expiration "defunct"@en ; 
+    doacc:image "icecoin_ice.png"^^xsd:anyURI ; 
+    doacc:incept "2013-06"^^xsd:string ; 
+    doacc:pow doacc:D338257f8-402f-4c76-969b-6fc041d52e40 ; 
+    doacc:symbol "ICE"^^xsd:string ; 
+    skos:prefLabel "IceCoin"@en . 
+ 
+doacc:D00add470-26f1-49a2-8ccd-f9a417dd624e a doacc:Cryptocurrency ; 
+    doacc:expiration "listed"@en ; 
+    doacc:image "distrocoin_distro.png"^^xsd:anyURI ; 
+    doacc:incept "2014-05"^^xsd:string ; 
+    doacc:pow doacc:D338257f8-402f-4c76-969b-6fc041d52e40 ; 
+    doacc:symbol "DISTRO"^^xsd:string ; 
+    skos:prefLabel "Distrocoin"@en .
+</textarea>
+          </div>
+          <div class="ui segment">
+            <textarea id="query" rows="10" cols="115">PREFIX doacc: <https://minkiz.co/owl/doacc.rdf#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT ?name ?sym ?alg ?exp 
+WHERE {
+  ?x skos:prefLabel ?name .
+  ?x doacc:expiration ?exp .
+  ?x doacc:pow ?a .
+  ?a skos:prefLabel ?alg .
+  ?x doacc:symbol ?sym .
+}</textarea>
+          </div>
+          <div class="ui segment">
+            <input type="button" id="start" value="Start"/>
+            <h2>Result</h2>
+            <table class="ui table" id="result"><thead id="result_head"/><tbody id="result_body"/></table>
+          </div>
+          <h2 class="ui dividing header">SPARQL Devops</h2>
+          <h3 class="ui header">Setting up a SPARQL endpoint</h3>
+          <p>For production purposes, Joseki offers a reliable and capable solution. Deployment with Vagrant and Ansible is straightforward. The DOACC github offers <a href="https://github.com/DOACC/va-fuseki">a pre-scripted Ansible playbook</a> that will install, configure and run a Fuseki server:</p>
+          <p>Install Vagrant.</p>
+          <div class="code bash" data-title="Vagrant installation" data-type="bash">$ dkpg install https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2_x86_64.deb
+          </div>
+          <p>Install Ansible.</p>
+          <div class="code bash" data-title="Ansible installation" data-type="bash">$ git clone https://github.com/ansible/ansible.git
+$ cd ansible
+$ git submodule update --init --recursive
+$ sudo make install
+          </div>
+          <p>Get the ansible playbook, run it to create a standalone Fuseki server</p>
+          <div class="code bash" data-title="Install Fuseki" data-type="bash">$ git clone https://github.com/DOACC/va-fuseki.git
+$ cd va-fuseki
+$ vagrant init ubuntu/trusty64
+$ vagrant up
+          </div>
+          <div class="ui hidden divider"></div>
+        </div>
+
+  <script type="text/javascript">
+  $("#start").click(function() {
+      var turtleParser = new Arielworks.Parser.RecursiveDescentParser.Parser();
+      turtleParser.setRuleSet(Arielworks.Hercules.Serialized.Turtle.Parser.RULE_SET);
+      turtleParser.setWhiteSpaceRule(Arielworks.Hercules.Serialized.Turtle.Parser.WHITE_SPACE_RULE);
+      turtleParser.compileRuleSet();
+      var action = new Arielworks.Hercules.Serialized.Turtle.Turtle_1_0(document.location.toString());
+      turtleParser.parse(document.getElementById("n3").value, Arielworks.Hercules.Serialized.Turtle.Parser.START_RULE, action);
+
+      var engine = new Arielworks.Hercules.Sparql.Engine(action.graph.tripleList);
+      var query = engine.prepare(document.getElementById("query").value);
+      var results = query.execute();
+
+      var resultVariables = results.getVariableList();
+
+      $("#result_head").empty();
+      $("#result_body").empty();
+      var tr = $("<tr/>").appendTo("#result_head");
+      for (var i = 0; i < resultVariables.length; i++) {
+          $("<th/>").css("background", "rgb(51, 145, 224)").css("color", "rgb(255, 255, 255)").text(resultVariables[i]).appendTo(tr);
+      }
+
+      for (var i = 0 ; i < results.length; i++) {
+          var tr = $("<tr/>").appendTo("#result_body");
+          for (var j = 0; j < resultVariables.length; j++) {
+              var value = ""
+              if (results[i][resultVariables[j]]) {
+                  var v = results[i][resultVariables[j]];
+                  if (v instanceof Arielworks.Hercules.Rdf.RdfUriRef) {
+                      value = "<" + v.getValue()  + ">";
+                  } else if (v instanceof Arielworks.Hercules.Rdf.PlainLiteral) {
+                      var l = v.getLanguageTag();
+                      value = '"' + v.getValue() + '"' + (l ? "@" + l : "");
+                  } else if (v instanceof Arielworks.Hercules.Rdf.TypedLiteral) {
+                      var t = v.getDataTypeIri();
+                      value = '"' + v.getValue() + '"' + (t ? "^^<" + t + ">" : "");
+                  } else if (v instanceof Arielworks.Hercules.Rdf.BlankNode) {
+                      value = "_:" + v.getValue();
+                  } else {
+                      alert("ERROR");
+                  }
+              }
+              $("<td/>").css("background", "#fbfbfb").text(value).appendTo(tr);
+
+          }
+      }
+  });
+  </script>

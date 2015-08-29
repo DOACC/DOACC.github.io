@@ -1,0 +1,194 @@
+  <script src="javascript/library/raphael-min.js"></script>
+  <script src="javascript/library/treemap-squared-0.5.min.js"></script>
+  <style type="text/css">
+    span.aside {font-style: italic; font-size: 85%; color: #999;}
+    #results {height: 480px;}
+    p.ui.small {font-size: 80% !important;}
+    </style>
+
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+              <a href="#">“In theory, theory and practice are the same.<br/>In practice, they are not.”</a> <span class="rth"> - Albert Einstein</span>
+            </div>
+            <h2 class="ui header inverted">Techniques
+              <div class="sub header">how to use DOACC data in your own application / web site.</div>
+            </h2>
+            <div class="ui divider"></div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="ui sub secondary pointing menu">
+            <a class="item" href="techniques.html">Basics</a>
+            <a class="item" href="techniques-rdfa.html">DOM</a>
+            <a class="item" href="techniques-querying.html">Querying</a>
+            <a class="item" href="techniques-javascript.html">Javascript</a>
+            <a class="item" href="techniques-interactive.html">Interactive</a>
+            <a class="active item" href="techniques-charting.html">Charting</a>
+            <a class="item" href="techniques-graphing.html">Graphing</a>
+            <a class="item" href="techniques-adding.html">Adding facts</a>
+            <a class="item" href="techniques-reasoning.html">Reasoning</a>
+          </div>
+
+          <h2 class="ui dividing header" id="title">${title}</h2>
+          <h3 class="ui header">Squaretree and Raphael</h3>
+          <p>An in-browser illustration of a populating a squaretree chart from the DOACC dataset augmented with <a href="ccs.n3" title="coinmarketcap graph">price, volume and market capitalisation facts</a> scraped from the Intenet Archive’s <a href="http://web.archive.org/web/20150408221520*/http://coinmarketcap.com/" title="archive.org page for coinmarketcap.com">copies of coinmarketcap web pages</a></p>
+          <div id="results">
+
+            <div class="ui active inverted dimmer">
+              <div class="ui text loader">Reading from graph</div>
+            </div>
+
+          </div>
+          <h2 class="ui dividing header" id="code">the code <span class="aside">(as in view source)</span></h2>
+          <div class="ui segment">
+            <div class="code javascript" data-title="Charting with Tree-square and Rapahel" data-type="javascript">// For quick access to those namespaces:
+var FOAF = $rdf.Namespace("http://xmlns.com/foaf/0.1/");
+var RDF = $rdf.Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#");
+var RDFS = $rdf.Namespace("http://www.w3.org/2000/01/rdf-schema#");
+var OWL = $rdf.Namespace("http://www.w3.org/2002/07/owl#");
+var DC = $rdf.Namespace("http://purl.org/dc/elements/1.1/");
+var XSD = $rdf.Namespace("http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/#dt-");
+var SKOS = $rdf.Namespace("http://www.w3.org/2004/02/skos/core#");
+var DOACC = $rdf.Namespace("http://purl.org/net/bel-epa/doacc#");
+var CCS = $rdf.Namespace('http://purl.org/net/bel-epa/2015-04/ccs#');
+
+var data = []; 
+var labels = [];
+var maxd = 0;
+var dt;
+var listout = function() {
+    cmpno = 'cmp-'+'2'; // arbitrary example
+    dt = g.any(CCS(cmpno), DC('date'), null); // date, for title
+    cmpds = g.each(null, CCS('cmp'), CCS(cmpno)); // the datapoints for the post
+    var res = $.map(cmpds.slice(2,22), function(cmp) {
+      var cn = g.any(g.any(cmp, CCS('cryptocurrency'), null), DOACC('symbol'), null);
+      var val = g.any(cmp, CCS('marketcap'), null);
+      return  {"label": cn.value, "value": parseFloat(val.value).toFixed(0)}
+    });
+    data = $.map(res, function(p) {return p['value'] * 10});
+    labels = $.map(res, function(p) {return p['label']});
+    maxd = ((Math.max.apply(null, data)/50000)|0)*50000; // sop to squaretree
+
+    var boxFormatter = function (coordinates, index) {
+          var datapoint,i, color;
+          datapoint = data;
+          for (i=0; i&lt;index.length; i++){
+              datapoint = datapoint[index[i]];
+          }
+          var saturation = ((datapoint / maxd)*0.6) + 0.4;
+          var brightness = ((datapoint / maxd)*0.3) + 0.2;
+          color = "hsb(0." + (Math.random()*(9-1)+1) + "," + saturation + "," + brightness + ")";
+          return{ "fill" : color, "fill-opacity": "0.6" };
+    };
+    $('#results').html(''); // prep
+    Treemap.draw(
+      "results", 850, 450, data, labels, {
+        'label' : {'fill' : 'white'},
+        'background' : {'fill': 'url("images/assets/marble.jpg")'},
+        'box' : boxFormatter,
+      }
+    );
+    $('#title').html('coinmarketcap.com, &lt;em>marketcap [2:22] #'+cmpno+' ('+dt+')&lt;/em>'); // guff
+};
+
+var g = $rdf.graph();
+var docURI = "http://localhost.localdomain/altcoin.n3";
+var fetch = $rdf.fetcher(g);
+fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
+    listout()
+});
+            </div>
+          </div>
+          <h2 class="ui dividing header">market capitalisation and price data</h2>
+          <h3 class="ui header">${title}</h3>
+          <p>This is an illustration of the N3 content of the file “altcoin.n3”, referenced in the above example:</p>
+          <div class="ui segment">
+            <div class="code n3" data-title="Charting with Tree-square and Rapahel" data-type="n3">@prefix ccs: &lt;http://purl.org/net/bel-epa/2015-04/ccs#&gt; .
+@prefix dc: &lt;http://purl.org/dc/elements/1.1/&gt; .
+@prefix doacc: &lt;http://purl.org/net/bel-epa/doacc#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xml: &lt;http://www.w3.org/XML/1998/namespace&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+ccs:cmp-2 a ccs:CMPost ;
+    dc:date "2014-02-25T09:00:00"^^xsd:date ;
+    ccs:btc "470.95"^^xsd:float .
+
+ccs:cmpd-100 a css:CMPostDatum ;
+    ccs:cmp ccs:cmp-2 ;
+    ccs:cryptocurrency doacc:Db39a66a4-5d86-4653-a9ad-ef91f6a970f8 ;
+    ccs:daily "0.0"^^xsd:float ;
+    ccs:marketcap "6470.0"^^xsd:float ;
+    ccs:price "0.005888"^^xsd:float ;
+    ccs:qual 2 ;
+    ccs:stale false ;
+    ccs:volume "0.0"^^xsd:float .
+</div>
+            <p class="ui small"><em>(Apologies for the improperly escaped angle brackets in the above listing, I need to have a word with the syntax highlighting lexer.)</em>
+          </div>
+          <div class="ui hidden divider"></div>
+        </div>
+
+<script type="text/javascript" src="{{site.url}}/assets/js/plugins/jquery.xdomainajax.js"></script>
+<script type="text/javascript">
+  // For quick access to those namespaces:
+  var FOAF = $rdf.Namespace("http://xmlns.com/foaf/0.1/")
+  var RDF = $rdf.Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+  var RDFS = $rdf.Namespace("http://www.w3.org/2000/01/rdf-schema#")
+  var OWL = $rdf.Namespace("http://www.w3.org/2002/07/owl#")
+  var DC = $rdf.Namespace("http://purl.org/dc/elements/1.1/")
+  var XSD = $rdf.Namespace("http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/#dt-")
+  var SKOS = $rdf.Namespace("http://www.w3.org/2004/02/skos/core#")
+  var DOACC = $rdf.Namespace("http://purl.org/net/bel-epa/doacc#")
+  var CCS = $rdf.Namespace('http://purl.org/net/bel-epa/2015/05/ccs#')
+
+  var data = []; 
+  var labels = [];
+  var maxd = 0;
+  var dt;
+  var listout = function() {
+      cmpno = 'cmp-'+'2'; // arbitrary example
+      dt = g.any(CCS(cmpno), DC('date'), null); // date, for title
+      cmpds = g.each(null, CCS('cmp'), CCS(cmpno)); // the datapoints for the post
+      var res = $.map(cmpds.slice(1,21), function(cmp) {
+        var cn = g.any(g.any(cmp, CCS('cryptocurrency'), null), DOACC('symbol'), null);
+        var val = g.any(cmp, CCS('marketcap'), null);
+        return  {"label": cn.value, "value": parseFloat(val.value).toFixed(0)}
+      });
+      data = $.map(res, function(p) {return p['value']*10});
+      labels = $.map(res, function(p) {return p['label']});
+      maxd = ((Math.max.apply(null, data)/50000)|0)*50000; // sop to treesquare
+
+      var boxFormatter = function (coordinates, index) {
+            var datapoint,i, color;
+            datapoint = data;
+            for (i=0; i<index.length; i++){
+                datapoint = datapoint[index[i]];
+            }  
+            var saturation = ((datapoint / maxd)*0.6) + 0.4;
+            var brightness = ((datapoint / maxd)*0.3) + 0.2;
+            color = "hsb(0." + (Math.random() * (9 - 1) + 1) + "," + saturation + "," + brightness + ")";
+            return{ "fill" : color, "fill-opacity": "0.6" };
+      };
+      $('#results').html(''); // nuke spinner
+      Treemap.draw(
+        "results", 850, 450, data, labels, {
+          'label' : {'fill' : 'white'},
+          'background' : {'fill': 'url("images/assets/marble.jpg")'},
+          'box' : boxFormatter,
+        }
+      );
+      $('#title').html('coinmarketcap.com, <em>marketcap [1:21] #'+cmpno+' ('+dt+')</em>'); // guff
+  };
+
+  var g = $rdf.graph();
+  var docURI = "https://minkiz.co/doaccdoc/altcoin-min.n3";
+  var fetch = $rdf.fetcher(g);
+  fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
+      listout()
+  });
+</script>
+</%def>

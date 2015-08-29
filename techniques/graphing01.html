@@ -1,0 +1,152 @@
+  <style type="text/css">
+    text { font: 7px sans-serif; fill: ivory; }
+    span.aside {font-style: italic; font-size: 85%; color: #999;}
+    .ui.compact.table td {text-align:center; padding: .5em 0 !important;}
+    /*#results {height: 1620px;}*/
+  </style>
+
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+              <a href="#">“In theory, theory and practice are the same.<br/>In practice, they are not.”</a> <span class="rth"> - Albert Einstein</span>
+            </div>
+            <h2 class="ui header inverted">Techniques
+              <div class="sub header">how to use DOACC data in your own application / web site.</div>
+            </h2>
+            <div class="ui divider"></div>
+          </div>
+        </div>
+        <div class="container">
+
+          <div class="ui sub secondary pointing menu">
+            <a class="item" href="techniques.html">Basics</a>
+            <a class="item" href="techniques-rdfa.html">DOM</a>
+            <a class="item" href="techniques-querying.html">Querying</a>
+            <a class="item" href="techniques-javascript.html">Javascript</a>
+            <a class="item" href="techniques-interactive.html">Interactive</a>
+            <a class="item" href="techniques-charting.html">Charting</a>
+            <a class="active item" href="techniques-graphing.html">Graphing</a>
+            <a class="item" href="techniques-adding.html">Adding facts</a>
+            <a class="item" href="techniques-reasoning.html">Reasoning</a>
+          </div>
+
+          <h2 class="ui dividing header">${title}</h2>
+          <h3 class="ui header">Marketcap leaderboard bubblechart</h3>
+          <p>An in-browser illustration of a populating a nested bubblechart from the DOACC dataset augmented with <a href="ccs.n3" title="coinmarketcap graph">price, volume and market capitalisation facts</a> scraped from the Intenet Archive’s <a href="http://web.archive.org/web/20150408221520*/http://coinmarketcap.com/" title="archive.org page for coinmarketcap.com">copies of coinmarketcap web pages</a></p>
+          <div id="results">
+            <div class="ui segment">
+              <div id="chart" 
+                  style="/*height:1600px;*/ background-color: #fff"
+                  >
+                <div class="ui active inverted dimmer">
+                  <div class="ui text loader">Reading DOACC facts</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ui hidden divider"></div>
+        </div>
+
+<script type="text/javascript" src="{{site.url}}/assets/js/plugins/jquery.xdomainajax.js"></script>
+<script type="text/javascript">
+
+  // For quick access to those namespaces:
+  var FOAF = $rdf.Namespace("http://xmlns.com/foaf/0.1/")
+  var RDF = $rdf.Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+  var RDFS = $rdf.Namespace("http://www.w3.org/2000/01/rdf-schema#")
+  var OWL = $rdf.Namespace("http://www.w3.org/2002/07/owl#")
+  var DC = $rdf.Namespace("http://purl.org/dc/elements/1.1/")
+  var XSD = $rdf.Namespace("http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/#dt-")
+  var SKOS = $rdf.Namespace("http://www.w3.org/2004/02/skos/core#")
+  var DOACC = $rdf.Namespace("http://purl.org/net/bel-epa/doacc#")
+  var CCS = $rdf.Namespace('http://purl.org/net/bel-epa/2015/05/ccs#')
+  var saps = [
+    "#f8d753", "#5c9746", "#3e75a7", "#7a653e", "#e1662a", "#74796f", "#c4384f",  // 2
+    "#fff8a3", "#a9cc8f", "#b2c8d9", "#bea37a", "#f3aa79", "#b5b5a9", "#e6a5a4",  // 0
+    "#fae16b", "#82b16a", "#779dbf", "#907a52", "#eb8953", "#8a8d82", "#d6707b",  // 1
+    "#f3c01c", "#3d8128", "#205f9a", "#63522b", "#dc5313", "#5d645a", "#bc1c39",  // 3
+    "#f0b400", "#1e6c0b", "#00488c", "#332600", "#d84200", "#434c43", "#b30023",  // 4
+    "#f8d753", "#5c9746", "#3e75a7", "#7a653e", "#e1662a", "#74796f", "#c4384f",  // 2
+    "#fff8a3", "#a9cc8f", "#b2c8d9", "#bea37a", "#f3aa79", "#b5b5a9", "#e6a5a4",  // 0
+    "#fae16b", "#82b16a", "#779dbf", "#907a52", "#eb8953", "#8a8d82", "#d6707b",  // 1
+    "#f3c01c", "#3d8128", "#205f9a", "#63522b", "#dc5313", "#5d645a", "#bc1c39",  // 3
+    "#f0b400", "#1e6c0b", "#00488c", "#332600", "#d84200", "#434c43", "#b30023",  // 4
+    ];
+
+
+  var launches = {};
+  var lkeys = new Array();
+  var algs = [];
+  var algos = [];
+  var data = [];
+
+  function count(arr){
+    return arr.reduce(function(m,e){
+      m[e] = (+m[e]||0)+1; return m
+    },{});
+  };
+
+  function dolaunches() {
+    var algolabelstr;
+    g.each(null, DOACC('incept'), null).forEach(function (cc) {
+      try {
+        var algo = g.the(cc, DOACC('pow'));
+        if (algo == undefined || algo.value == undefined) {
+          console.log("Bad algo from " + cc.value);
+          algolabelstr = 'D[' + g.the(cc, SKOS('prefLabel')).value + ']';
+        }
+        else
+        {
+          var algolabel = g.the(algo, SKOS('prefLabel'));
+          if (algolabel == undefined || algolabel.value == undefined) {
+            console.log("Bad algolabel from " + cc.value);
+            algolabelstr = "Unknown from" +cc.value;
+          } else {
+            algolabelstr = algolabel.value;
+          }
+        }
+        var launched = g.the(cc, DOACC('incept'));
+        if (launched.value > "2012-01") {
+          if (!(launched.value in launches)) {
+            launches[launched.value] = [];
+            lkeys.push(launched.value); 
+          }
+          launches[launched.value].push(algolabelstr)
+        }
+        if (!$.inArray(algolabelstr, algs)) {
+          algs.push(algolabelstr)
+        }
+      }
+      catch (e) {
+        console.log(e);
+      }
+    });
+    $('#chart').html(''); // nuke spinner
+    kys = lkeys.sort();
+    tbl = $( "<table/>", {"class": "ui compact table"});
+    $('#chart').append(tbl); // nuke spinner
+    th = $( "<thead/>");
+    tb = $( "<tbody/>");
+    tbl.append(tb);
+    kys.forEach(function (lk) {
+      tr = $('<tr/>');
+      tb.append(tr);
+      ltd = $('<td/>').html(lk);
+      tr.append(ltd);
+      var cnt = count(launches[lk]);
+      Object.keys(cnt).forEach(function (k) {
+        dtd = $('<td/>').html(k.substr(0,4) + '<br/>' + cnt[k])
+        tr.append(dtd);
+      });
+    });
+  };
+  var g = $rdf.graph();
+  var docURI = "{{site.url}}/altcoin-min.n3";
+  var fetch = $rdf.fetcher(g);
+  fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
+      dolaunches();
+  });
+
+</script>

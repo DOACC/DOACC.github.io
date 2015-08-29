@@ -1,0 +1,121 @@
+  <style type="text/css">
+    tt.ttp {color: #55b;}
+    .posttitle {
+      background-color : yellow;
+      color: black;
+      border: 1px solid black;
+      padding: 2px;
+      }
+  </style>
+
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+              <a href="#">“In theory, theory and practice are the same.<br/>In practice, they are not.”</a> <span class="rth"> - Albert Einstein</span>
+            </div>
+            <h2 class="ui header inverted">Techniques<br/>
+              <span class="sub header">how to use DOACC data in your own application / web site.</span>
+            </h2>
+            <div class="ui divider"></div>
+          </div>
+        </div>
+        <div class="container" >
+
+          <div class="ui sub secondary pointing menu">
+            <a class="item" href="techniques.html">Basics</a>
+            <a class="item" href="techniques-rdfa.html">DOM</a>
+            <a class="item" href="techniques-querying.html">Querying</a>
+            <a class="item" href="techniques-javascript.html">Javascript</a>
+            <a class="item" href="techniques-interactive.html">Interactive</a>
+            <a class="item" href="techniques-charting.html">Charting</a>
+            <a class="item" href="techniques-graphing.html">Graphing</a>
+            <a class="active item" href="techniques-adding.html">Adding facts</a>
+            <a class="item" href="techniques-reasoning.html">Reasoning</a>
+          </div>
+
+          <h2 class="ui dividing header">${title}</h2>
+          <h3 class="ui header">A <em>very brief</em> case study in augmenting DOACC with additional data.</h3>
+          <p>To be frank, 2100+ entries is too much to comprehend in one pass. No, I'm quite sure of that; take a <a href="/altcoins.svg">look for yourself</a>. In order to populate the examples for this documentation it proved necessary to construct an arbitrary subset. I chose to use the top 20 marketcap coins, (using a [2:22] offset to avoid the overwhelming disproportion of BTC &amp; LTC data).</p>
+          <p>I worked through the archive.org records for coinmarketcap.com for the last 12 months, month by month. Sponging up the data from the web page is relatively straightforward and as an example, this is what the row of data for Stellar can be boiled down to:
+          <div class="code json" data-title="Example post datum" data-type="json">{
+  "st": "ok",
+  "nm": "Stellar",
+  "sy": "STR",
+  "mcu": 12951957.9384,
+  "mcb": 52836.5556735,
+  "pu": 0.00269609,
+  "pb": 1.09985e-05,
+  "ps": "pos",
+  "ch": 4803978331,
+  "vu": 21592.5,
+  "vb": 88.0852,
+  "hu": -1.23,
+  "hb": -1.00,
+  "du": 0.43,
+  "db": 3.81,
+  "wu": -3.42,
+  "wb": -2.46
+}</div>  
+          <p>Each of the monthly postings of data must record the date and pertaining BTC/USD exchange rate price, for later reconstruction of $ values. Each update of the coinmarketcap page is a fresh posting of data. A “Post” thing is indicated, stating the date of posting and the BTC-USD price pertaining at that time.</p>
+          <p>For the datum points themselves, a “Datum” thing will be needed to make statements about the contents of each of the row cells. The outline below is rendered in Notation3 format for brevity and just hits the high points:
+          <div class="code n3" data-title="Coinmarketcap mini-ontology" data-type="n3">:CMPost a owl:Class ;
+      rdfs:comment "coinmarketcap.com post"@en ;
+      skos:prefLabel "CMPost"@en .
+
+:date a owl:DatatypeProperty ;
+      rdfs:domain :CMPost ;
+      rdfs:comment "The timestamp of the post"@en ;
+      skos:prefLabel "date"@en .
+
+:CMPostDatum a owl:Class ;
+      rdfs:comment "datum from a coinmarketcap.com post"@en ;
+      skos:prefLabel "CMPostDatum"@en .
+
+:cmp a owl:ObjectProperty ;
+      rdfs:domain :CMPostDatum ;
+      rdfs:range :CMPost ;
+      rdfs:comment "contextual post"@en ;
+      skos:prefLabel "cmp"@en .
+
+:marketcap a owl:DatatypeProperty ;
+      rdfs:domain :CMPostDatum ;
+      rdfs:range xsd:float ;
+      rdfs:comment "Market capitalisation"@en ;
+      skos:prefLabel "marketcap"@en .</div>
+        <p>And examples of a post and related datum point also rendered in Notation3:</p>
+          <div class="code n3" data-title="Coinmarketcap mini-ontology" data-type="n3">:cmp-1 a :CMPost ;
+      dc:date "2014-01-29T10:35:00"^^xsd:date ;
+      :btc "817.62"^^xsd:float .
+
+:cmpd-1 a :CMPostDatum ;
+      :cmp :cmp-1 ;
+      :cryptocurrency doacc:D1edd900c-399e-471c-87a3-c214ce3c969d ;
+      :daily "0.0"^^xsd:float ;
+      :marketcap "2457847.0"^^xsd:float ;
+      :price "2.458e-05"^^xsd:float ;
+      :qual 2 ;
+      :stale false ;
+      :volume "110.0"^^xsd:float .</div>
+          <p>Feel free to grab <a href="cmdata.n3" title="Coinmarketcap data for 2014">the full content</a> (268K)</p>
+          <p>The <a href="techniques-charting.html">Charting</a> page (also see tab above) goes into detail about getting the data into the charting library but the core activity is outlined below:</p>
+          <div class="code javascript" data-title="Core of processing added data" data-type="javascript">var listout = function() { // a callback function, runs after the data is retrieved
+      cmpno = 'cmp-'+'2'; // arbitrary example
+      dt = g.any(CCS(cmpno), DC('date'), null); // date, for title
+      cmpds = g.each(null, CCS('cmp'), CCS(cmpno)); // the datapoints for the post
+      var res = $.map(cmpds.slice(2,22), function(cmp) { // map over the datum points
+          var cn = g.any(g.any(cmp, CCS('cryptocurrency'), null), DOACC('symbol'), null); // get the coin symbol
+          var val = g.any(cmp, CCS('marketcap'), null); // read the marketcap value
+          return  {"label": cn.value, "value": parseFloat(val.value).toFixed(0)} // return a dictionary
+      });
+      data = $.map(res, function(p) {return p['value'] * 10});  // create list of size-adjusted values
+      labels = $.map(res, function(p) {return p['label']}); // create list of labels
+      ...  // the lists are passed to the chart library.
+};
+var g = $rdf.graph(); // instantiate the graph
+var docURI = "http://localhost.localdomain/altcoin.n3"; // specify the source
+var fetch = $rdf.fetcher(g); // bind the graph and return the fetcher
+fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
+      listout() // callback, see above
+});</div>
+          <div class="ui hidden divider"></div>
+        </div>

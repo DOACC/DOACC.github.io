@@ -1,0 +1,140 @@
+    <link rel="stylesheet" type="text/css" href="stylesheets/dark.css" />
+    <style type="text/css">
+    .limg {height:30px; width:30px;}
+    .stale {color: #555;}
+    .dt {color: #aaa;}
+    .q0 {color: #a66;}
+    .q1 {color: #6a6;}
+    .q2 {color: #66a;}
+    .s0 {color: #444;}
+    .s1 {color: #bbb;}
+    </style>
+
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+              <a href="#">“In theory, theory and practice are the same.<br/>In practice, they are not.”</a> <span class="rth"> - Albert Einstein</span>
+            </div>
+            <h2 class="ui header inverted">Techniques
+              <div class="sub header">how to use DOACC data in your own application / web site.</div>
+            </h2>
+            <div class="ui divider"></div>
+          </div>
+        </div>
+        <div class="container">
+
+          <div class="ui sub secondary pointing menu">
+            <a class="item" href="techniques.html">Basics</a>
+            <a class="item" href="techniques-rdfa.html">DOM</a>
+            <a class="item" href="techniques-querying.html">Querying</a>
+            <a class="active item" href="techniques-javascript.html">Javascript</a>
+            <a class="item" href="techniques-interactive.html">Interactive</a>
+            <a class="item" href="techniques-charting.html">Charting</a>
+            <a class="item" href="techniques-graphing.html">Graphing</a>
+            <a class="item" href="techniques-adding.html">Adding facts</a>
+            <a class="item" href="techniques-reasoning.html">Reasoning</a>
+          </div>
+
+          <h2 class="ui dividing header">Using DOACC with Javascript</h2>
+          <h3 class="ui header">Modal presentation example</h3>
+          <p>See the source for details. Jquery fetches the graph, rdflib parses it, picks out all the alts that use BLAKE for a PoW hashing algo, retrieves other facts about the coin, sets the lot in a table and presents via a modal popup.</p>
+          <div id="tbutton" class="ui red test button">Loading DOACC data.</div>
+          <p style="padding-bottom:2rem"></p>
+
+          <div class="ui long test modal">
+            <i class="close icon"></i>
+            <div class="header">Altcoins using BLAKE as a PoW algo</div>
+            <div class="content">
+              <div id="tabexample"></div>
+            </div>
+            <div class="actions">
+              <div class="ui primary button">Close <i class="right chevron icon"></i></div>
+            </div>
+          </div>
+
+          <h3 class="ui header">How the lists of facts are generated using mashlib.js</h3>
+          <p>The listing is rendered by the <tt>mashlib.js</tt> library in the browser, working on the AJAX-retrieved DOACC RDF graph. The approach is fairly standard and straightforward. The example below lists all the different protection schemes used.</p>
+          <div class="code javascript" data-title="List all protection schemes" data-type="javascript">
+var RDF = $rdf.Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+var SKOS = $rdf.Namespace("http://www.w3.org/2004/02/skos/core#")
+var DOACC = $rdf.Namespace("http://purl.org/net/bel-epa/doacc#")
+var listout = function() {
+  var op = '&lt;div class="ui segment"&gt;&lt;ul&gt;';
+  var rel = DOACC('ProtectionScheme');
+  var res = g.each(null, RDF('type'), rel);
+  var n = res.length;
+  for (i = 0; i &lt; n; i++) {
+    ps = res[i];
+    pv = ps.value;
+    // var rels = g.each(ps, null, null);
+    op += '&lt;li&gt;&lt;a href="' + pv + '"&gt; ' + pv.slice(pv.indexOf('#') + 1, pv.length) + '&lt;/a&gt; - ';
+    op += '&lt;i&gt;' + g.any(ps, SKOS('prefLabel')) + '&lt;/i&gt;, ' + g.any(ps, RDFS('comment')) + '&lt;/li&gt;';
+  };
+  op += '&lt;/ul&gt;&lt;/div&gt;';
+  $("#results").html(op)
+};
+var g = $rdf.graph();
+var docURI = "http://localhost.localdomain/altcoin.n3";
+var fetch = $rdf.fetcher(g);
+fetch.nowOrWhenFetched(docURI, undefined, function(ok, body, xhr) { // @@ check ok
+  listout()
+});</div>
+
+          <div class="ui hidden divider"></div>
+        </div>
+
+<script type="text/javascript" src="{{site.url}}/assets/js/plugins/jquery.xdomainajax.js"></script>
+<script src="{{site.url}}/assets/js/plugins/jquery.tipsy.js"></script>
+<script src="{{site.url}}/assets/js/vendor/library/tablesort.js"></script>
+<script src="{{site.url}}/assets/js/vendor/library/underscore-min.js"></script>
+<script src="{{site.url}}/assets/js/vendor/library/facetedsearch.js"></script>
+<script type="text/javascript">
+
+  // For quick access to those namespaces:
+  var FOAF = $rdf.Namespace("http://xmlns.com/foaf/0.1/")
+  var RDF = $rdf.Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+  var RDFS = $rdf.Namespace("http://www.w3.org/2000/01/rdf-schema#")
+  var OWL = $rdf.Namespace("http://www.w3.org/2002/07/owl#")
+  var DC = $rdf.Namespace("http://purl.org/dc/elements/1.1/")
+  var XSD = $rdf.Namespace("http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/#dt-")
+  var SKOS = $rdf.Namespace("http://www.w3.org/2004/02/skos/core#")
+  var DOACC = $rdf.Namespace("http://purl.org/net/bel-epa/doacc#")
+  var CCS = $rdf.Namespace('http://purl.org/net/bel-epa/2015/05/ccs#')
+
+  var listout = function() {
+      var retn = '<table class="ui sortable celled table">' +
+'<thead><tr><th>Image</th><th>Name</th><th>Symbol</th><th>Incept</th>' +
+'<th>Expiration</th><th>Protection scheme</th>' +
+'<th>Distribution scheme</th></tr></thead><tbody>';
+      var blakecoins = g.each(null, DOACC('pow'), DOACC('D61137b39-d1fa-4340-87e3-cc4e045dbf38'));
+      console.log("Noof coins = " + blakecoins.length);
+      $.map(blakecoins, function(coin) {
+          var name = g.any(coin, SKOS('prefLabel'), null);
+          var image = g.any(coin, DOACC('image'), null);
+          var expiration = g.any(coin, DOACC('expiration'), null);
+          var incept = g.any(coin, DOACC('incept'), null);
+          var symbol = g.any(coin, DOACC('symbol'), null);
+          var protectionscheme = g.any(g.any(coin, DOACC('protection-scheme'), null), SKOS('prefLabel'), null);
+          if (protectionscheme.value.startsWith('http')) {protectionscheme.value = '-'};
+          var distributionscheme = g.any(g.any(coin, DOACC('distribution-scheme'), null), SKOS('prefLabel'), null);
+          if (distributionscheme.value.startsWith('http')) {distributionscheme.value = '-'};
+          retn += '<tr class="ui table row">' +
+            '<td><img class="limg" src="https://raw.githubusercontent.com/DOACC/imprint/master/' + image.value[0].toUpperCase() + '/' + image.value + '"/></td>' +
+            '<td>' + name.value + '</td>' +
+            '<td>' + symbol.value + '</td>' + 
+            '<td>' + incept.value + '</td>' + 
+            '<td>' + expiration.value + '</td>' + 
+            '<td>' + protectionscheme.value + '</td>' + 
+            '<td>' + distributionscheme.value + '</td>' + '</tr>';
+          });
+      $('#tbutton').html('Ready, click me.').removeClass('ui red test button').addClass('ui green test button');
+      $('#tabexample').html(retn + '</tbody></table>');
+      $('#tableexample').html(retn + '</tbody></table>');
+  };
+  var g = $rdf.graph();
+  var docURI = "{{site.url}}/altcoin.n3";
+  var fetch = $rdf.fetcher(g);
+  fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
+      listout();
+  });
+</script>

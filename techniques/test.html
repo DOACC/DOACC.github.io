@@ -1,0 +1,141 @@
+  <style type="text/css">
+    .posttitle {
+      background-color : yellow;
+      color: black;
+      border: 1px solid black;
+      padding: 2px;
+      }
+  </style>
+
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+            </div>
+            <h2 class="ui header inverted">Techniques<br/>
+              <span class="sub header">how to use DOACC data in your own application / web site.</span>
+            </h2>
+            <div class="ui divider"></div>
+          </div>
+        </div>
+        <div class="container" >
+
+          <div class="ui sub secondary pointing menu">
+            <a class="item" href="techniques.html">Basics</a>
+            <a class="active item" href="techniques-rdfa.html">DOM</a>
+            <a class="item" href="techniques-querying.html">Query results</a>
+            <a class="item" href="techniques-javascript.html">Javascript</a>
+            <a class="item" href="techniques-interactive.html">Interactive</a>
+            <a class="item" href="techniques-charting.html">Charting</a>
+            <a class="item" href="techniques-graphing.html">Graphing</a>
+            <a class="item" href="techniques-adding.html">Adding facts</a>
+            <a class="item" href="techniques-reasoning.html">Reasoning</a>
+          </div>
+
+          <h2 class="ui dividing header">${title}</h2>
+          <h3 class="ui header">fresnel test</h3>
+          <p>How to add DOACC information to web pages</p>
+
+          <div resource="/alice/posts/trouble_with_bob" typeof="schema:BlogPosting">
+              <h2 property="dc:title">The trouble with Bob</h2>
+              ...
+              <h3 property="dc:creator schema:creator" resource="#me">Alice</h3>
+              <div property="schema:articleBody">
+                <p>The trouble with Bob is that he takes much better photos than I do:</p>
+              </div>
+             ...
+          </div>
+
+          <div
+            xmlns:fresnel="http://www.w3.org/2004/09/fresnel#"
+            typeof="fresnel:Group"
+            style="display: none;"
+            >
+            <div rev="fresnel:group">
+              <div typeof="fresnel:Format">
+                <div property="fresnel:instanceFormatDomain">
+                  select: [ "s", "title" ],
+                  where:
+                  [
+                    { pattern: [ "?s", "http://ebay.com/item", "?title" ], setUserData: true }
+                  ]
+                </div>
+                
+                <span property="fresnel:resourceStyle" datatype="fresnel:styleClass">posttitle</span>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="ui hidden divider"></div>
+
+        </div>
+
+<script type="text/javascript" src="{{site.url}}/assets/js/plugins/jquery.xdomainajax.js"></script>
+<script type="text/javascript" src="https://yui.yahooapis.com/2.5.1/build/yuiloader/yuiloader-beta-min.js" >/**/</script>
+<script type="text/javascript" src="{{site.url}}/assets/js/vendor/library/ubiquity-rdfa.js"></script>
+<script type="text/javascript">
+var n3data = '@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix doacc: <http://purl.org/net/bel-epa/doacc#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://purl.org.net/bel-epa/doacc#Df41d9984-f905-4c03-b3c0-1a2961da2232> doacc:protocol doacc:De61fddca-2c78-43a4-906c-81c7c5b99735 .
+
+doacc:D001c782e-f6dc-4833-bc0a-2b5049432ab9 a doacc:Cryptocurrency ;
+    rdfs:label "Fixcoin"^^xsd:string ;
+    dc:title "Fixcoin"@en ;
+    doacc:coin doacc:D5f3385ab-8b4b-4d1e-bf2a-149854a14bb6 ;
+    doacc:expiration "extant"@en ;
+    doacc:image "fixcoin_fix.png"^^xsd:anyURI ;
+    doacc:incept "2014-04"^^xsd:string ;
+    doacc:pow doacc:D338257f8-402f-4c76-969b-6fc041d52e40 ;
+    doacc:protection-scheme doacc:D451a49d8-c9e7-46e5-8b8d-bcbe16f75c24 ;
+    doacc:protocol doacc:Db8ade99f-11f1-476b-ae77-03c005c1bb66 ;
+    doacc:release doacc:D6ece0a37-683c-4a22-8b7b-22ba04b6c3a9 ;
+    doacc:symbol "FIX"^^xsd:string ;
+    rdfs:comment "Scrypt based cryptocoin with block range coin rewards and 27 million total coins."^^xsd:string ;
+    skos:prefLabel "Fixcoin"@en .
+
+doacc:D008d4c2d-3d0e-4390-98eb-8933fc0408cf a doacc:Cryptocurrency ;
+    rdfs:label "IceCoin"^^xsd:string ;
+    dc:title "IceCoin"@en ;
+    doacc:coin doacc:Def60415b-1140-40f5-94fd-d0e352627547 ;
+    doacc:expiration "defunct"@en ;
+    doacc:image "icecoin_ice.png"^^xsd:anyURI ;
+    doacc:incept "2013-06"^^xsd:string ;
+    doacc:pow doacc:D338257f8-402f-4c76-969b-6fc041d52e40 ;
+    doacc:protection-scheme doacc:D451a49d8-c9e7-46e5-8b8d-bcbe16f75c24 ;
+    doacc:protocol doacc:Db8ade99f-11f1-476b-ae77-03c005c1bb66 ;
+    doacc:release doacc:D914bf19d-c4ce-43a6-a42b-4c55f289ef8e ;
+    doacc:symbol "ICE"^^xsd:string ;
+    rdfs:comment "DoA, relaunched by someone else and dead again."^^xsd:string ;
+    skos:prefLabel "IceCoin"@en .
+
+doacc:D00add470-26f1-49a2-8ccd-f9a417dd624e a doacc:Cryptocurrency ;
+    rdfs:label "Distrocoin"^^xsd:string ;
+    dc:title "Distrocoin"@en ;
+    doacc:block-reward "50"^^xsd:string ;
+    doacc:coin doacc:D4fd7560b-c2bb-46d4-9d83-014ee004c8e6 ;
+    doacc:date-founded "2014-05-12"^^xsd:date ;
+    doacc:diff-adjustment "('h', 1000000, 'b')"^^xsd:string ;
+    doacc:expiration "listed"@en ;
+    doacc:image "distrocoin_distro.png"^^xsd:anyURI ;
+    doacc:incept "2014-05"^^xsd:string ;
+    doacc:pow doacc:D338257f8-402f-4c76-969b-6fc041d52e40 ;
+    doacc:premine "0.7%"^^xsd:string ;
+    doacc:protection-scheme doacc:D451a49d8-c9e7-46e5-8b8d-bcbe16f75c24 ;
+    doacc:protocol doacc:Db8ade99f-11f1-476b-ae77-03c005c1bb66 ;
+    doacc:release doacc:Dd8471951-2352-42ce-919e-aa2c9f962035 ;
+    doacc:retarget-time "1 block"^^xsd:string ;
+    doacc:symbol "DISTRO"^^xsd:string ;
+    doacc:total-coins "100000000"^^xsd:string ;
+    doacc:website "https://raxe.io"^^xsd:anyURI ;
+    rdfs:comment "Stopped 5/15/2014. Sources removed."^^xsd:string ;
+    skos:prefLabel "Distrocoin"@en .
+';
+
+</script>

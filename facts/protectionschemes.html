@@ -1,0 +1,74 @@
+---
+layout: page
+title: Protection
+---
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+              <a href="#">“All we know are the facts, ma’am.”</a> <span class="rth"> - Joe Friday, <i>Dragnet</i></span>
+            </div>
+            <h2 class="ui header inverted">Facts
+              <div class="sub header">Statements about altcoins</div>
+            </h2>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="ui sub secondary pointing menu">
+            <a class="item" href="/facts/index.html">Index</a>
+            <a class="active item" href="/facts/protectionschemes.html">Protection</a>
+            <a class="item" href="/facts/distributionschemes.html">Distribution</a>
+            <a class="item" href="/facts/powschemes.html">PoW</a>
+            <a class="item" href="/facts/posschemes.html">PoS</a>
+            <a class="item" href="/facts/protocols.html">Protocols</a>
+            <a class="item" href="/facts/coins.html">Coins</a>
+            <a class="item" href="/facts/future.html">Upcoming</a>
+          </div>
+
+          <h2 class="ui dividing header">Protection scheme</h2>
+          <p>The meaning of “protectionscheme” is defined in the corresponding <a href="/concepts/protectionschemes.html" title="The concept of a protection scheme">DOACC conceptual description of Protection sheme</a></p>
+          <div id="results">
+            <div class="ui segment">
+              <div class="ui active inverted dimmer">
+                <div class="ui text loader">Reading protectionscheme from graph</div>
+              </div>
+              <p></p>
+            </div>
+          </div>
+          <div class="ui hidden divider"></div>
+        </div>
+
+
+<script type="text/javascript">
+  // For quick access to those namespaces:
+  var FOAF = $rdf.Namespace("http://xmlns.com/foaf/0.1/")
+  var RDF = $rdf.Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+  var RDFS = $rdf.Namespace("http://www.w3.org/2000/01/rdf-schema#")
+  var OWL = $rdf.Namespace("http://www.w3.org/2002/07/owl#")
+  var DC = $rdf.Namespace("http://purl.org/dc/elements/1.1/")
+  var XSD = $rdf.Namespace("http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/#dt-")
+  var SKOS = $rdf.Namespace("http://www.w3.org/2004/02/skos/core#")
+  var DOACC = $rdf.Namespace("http://purl.org/net/bel-epa/doacc#")
+
+  var listout = function() {
+      var rel = DOACC('ProtectionScheme');
+      var op = '<div class="ui segment"><ul class="opt">'
+      var res = g.each(null, RDF('type'), rel);
+      var n = res.length;
+      for (i=0; i<n; i++) {
+          ps = res[i];
+          pv = ps.value;
+          // var rels = g.each(ps, null, null);
+          op += '<li><span style="font-size:110%"><a href="' + pv + '"> ' + pv.slice(pv.indexOf('#') + 1, pv.length-18) + '...</a> - <i>' + g.any(ps, SKOS('prefLabel')) + '</i>, ' + g.any(ps, RDFS('comment')) + '</span></li>';
+      }
+      op += '</ul></div>'
+      $("#results").html(op)
+  };
+
+  var g = $rdf.graph();
+  var docURI = "{{site.url}}/ccs.n3";
+  var fetch = $rdf.fetcher(g);
+  fetch.nowOrWhenFetched(docURI,undefined,function(ok, body, xhr){ // @@ check ok
+      listout()
+  });
+  </script>

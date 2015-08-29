@@ -1,0 +1,148 @@
+  <link rel="stylesheet" href="https://yui-s.yahooapis.com/2.8.1/build/container/assets/skins/sam/container.css" type="text/css"/>
+    <style type="text/css">
+    /*.container p {font-size: 110%; font-family: "Karma", serif;}*/
+    .ebay-item {
+      background-color : rgb(255, 206, 13);
+      color: black;
+      border: 1px solid black;
+      padding: 2px;
+      }
+    .symbol {
+      background-color : rgb(255, 206, 13);
+      color: black;
+      border: 1px solid black;
+      padding: 2px;
+      }
+    </style>
+
+        <div class="subheader">
+          <div class="container">
+            <div class="right-content">
+              <a href="#">“In theory, theory and practice are the same.<br/>In practice, they are not.”</a> <span class="rth"> - Albert Einstein</span>
+            </div>
+            <h2 class="ui header inverted">Techniques
+              <div class="sub header">how to use DOACC data in your own application / web site.</div>
+            </h2>
+            <div class="ui divider"></div>
+          </div>
+        </div>
+        <div class="container">
+
+          <div class="ui sub secondary pointing menu">
+            <a class="item" href="techniques.html">Basics</a>
+            <a class="active item" href="techniques-rdfa.html">DOM</a>
+            <a class="item" href="techniques-querying.html">Querying</a>
+            <a class="item" href="techniques-javascript.html">Javascript</a>
+            <a class="item" href="techniques-interactive.html">Interactive</a>
+            <a class="item" href="techniques-charting.html">Charting</a>
+            <a class="item" href="techniques-graphing.html">Graphing</a>
+            <a class="item" href="techniques-adding.html">Adding facts</a>
+            <a class="item" href="techniques-reasoning.html">Reasoning</a>
+          </div>
+
+          <h2 class="ui dividing header">${title}</h2>
+          <h3 class="ui header">RDFa and the DOM</h3>
+          <p>Using RDFa to embed machine-processble DOACC information into the structure of a web page, without intruding into the user experience.</p>
+          <p>In this example, the embedded semantic information is processed in-browser, using a javascript library to find all instances of <tt>doacc:symbol</tt> and apply an orange highlight style.</p>
+          <div class="ui divided items">
+          % for c in coins:
+            <div class="link item">
+              <div class="ui tiny image">
+                <img src="https://raw.githubusercontent.com/DOACC/imprint/master/${c.get('slug')[0].upper()}/${'{}_{}.png'.format(c.get('slug'), c.get('symbol').lower())}"/>
+              </div>
+              <div class="content">
+                <a class="header" href="${c.get('doacc').replace('http://purl.org/net/bel-epa/doacc#','https://minkiz.co/resource/Cryptocurrency/')}" title="Details for ${c.get('name')}">${c.get('name')}</a>
+                <div
+                  xmlns:doacc="http://purl.org/net/bel-epa/doacc#"
+                  class="description"
+                  about="${c.get('doacc')}"
+                  typeof="doacc:CryptoCurrency">
+                % for i in ['symbol', 'incept', 'protectionscheme', 'distributionscheme', 'powscheme', 'posscheme', 'block_time', 'total_coins']:
+                  <span property="doacc:${i}" content="${c.get(i, '')}">${i}: ${c.get(i, '')}</span>
+                % endfor
+                </div>
+              </div>
+            </div>
+          % endfor
+          </div>
+          <div xmlns:fresnel="http://www.w3.org/2004/09/fresnel#" typeof="fresnel:Group" style="display: none;">
+            <div rev="fresnel:group">
+              <div typeof="fresnel:Format">
+                <div property="fresnel:instanceFormatDomain">
+                  select: [ "s", "symbol" ],
+                  where:
+                  [
+                    { pattern: [ "?s", "http://purl.org/net/bel-epa/doacc#symbol", "?symbol" ], setUserData: true }
+                  ]
+                </div>
+                <span property="fresnel:resourceStyle" datatype="fresnel:styleClass">symbol</span>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="ui dividing header">Under the hood</h2>
+          <h3 class="ui dividing header">Markup for the above unobtrusive data embedding</h3>
+          <p>The example shows how semantic information is embedded into the markup and then how that information can be subsequently processed in-browser (finding all instances of <tt>doacc:symbol</tt> and applying an orange highlight).</p>
+          <div class="ui segment">
+            <div class="code html" data-title="DOACC RDFa source" data-type="html">
+              <div class="ui divided items">
+                <div class="link item">
+                  [ ... ]
+                  <div class="ui tiny image">
+                    <img src="https://raw.githubusercontent.com/DOACC/imprint/master/A/antiterroristiccoin_pen.png">
+                  </div>
+                  <div class="content">
+                    <a class="header"
+                       href="https://minkiz.co/resource/Cryptocurrency/D95ea674e-524c-435d-9d2d-1cf91d791c00"
+                       title="Details for Anti-TerroristicCoin">Anti-TerroristicCoin</a>
+                    <div
+                      xmlns:doacc="http://purl.org/net/bel-epa/doacc#"
+                      xmlns:ccs="http://purl.org/net/bel-epa/ccs#"
+                      class="description"
+                      about="http://purl.org/net/bel-epa/ccs#D95ea674e-524c-435d-9d2d-1cf91d791c00"
+                      typeof="doacc:CryptoCurrency">
+                      <span property="doacc:symbol" content="PEN">symbol: PEN</span>
+                      <span property="doacc:incept" content="2015-01">incept: 2015-01</span>
+                      <span property="doacc:protectionscheme" content="pos">protectionscheme: pos</span>
+                      <span property="doacc:distributionscheme" content="pow">distributionscheme: pow</span>
+                      <span property="doacc:powscheme" content="scrypt">powscheme: scrypt</span>
+                      <span property="doacc:posscheme" content="interest">posscheme: interest</span>
+                      <span property="doacc:block_time" content="60">block_time: 60</span>
+                      <span property="doacc:total_coins" content="1000000">total_coins: 1000000</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div xmlns:fresnel="http://www.w3.org/2004/09/fresnel#" typeof="fresnel:Group" style="display: none;">
+                <div rev="fresnel:group">
+                  <div typeof="fresnel:Format">
+                    <div property="fresnel:instanceFormatDomain">
+                      select: [ "s", "symbol" ],
+                      where:
+                      [
+                        { pattern: [ "?s", "http://purl.org/net/bel-epa/doacc#symbol", "?symbol" ], setUserData: true }
+                      ]
+                    </div>
+                    <span property="fresnel:resourceStyle" datatype="fresnel:styleClass">symbol</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="code css" data-title="CSS style sheet" data-type="css">
+              <style type="text/css">
+              .symbol { 
+                background-color : rgb(255, 206, 13); color: black;
+                border: 1px solid black; padding: 2px; }
+              </style>
+            </div>
+          <h2 class="ui dividing header">RDFa</h2>
+          <h3 class="ui dividing header">Support for using and processing RDFa</h3>
+            <p>The embedding technology is known as “RDFa”. The RDFa javascript library used here is Mark Birkbeck’s <a href="http://ubiquity-rdfa.googlecode.com/svn/branches/0.7/test/tutorial-step-2.html" title="Google code repository">ubiquity-rdfa</a>. For more information on using RDFa, see the <a href="http://www.w3.org/TR/rdfa-primer/" title="W3's RDFa primer document">RDFa primer</a>.</p>
+          </div>
+        </div>
+        <div class="ui hidden divider"></div>
+      </div>
+
+  <script type="text/javascript" src="{{site.url}}/assets/js/plugins/jquery.xdomainajax.js"></script>
+  <script type="text/javascript" src="{{site.url}}/assets/js/vendor/library/yuiloader-min.js"></script>
+  <script type="text/javascript" src="{{site.url}}/assets/js/vendor/library/ubiquity-rdfa.js"></script>
