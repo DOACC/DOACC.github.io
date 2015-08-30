@@ -2,13 +2,16 @@
 layout: post
 title: "New DOACC documentation website"
 modified:
-excerpt: "The DOACC project launches a new open source website powered by github.com.  We welcome pull requests and the contribution of the community."
+excerpt: "The DOACC project announces a new open source documentation website powered by github.com.  We welcome pull requests and the contribution of the community."
 tags: [rdf]
 ---
 
-Today, the new open source DOACC project documentation website was launched!
+## I was wrong, it transpired.
+The javascript-heavy DOACC project documentation _does_ function when hosted on Github pages.
 
-The new website is powered by Github.com and is thus entirely open source and available for direct community contribution.  
+I was always a bit uncomfortable with Minkiz’ hosting the DOACC documentation, I felt the self-signed CA cert was an unfortunate barrier so I am quite pleased to announce the release of the DOACC documentation repository and web site.
+
+The new web site is powered by Github’s “pages” feature and is thus entirely open source and available for direct community contribution.  
 
 We welcome pull requests!
 

@@ -214,6 +214,7 @@ SELECT DISTINCT(?pows as ?powscheme) ?name WHERE {
 <tr><td>doacc:D211d6200-8c02-4219-9e3f-a65d406dafb5</td><td>yescrypt</td></tr>
 </table>
 </div>
+<p>The results of the above query are listed on the <a href="{{site.url}}/facts/powschemes.html">PoW</a> page in the Facts section.</p>
 
 ---
 
