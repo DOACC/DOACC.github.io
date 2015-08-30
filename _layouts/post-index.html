@@ -39,16 +39,16 @@
           </div>
           {% for post in site.posts limit:20 %}
             {% if post.link %}
-            <h2 class="ui dividing header"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></h2>
+              <h2 class="ui dividing header"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></a></h2>
+              <p>Posted: <time datetime="{{post.date}}">{{post.date}}</time></p>
             {% else %}
               <h2  class="ui dividing header"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
               <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+              <p>Posted: <time datetime="{{post.date}}">{{post.date}}</time></p>
             {% endif %}
           {% endfor %}
           <div class="ui hidden divider"></div>
         </div>
-      <h2><a href="{{ site.url }}/all-news" title="All News and Announcements">SHOW ALL NEWS</a></h2>
-      <p>Show all news and announcements.</p>
     </div>
   </div>
 
