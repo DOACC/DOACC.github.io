@@ -1,13 +1,12 @@
 ---
 layout: post
 title: "Chronological list of releases?"
-date: 2015-08-28T01:26:54+01:00
+date: 2015-07-12T11:16:43+01:00
 modified:
 excerpt: "Using DOACC data to answer simple questions."
 tags: [rdf]
 image:
   feature:
-date: 2015-08-28T18:06:11+01:00
 ---
 
 <h2>Is there a chronological list anywhere for alts as they were released?</h2>
