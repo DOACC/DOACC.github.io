@@ -7,7 +7,6 @@ tags: [rdf]
 image:
   feature:
 date: 2015-08-28T18:06:11+01:00
-link: list-of-quarkcoin-clones
 ---
 
 <h2 style="margin-top:2em">Quarkcoin clones, which ones are still floating around out there?</h2>
