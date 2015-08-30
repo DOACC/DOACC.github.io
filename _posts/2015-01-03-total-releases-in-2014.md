@@ -31,3 +31,6 @@ FILTER(?yearmo > '2013-12' && ?yearmo < '2015-01' )
 <tr><td>1705</td></tr>
 </table>
 </div>
+---
+
+<div><a markdown="0" href="{{ site.url }}/news" class="ui button blue huge top-20">BACK: News</a></div>

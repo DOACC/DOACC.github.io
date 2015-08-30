@@ -132,4 +132,7 @@ ORDER BY ?d LIMIT 100</pre>
 <tr><td>Bestcoin</td><td>2013-07</td></tr>
 </table>
 </div>
-<p>
+
+---
+
+<div><a markdown="0" href="{{ site.url }}/news" class="ui button blue huge top-20">BACK: News</a></div>

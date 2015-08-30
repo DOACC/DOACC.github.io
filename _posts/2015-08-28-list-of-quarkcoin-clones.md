@@ -216,4 +216,4 @@ SELECT DISTINCT(?pows as ?powscheme) ?name WHERE {
 
 ---
 
-<div><a markdown="0" href="{{ site.url }}/news" class="btn">BACK: News</a></div>
+<div><a markdown="0" href="{{ site.url }}/news" class="ui button blue huge top-20">BACK: News</a></div>
