@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "List of Quarkcoin clones?"
-date: 2015-08-28T01:26:54+01:00
 modified:
 excerpt: "Using DOACC data to answer simple questions."
 tags: [rdf]
